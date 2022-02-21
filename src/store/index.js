@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import game from './game.slice'
+import recipes from './recipes.slice'
 
 const store = configureStore({
-  reducer: { game }
+  reducer: { recipes }
 })
 
 export default store
 
-export * from './game.slice'
+export * from './recipes.slice'
