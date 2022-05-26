@@ -1,62 +1,46 @@
-<div align="center">
+# Getting Started with Create React App
 
-<h1>CookBook`</h1>
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-![example workflow](https://github.com/friedrith/cookbook/actions/workflows/validate.yml/badge.svg)
-![version](https://img.shields.io/github/package-json/v/friedrith/cookbook)
+## Available Scripts
 
-</div>
+In the project directory, you can run:
 
-This project is a boilerplate with the best technologies and practices for a frontend project in
-Feb 2022.
+### `yarn start`
 
-It uses the technologies:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-- [yarn](https://yarnpkg.com/)
-- [React v17](https://reactjs.org/)
-- [React-Router v6](https://reactrouter.com/docs/en/v6)
-- [Redux Toolkit](https://redux.js.org/)
-- [Tailwind](https://tailwindcss.com/)
-- [Github actions](https://github.com/features/actions)
-- [Lordicons](https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js)
-- [Prettier](https://prettier.io/)
-- [Eslint](https://eslint.org/)
-- [Jest](https://jestjs.io)
-- [Testing Library](https://testing-library.com/)
-- [Puppeteer](https://github.com/puppeteer/puppeteer)
-- [Commitlint](https://github.com/conventional-changelog/commitlint)
-- [Standard Version](https://github.com/conventional-changelog/standard-version)
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-And the best practices:
+### `yarn test`
 
-- [Atomic design](https://atomicdesign.bradfrost.com/chapter-2/)
-- [AAA Pattern for unit tests](https://medium.com/@pjbgf/title-testing-code-ocd-and-the-aaa-pattern-df453975ab80)
-- [Absolute paths](https://create-react-app.dev/docs/importing-a-component/#absolute-imports)
-- [CONTRIBUTING.md](./CONTRIBUTING.md) (in addition of a good README.md)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Getting started
+### `yarn build`
 
-```bash
-# installation
-yarn
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-# start
-yarn start
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-# build
-yarn build
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-# code validation
-yarn lint
-yarn format
-yarn test
-yarn commitlint
-```
+### `yarn eject`
 
-### Code Validation
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## Links
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Contact us
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Interested to work with us? You can contact us at [thibault.friedrich@gmail.com](mailto:thibault.friedrich@gmail.com).
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

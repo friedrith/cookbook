@@ -1,8 +1,8 @@
 {
-  "preferences": "Preferences",
-  "language": "Language",
-  "theme": "Theme",
-  "settings": "Settings",
-  "sign out": "Sign out",
-  "close": "Close"
+  "_Try banana bread": "Try \"Banana Bread\"",
+  "_View Recipe": "View Recipe",
+  "_Ingredients": "Ingredients",
+  "_No Recipes found.": "No Recipes found. Try a different search.",
+  "_sign out": "Sign Out",
+  "_settings": "Settings"
 }

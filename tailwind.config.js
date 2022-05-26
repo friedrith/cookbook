@@ -1,17 +1,42 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
-  darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans]
-      }
-    }
+    extend: {},
   },
+  safelist: [
+    'bg-gray-100',
+    'text-gray-800',
+    'bg-red-100',
+    'text-red-800',
+    'bg-yellow-100',
+    'text-yellow-800',
+    'bg-green-100',
+    'text-green-800',
+    'bg-blue-100',
+    'text-blue-800',
+    'bg-indigo-100',
+    'text-indigo-800',
+    'bg-purple-100',
+    'text-purple-800',
+    'bg-pink-100',
+    'text-pink-800',
+    'bg-indigo-600',
+    'bg-gray-300',
+    'group-hover:bg-indigo-800',
+    'bg-white',
+    'border-2',
+    'border-indigo-600',
+    'border-gray-30',
+    'group-hover:border-gray-400',
+    'text-indigo-600',
+    'text-gray-500',
+    '"h-2.5',
+    'w-2.5',
+    'rounded-full',
+    'group-hover:bg-gray-300',
+  ],
   plugins: [
     // ...
-    require('@tailwindcss/forms')
-  ]
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
