@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import Footer from 'components/atoms/Footer'
 import Page from 'components/templates/Page'
 
+import { useAppSelector } from 'hooks/redux'
+import { getCurrentUser } from 'store'
+
 export const LandingPage = () => {
+  const user = useAppSelector(getCurrentUser)
+
+  const { t } = useTranslation()
+
   return (
     <Page className={`bg-blue-500`}>
       <div className="bg-indigo-700">
@@ -18,9 +26,9 @@ export const LandingPage = () => {
           </p>
           <Link
             className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto"
-            to="/recipes"
+            to={user ? '/recipes' : '/login'}
           >
-            Sign in
+            {user ? t('_Open CookBook') : t('_Log in')}
           </Link>
         </div>
       </div>

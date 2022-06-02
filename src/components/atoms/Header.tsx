@@ -1,6 +1,7 @@
 import { Fragment, useRef, KeyboardEvent } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { Link } from 'react-router-dom'
+import { MenuIcon, XIcon, CogIcon } from '@heroicons/react/outline'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 // import { useDispatch } from 'react-redux'
@@ -205,12 +206,21 @@ const Header = ({ onSearchChange, searchValue }: Props) => {
                   </div>
                 </div>
                 <div className="flex-1 lg:block" />
-                <div className="flex items-center lg:hidden">
+                {/* <div className="flex items-center lg:hidden">
                   <MobileMenuButton open={open} />
-                </div>
-                <div className="hidden lg:block lg:ml-4">
+                </div> */}
+                <div className="lg:ml-4">
                   <div className="flex items-center">
-                    <DesktopUserDropDown navigation={userNavigation} />
+                    <Link
+                      to="/preferences"
+                      className="text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                      <CogIcon
+                        className="h-8 w-8 stroke-1"
+                        aria-hidden="true"
+                      />
+                    </Link>
+                    {/* <DesktopUserDropDown navigation={userNavigation} /> */}
                   </div>
                 </div>
               </div>

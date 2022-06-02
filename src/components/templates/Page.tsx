@@ -4,9 +4,7 @@ type Props = {
 }
 
 const Page = ({ className, children }: Props) => (
-  <div
-    className={`relative h-screen w-screen bg-white dark:bg-black ${className}`}
-  >
+  <div className={`relative h-screen w-screen bg-white ${className}`}>
     {children}
   </div>
 )

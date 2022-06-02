@@ -1,4 +1,4 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
 import type { RootState } from 'store'
 import Recipe, { Ingredient } from 'models/Recipe'
 
@@ -25,6 +25,14 @@ export const recipesInitialState: RecipesState = {
   areFetched: false,
   metadataById: {},
 }
+
+// const fetchUserById = createAsyncThunk(
+//   'recipes/fetch',
+//   async (userId: number, thunkAPI) => {
+//     const response = await userAPI.fetchById(userId)
+//     return response.data
+//   }
+// )
 
 const initializeMetadata = (state: RecipesState, recipeId: string) => {
   if (!state.metadataById[recipeId]) {
