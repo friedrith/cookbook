@@ -5,30 +5,30 @@ import { useRef, useEffect, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
-
 import Fuse from 'fuse.js'
 
+import Recipe from 'models/Recipe'
 import { getRecipeList } from 'store'
 import Header from 'components/atoms/Header'
 import RecipePreview from 'components/molecules/RecipePreview'
+import MainPage from 'components/templates/MainPage'
+import Page from 'components/templates/Page'
+
+const initializeFuse = (recipes: Recipe[]) =>
+  new Fuse(recipes, {
+    keys: ['title', 'keywords'],
+    minMatchCharLength: 1,
+  })
 
 const RecipeList = () => {
   const recipes = useSelector(getRecipeList)
-  const fuse = useRef(
-    new Fuse(recipes, {
-      keys: ['title', 'keywords'],
-      minMatchCharLength: 1,
-    })
-  )
+  const fuse = useRef(initializeFuse(recipes))
   let [searchParams, setSearchParams] = useSearchParams()
 
   const [query, setQuery] = useState(searchParams.get('q') || '')
 
   useEffect(() => {
-    fuse.current = new Fuse(recipes, {
-      keys: ['description', 'name'],
-      minMatchCharLength: 1,
-    })
+    fuse.current = initializeFuse(recipes)
   }, [recipes])
 
   const searchedRecipes = useMemo(
@@ -50,10 +50,10 @@ const RecipeList = () => {
   const { t } = useTranslation()
 
   return (
-    <>
-      <Header onSearchChange={onQueryChange} searchValue={query} />
-      <div className="bg-white">
-        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+    <Page>
+      <MainPage>
+        <Header onSearchChange={onQueryChange} searchValue={query} />
+        <div className="lg:pt-6">
           {searchedRecipes.length > 0 ? (
             <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
               {searchedRecipes.map((recipe) => (
@@ -68,8 +68,8 @@ const RecipeList = () => {
             </div>
           )}
         </div>
-      </div>
-    </>
+      </MainPage>
+    </Page>
   )
 }
 

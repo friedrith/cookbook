@@ -1,30 +1,36 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
+import { useTranslation } from 'react-i18next'
 
 import Page from 'components/templates/Page'
+import MainPage from 'components/templates/MainPage'
 
-import { useAppDispatch } from 'hooks/redux'
-import { logout } from 'store'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { logout, getCurrentUser } from 'store'
 
 const Preferences = () => {
   const dispatch = useAppDispatch()
 
-  return (
-    <Page>
-      <main className="max-w-lg mx-auto pt-10 pb-12 px-4 lg:pb-16">
-        <Link
-          className="text-base font-medium text-gray-900 hover:text-gray-900 flex items-center cursor-pointer fixed top-5 left-5"
-          to="/recipes"
-        >
-          <ArrowLeftIcon className="h-7 w-7" aria-hidden="true" />
-        </Link>
+  const { t } = useTranslation()
 
-        <div className="pt-10 pb-16">
-          <div className="px-4 sm:px-6 md:px-0">
-            <h1 className="text-3xl font-extrabold text-gray-900">Settings</h1>
-          </div>
+  const user = useAppSelector(getCurrentUser)
+
+  return (
+    <Page title={t('_Settings')}>
+      <MainPage>
+        <div className="flex items-center">
+          <Link
+            className="text-base font-medium text-gray-900 hover:text-gray-900 flex items-center cursor-pointer"
+            to="/recipes"
+          >
+            <ArrowLeftIcon className="h-7 w-7" aria-hidden="true" />
+          </Link>
+
+          <h1 className="text-3xl font-extrabold text-gray-900 pl-4">
+            {t('_Settings')}
+          </h1>
         </div>
-        <div>
+        <div className="max-w-4xl mx-auto">
           <div className="mt-10 divide-y divide-gray-200">
             {/* <div className="space-y-1">
               <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -37,9 +43,11 @@ const Preferences = () => {
             <div className="mt-6">
               <dl className="divide-y divide-gray-200">
                 <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-                  <dt className="text-sm font-medium text-gray-500">Account</dt>
+                  <dt className="text-sm font-medium text-gray-500">
+                    {t('_Account')}
+                  </dt>
                   <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                    <span className="flex-grow">English</span>
+                    <span className="flex-grow">{user?.email}</span>
                     <span className="ml-4 flex-shrink-0">
                       <button
                         onClick={() => dispatch(logout())}
@@ -54,7 +62,7 @@ const Preferences = () => {
             </div>
           </div>
         </div>
-      </main>
+      </MainPage>
     </Page>
   )
 }

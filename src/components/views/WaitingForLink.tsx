@@ -9,7 +9,7 @@ const WaitingForLink = () => {
   const email = window.localStorage.getItem('emailForSignIn')
 
   return (
-    <LoginPage>
+    <LoginPage title={t('_Waiting for link')}>
       <BackButton to="/" />
       <div>
         {/* <img

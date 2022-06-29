@@ -1,44 +1,26 @@
 import { useRef } from 'react'
-import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { ArrowLeftIcon } from '@heroicons/react/outline'
-import { Helmet } from 'react-helmet'
 
-import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Box from 'components/atoms/Box'
 import Badge from 'components/atoms/Badge'
 import Stats from 'components/molecules/Stats'
 import IngredientList from 'components/molecules/IngredientList'
 import StepList from 'components/molecules/StepList'
 import TopBar from 'components/molecules/TopBar'
+import MainPage from 'components/templates/MainPage'
+import Recipe from 'models/Recipe'
 
-import { getRecipe, getRecipeProgress, setRecipeProgress } from 'store'
+type Props = {
+  recipe: Recipe
+  progress: number
+  changeRecipeProgress: (index: number) => void
+}
 
-const RecipeDetails = () => {
-  const { recipeId } = useParams()
-  const recipe = useAppSelector((state) => getRecipe(state, recipeId))
-
-  const progress = useAppSelector((state) => getRecipeProgress(state, recipeId))
-
-  const dispatch = useAppDispatch()
-
+const RecipeDetails = ({ recipe, progress, changeRecipeProgress }: Props) => {
   const ref = useRef<HTMLInputElement>(null)
 
-  if (!recipe) {
-    return null
-  }
-
-  const changeRecipeProgress = (index: number) => {
-    dispatch(setRecipeProgress({ recipeId, index }))
-  }
-
   return (
-    <div className="relative h-full">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{recipe.name} - CookBook</title>
-      </Helmet>
-
+    <>
       <div className="h-96 fixed w-full overflow-hidden">
         <img
           src={recipe.imageUrl}
@@ -48,8 +30,8 @@ const RecipeDetails = () => {
       </div>
       <div className="h-96" />
 
-      <div className="flex-1 bg-white relative z-10 px-4 lg:px-10 ">
-        <div className="max-w-screen-xl m-auto flex flex-col items-stretch lg:flex-row lg:items-start">
+      <MainPage className="flex-1 relative z-10">
+        <div className="flex flex-col items-stretch lg:flex-row lg:items-start">
           <Box
             className="p-4 flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]"
             ref={ref}
@@ -81,9 +63,13 @@ const RecipeDetails = () => {
             />
           </div>
         </div>
-      </div>
-      <TopBar recipe={recipe} restRef={ref} />
-    </div>
+      </MainPage>
+      <TopBar
+        recipeName={recipe.name}
+        keywords={recipe.keywords}
+        restRef={ref}
+      />
+    </>
   )
 }
 

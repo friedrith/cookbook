@@ -21,7 +21,7 @@ const Login = () => {
   }
 
   return (
-    <LoginPage>
+    <LoginPage title={t('_Log in')}>
       <BackButton to="/" />
       <div>
         {/* <img
