@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { RootState } from 'store'
 
-import * as firebaseApi from 'utils/api/firebase.api'
+import * as firebaseApi from 'utils/api/firebase'
 import User from 'models/User'
 
 export interface AuthState {
@@ -46,7 +46,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: authInitialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(loginWithMagicLink.fulfilled, (state, action) => {
       state.magicLinkSent = true
       state.emailUsed = action.meta.arg

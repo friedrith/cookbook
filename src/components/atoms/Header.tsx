@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { SearchIcon } from '@heroicons/react/solid'
 
 import useEventListener from 'hooks/useEventListener'
+import PrimaryButton from 'components/atoms/PrimaryButton'
 
 type Props = {
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -29,7 +30,10 @@ const Header = ({ onSearchChange, searchValue }: Props) => {
 
   return (
     <div className="relative flex items-stretch justify-between">
-      <div className="flex-1 hidden lg:block" />
+      <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+        CookBook
+      </h2>
+      <div className="flex-1 hidden lg:block items-center"></div>
       <div className="flex-1 flex-0 lg:max-w-xs">
         <label htmlFor="search" className="sr-only">
           {t('_Try banana bread')}
@@ -57,12 +61,9 @@ const Header = ({ onSearchChange, searchValue }: Props) => {
         </div>
       </div>
       <div className="flex-1 hidden lg:block" />
-      <Link
-        to="/recipes/new"
-        className="ml-2 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
+      <PrimaryButton to="/recipes/new" className="ml-2">
         {t('_Create Recipe')}
-      </Link>
+      </PrimaryButton>
       <div className="ml-2 lg:ml-4 flex items-center">
         <Link
           to="/preferences"

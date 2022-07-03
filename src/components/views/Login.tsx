@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'hooks/redux'
 import { loginWithMagicLink } from 'store'
@@ -54,7 +54,7 @@ const Login = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                   required
                   placeholder="john.smith@gmail.com"
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -73,12 +73,12 @@ const Login = () => {
           </form>
           <div>
             <p className="mt-2 text-sm text-gray-600">
-              <a
-                href="#"
+              <Link
+                to="/faq"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
                 Why a magic link?
-              </a>
+              </Link>
             </p>
           </div>
         </div>

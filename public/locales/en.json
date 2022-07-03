@@ -19,5 +19,16 @@
   "_Settings": "Settings",
   "_Create Recipe": "Create Recipe",
   "_New Recipe": "New Recipe",
-  "_Waiting for link": "Waiting for link"
+  "_Waiting for link": "Waiting for link",
+  "_Save": "Save",
+  "_Recipe Name": "Recipe Name",
+  "_Markdown format accepted": "Markdown format accepted",
+  "_Keywords": "Keywords",
+  "_Steps": "Steps",
+  "_Duration": "Duration",
+  "_Servings": "Servings",
+  "_Banner Image": "Banner Image",
+  "_Upload a file": "Upload a file",
+  "_or drag and drop": "or drag and drop",
+  "_PNG, JPG, GIF up to 10MB": "PNG, JPG, GIF up to 10MB"
 }

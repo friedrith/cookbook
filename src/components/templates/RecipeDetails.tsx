@@ -6,7 +6,7 @@ import Badge from 'components/atoms/Badge'
 import Stats from 'components/molecules/Stats'
 import IngredientList from 'components/molecules/IngredientList'
 import StepList from 'components/molecules/StepList'
-import TopBar from 'components/molecules/TopBar'
+import TopBar from 'components/atoms/TopBar'
 import MainPage from 'components/templates/MainPage'
 import Recipe from 'models/Recipe'
 
@@ -64,11 +64,7 @@ const RecipeDetails = ({ recipe, progress, changeRecipeProgress }: Props) => {
           </div>
         </div>
       </MainPage>
-      <TopBar
-        recipeName={recipe.name}
-        keywords={recipe.keywords}
-        restRef={ref}
-      />
+      <TopBar restRef={ref} />
     </>
   )
 }

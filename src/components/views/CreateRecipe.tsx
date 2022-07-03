@@ -1,17 +1,10 @@
 import { useRef } from 'react'
-import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
-import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
 
-import Box from 'components/atoms/Box'
-import Badge from 'components/atoms/Badge'
-import Stats from 'components/molecules/Stats'
-import IngredientList from 'components/molecules/IngredientList'
-import StepList from 'components/molecules/StepList'
 import MainPage from 'components/templates/MainPage'
-import TopBar from 'components/molecules/TopBar'
+import TopBar from 'components/atoms/TopBar'
 import Page from 'components/templates/Page'
 import classNames from 'utils/classNames'
 
@@ -31,10 +24,8 @@ const CreateRecipe = () => {
           </div>
         </MainPage>
         <TopBar
-          recipeName={t('_New Recipe')}
-          keywords={[]}
           restRef={ref}
-          children={(isMaximized) => (
+          children={isMaximized => (
             <Link
               className={classNames(
                 'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center cursor-pointer mt-4 lg:mt-6',

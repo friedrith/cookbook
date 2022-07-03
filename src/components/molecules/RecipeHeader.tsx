@@ -10,7 +10,7 @@ type Props = {
 
 const RecipeHeader = ({ recipeName, keywords }: Props) => {
   return (
-    <div className="p-1 pl-2 pb-4 pt-4 lg:pt-4 flex-1">
+    <div className="p-1 pl-2 pb-4 pt-4 flex-1">
       <h1 className="font-bold leading-5 text-gray-900 text-lg lg:text-2xl sm:truncate text-left">
         {recipeName}
       </h1>

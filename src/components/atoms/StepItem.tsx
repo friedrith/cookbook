@@ -1,5 +1,6 @@
 import { CheckIcon } from '@heroicons/react/solid'
-import { Step, Ingredient } from 'models/Recipe'
+import { Step } from 'models/Recipe'
+import Ingredient from 'models/Ingredient'
 import StepStatus from 'models/StepStatus'
 import classNames from 'utils/classNames'
 import matchingIngredients from 'utils/matchingIngredients'
@@ -57,7 +58,7 @@ const StepItemGeneric = ({
             {description}
           </div>
           <div className="text-left lg:hidden">
-            {ingredientsForStep.map((ingredient) => (
+            {ingredientsForStep.map(ingredient => (
               <Badge
                 color="pink"
                 className="mr-1"

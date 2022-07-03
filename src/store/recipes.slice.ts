@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
 import type { RootState } from 'store'
-import Recipe, { Ingredient } from 'models/Recipe'
+import Recipe from 'models/Recipe'
+import Ingredient from 'models/Ingredient'
 
 import { recipes } from '../mock'
 
@@ -34,12 +35,22 @@ export const recipesInitialState: RecipesState = {
 //   }
 // )
 
+export const updateRecipe = createAsyncThunk(
+  'recipes/update',
+  async (recipe: Recipe, thunkAPI) => {
+    // const response = await userAPI.fetchById(userId)
+    // return response.data
+
+    return 'foo'
+  }
+)
+
 const initializeMetadata = (state: RecipesState, recipeId: string) => {
   if (!state.metadataById[recipeId]) {
     state.metadataById[recipeId] = {
       recipeId,
       currentStepIndex: 0,
-      servingCount: state.byId[recipeId].stats.serving.value,
+      servingCount: state.byId[recipeId].stats.servings.value,
     }
   }
 }
@@ -72,7 +83,12 @@ export const recipesSlice = createSlice({
       }
     },
   },
-  extraReducers: (builder) => {},
+  extraReducers: builder => {
+    builder.addCase(updateRecipe.fulfilled, (state, action) => {
+      const recipe = action.meta.arg
+      state.byId[recipe.id] = recipe
+    })
+  },
 })
 
 export default recipesSlice.reducer
@@ -86,7 +102,7 @@ export const {
 export const getRecipeList = createSelector(
   (state: RootState) => state.recipes.allIds,
   (state: RootState) => state.recipes.byId,
-  (allIds, byId) => allIds.map((id) => byId[id])
+  (allIds, byId) => allIds.map(id => byId[id])
 )
 
 const cleanId = (id: string | undefined) => (id === undefined ? '' : id)
@@ -105,7 +121,7 @@ export const getServingCount = createSelector(
   getRecipe,
   (state: RootState, id: string | undefined) =>
     state.recipes.metadataById[cleanId(id)]?.servingCount,
-  (recipe, servingCount) => servingCount || recipe?.stats?.serving.value || 0
+  (recipe, servingCount) => servingCount || recipe?.stats?.servings?.value || 0
 )
 
 export const getIngredientList = createSelector(
@@ -121,9 +137,9 @@ export const getIngredientList = createSelector(
       return recipe.ingredients
     }
 
-    const ratio = servingCount / recipe.stats.serving.value
+    const ratio = servingCount / recipe.stats.servings.value
 
-    return recipe.ingredients.map((ingredient) => ({
+    return recipe.ingredients.map(ingredient => ({
       name: ingredient.name,
       measure: {
         ...ingredient.measure,

@@ -38,11 +38,11 @@ const TopBar = ({ backButtonUrl, restRef, children }: Props) => {
         isMaximized ? 'bg-white shadow' : ''
       )}
     >
-      <div className="max-w-screen-xl m-auto flex items-start">
+      <div className="max-w-screen-xl m-auto flex items-center h-20">
         {backButtonUrl && (
           <Link
             className={classNames(
-              'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center cursor-pointer mt-4 lg:mt-6',
+              'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center cursor-pointer',
               isMaximized ? '' : 'bg-white shadow rounded-md'
             )}
             to={backButtonUrl}

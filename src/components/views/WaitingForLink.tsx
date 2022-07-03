@@ -1,12 +1,20 @@
 import { useTranslation } from 'react-i18next'
+import { Navigate } from 'react-router-dom'
 
 import LoginPage from 'components/templates/LoginPage'
 import BackButton from 'components/atoms/BackButton'
+import useShouldRedirectToHome from 'hooks/useShouldRedirectToHome'
 
 const WaitingForLink = () => {
   const { t } = useTranslation()
 
   const email = window.localStorage.getItem('emailForSignIn')
+
+  const shouldRedirect = useShouldRedirectToHome()
+
+  if (shouldRedirect) {
+    return <Navigate to="/recipes" replace />
+  }
 
   return (
     <LoginPage title={t('_Waiting for link')}>

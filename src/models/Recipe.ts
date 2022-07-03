@@ -1,8 +1,9 @@
 import Measure from './Measure'
+import Ingredient from './Ingredient'
 
-export type Ingredient = {
-  name: string
-  measure: Measure
+export enum Stat {
+  Duration,
+  Servings,
 }
 
 export type Step = {

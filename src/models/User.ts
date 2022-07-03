@@ -1,7 +1,9 @@
+import Roles from 'models/Roles'
+
 type User = {
   id: string
   email: string
-  role: 'user'
+  role: Roles
 }
 
 export default User

@@ -10,12 +10,12 @@ import Stats from 'components/molecules/Stats'
 import IngredientList from 'components/molecules/IngredientList'
 import StepList from 'components/molecules/StepList'
 import TopBar from 'components/atoms/TopBar'
-import MainPage from 'components/templates/MainPage'
 import classNames from 'utils/classNames'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Page from 'components/templates/Page'
 
 import { getRecipe, getRecipeProgress, setRecipeProgress } from 'store'
+import LargeMainPage from 'components/templates/LargeMainPage'
 
 const RecipeDetails = () => {
   const { recipeId } = useParams()
@@ -46,7 +46,7 @@ const RecipeDetails = () => {
       </div>
       <div className="h-96" />
 
-      <MainPage className="flex-1 relative z-10">
+      <LargeMainPage className="flex-1 relative z-10">
         <div className="flex flex-col items-stretch lg:flex-row lg:items-start">
           <Box
             className="p-4 flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]"
@@ -79,7 +79,7 @@ const RecipeDetails = () => {
             />
           </div>
         </div>
-      </MainPage>
+      </LargeMainPage>
       <TopBar restRef={ref} backButtonUrl="/recipes">
         {(isMaximized) => (
           <>
@@ -93,10 +93,10 @@ const RecipeDetails = () => {
             )}
             <Link
               className={classNames(
-                'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center cursor-pointer mt-4 lg:mt-6',
+                'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center cursor-pointer',
                 isMaximized ? '' : 'bg-white shadow rounded-md'
               )}
-              to="/recipes"
+              to={`/recipes/${recipeId}/edit`}
             >
               <PencilIcon className="h-7 w-7" aria-hidden="true" />
             </Link>

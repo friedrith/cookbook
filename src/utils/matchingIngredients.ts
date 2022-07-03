@@ -1,4 +1,4 @@
-import { Ingredient } from 'models/Recipe'
+import Ingredient from 'models/Ingredient'
 
 const matchingIngredients =
   (description: string) => (ingredient: Ingredient) => {

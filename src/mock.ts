@@ -3,8 +3,8 @@ const bananaBreadRecipe = {
   keywords: ['banana', 'desert', 'breakfast'],
   imageUrl: 'https://images.unsplash.com/photo-1596241913027-34358037e159',
   stats: {
-    time: { value: 30, unit: 'min' },
-    serving: { value: 4, unit: 'servings' },
+    durations: { value: 30, unit: 'min' },
+    servings: { value: 4, unit: 'servings' },
   },
   ingredients: [
     { name: 'eggs', measure: { value: 2, unit: 'count' } },
@@ -53,8 +53,8 @@ const waffleRecipe = {
   keywords: ['waffle', 'desert', 'breakfast'],
   imageUrl: 'https://images.unsplash.com/photo-1562376552-0d160a2f238d',
   stats: {
-    time: { value: 17, unit: 'min' },
-    serving: { value: 15, unit: 'servings' },
+    duration: { value: 17, unit: 'min' },
+    servings: { value: 15, unit: 'servings' },
   },
   ingredients: [
     { name: 'eggs', measure: { value: 3, unit: 'count' } },
@@ -63,6 +63,7 @@ const waffleRecipe = {
     { name: 'butter', measure: { value: 20, unit: 'g' } },
     { name: 'milk', measure: { value: 25, unit: 'cl' } },
     { name: 'salt', measure: { value: 1, unit: 'pinch' } },
+    { name: 'coffee', measure: { value: 10, unit: 'some' } },
   ],
   steps: [
     {
@@ -90,7 +91,7 @@ let i = 0
 
 export const recipes = () =>
   [bananaBreadRecipe, waffleRecipe]
-    .map((recipe) => ({ ...recipe, id: i++ }))
+    .map(recipe => ({ ...recipe, id: i++ }))
     .reduce(
       (acc, recipe) => ({
         ...acc,

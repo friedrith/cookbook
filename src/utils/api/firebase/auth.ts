@@ -7,26 +7,19 @@ import {
   setPersistence,
   browserLocalPersistence,
 } from 'firebase/auth'
-import { initializeApp } from 'firebase/app'
 
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-}
-
-initializeApp(firebaseConfig)
+import Roles from 'models/Roles'
 
 export const convertUser = (user: any) => ({
   id: user.uid,
   email: user.email,
-  role: user.role || 'user',
+  role: Roles.User,
 })
 
 // https://firebase.google.com/docs/auth/web/email-link-auth?authuser=1&hl=fr
 export const signInWithMagicLink = async (email: string) => {
   const actionCodeSettings = {
-    url: 'http://localhost:3000/verify-link',
+    url: process.env.REACT_APP_MAGIC_LINK_URL || '',
     // This must be true.
     handleCodeInApp: true,
   }

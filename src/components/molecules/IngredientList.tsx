@@ -11,7 +11,7 @@ type Props = {
 }
 
 const IngredientList = ({ recipe }: Props) => {
-  const ingredients = useAppSelector((state) =>
+  const ingredients = useAppSelector(state =>
     getIngredientList(state, recipe.id)
   )
 
@@ -22,10 +22,10 @@ const IngredientList = ({ recipe }: Props) => {
       <SectionTitle>{t('_Ingredients')}</SectionTitle>
       <table className="min-w-full divide-y divide-gray-300">
         <tbody className="divide-y divide-gray-200 bg-white">
-          {ingredients.map((ingredient) => (
+          {ingredients.map(ingredient => (
             <tr key={ingredient.name}>
               <td className="whitespace-nowrap py-4 pl-6 text-sm font-medium text-gray-900 text-right w-20">
-                {renderMeasure(ingredient.measure)}
+                {renderMeasure(ingredient.measure, { explicit: true })}
               </td>
               <td className="whitespace-nowrap px-3 py-4 pr-6 text-sm text-gray-500 w-60">
                 {ingredient.name}

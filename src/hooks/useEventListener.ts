@@ -8,7 +8,7 @@ const useEventListener = (
   useEffect(() => {
     // clean up code
     element.removeEventListener(eventName, handler)
-    element.addEventListener(eventName, handler, { passive: true })
+    element.addEventListener(eventName, handler)
     return () => element.removeEventListener(eventName, handler)
   }, [element, eventName, handler])
 }

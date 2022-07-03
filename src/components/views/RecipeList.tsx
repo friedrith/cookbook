@@ -11,7 +11,7 @@ import Recipe from 'models/Recipe'
 import { getRecipeList } from 'store'
 import Header from 'components/atoms/Header'
 import RecipePreview from 'components/molecules/RecipePreview'
-import MainPage from 'components/templates/MainPage'
+import LargeMainPage from 'components/templates/LargeMainPage'
 import Page from 'components/templates/Page'
 
 const initializeFuse = (recipes: Recipe[]) =>
@@ -51,7 +51,7 @@ const RecipeList = () => {
 
   return (
     <Page>
-      <MainPage>
+      <LargeMainPage>
         <Header onSearchChange={onQueryChange} searchValue={query} />
         <div className="lg:pt-6">
           {searchedRecipes.length > 0 ? (
@@ -68,7 +68,7 @@ const RecipeList = () => {
             </div>
           )}
         </div>
-      </MainPage>
+      </LargeMainPage>
     </Page>
   )
 }
