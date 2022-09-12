@@ -20,17 +20,18 @@ describe('parseWrittenRecipe', () => {
       steps: [],
       keywords: [],
       stats: {},
+      createdAt: null,
     }
 
     const recipe = parseWrittenRecipe(
-      emptyRecipe,
       'Recipe 2',
       '',
       '',
+      [],
       '',
       '',
       '',
-      ''
+      emptyRecipe
     )
 
     expect(recipe).toEqual(expectedRecipe)
@@ -58,17 +59,49 @@ describe('parseWrittenRecipe', () => {
       steps: [],
       keywords: [],
       stats: {},
+      createdAt: null,
     }
 
     const recipe = parseWrittenRecipe(
-      emptyRecipe,
       'Recipe 2',
       '- 1 yolk\n- 2 eggs\n100 ml of milk',
       '',
+      [],
       '',
       '',
       '',
-      ''
+      emptyRecipe
+    )
+
+    expect(recipe).toEqual(expectedRecipe)
+  })
+
+  it('should return recipe with a ratio as ingredient', () => {
+    const expectedRecipe = {
+      id: '',
+      imageUrl: '',
+      name: 'Recipe 2',
+      ingredients: [
+        {
+          name: 'yolk',
+          measure: { value: '1/3', unit: 'cup' },
+        },
+      ],
+      steps: [],
+      keywords: [],
+      stats: {},
+      createdAt: null,
+    }
+
+    const recipe = parseWrittenRecipe(
+      'Recipe 2',
+      '- 1 yolk\n- 2 eggs\n100 ml of milk',
+      '',
+      [],
+      '',
+      '',
+      '',
+      emptyRecipe
     )
 
     expect(recipe).toEqual(expectedRecipe)
@@ -96,17 +129,18 @@ describe('parseWrittenRecipe', () => {
       steps: [],
       keywords: [],
       stats: {},
+      createdAt: null,
     }
 
     const recipe = parseWrittenRecipe(
-      emptyRecipe,
       'Recipe 2',
       '- 1 yolk\n- some coffee\n- milk',
       '',
+      [],
       '',
       '',
       '',
-      ''
+      emptyRecipe
     )
 
     expect(recipe).toEqual(expectedRecipe)

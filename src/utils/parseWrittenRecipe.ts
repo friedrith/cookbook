@@ -41,7 +41,9 @@ const parseAsImplicitSome = (line: string): Ingredient | null => {
 }
 
 const parseAsExplicitUnit = (line: string): Ingredient | null => {
-  const match = line.match(/^([0-9]+[.0-9]*)\s*([a-zA-Z]*) of ([a-zA-Z]+)/)
+  const match = line.match(
+    /^([0-9]+[.0-9]*|[0-9]+\/[0-9]+)\s*([a-zA-Z]*) of ([a-zA-Z]+)/
+  )
 
   if (match) {
     const [value, unit, name] = match.slice(1)
@@ -103,16 +105,20 @@ export const parseStep = (step: string, ingredients: Ingredient[]) => ({
   ),
 })
 
+type emptyObject = {
+  id: string
+}
+
 const parseWrittenRecipe = (
-  recipe: Recipe,
   name: string,
   newIngredients: string,
   newSteps: string,
-  keywords: string,
+  keywords: string[],
   servings: string,
   duration: string,
-  imageUrl: string
-): Recipe | ParsingError[] => {
+  imageUrl: string,
+  recipe: Recipe | emptyObject = { id: 'foo' }
+): Recipe => {
   const newIngredientsParsed = newIngredients
     .split('\n')
     .map(i => i.replace(/^-/, '').trim())
@@ -130,7 +136,7 @@ const parseWrittenRecipe = (
   ]
 
   if (errors.length > 0) {
-    return errors
+    throw errors
   }
 
   const stats = {}
@@ -150,6 +156,7 @@ const parseWrittenRecipe = (
   }
 
   return {
+    createdAt: null,
     ...recipe,
     name,
     ingredients,
@@ -159,7 +166,7 @@ const parseWrittenRecipe = (
       .filter(Boolean)
       .map(i => i.replace(/^-/, '').trim())
       .map(step => parseStep(step, ingredients)),
-    keywords: keywords.split(' ').filter(Boolean),
+    keywords: keywords.filter(Boolean),
     stats,
     imageUrl,
   }

@@ -1,5 +1,4 @@
 import { ClockIcon, UsersIcon } from '@heroicons/react/outline'
-import { Fragment } from 'react'
 
 const groupOfUnits = [
   {
@@ -12,7 +11,9 @@ const groupOfUnits = [
   },
 ]
 
+const Default = () => <div />
+
 const findUnitIcon = (unit: string) =>
-  groupOfUnits.find(group => group.units.includes(unit))?.icon || Fragment
+  groupOfUnits.find(group => group.units.includes(unit))?.icon || Default
 
 export default findUnitIcon

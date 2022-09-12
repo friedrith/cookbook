@@ -1,11 +1,12 @@
-import { useRef, KeyboardEvent } from 'react'
+import { useState, useRef, KeyboardEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { CogIcon } from '@heroicons/react/outline'
 import { useTranslation } from 'react-i18next'
-import { SearchIcon } from '@heroicons/react/solid'
+import { SearchIcon, CogIcon, PlusIcon, XIcon } from '@heroicons/react/solid'
+import classNames from 'classnames'
 
 import useEventListener from 'hooks/useEventListener'
 import PrimaryButton from 'components/atoms/PrimaryButton'
+import TopBarButton from 'components/molecules/TopBarButton'
 
 type Props = {
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -14,6 +15,8 @@ type Props = {
 
 const Header = ({ onSearchChange, searchValue }: Props) => {
   const { t } = useTranslation()
+
+  const [searchOnMobileIsVisible, showSearchOnMobile] = useState(false)
 
   const inputRef = useRef<HTMLInputElement | null>(null)
 
@@ -29,12 +32,18 @@ const Header = ({ onSearchChange, searchValue }: Props) => {
   })
 
   return (
-    <div className="relative flex items-stretch justify-between">
-      <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-        CookBook
-      </h2>
+    <div className="relative flex items-center justify-between">
+      {!searchOnMobileIsVisible && (
+        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+          CookBook
+        </h2>
+      )}
       <div className="flex-1 hidden lg:block items-center"></div>
-      <div className="flex-1 flex-0 lg:max-w-xs">
+      <div
+        className={classNames('flex-1 lg:block flex-0 lg:max-w-xs', {
+          hidden: !searchOnMobileIsVisible,
+        })}
+      >
         <label htmlFor="search" className="sr-only">
           {t('_Try banana bread')}
         </label>
@@ -60,18 +69,56 @@ const Header = ({ onSearchChange, searchValue }: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex-1 hidden lg:block" />
-      <PrimaryButton to="/recipes/new" className="ml-2">
-        {t('_Create Recipe')}
-      </PrimaryButton>
-      <div className="ml-2 lg:ml-4 flex items-center">
-        <Link
-          to="/preferences"
-          className="text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      {searchOnMobileIsVisible && (
+        <button
+          className="ml-2 flex items-center block lg:hidden"
+          onClick={() => showSearchOnMobile(false)}
         >
-          <CogIcon className="h-8 w-8 stroke-1" aria-hidden="true" />
-        </Link>
-      </div>
+          <XIcon
+            className="h-8 w-8 stroke-1 text-gray-400 rounded-full hover:text-gray-300"
+            aria-hidden="true"
+          />
+        </button>
+      )}
+      <div className="flex-1 hidden lg:block" />
+      {/* <PrimaryButton to="/recipes/new" className="ml-2 hidden lg:block">
+        {t('_New Recipe')}
+      </PrimaryButton> */}
+      <TopBarButton
+        url="/recipes/new"
+        className="hidden lg:block rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      >
+        <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>
+      </TopBarButton>
+
+      {!searchOnMobileIsVisible && (
+        <div className="ml-2 lg:ml-4 flex items-center">
+          <TopBarButton
+            url="/recipes/new"
+            icon={PlusIcon}
+            className="block lg:hidden rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          ></TopBarButton>
+          <button
+            className="mr-4 block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={() => showSearchOnMobile(true)}
+          >
+            <SearchIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
+          </button>
+
+          {/* <Link
+            to="/recipes/new"
+            className="mr-4 block lg:hidden text-white border border-transparent rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <PlusIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
+          </Link> */}
+          <Link
+            to="/preferences"
+            className="text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <CogIcon className="h-8 w-8 stroke-1" aria-hidden="true" />
+          </Link>
+        </div>
+      )}
     </div>
   )
 }

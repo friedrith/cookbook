@@ -28,7 +28,7 @@ const renderWrittenRecipe = (recipe: Recipe) => ({
     .map(addListBulletPoint)
     .join('\n'),
   steps: recipe.steps.map(renderStepLine).map(addListBulletPoint).join('\n'),
-  keywords: recipe.keywords.join(' '),
+  keywords: recipe.keywords,
   servings: recipe.stats?.servings?.value,
   duration: recipe.stats?.duration?.value,
   imageUrl: recipe.imageUrl,

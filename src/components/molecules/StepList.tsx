@@ -1,4 +1,4 @@
-import Recipe from 'models/Recipe'
+import Recipe, { Step } from 'models/Recipe'
 import StepItem from 'components/atoms/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'
 
@@ -7,6 +7,8 @@ type Props = {
   progress: number
   onSelectStep: (index: number) => void
 }
+
+const key = (step: Step, index: number) => `${step.description}${index}`
 
 const evaluateStatus = (index: number, currentStepIndex: number) => {
   return index < currentStepIndex
@@ -24,7 +26,7 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
         <ol className="overflow-hidden">
           {recipe.steps.map((step, stepIdx) => (
             <StepItem
-              key={step.description}
+              key={key(step, stepIdx)}
               step={step}
               isLastOne={stepIdx === recipe.steps.length - 1}
               status={evaluateStatus(stepIdx, progress)}

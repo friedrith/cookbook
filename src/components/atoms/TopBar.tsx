@@ -1,18 +1,28 @@
-import React, { useState, useRef, useMemo } from 'react'
-
-import { Link } from 'react-router-dom'
-import { ArrowLeftIcon } from '@heroicons/react/outline'
+import React, {
+  useState,
+  useRef,
+  useMemo,
+  useEffect,
+  useLayoutEffect,
+} from 'react'
+import { createPortal } from 'react-dom'
 
 import classNames from 'utils/classNames'
 import useEventListener from 'hooks/useEventListener'
 
+export const TopBarContext = React.createContext({ isMaximized: false })
+
 type Props = {
   restRef: React.RefObject<HTMLDivElement>
   children?: (isMaximized: boolean) => React.ReactNode
-  backButtonUrl?: string
+  onMaximizedChanged?: (isMaximized: boolean) => void
 }
 
-const TopBar = ({ backButtonUrl, restRef, children }: Props) => {
+const TopBar = ({
+  restRef,
+  children,
+  onMaximizedChanged = () => {},
+}: Props) => {
   const [isMaximized, setMaximized] = useState(false)
 
   const onScroll = useMemo(
@@ -20,39 +30,37 @@ const TopBar = ({ backButtonUrl, restRef, children }: Props) => {
       if (ref.current && restRef.current) {
         const positionY = ref.current.getBoundingClientRect().top
         const positionY2 = restRef.current.getBoundingClientRect().top
-        const isMaximized = positionY > positionY2 - 20
+        const isMaximized = positionY > positionY2 - 90
         setMaximized(isMaximized)
+        onMaximizedChanged(isMaximized)
       }
     },
-    [restRef]
+    [restRef, onMaximizedChanged]
   )
 
-  useEventListener('scroll', onScroll)
+  const [page, setPage] = useState<HTMLElement | null>(null)
+
+  useLayoutEffect(() => {
+    setPage(document.getElementById('page'))
+  }, [])
+
+  useEventListener('scroll', onScroll, page)
 
   const ref = useRef<HTMLInputElement>(null)
 
   return (
     <div
       className={classNames(
-        'fixed top-0 left-0 right-0 px-4 lg:px-10 z-20',
+        'fixed z-40 top-0 left-0 right-0 px-4 lg:px-10 pointer-events-none',
         isMaximized ? 'bg-white shadow' : ''
       )}
     >
       <div className="max-w-screen-xl m-auto flex items-center h-20">
-        {backButtonUrl && (
-          <Link
-            className={classNames(
-              'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center cursor-pointer',
-              isMaximized ? '' : 'bg-white shadow rounded-md'
-            )}
-            to={backButtonUrl}
-          >
-            <ArrowLeftIcon className="h-7 w-7" aria-hidden="true" />
-          </Link>
-        )}
-        {children ? children(isMaximized) : null}
-        <div ref={ref} />
+        <TopBarContext.Provider value={{ isMaximized }}>
+          {children ? children(isMaximized) : null}
+        </TopBarContext.Provider>
       </div>
+      <div className="fixed" ref={ref} />
     </div>
   )
 }

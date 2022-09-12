@@ -23,3 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .env
+.firebaserc
+
+ui-debug.log
+database-debug.log
+firebase-debug.log

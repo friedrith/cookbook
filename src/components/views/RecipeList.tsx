@@ -1,14 +1,11 @@
 import { useRef, useEffect, useState, useMemo } from 'react'
-// import { useSelector } from 'react-redux'
-// import { Link } from 'react-router-dom'
-// import { SearchIcon } from '@heroicons/react/solid'
 import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import Fuse from 'fuse.js'
 
+import { useAppSelector } from 'hooks/redux'
 import Recipe from 'models/Recipe'
-import { getRecipeList } from 'store'
+import { getRecipeList, areRecipesFetched } from 'store'
 import Header from 'components/atoms/Header'
 import RecipePreview from 'components/molecules/RecipePreview'
 import LargeMainPage from 'components/templates/LargeMainPage'
@@ -21,7 +18,8 @@ const initializeFuse = (recipes: Recipe[]) =>
   })
 
 const RecipeList = () => {
-  const recipes = useSelector(getRecipeList)
+  const areFetched = useAppSelector(areRecipesFetched)
+  const recipes = useAppSelector(getRecipeList)
   const fuse = useRef(initializeFuse(recipes))
   let [searchParams, setSearchParams] = useSearchParams()
 
@@ -32,7 +30,7 @@ const RecipeList = () => {
   }, [recipes])
 
   const searchedRecipes = useMemo(
-    () => (query ? fuse.current.search(query).map((i) => i.item) : recipes),
+    () => (query ? fuse.current.search(query).map(i => i.item) : recipes),
     [query, recipes]
   )
 
@@ -56,14 +54,14 @@ const RecipeList = () => {
         <div className="lg:pt-6">
           {searchedRecipes.length > 0 ? (
             <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
-              {searchedRecipes.map((recipe) => (
+              {searchedRecipes.map(recipe => (
                 <RecipePreview key={recipe.id} recipe={recipe} />
               ))}
             </div>
           ) : (
             <div className="flex justify-center p-5">
               <p className="text-base text-gray-500">
-                {t('_No Recipes found.')}
+                {areFetched ? t('_No Recipes found.') : t('_Loading')}
               </p>
             </div>
           )}

@@ -19,6 +19,7 @@ type Recipe = {
   stats: { [id: string]: Measure }
   ingredients: Ingredient[]
   steps: Step[]
+  createdAt: Date | null
 }
 
 export default Recipe

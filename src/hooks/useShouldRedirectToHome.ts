@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 
+import { useAppSelector } from 'hooks/redux'
 import { getCurrentUser } from 'store'
 
 const useShouldRedirectToHome = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
-  const currentUser = useSelector(getCurrentUser)
+  const currentUser = useAppSelector(getCurrentUser)
 
   console.log('currentUser', currentUser)
   useEffect(() => {

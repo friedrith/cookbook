@@ -10,6 +10,8 @@ import {
 
 import Roles from 'models/Roles'
 
+import { setToken } from '../api'
+
 export const convertUser = (user: any) => ({
   id: user.uid,
   email: user.email,
@@ -52,8 +54,6 @@ export const verifyLinkWithEmail = async (email: string) => {
 
   const user = await signInWithEmailLink(auth, email, window.location.href)
 
-  console.log('user', user)
-
   return convertUser(user)
 }
 
@@ -68,6 +68,10 @@ export const initSession = async () => {
   await setPersistence(auth, browserLocalPersistence)
 
   if (auth.currentUser) {
+    const token = await auth.currentUser.getIdToken()
+
+    setToken(token)
+
     return convertUser(auth.currentUser)
   }
   return null

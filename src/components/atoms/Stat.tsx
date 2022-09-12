@@ -1,5 +1,6 @@
+import { ClockIcon, UsersIcon } from '@heroicons/react/outline'
+
 import Measure from 'models/Measure'
-import findUnitIcon from 'utils/findUnitIcon'
 import renderMeasure from 'utils/renderMeasure'
 
 type Props = {
@@ -8,8 +9,8 @@ type Props = {
   children?: React.ReactNode
 }
 
-const Stat = ({ measure, children }: Props) => {
-  const Icon = findUnitIcon(measure.unit)
+const Stat = ({ measure, type, children }: Props) => {
+  const Icon = type === 'servings' ? UsersIcon : ClockIcon
 
   if (!Icon) {
     return null

@@ -23,6 +23,8 @@ const Stats = ({ recipe }: Props) => {
   //   getServingCount(state, recipe.id)
   // )
 
+  console.log('recipe', recipe)
+
   return (
     <div className="flex px-4 py-10 justify-evenly items-start">
       {Object.keys(recipe.stats)

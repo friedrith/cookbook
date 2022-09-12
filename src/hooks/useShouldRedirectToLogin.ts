@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 
+import { useAppSelector } from 'hooks/redux'
 import Roles from 'models/Roles'
 
 import { getCurrentUser, isCurrentUserFetched } from 'store'
@@ -8,8 +8,8 @@ import { getCurrentUser, isCurrentUserFetched } from 'store'
 const useShouldRedirectToLogin = (onlyRoles: Roles[]) => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
-  const currentUser = useSelector(getCurrentUser)
-  const currentUserFetched = useSelector(isCurrentUserFetched)
+  const currentUser = useAppSelector(getCurrentUser)
+  const currentUserFetched = useAppSelector(isCurrentUserFetched)
   useEffect(() => {
     if (currentUserFetched && !currentUser) {
       setShouldRedirect(true)

@@ -3,13 +3,15 @@ import { useEffect } from 'react'
 const useEventListener = (
   eventName: string,
   handler: (event: any) => void,
-  element = window
+  element: HTMLElement | null | (Window & typeof globalThis) = window
 ) => {
   useEffect(() => {
-    // clean up code
-    element.removeEventListener(eventName, handler)
-    element.addEventListener(eventName, handler)
-    return () => element.removeEventListener(eventName, handler)
+    if (element) {
+      // clean up code
+      element.removeEventListener(eventName, handler)
+      element.addEventListener(eventName, handler)
+      return () => element.removeEventListener(eventName, handler)
+    }
   }, [element, eventName, handler])
 }
 

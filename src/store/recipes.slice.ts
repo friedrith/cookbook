@@ -3,7 +3,7 @@ import type { RootState } from 'store'
 import Recipe from 'models/Recipe'
 import Ingredient from 'models/Ingredient'
 
-import { recipes } from '../mock'
+import * as recipesApi from 'utils/api/recipes.api'
 
 type Metadata = {
   recipeId: string
@@ -18,31 +18,31 @@ export interface RecipesState {
   metadataById: Record<string, Metadata>
 }
 
-const allRecipes = recipes()
-
 export const recipesInitialState: RecipesState = {
-  byId: allRecipes,
-  allIds: Object.keys(allRecipes),
+  byId: {},
+  allIds: [],
   areFetched: false,
   metadataById: {},
 }
 
-// const fetchUserById = createAsyncThunk(
-//   'recipes/fetch',
-//   async (userId: number, thunkAPI) => {
-//     const response = await userAPI.fetchById(userId)
-//     return response.data
-//   }
-// )
+export const fetchRecipes = createAsyncThunk<Recipe[]>(
+  'recipes/fetch',
+  async () => recipesApi.fetchAll()
+)
 
 export const updateRecipe = createAsyncThunk(
   'recipes/update',
-  async (recipe: Recipe, thunkAPI) => {
-    // const response = await userAPI.fetchById(userId)
-    // return response.data
+  async (recipe: Recipe) => recipesApi.updateOne(recipe)
+)
 
-    return 'foo'
-  }
+export const addRecipe = createAsyncThunk(
+  'recipes/add',
+  async (recipe: Recipe) => recipesApi.createOne(recipe)
+)
+
+export const deleteRecipe = createAsyncThunk(
+  'recipes/delete',
+  async (recipe: Recipe) => recipesApi.removeOne(recipe)
 )
 
 const initializeMetadata = (state: RecipesState, recipeId: string) => {
@@ -84,9 +84,33 @@ export const recipesSlice = createSlice({
     },
   },
   extraReducers: builder => {
+    builder.addCase(fetchRecipes.fulfilled, (state, action) => {
+      const recipes = action.payload
+      state.byId = recipes.reduce(
+        (acc, recipe) => ({ ...acc, [recipe.id]: recipe }),
+        {}
+      )
+      state.allIds = recipes.map(r => r.id)
+      state.areFetched = true
+    })
+
     builder.addCase(updateRecipe.fulfilled, (state, action) => {
       const recipe = action.meta.arg
       state.byId[recipe.id] = recipe
+    })
+
+    builder.addCase(addRecipe.fulfilled, (state, action) => {
+      const recipe = action.meta.arg
+      state.byId[recipe.id] = recipe
+
+      state.allIds.push(recipe.id)
+    })
+
+    builder.addCase(deleteRecipe.fulfilled, (state, action) => {
+      const recipe = action.meta.arg
+      delete state.byId[recipe.id]
+
+      state.allIds = state.allIds.filter(id => id !== recipe.id)
     })
   },
 })
@@ -98,6 +122,8 @@ export const {
   incrementServingCount,
   decrementServingCount,
 } = recipesSlice.actions
+
+export const areRecipesFetched = (state: RootState) => state.recipes.areFetched
 
 export const getRecipeList = createSelector(
   (state: RootState) => state.recipes.allIds,
