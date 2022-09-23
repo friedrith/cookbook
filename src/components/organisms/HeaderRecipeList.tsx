@@ -1,15 +1,19 @@
 import { useState, useRef, KeyboardEvent } from 'react'
-import { forwardRef, ForwardedRef } from 'react'
-
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { SearchIcon, CogIcon, PlusIcon, XIcon } from '@heroicons/react/solid'
+import {
+  SearchIcon,
+  AdjustmentsIcon,
+  PlusIcon,
+  XIcon,
+} from '@heroicons/react/solid'
 import classNames from 'classnames'
 
 import useEventListener from 'hooks/useEventListener'
 import Button from 'components/atoms/Button'
 import Logo from 'components/atoms/Logo'
 import Header from 'components/atoms/Header'
+import UserMenu from 'components/organisms/UserMenu'
 
 type Props = {
   restRef: React.RefObject<HTMLDivElement>
@@ -85,7 +89,7 @@ const HeaderRecipeList = ({ onSearchChange, restRef, searchValue }: Props) => {
               />
             </button>
           )}
-          <div className="flex-1 hidden lg:block" />
+          <div className="flex-1" />
           {/* <PrimaryButton to="/recipes/new" className="ml-2 hidden lg:block">
  {t('_New Recipe')}
 </PrimaryButton> */}
@@ -116,12 +120,16 @@ const HeaderRecipeList = ({ onSearchChange, restRef, searchValue }: Props) => {
    >
      <PlusIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
    </Link> */}
-              <Link
+              <UserMenu />
+              {/* <Link
                 to="/preferences"
                 className="text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                <CogIcon className="h-8 w-8 stroke-1" aria-hidden="true" />
-              </Link>
+                <AdjustmentsIcon
+                  className="h-8 w-8 stroke-0"
+                  aria-hidden="true"
+                />
+              </Link> */}
             </div>
           )}
         </div>

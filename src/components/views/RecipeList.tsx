@@ -68,12 +68,12 @@ const RecipeList = () => {
             </div>
           )}
         </div>
-        <HeaderRecipeList
-          restRef={ref}
-          onSearchChange={onQueryChange}
-          searchValue={query}
-        />
       </LargeMainPage>
+      <HeaderRecipeList
+        restRef={ref}
+        onSearchChange={onQueryChange}
+        searchValue={query}
+      />
     </Page>
   )
 }
