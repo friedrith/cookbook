@@ -42,6 +42,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "serve": "npx serve -s build",
     "lint": "eslint .",
     "format": "prettier --check ."
   },

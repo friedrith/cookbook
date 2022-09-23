@@ -1,4 +1,4 @@
-import roundIngredient from '../render/roundIngredient'
+import roundIngredient from '../roundIngredient'
 
 describe('roundIngredient', () => {
   it('should return rouned roundMeasure for count', () => {

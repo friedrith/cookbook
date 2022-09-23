@@ -26,6 +26,8 @@ export const signInWithMagicLink = async (email: string) => {
     handleCodeInApp: true,
   }
 
+  console.log('actionCodeSettings', actionCodeSettings)
+
   const auth = getAuth()
   await sendSignInLinkToEmail(auth, email, actionCodeSettings)
 

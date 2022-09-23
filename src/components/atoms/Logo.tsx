@@ -1,6 +1,9 @@
 import { CakeIcon } from '@heroicons/react/solid'
+import { useTranslation } from 'react-i18next'
 
 const Logo = () => {
+  const { t } = useTranslation()
+
   return (
     <div className="flex items-center">
       <CakeIcon
@@ -8,7 +11,7 @@ const Logo = () => {
         aria-hidden="true"
       />
       <h2 className="text-2xl sm:text-2xl font-bold leading-7 text-gray-900  sm:truncate">
-        CookBook
+        {t('_AppName')}
       </h2>
     </div>
   )

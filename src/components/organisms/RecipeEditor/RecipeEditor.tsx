@@ -163,6 +163,7 @@ const RecipeEditor = forwardRef(
                   }}
                   allowDragDrop={true}
                   placeholder={t('_Press enter to add a keyword')}
+                  autofocus={false}
                 />
               </div>
               {/* <div>
