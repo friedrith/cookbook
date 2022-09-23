@@ -1,6 +1,6 @@
 import Recipe, { FormattedRecipe } from 'models/Recipe'
 import Ingredient from 'models/Ingredient'
-import parseIngredients from './parser/parseIngredients'
+import parseIngredients from './parseIngredients'
 
 export const parseStep = (step: string, ingredients: Ingredient[]) => ({
   description: step,

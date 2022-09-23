@@ -6,7 +6,7 @@ import StepStatus from 'models/StepStatus'
 import classNames from 'utils/classNames'
 import matchingIngredients from 'utils/matchingIngredients'
 import Badge from 'components/atoms/Badge'
-import renderMeasure from 'utils/renderMeasure'
+import renderMeasure from 'utils/render/renderMeasure'
 
 type PropsGeneric = {
   className?: string

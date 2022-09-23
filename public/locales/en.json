@@ -47,5 +47,9 @@
   "_delete recipe": "Delete Recipe",
   "_Recipe deleted": "Recipe \"{{recipeName}}\" deleted",
   "_Undo": "Undo",
-  "_Saving": "Saving..."
+  "_Saving": "Saving...",
+  "_Share Recipe": "Share Recipe",
+  "_Recipe copied to clipboard": "Recipe copied to clipboard",
+  "_Share Ingredients": "Share Ingredients",
+  "_Ingredients copied to clipboard": "Ingredients copied to clipboard"
 }

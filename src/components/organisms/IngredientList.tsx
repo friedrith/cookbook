@@ -5,7 +5,7 @@ import { useAppSelector } from 'hooks/redux'
 import { FormattedRecipe } from 'models/Recipe'
 import Ingredient from 'models/Ingredient'
 import SectionTitle from 'components/atoms/SectionTitle'
-import renderMeasure from 'utils/renderMeasure'
+import renderMeasure from 'utils/render/renderMeasure'
 
 type Props = {
   recipe: FormattedRecipe

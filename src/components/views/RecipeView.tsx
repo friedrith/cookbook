@@ -1,7 +1,7 @@
 import { useRef, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { PencilIcon, ArrowLeftIcon } from '@heroicons/react/outline'
+import { PencilIcon, ArrowLeftIcon, ShareIcon } from '@heroicons/react/outline'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Box from 'components/atoms/Box'
@@ -15,6 +15,7 @@ import ImageBanner from 'components/molecules/ImageBanner'
 import Loading from 'components/views/Loading'
 import NotFound404 from 'components/views/NotFound404'
 import Button from 'components/atoms/Button'
+import SharePopup from 'components/organisms/SharePopup'
 
 import {
   getRecipe,
@@ -23,7 +24,7 @@ import {
   areRecipesFetched,
 } from 'store'
 import LargeMainPage from 'components/templates/LargeMainPage'
-import parseRecipe from 'utils/parseRecipe'
+import parseRecipe from 'utils/parser/parseRecipe'
 
 const position = (isMaximized: boolean) =>
   isMaximized ? `md:fixed md:top-[-1rem]` : 'relative'
@@ -40,6 +41,8 @@ const RecipeDetails = () => {
   const ref = useRef<HTMLInputElement>(null)
 
   const [isMaximized, setMaximized] = useState(false)
+
+  const [isSharePopupOpen, openSharePopup] = useState(false)
 
   const formattedRecipe = useMemo(
     () => (recipe ? parseRecipe(recipe) : null),
@@ -86,7 +89,7 @@ const RecipeDetails = () => {
             </Box>
           </div>
 
-          <div className="flex-1 relative pl-4 top-[-10rem] lg:top-[0rem]">
+          <div className="flex-1 relative pl-4 top-[-5rem] lg:top-[0rem]">
             <StepList
               recipe={formattedRecipe}
               progress={progress}
@@ -108,6 +111,12 @@ const RecipeDetails = () => {
               <div className="flex-1" />
             )}
             <Button.Icon
+              className="mr-3"
+              onClick={() => openSharePopup(true)}
+              icon={ShareIcon}
+              blur
+            />
+            <Button.Icon
               url={`/recipes/${recipeId}/edit`}
               icon={PencilIcon}
               blur
@@ -115,6 +124,12 @@ const RecipeDetails = () => {
           </>
         )}
       </TopBar>
+      <SharePopup
+        recipe={recipe}
+        open={isSharePopupOpen}
+        onClose={() => openSharePopup(false)}
+        onSubmit={() => openSharePopup(false)}
+      />
     </Page>
   )
 }

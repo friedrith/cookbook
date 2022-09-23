@@ -1,6 +1,8 @@
 import Ingredient from 'models/Ingredient'
 import ParsingError from 'models/ParsingError'
 
+import cleanIngredients from './cleanIngredients'
+
 const parseAsExplicitSome = (line: string): Ingredient | null => {
   const matchExplicitSome = line.match(/^some ([a-zA-Z]+)/i)
 
@@ -89,15 +91,8 @@ export const parseIngredient = (line: string): Ingredient | ParsingError => {
       }
 }
 
-const cleanLine = (line: string) => line.replace(/^-/, '').trim()
-
-const noEmptyLine = (line: string) => line !== ''
-
 const parseIngredients = (ingredientsText: string): Ingredient[] => {
-  return ingredientsText
-    .split('\n')
-    .map(cleanLine)
-    .filter(noEmptyLine)
+  return cleanIngredients(ingredientsText)
     .map(parseIngredient)
     .filter(e => !('source' in e))
     .map(e => e as Ingredient)

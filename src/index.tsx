@@ -8,10 +8,7 @@ import store from 'store'
 import './index.css'
 import App from 'components/App'
 import reportWebVitals from './reportWebVitals'
-import 'utils/i18n'
-// import { fetchRecipes } from 'services/notion.api'
-
-// fetchRecipes()
+import 'utils/services/i18n'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
