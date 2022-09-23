@@ -27,10 +27,12 @@ type HttpRecipe = {
   ingredients?: ''
   steps?: ''
   createdAt: Date | null
+  updatedAt?: Date | null
 }
 
 export const createOne = async (recipe: Recipe) => {
-  await api().post(baseURL, recipe)
+  const response = await api().post(baseURL, recipe)
+  return convertFromHttp(response?.data?.recipe)
 }
 
 export const removeOne = async (recipe: Recipe) =>

@@ -117,12 +117,12 @@ export const recipesSlice = createSlice({
     })
 
     builder.addCase(updateRecipe.fulfilled, (state, action) => {
-      const recipe = action.meta.arg
+      const recipe = action.payload
       state.byId[recipe.id] = recipe
     })
 
     builder.addCase(addRecipe.fulfilled, (state, action) => {
-      const recipe = action.meta.arg
+      const recipe = action.payload
       state.byId[recipe.id] = recipe
 
       state.allIds.push(recipe.id)

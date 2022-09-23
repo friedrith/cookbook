@@ -21,7 +21,7 @@ const Notifications = () => {
   return createPortal(
     <div
       aria-live="assertive"
-      className="fixed bottom-0 inset-x-0 z-150 flex items-start px-4 py-6 pointer-events-none sm:p-6"
+      className="fixed bottom-0 inset-x-0 z-50 flex items-start px-4 py-6 pointer-events-none sm:p-6"
     >
       <div className="w-full flex flex-col items-center space-y-4 sm:items-start">
         {recipes.map(recipe => (

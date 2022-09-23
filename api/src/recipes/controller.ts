@@ -9,6 +9,12 @@ const handleError = (res: Response, err: any) => {
   return res.status(500).send({ message: `${err.code} - ${err.message}` })
 }
 
+const convert = (recipe: any) => ({
+  ...recipe,
+  createdAt: new Date(recipe.createdAt),
+  updatedAt: recipe.updatedAt ? new Date(recipe.updatedAt) : null,
+})
+
 export async function create(req: Request, res: Response) {
   try {
     const { name, keywords, imageUrl, stats, ingredients, steps } = req.body
@@ -26,22 +32,18 @@ export async function create(req: Request, res: Response) {
       ingredients,
       steps,
       createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
       userId: uid,
     }
     const recipeRef = ref.child(recipe.id)
 
     recipeRef.set(recipe)
 
-    return res.status(201).send({ recipe })
+    return res.status(201).send({ recipe: convert(recipe) })
   } catch (err) {
     return handleError(res, err)
   }
 }
-
-const convert = (recipe: any) => ({
-  ...recipe,
-  createdAt: new Date(recipe.createdAt),
-})
 
 export async function patch(req: Request, res: Response) {
   try {
@@ -54,13 +56,20 @@ export async function patch(req: Request, res: Response) {
 
     const ref = admin.database().ref(COLLECTION_PATH)
     const recipeRef = ref.child(id)
-    recipeRef.update(omit(req.body, ['userId', 'id', 'createdAt']))
+
+    const recipe = omit({ ...req.body, updatedAt: new Date().toISOString() }, [
+      'userId',
+      'id',
+      'createdAt',
+    ])
+    recipeRef.update(recipe)
 
     recipeRef.once(
       'value',
       snapshot => {
-        const recipe = snapshot.val()
-        res.status(204).send({ recipe: convert(recipe) })
+        const updatedRecipe = snapshot.val()
+        console.log('updatedRecipe', updatedRecipe)
+        res.status(200).send({ recipe: convert(updatedRecipe) })
       },
       errorObject => {
         res.status(500).send({ error: errorObject.name })

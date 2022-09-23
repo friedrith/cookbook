@@ -5,7 +5,14 @@ const initializeFuse = (recipes: Recipe[]) =>
   new Fuse(recipes, {
     keys: ['name', 'keywords', 'ingredients', 'steps'],
     minMatchCharLength: 1,
+    includeScore: true,
   })
+
+const sortByScore = (a, b) => a.score - b.score
+
+const sortByName = (a, b) => {
+  return a.name.localeCompare(b.name)
+}
 
 const useFuse = (list: any[], query: string) => {
   const fuse = useRef(initializeFuse(list))
@@ -14,10 +21,15 @@ const useFuse = (list: any[], query: string) => {
     fuse.current.setCollection(list)
   }, [list])
 
-  const searchedRecipes = useMemo(
-    () => (query ? fuse.current.search(query).map(i => i.item) : list),
-    [query, list]
-  )
+  const searchedRecipes = useMemo(() => {
+    if (query) {
+      return fuse.current
+        .search(query)
+        .sort(sortByScore)
+        .map(i => i.item)
+    }
+    return [...list].sort(sortByName)
+  }, [query, list])
 
   return searchedRecipes
 }

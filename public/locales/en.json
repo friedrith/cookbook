@@ -57,5 +57,8 @@
   "_Install Desktop App": "Install Desktop App",
   "_Install Mobile App": "Install Mobile App",
   "_Sorry this page is a work in progress": "Sorry this page is a work in progress.",
-  "_AppName": "CookBook"
+  "_AppName": "CookBook",
+  "_Most Recents": "Most Recents",
+  "_All": "All",
+  "_Results": "Results"
 }

@@ -9,7 +9,9 @@ import RecipePreview from 'components/molecules/RecipePreview'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import Page from 'components/templates/Page'
 import EmptyMessage from 'components/atoms/EmptyMessage'
+import RecipeListSection from 'components/organisms/RecipeListSection'
 import useFuse from 'hooks/useFuse'
+import { sortByUpdatedAt } from 'models/Recipe'
 
 const RecipeList = () => {
   const areFetched = useAppSelector(areRecipesFetched)
@@ -35,18 +37,32 @@ const RecipeList = () => {
 
   const { t } = useTranslation()
 
+  const mostRecentRecipes = useMemo(
+    () => recipes.sort(sortByUpdatedAt).slice(0, 4),
+    [recipes]
+  )
+
   return (
     <Page title={'Recipes'}>
       <LargeMainPage className="flex-1 relative z-10">
         <div className="pt-20">
           <div ref={ref} />
-          {searchedRecipes.length > 0 ? (
-            <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
-              {searchedRecipes.map(recipe => (
-                <RecipePreview key={recipe.id} recipe={recipe} />
-              ))}
-            </div>
-          ) : (
+          {searchedRecipes.length > 0 && query && (
+            <RecipeListSection
+              title={t('_Results')}
+              recipes={searchedRecipes}
+            />
+          )}
+          {searchedRecipes.length > 0 && !query && (
+            <>
+              <RecipeListSection
+                title={t('_Most Recents')}
+                recipes={mostRecentRecipes}
+              />
+              <RecipeListSection title={t('_All')} recipes={searchedRecipes} />
+            </>
+          )}
+          {searchedRecipes.length === 0 && (
             <div className="flex justify-center p-5">
               <div className="text-base text-gray-500 text-center">
                 {areFetched &&

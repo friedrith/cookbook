@@ -4,7 +4,7 @@ import { isAuthenticated } from '../auth/authenticated'
 // import { isAuthorized } from '../auth/authorized'
 
 export function routesConfig(app: Application) {
-  app.post('/recipes', isAuthenticated, create)
+  app.post('/recipes', [isAuthenticated, create])
 
   app.get('/recipes', [isAuthenticated, all])
 
