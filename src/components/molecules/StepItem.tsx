@@ -58,7 +58,7 @@ const StepItemGeneric = ({
           <div className={`text-sm text-left ${descriptionClassName}`}>
             {description}
           </div>
-          <div className="text-left lg:hidden">
+          <div className="text-left">
             {ingredientsForStep.map((ingredient, index) => (
               <Badge
                 color="pink"

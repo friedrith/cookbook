@@ -72,7 +72,7 @@ const initializeMetadata = (state: RecipesState, recipeId: string) => {
     state.metadataById[recipeId] = {
       recipeId,
       currentStepIndex: 0,
-      servingCount: state.byId[recipeId].stats?.servings?.value,
+      servingCount: 42, //state.byId[recipeId].stats?.servings?.value,
     }
   }
 }

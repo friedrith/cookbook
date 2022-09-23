@@ -1,5 +1,5 @@
 type Measure = {
-  value: number
+  value: number | string
   unit: string
 }
 

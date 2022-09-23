@@ -1,8 +1,8 @@
 import Ingredient from 'models/Ingredient'
 import ParsingError from 'models/ParsingError'
 
-export const parseAsExplicitSome = (line: string): Ingredient | null => {
-  const matchExplicitSome = line.match(/^some ([a-zA-Z]+)/)
+const parseAsExplicitSome = (line: string): Ingredient | null => {
+  const matchExplicitSome = line.match(/^some ([a-zA-Z]+)/i)
 
   if (matchExplicitSome) {
     const [name] = matchExplicitSome.slice(1)
@@ -18,35 +18,24 @@ export const parseAsExplicitSome = (line: string): Ingredient | null => {
   return null
 }
 
-export const parseAsImplicitSome = (line: string): Ingredient | null => {
-  const matchExplicitSome = line.match(/^([a-zA-Z]+)/)
+const parseValue = (value: string) => {
+  const number = parseFloat(value)
 
-  if (matchExplicitSome) {
-    const [name] = matchExplicitSome
-    return {
-      name,
-      measure: {
-        unit: 'some',
-        value: 0,
-      },
-    }
-  }
-
-  return null
+  return `${number}` === value ? number : value
 }
 
-export const parseAsExplicitUnit = (line: string): Ingredient | null => {
+const parseAsExplicitUnit = (line: string): Ingredient | null => {
   const match = line.match(
-    /^([0-9]+[.0-9]*|[0-9]+\/[0-9]+)\s*([a-zA-Z]*)\s*of\s*([a-zA-Z]+)/
+    /^(([0-9]|\.|\s|\/)*[0-9])\s*([a-zA-Z]*)\s*of\s*([a-zA-Z]+)/i
   )
 
   if (match) {
-    const [value, unit, name] = match.slice(1)
+    const [value, _, unit, name] = match.slice(1)
     return {
       name,
       measure: {
         unit,
-        value: parseFloat(value),
+        value: parseValue(value),
       },
     }
   }
@@ -54,16 +43,16 @@ export const parseAsExplicitUnit = (line: string): Ingredient | null => {
   return null
 }
 
-export const parseWithoutUnit = (line: string): Ingredient | null => {
-  const matchWithoutUnit = line.match(/^([0-9]+[.0-9]*) ([a-zA-Z]+)/)
+const parseWithoutUnit = (line: string): Ingredient | null => {
+  const matchWithoutUnit = line.match(/^(([0-9]|\.|\s|\/)*[0-9]) ([a-zA-Z]+)/)
 
   if (matchWithoutUnit) {
-    const [value, name] = matchWithoutUnit.slice(1)
+    const [value, _, name] = matchWithoutUnit.slice(1)
     return {
       name,
       measure: {
         unit: 'count',
-        value: parseFloat(value),
+        value: parseValue(value),
       },
     }
   }
@@ -71,7 +60,7 @@ export const parseWithoutUnit = (line: string): Ingredient | null => {
   return null
 }
 
-export const parseDefault = (line: string): Ingredient | null => {
+const parseDefault = (line: string): Ingredient | null => {
   return {
     name: line,
     measure: {
@@ -84,7 +73,6 @@ export const parseDefault = (line: string): Ingredient | null => {
 export const parseIngredient = (line: string): Ingredient | ParsingError => {
   const ingredient = [
     parseAsExplicitSome,
-    parseAsImplicitSome,
     parseAsExplicitUnit,
     parseWithoutUnit,
     parseDefault,
