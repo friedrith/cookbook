@@ -86,7 +86,7 @@ const RecipeEdit = () => {
         recipe={recipe}
         onChange={saveDebounced}
       >
-        <div className="py-10 flex justify-center">
+        <div className="py-10 pt-20 flex justify-center">
           <Button.Error onClick={requestDeleteRecipe}>
             <TrashIcon className="h-5 w-5 mr-2" aria-hidden="true" />
             {t('_delete recipe')}

@@ -106,7 +106,7 @@ const RecipeEditor = forwardRef(
         </div>
         <LargeMainPage>
           <Box className="p-4 relative top-[-7rem]">
-            <div className="max-w-screen-md m-auto space-y-8 sm:p-6" ref={ref}>
+            <div className="max-w-screen-md m-auto sm:p-6 space-y-8" ref={ref}>
               <Input.Basic
                 placeholder={t('_Recipe Name [required]')}
                 id="recipe-name"
@@ -154,7 +154,7 @@ const RecipeEditor = forwardRef(
                   inline
                   classNames={{
                     selected: 'flex flex-row items-center flex-wrap',
-                    tag: 'p-0.25 px-1 my-1 mx-1 rounded font-medium bg-red-100 text-red-800',
+                    tag: 'p-0.25 px-1 my-1 mx-1 rounded font-medium bg-indigo-100 text-indigo-800',
                     tagInput:
                       'border-0 overflow-none focus:ring-0 flex-1 min-w-[100px]',
                     tagInputField:
