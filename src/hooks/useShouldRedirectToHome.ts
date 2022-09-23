@@ -8,7 +8,6 @@ const useShouldRedirectToHome = () => {
 
   const currentUser = useAppSelector(getCurrentUser)
 
-  console.log('currentUser', currentUser)
   useEffect(() => {
     if (currentUser) {
       setShouldRedirect(true)

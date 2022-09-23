@@ -1,7 +1,7 @@
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 
 // import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import Recipe from 'models/Recipe'
+import { FormattedRecipe } from 'models/Recipe'
 import Stat from 'components/atoms/Stat'
 // import {
 //   incrementServingCount,
@@ -10,7 +10,7 @@ import Stat from 'components/atoms/Stat'
 // } from 'store'
 
 type Props = {
-  recipe: Recipe
+  recipe: FormattedRecipe
 }
 
 const Stats = ({ recipe }: Props) => {
@@ -23,10 +23,8 @@ const Stats = ({ recipe }: Props) => {
   //   getServingCount(state, recipe.id)
   // )
 
-  console.log('recipe', recipe)
-
   return (
-    <div className="flex px-4 py-10 justify-evenly items-start">
+    <div className="flex px-4 py-6 justify-evenly items-start">
       {Object.keys(recipe.stats)
         // .filter(statName => statName !== 'servings')
         .map(statName => (

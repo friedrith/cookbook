@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import Page from 'components/templates/Page'
+import CenterPage from 'components/templates/CenterPage'
 import { useAppDispatch } from 'hooks/redux'
 import { verifyLink, verifyLinkWithEmail } from 'store'
 
-const VerifyLink = () => {
+const LinkVerification = () => {
   const dispatch = useAppDispatch()
 
   const [emailRequired, setEmailRequired] = useState(false)
@@ -18,6 +18,7 @@ const VerifyLink = () => {
 
   const { t } = useTranslation()
 
+  // TODO clean up
   useEffect(() => {
     ;(async () => {
       try {
@@ -43,7 +44,6 @@ const VerifyLink = () => {
     event.preventDefault()
 
     try {
-      console.log()
       await dispatch(verifyLinkWithEmail(email)).unwrap()
       navigate('/recipes')
     } catch (error) {
@@ -53,7 +53,7 @@ const VerifyLink = () => {
   }
 
   return (
-    <Page className="flex items-center justify-center">
+    <CenterPage>
       {errorMessage && (
         <main className="flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-16">
@@ -105,8 +105,8 @@ const VerifyLink = () => {
       {!emailRequired && !errorMessage && (
         <div>{t('_Verification of the link')}</div>
       )}
-    </Page>
+    </CenterPage>
   )
 }
 
-export default VerifyLink
+export default LinkVerification

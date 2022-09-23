@@ -1,16 +1,15 @@
 import api from './api'
 
-import Recipe, { Step } from 'models/Recipe'
+import Recipe from 'models/Recipe'
 import Measure from 'models/Measure'
-import Ingredient from 'models/Ingredient'
 
 const baseURL = '/recipes'
 
 const convertFromHttp = (httpRecipe: HttpRecipe): Recipe => ({
   keywords: [],
   stats: {},
-  ingredients: [],
-  steps: [],
+  ingredients: '',
+  steps: '',
   ...httpRecipe,
 })
 
@@ -25,8 +24,8 @@ type HttpRecipe = {
   keywords?: string[]
   imageUrl: string
   stats?: { [id: string]: Measure }
-  ingredients?: Ingredient[]
-  steps?: Step[]
+  ingredients?: ''
+  steps?: ''
   createdAt: Date | null
 }
 

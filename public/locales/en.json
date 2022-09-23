@@ -2,7 +2,10 @@
   "_Try banana bread": "Try \"Banana Bread\"",
   "_View Recipe": "View Recipe",
   "_Ingredients": "Ingredients",
-  "_No Recipes found.": "No Recipes found. Try a different search.",
+  "_No Recipes found": "No Recipes found",
+  "_Try a different search.": "Try a different search.",
+  "_No Recipes created": "No Recipes created",
+  "_Get started by creating a new recipe": "Get started by creating a new recipe.",
   "_sign out": "Sign Out",
   "_settings": "Settings",
   "_Log in": "Log in",
@@ -40,5 +43,8 @@
   "_Loading": "Loading...",
   "_Page not found.": "Page not found.",
   "_Sorry, we couldn’t find the page you’re looking for.": "Sorry, we couldn’t find the page you’re looking for.",
-  "_Go back home": "Go back home"
+  "_Go back home": "Go back home",
+  "_delete recipe": "Delete Recipe",
+  "_Recipe deleted": "Recipe \"{{recipeName}}\" deleted",
+  "_Undo": "Undo"
 }

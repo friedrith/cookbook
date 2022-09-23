@@ -1,9 +1,12 @@
-import Recipe, { Step } from 'models/Recipe'
+import { useTranslation } from 'react-i18next'
+
+import { FormattedRecipe } from 'models/Recipe'
+import Step from 'models/Step'
 import StepItem from 'components/atoms/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'
 
 type Props = {
-  recipe: Recipe
+  recipe: FormattedRecipe
   progress: number
   onSelectStep: (index: number) => void
 }
@@ -19,10 +22,12 @@ const evaluateStatus = (index: number, currentStepIndex: number) => {
 }
 
 const StepList = ({ recipe, progress, onSelectStep }: Props) => {
+  const { t } = useTranslation()
+
   return (
-    <div className="py-10 lg:px-10 relative z-10">
+    <div className="py-4 lg:px-10 relative z-10">
       <div className="">
-        <SectionTitle>Steps</SectionTitle>
+        <SectionTitle>{t('_Steps')}</SectionTitle>
         <ol className="overflow-hidden">
           {recipe.steps.map((step, stepIdx) => (
             <StepItem

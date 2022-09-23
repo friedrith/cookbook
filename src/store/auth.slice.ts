@@ -50,26 +50,32 @@ export const authSlice = createSlice({
     builder.addCase(loginWithMagicLink.fulfilled, (state, action) => {
       state.magicLinkSent = true
       state.emailUsed = action.meta.arg
+      state.isUserFetched = true
     })
 
     builder.addCase(loginWithMagicLink.rejected, (state, action) => {
       state.magicLinkSent = true
+      state.isUserFetched = true
     })
 
     builder.addCase(verifyLink.fulfilled, (state, action) => {
       state.user = action.payload || null
+      state.isUserFetched = true
     })
 
     builder.addCase(verifyLink.rejected, (state, action) => {
       state.user = null
+      state.isUserFetched = true
     })
 
     builder.addCase(logout.fulfilled, (state, action) => {
       state.user = null
+      state.isUserFetched = true
     })
 
     builder.addCase(logout.rejected, (state, action) => {
       state.user = null
+      state.isUserFetched = true
     })
 
     builder.addCase(initSession.fulfilled, (state, action) => {
@@ -85,9 +91,17 @@ export const authSlice = createSlice({
 
 export default authSlice.reducer
 
-export const getEmailUsed = (state: RootState) => state.auth.emailUsed
+const getAuthState = (state: RootState) => state.auth
 
-export const getCurrentUser = (state: RootState) => state.auth.user
+export const getEmailUsed = (state: RootState) => getAuthState(state).emailUsed
+
+export const getCurrentUser = (state: RootState) => getAuthState(state).user
 
 export const isCurrentUserFetched = (state: RootState) =>
-  state.auth.isUserFetched
+  getAuthState(state).isUserFetched && getCurrentUser(state)
+
+export const isUserLoggedIn = (state: RootState) =>
+  getAuthState(state).isUserFetched && getCurrentUser(state)
+
+export const isUserLoggedOut = (state: RootState) =>
+  getAuthState(state).isUserFetched && !getCurrentUser(state)

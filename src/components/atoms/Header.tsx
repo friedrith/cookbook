@@ -5,8 +5,8 @@ import { SearchIcon, CogIcon, PlusIcon, XIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
 
 import useEventListener from 'hooks/useEventListener'
-import PrimaryButton from 'components/atoms/PrimaryButton'
-import TopBarButton from 'components/molecules/TopBarButton'
+import Button from 'components/atoms/Button'
+import Logo from 'components/atoms/Logo'
 
 type Props = {
   onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -33,11 +33,7 @@ const Header = ({ onSearchChange, searchValue }: Props) => {
 
   return (
     <div className="relative flex items-center justify-between">
-      {!searchOnMobileIsVisible && (
-        <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-          CookBook
-        </h2>
-      )}
+      {!searchOnMobileIsVisible && <Logo />}
       <div className="flex-1 hidden lg:block items-center"></div>
       <div
         className={classNames('flex-1 lg:block flex-0 lg:max-w-xs', {
@@ -84,26 +80,26 @@ const Header = ({ onSearchChange, searchValue }: Props) => {
       {/* <PrimaryButton to="/recipes/new" className="ml-2 hidden lg:block">
         {t('_New Recipe')}
       </PrimaryButton> */}
-      <TopBarButton
+      <Button.Icon
         url="/recipes/new"
         className="hidden lg:block rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
       >
         <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>
-      </TopBarButton>
+      </Button.Icon>
 
       {!searchOnMobileIsVisible && (
         <div className="ml-2 lg:ml-4 flex items-center">
-          <TopBarButton
-            url="/recipes/new"
-            icon={PlusIcon}
-            className="block lg:hidden rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          ></TopBarButton>
           <button
             className="mr-4 block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             onClick={() => showSearchOnMobile(true)}
           >
             <SearchIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
           </button>
+          <Button.Icon
+            url="/recipes/new"
+            icon={PlusIcon}
+            className="block lg:hidden rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          />
 
           {/* <Link
             to="/recipes/new"

@@ -1,10 +1,12 @@
-import { Navigate, Outlet } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useCallback } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Roles from 'models/Roles'
-import useShouldRedirectToLogin from 'hooks/useShouldRedirectToLogin'
-import { areRecipesFetched, fetchRecipes, isCurrentUserFetched } from 'store'
+import useWhenLoggedIn from 'hooks/useWhenLoggedIn'
+import useWhenLoggedOut from 'hooks/useWhenLoggedOut'
+import { areRecipesFetched, fetchRecipes } from 'store'
+import Notifications from 'components/organisms/Notifications'
 
 type Props = {
   children?: React.ReactNode
@@ -12,28 +14,29 @@ type Props = {
 }
 
 const ProtectedPage = ({ onlyRoles, children }: Props) => {
-  const shouldRedirect = useShouldRedirectToLogin(onlyRoles)
+  const navigate = useNavigate()
 
-  const areFetched = useAppSelector(areRecipesFetched)
-  const isUserFetched = useAppSelector(isCurrentUserFetched)
+  const redirectToHome = useCallback(() => {
+    navigate('/login')
+  }, [navigate])
+
+  useWhenLoggedOut(redirectToHome, onlyRoles)
 
   const dispatch = useAppDispatch()
+  const recipesFetched = useAppSelector(areRecipesFetched)
 
-  useEffect(() => {
-    if (!areFetched && isUserFetched) {
-      dispatch(fetchRecipes())
-    }
-  }, [areFetched, dispatch, isUserFetched])
+  const fetch = useCallback(() => {
+    if (!recipesFetched) dispatch(fetchRecipes())
+  }, [recipesFetched, dispatch])
 
-  if (shouldRedirect) {
-    return <Navigate to="/" replace />
-  }
+  useWhenLoggedIn(fetch)
 
-  if (children) {
-    return <>{children}</>
-  }
-
-  return <Outlet />
+  return (
+    <>
+      {children ? children : <Outlet />}
+      <Notifications />
+    </>
+  )
 }
 
 export default ProtectedPage

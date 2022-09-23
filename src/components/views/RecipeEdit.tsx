@@ -1,51 +1,41 @@
 import { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeftIcon, TrashIcon } from '@heroicons/react/outline'
-import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Page from 'components/templates/Page'
 import RecipeEditor from 'components/organisms/RecipeEditor'
-import TopBarButton from 'components/molecules/TopBarButton'
 import Saved from 'components/molecules/Saved'
 import TopBar from 'components/atoms/TopBar'
 import RecipeHeader from 'components/molecules/RecipeHeader'
+import Recipe from 'models/Recipe'
+import NotFound from 'components/organisms/NotFound'
+import CenterPage from 'components/templates/CenterPage'
+import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import Button from 'components/atoms/Button'
 
-import renderWrittenRecipe from 'utils/renderWrittenRecipe'
-import parseWrittenRecipe from 'utils/parseWrittenRecipe'
-import { getRecipe, updateRecipe, deleteRecipe } from 'store'
+import {
+  getRecipe,
+  updateRecipe,
+  addRecipeToDeleteQueue,
+  areRecipesFetched,
+} from 'store'
 
 const RecipeEdit = () => {
   const { recipeId } = useParams()
-  const recipe = useAppSelector(state => getRecipe(state, recipeId))
+  const savedRecipe = useAppSelector(state => getRecipe(state, recipeId))
+  const areFetched = useAppSelector(areRecipesFetched)
+
+  const [recipe, setRecipe] = useState(savedRecipe)
 
   const [saved, setSaved] = useState(false)
 
-  const writtenRecipe = recipe ? renderWrittenRecipe(recipe) : undefined
-
-  const [recipeName, setRecipeName] = useState(writtenRecipe?.name || '')
-  const [ingredients, setIngredients] = useState(
-    writtenRecipe?.ingredients || ''
-  )
-  const [steps, setSteps] = useState(writtenRecipe?.steps || '')
-  const [keywords, setKeywords] = useState<string[]>(
-    writtenRecipe?.keywords || []
-  )
-  const [servings, setServings] = useState(writtenRecipe?.servings || '')
-  const [duration, setDuration] = useState(writtenRecipe?.duration || '')
-  const [imageUrl, setImageUrl] = useState(writtenRecipe?.imageUrl || '')
-
   useEffect(() => {
-    if (!recipeName) {
-      const writtenRecipe = recipe ? renderWrittenRecipe(recipe) : undefined
-      setRecipeName(writtenRecipe?.name || '')
-      setIngredients(writtenRecipe?.ingredients || '')
-      setSteps(writtenRecipe?.steps || '')
-      setKeywords(writtenRecipe?.keywords || [])
-      setServings(writtenRecipe?.servings || '')
-      setDuration(writtenRecipe?.duration || '')
+    if (!recipe?.name) {
+      setRecipe(savedRecipe)
     }
-  }, [recipe])
+  }, [savedRecipe, recipe?.name])
 
   const dispatch = useAppDispatch()
 
@@ -55,37 +45,32 @@ const RecipeEdit = () => {
 
   const ref = useRef<HTMLDivElement | null>(null)
 
-  if (!recipe) {
-    return null
+  const { t } = useTranslation()
+
+  if (!recipe || !savedRecipe) {
+    if (!areFetched) {
+      return (
+        <CenterPage>
+          <LoadingSpinner />
+        </CenterPage>
+      )
+    }
+    return (
+      <CenterPage>
+        <NotFound />
+      </CenterPage>
+    )
   }
 
-  const saveDebounced = (
-    newRecipeName: string,
-    newIngredients: string,
-    newSteps: string,
-    newKeywords: string[],
-    newServings: number | string,
-    newDuration: number | string,
-    newImageUrl: string
-  ) => {
+  const saveDebounced = (newRecipe: Recipe) => {
     clearInterval(timeout.current)
     setSaved(false)
+    setRecipe(newRecipe)
 
     timeout.current = setTimeout(() => {
-      if (recipe) {
+      if (newRecipe) {
         try {
-          const updatedRecipe = parseWrittenRecipe(
-            newRecipeName,
-            newIngredients,
-            newSteps,
-            newKeywords,
-            `${newServings}`,
-            `${newDuration}`,
-            newImageUrl,
-            recipe
-          )
-
-          dispatch(updateRecipe(updatedRecipe)).unwrap()
+          dispatch(updateRecipe(newRecipe)).unwrap()
 
           setSaved(true)
         } catch (error) {
@@ -96,8 +81,8 @@ const RecipeEdit = () => {
   }
 
   const requestDeleteRecipe = async () => {
-    await dispatch(deleteRecipe(recipe)).unwrap()
-    navigate('/recipes')
+    await dispatch(addRecipeToDeleteQueue(recipe)).unwrap()
+    navigate(`/recipes`)
   }
 
   return (
@@ -105,121 +90,30 @@ const RecipeEdit = () => {
       <RecipeEditor
         ref={ref}
         saved={saved}
-        name={recipeName}
-        ingredients={ingredients}
-        steps={steps}
-        duration={duration}
-        servings={servings}
-        onNameChange={name => {
-          setRecipeName(name)
-          saveDebounced(
-            name,
-            ingredients,
-            steps,
-            keywords,
-            servings,
-            duration,
-            imageUrl
-          )
-        }}
-        onIngredientsChange={ingredients => {
-          setIngredients(ingredients)
-          saveDebounced(
-            recipeName,
-            ingredients,
-            steps,
-            keywords,
-            servings,
-            duration,
-            imageUrl
-          )
-        }}
-        onStepsChange={steps => {
-          setSteps(steps)
-          saveDebounced(
-            recipeName,
-            ingredients,
-            steps,
-            keywords,
-            servings,
-            duration,
-            imageUrl
-          )
-        }}
-        onDurationChange={duration => {
-          setDuration(duration)
-          saveDebounced(
-            recipeName,
-            ingredients,
-            steps,
-            keywords,
-            servings,
-            duration,
-            imageUrl
-          )
-        }}
-        onServingsChange={servings => {
-          setServings(servings)
-          saveDebounced(
-            recipeName,
-            ingredients,
-            steps,
-            keywords,
-            servings,
-            duration,
-            imageUrl
-          )
-        }}
-        imageUrl={imageUrl}
-        onImageUrlChange={imageUrl => {
-          setImageUrl(imageUrl)
-          saveDebounced(
-            recipeName,
-            ingredients,
-            steps,
-            keywords,
-            servings,
-            duration,
-            imageUrl
-          )
-        }}
-        keywords={keywords}
-        onKeywordsChange={keywords => {
-          setKeywords(keywords)
-          saveDebounced(
-            recipeName,
-            ingredients,
-            steps,
-            keywords,
-            servings,
-            duration,
-            imageUrl
-          )
-        }}
-      ></RecipeEditor>
+        recipe={recipe}
+        onChange={saveDebounced}
+      >
+        <div className="py-10 flex justify-center">
+          <Button.Error onClick={requestDeleteRecipe}>
+            <TrashIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+            {t('_delete recipe')}
+          </Button.Error>
+        </div>
+      </RecipeEditor>
 
       <TopBar restRef={ref}>
         {isMaximized => (
           <>
-            <TopBarButton url="/recipes" icon={ArrowLeftIcon}>
-              {false && (
-                <div className="absolute bottom-0 right-0 w-0 h-0 hidden sm:block">
-                  <div className="rounded-full absolute top-[-0.375rem] left-[-0.375rem] w-3 h-3 bg-lime-600" />
-                  <Saved className="absolute top-0 left-0" />
-                </div>
-              )}
-            </TopBarButton>
+            <Button.Icon url={`/recipes/${recipe.id}`} icon={ArrowLeftIcon} />
             {isMaximized ? (
               <RecipeHeader
-                recipeName={recipeName}
-                keywords={keywords}
+                recipeName={recipe?.name}
+                keywords={recipe?.keywords}
                 saved={saved}
               />
             ) : (
               <>{saved && <Saved className="ml-2" />}</>
             )}
-            <div className="flex-1" />
-            <TopBarButton onClick={requestDeleteRecipe} icon={TrashIcon} />
           </>
         )}
       </TopBar>

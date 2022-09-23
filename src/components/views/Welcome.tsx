@@ -7,6 +7,8 @@ import Page from 'components/templates/Page'
 import { useAppSelector } from 'hooks/redux'
 import { getCurrentUser } from 'store'
 
+// TODO: follow inspiration https://salient.tailwindui.com/
+
 export const LandingPage = () => {
   const user = useAppSelector(getCurrentUser)
 

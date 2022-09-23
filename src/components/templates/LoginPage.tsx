@@ -1,4 +1,9 @@
+import { useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import Page from './Page'
+
+import useWhenLoggedIn from 'hooks/useWhenLoggedIn'
 
 type Props = {
   children: React.ReactNode
@@ -6,6 +11,12 @@ type Props = {
 }
 
 const LoginPage = ({ children, title }: Props) => {
+  const navigate = useNavigate()
+
+  const goToRecipesPage = useCallback(() => navigate('/recipes'), [navigate])
+
+  useWhenLoggedIn(goToRecipesPage)
+
   return (
     <Page title={title}>
       <div className="min-h-full flex">

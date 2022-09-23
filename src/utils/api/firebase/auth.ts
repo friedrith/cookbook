@@ -49,12 +49,22 @@ export const verifyLink = async () => {
   }
 }
 
+const retrieveToken = async () => {
+  const auth = getAuth()
+  if (!auth.currentUser) {
+    throw new Error('Impossible to retrieve token')
+  }
+  const token = await auth.currentUser.getIdToken()
+  setToken(token)
+}
+
 export const verifyLinkWithEmail = async (email: string) => {
   const auth = getAuth()
 
-  const user = await signInWithEmailLink(auth, email, window.location.href)
+  await signInWithEmailLink(auth, email, window.location.href)
 
-  return convertUser(user)
+  await retrieveToken()
+  return convertUser(auth.currentUser)
 }
 
 export const logout = async () => {
@@ -67,12 +77,6 @@ export const initSession = async () => {
   const auth = getAuth()
   await setPersistence(auth, browserLocalPersistence)
 
-  if (auth.currentUser) {
-    const token = await auth.currentUser.getIdToken()
-
-    setToken(token)
-
-    return convertUser(auth.currentUser)
-  }
-  return null
+  await retrieveToken()
+  return convertUser(auth.currentUser)
 }

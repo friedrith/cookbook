@@ -3,7 +3,6 @@ import { useState, useRef, forwardRef, ForwardedRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PhotographIcon } from '@heroicons/react/outline'
 import { WithContext as ReactTags } from 'react-tag-input'
-import { ArrowLeftIcon } from '@heroicons/react/outline'
 
 import findUnitIcon from 'utils/findUnitIcon'
 import { storeFile } from 'utils/api/firebase'
@@ -13,29 +12,16 @@ import ImageBanner from 'components/atoms/ImageBanner'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import Box from 'components/atoms/Box'
 import SectionTitle from 'components/atoms/SectionTitle'
-import TopBar from 'components/atoms/TopBar'
-import RecipeHeader from 'components/molecules/RecipeHeader'
-import Saved from 'components/molecules/Saved'
 import ImageUploader from 'components/atoms/ImageUploader'
 import TopBarButton from 'components/molecules/TopBarButton'
 import StatInput from './StatInput'
+import Recipe from 'models/Recipe'
+import Button from 'components/atoms/Button'
 
 type Props = {
-  name: string
-  onNameChange: (value: string) => void
-  ingredients: string
-  onIngredientsChange: (value: string) => void
-  steps: string
-  onStepsChange: (value: string) => void
-  keywords: string[]
-  onKeywordsChange: (value: string[]) => void
-  duration: number | string
-  onDurationChange: (value: string) => void
-  servings: number | string
-  onServingsChange: (value: string) => void
-  imageUrl: string
-  onImageUrlChange: (value: string) => void
-  saved: boolean
+  recipe: Recipe
+  onChange: (recipe: Recipe) => void
+  saved?: boolean
   children?: React.ReactNode
 }
 
@@ -54,23 +40,7 @@ type Tag = {
 
 const RecipeEditor = forwardRef(
   (
-    {
-      name,
-      ingredients,
-      steps,
-      keywords,
-      duration,
-      servings,
-      imageUrl,
-      onNameChange,
-      onIngredientsChange,
-      onStepsChange,
-      onKeywordsChange,
-      onDurationChange,
-      onServingsChange,
-      onImageUrlChange,
-      saved,
-    }: Props,
+    { recipe, onChange, children }: Props,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     const [isUploading, setIsUploading] = useState(false)
@@ -79,23 +49,29 @@ const RecipeEditor = forwardRef(
 
     const { t } = useTranslation()
 
+    const change = (props: any) => onChange({ ...recipe, ...props })
+
+    // const changeStats = (props: any) => onChange({ ...recipe, stats: { ...recipe.stats, [] } })
+
     const changeImageUrl = async (file: File) => {
       setIsUploading(true)
-      const newImageUrl = await storeFile(file)
+      const imageUrl = await storeFile(file)
 
-      onImageUrlChange(newImageUrl)
+      change({ imageUrl })
       setIsUploading(false)
     }
+
+    const { name, ingredients, steps, keywords, imageUrl } = recipe
 
     const DurationIcon = findUnitIcon('min')
     const ServingsIcon = findUnitIcon('servings')
 
     const handleDelete = (i: number) => {
-      onKeywordsChange(keywords.filter((k, index) => index !== i))
+      change({ keywords: keywords.filter((k, index) => index !== i) })
     }
 
     const handleAddition = (tag: Tag) => {
-      onKeywordsChange([...keywords, tag.text])
+      change({ keywords: [...keywords, tag.text] })
     }
 
     const tags = keywords.map(k => ({ id: k, text: k }))
@@ -126,7 +102,7 @@ const RecipeEditor = forwardRef(
                 id="recipe-name"
                 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 w-full"
                 value={name}
-                onChange={onNameChange}
+                onChange={name => change({ name })}
               />
               <div>
                 <SectionTitle className="pb-3">
@@ -138,7 +114,7 @@ const RecipeEditor = forwardRef(
                   rows={5}
                   placeholder="- ..."
                   value={ingredients}
-                  onChange={onIngredientsChange}
+                  onChange={ingredients => change({ ingredients })}
                 />
               </div>
               <div>
@@ -151,7 +127,7 @@ const RecipeEditor = forwardRef(
                   rows={5}
                   placeholder="- ..."
                   value={steps}
-                  onChange={onStepsChange}
+                  onChange={steps => change({ steps })}
                 />
               </div>
               <div>
@@ -178,14 +154,14 @@ const RecipeEditor = forwardRef(
                   placeholder={t('_Press enter to add a keyword')}
                 />
               </div>
-              <div>
+              {/* <div>
                 <div className="grid grid-cols-6 gap-3">
                   <div className="col-span-6 sm:col-span-2">
                     <StatInput
                       label={t('_Duration')}
                       id="duration"
                       value={duration}
-                      onChange={onDurationChange}
+                      onChange={duration }
                       placeholder="20"
                       unit="min"
                       icon={DurationIcon}
@@ -202,7 +178,8 @@ const RecipeEditor = forwardRef(
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
+              {children}
             </div>
           </Box>
         </LargeMainPage>

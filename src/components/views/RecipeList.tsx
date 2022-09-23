@@ -1,38 +1,24 @@
 import { useRef, useEffect, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
-import Fuse from 'fuse.js'
 
 import { useAppSelector } from 'hooks/redux'
-import Recipe from 'models/Recipe'
 import { getRecipeList, areRecipesFetched } from 'store'
 import Header from 'components/atoms/Header'
 import RecipePreview from 'components/molecules/RecipePreview'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import Page from 'components/templates/Page'
-
-const initializeFuse = (recipes: Recipe[]) =>
-  new Fuse(recipes, {
-    keys: ['title', 'keywords'],
-    minMatchCharLength: 1,
-  })
+import EmptyMessage from 'components/atoms/EmptyMessage'
+import useFuse from 'hooks/useFuse'
 
 const RecipeList = () => {
   const areFetched = useAppSelector(areRecipesFetched)
   const recipes = useAppSelector(getRecipeList)
-  const fuse = useRef(initializeFuse(recipes))
   let [searchParams, setSearchParams] = useSearchParams()
 
   const [query, setQuery] = useState(searchParams.get('q') || '')
 
-  useEffect(() => {
-    fuse.current = initializeFuse(recipes)
-  }, [recipes])
-
-  const searchedRecipes = useMemo(
-    () => (query ? fuse.current.search(query).map(i => i.item) : recipes),
-    [query, recipes]
-  )
+  const searchedRecipes = useFuse(recipes, query)
 
   const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value
@@ -60,9 +46,23 @@ const RecipeList = () => {
             </div>
           ) : (
             <div className="flex justify-center p-5">
-              <p className="text-base text-gray-500">
-                {areFetched ? t('_No Recipes found.') : t('_Loading')}
-              </p>
+              <div className="text-base text-gray-500 text-center">
+                {areFetched &&
+                  searchedRecipes.length === 0 &&
+                  recipes.length > 0 && (
+                    <EmptyMessage
+                      title={t('_No Recipes found')}
+                      message={t('_Try a different search.')}
+                    />
+                  )}
+                {areFetched && recipes.length === 0 && (
+                  <EmptyMessage
+                    title={t('_No Recipes created')}
+                    message={t('_Get started by creating a new recipe')}
+                  />
+                )}
+                {!areFetched && <EmptyMessage title={t('_Loading')} />}
+              </div>
             </div>
           )}
         </div>

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { PencilIcon, ArrowLeftIcon } from '@heroicons/react/outline'
@@ -6,17 +6,16 @@ import { PencilIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Box from 'components/atoms/Box'
 import Badge from 'components/atoms/Badge'
-import Stats from 'components/molecules/Stats'
 import IngredientList from 'components/molecules/IngredientList'
 import StepList from 'components/molecules/StepList'
 import TopBar from 'components/atoms/TopBar'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Page from 'components/templates/Page'
 import ImageBanner from 'components/atoms/ImageBanner'
-import TopBarButton from 'components/molecules/TopBarButton'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import NotFound from 'components/organisms/NotFound'
 import CenterPage from 'components/templates/CenterPage'
+import Button from 'components/atoms/Button'
 
 import {
   getRecipe,
@@ -25,16 +24,10 @@ import {
   areRecipesFetched,
 } from 'store'
 import LargeMainPage from 'components/templates/LargeMainPage'
+import parseRecipe from 'utils/parseRecipe'
 
 const position = (isMaximized: boolean) =>
   isMaximized ? `md:fixed md:top-[-1rem]` : 'relative'
-// ? {
-//     position: 'fixed',
-//     top: '-1rem',
-//   }
-// : {
-//     position: 'relative',
-//   }
 
 const RecipeDetails = () => {
   const { recipeId } = useParams()
@@ -49,7 +42,12 @@ const RecipeDetails = () => {
 
   const [isMaximized, setMaximized] = useState(false)
 
-  if (!recipe) {
+  const formattedRecipe = useMemo(
+    () => (recipe ? parseRecipe(recipe) : null),
+    [recipe]
+  )
+
+  if (!recipe || !formattedRecipe) {
     if (!areFetched) {
       return (
         <CenterPage>
@@ -77,10 +75,10 @@ const RecipeDetails = () => {
           <div className="flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
             <Box className={`p-4 md:w-[400px] ${position(isMaximized)}`}>
               <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900  sm:truncate text-center lg:text-left pb-2">
-                {recipe.name}
+                {formattedRecipe.name}
               </h1>
               <div className="text-center lg:text-left">
-                {recipe.keywords.map(keyword => (
+                {formattedRecipe.keywords.map(keyword => (
                   <Link
                     key={keyword}
                     className="mr-1"
@@ -90,16 +88,16 @@ const RecipeDetails = () => {
                   </Link>
                 ))}
               </div>
-              <Stats recipe={recipe} />
-              <div className="">
-                <IngredientList recipe={recipe} />
+              {/* <Stats recipe={formattedRecipe} /> */}
+              <div className="pt-6">
+                <IngredientList recipe={formattedRecipe} />
               </div>
             </Box>
           </div>
 
-          <div className="flex-1 relative pl-4 top-[-7rem] lg:top-[0rem]">
+          <div className="flex-1 relative pl-4 top-[-10rem] lg:top-[0rem]">
             <StepList
-              recipe={recipe}
+              recipe={formattedRecipe}
               progress={progress}
               onSelectStep={changeRecipeProgress}
             />
@@ -109,16 +107,16 @@ const RecipeDetails = () => {
       <TopBar restRef={ref} onMaximizedChanged={setMaximized}>
         {isMaximized => (
           <>
-            <TopBarButton url="/recipes" icon={ArrowLeftIcon} />
+            <Button.Icon url="/recipes" icon={ArrowLeftIcon} />
             {isMaximized ? (
               <RecipeHeader
-                recipeName={recipe.name}
-                keywords={recipe.keywords}
+                recipeName={formattedRecipe.name}
+                keywords={formattedRecipe.keywords}
               />
             ) : (
               <div className="flex-1" />
             )}
-            <TopBarButton
+            <Button.Icon
               url={`/recipes/${recipeId}/edit`}
               icon={PencilIcon}
               blur

@@ -45,4 +45,13 @@ describe('renderMeasure', () => {
 
     expect(renderMeasure(measure)).toEqual('10 g')
   })
+
+  it('should return basic string if no unit', () => {
+    const measure = {
+      value: 10,
+      unit: 'none',
+    }
+
+    expect(renderMeasure(measure)).toEqual('')
+  })
 })

@@ -16,6 +16,7 @@ export interface RecipesState {
   allIds: string[]
   areFetched: boolean
   metadataById: Record<string, Metadata>
+  trashQueue: string[]
 }
 
 export const recipesInitialState: RecipesState = {
@@ -23,6 +24,7 @@ export const recipesInitialState: RecipesState = {
   allIds: [],
   areFetched: false,
   metadataById: {},
+  trashQueue: [],
 }
 
 export const fetchRecipes = createAsyncThunk<Recipe[]>(
@@ -42,7 +44,27 @@ export const addRecipe = createAsyncThunk(
 
 export const deleteRecipe = createAsyncThunk(
   'recipes/delete',
-  async (recipe: Recipe) => recipesApi.removeOne(recipe)
+  async (recipe: Recipe) => {
+    recipesApi.removeOne(recipe)
+  }
+)
+
+const timeouts: Record<string, NodeJS.Timeout> = {}
+
+export const addRecipeToDeleteQueue = createAsyncThunk(
+  'recipes/addToDeleteQueue',
+  async (recipe: Recipe, thunkApi) => {
+    timeouts[recipe.id] = setTimeout(() => {
+      thunkApi.dispatch(deleteRecipe(recipe))
+    }, 10000)
+  }
+)
+
+export const cancelDeletion = createAsyncThunk(
+  'recipes/cancelDelete',
+  async (recipe: Recipe) => {
+    clearTimeout(timeouts[recipe.id])
+  }
 )
 
 const initializeMetadata = (state: RecipesState, recipeId: string) => {
@@ -50,7 +72,7 @@ const initializeMetadata = (state: RecipesState, recipeId: string) => {
     state.metadataById[recipeId] = {
       recipeId,
       currentStepIndex: 0,
-      servingCount: state.byId[recipeId].stats.servings.value,
+      servingCount: state.byId[recipeId].stats?.servings?.value,
     }
   }
 }
@@ -111,6 +133,20 @@ export const recipesSlice = createSlice({
       delete state.byId[recipe.id]
 
       state.allIds = state.allIds.filter(id => id !== recipe.id)
+
+      state.trashQueue = state.trashQueue.filter(id => id !== recipe.id)
+    })
+
+    builder.addCase(addRecipeToDeleteQueue.fulfilled, (state, action) => {
+      const recipe = action.meta.arg
+
+      state.trashQueue = [...state.trashQueue, recipe.id]
+    })
+
+    builder.addCase(cancelDeletion.fulfilled, (state, action) => {
+      const recipe = action.meta.arg
+
+      state.trashQueue = state.trashQueue.filter(id => id !== recipe.id)
     })
   },
 })
@@ -128,7 +164,9 @@ export const areRecipesFetched = (state: RootState) => state.recipes.areFetched
 export const getRecipeList = createSelector(
   (state: RootState) => state.recipes.allIds,
   (state: RootState) => state.recipes.byId,
-  (allIds, byId) => allIds.map(id => byId[id])
+  (state: RootState) => state.recipes.trashQueue,
+  (allIds, byId, trashQueue) =>
+    allIds.filter(id => !trashQueue.includes(id)).map(id => byId[id])
 )
 
 const cleanId = (id: string | undefined) => (id === undefined ? '' : id)
@@ -150,27 +188,33 @@ export const getServingCount = createSelector(
   (recipe, servingCount) => servingCount || recipe?.stats?.servings?.value || 0
 )
 
-export const getIngredientList = createSelector(
-  getRecipe,
-  (state: RootState, id: string | undefined) =>
-    state.recipes.metadataById[cleanId(id)]?.servingCount,
-  (recipe, servingCount): Ingredient[] => {
-    if (!recipe) {
-      return []
-    }
-
-    if (!servingCount) {
-      return recipe.ingredients
-    }
-
-    const ratio = servingCount / recipe.stats.servings.value
-
-    return recipe.ingredients.map(ingredient => ({
-      name: ingredient.name,
-      measure: {
-        ...ingredient.measure,
-        value: ingredient.measure.value * ratio,
-      },
-    }))
-  }
+export const getRecipesToDelete = createSelector(
+  (state: RootState) => state.recipes.byId,
+  (state: RootState) => state.recipes.trashQueue,
+  (byId, trashQueue) => trashQueue.map(id => byId[id])
 )
+
+// export const getIngredientList = createSelector(
+//   getRecipe,
+//   (state: RootState, id: string | undefined) =>
+//     state.recipes.metadataById[cleanId(id)]?.servingCount,
+//   (recipe, servingCount): Ingredient[] => {
+//     if (!recipe) {
+//       return []
+//     }
+
+//     if (!servingCount) {
+//       return recipe.ingredients
+//     }
+
+//     const ratio = servingCount / recipe.stats.servings.value
+
+//     return recipe.ingredients.map(ingredient => ({
+//       name: ingredient.name,
+//       measure: {
+//         ...ingredient.measure,
+//         value: ingredient.measure.value * ratio,
+//       },
+//     }))
+//   }
+// )
