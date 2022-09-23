@@ -8,7 +8,7 @@ import Box from 'components/atoms/Box'
 import Badge from 'components/atoms/Badge'
 import IngredientList from 'components/organisms/IngredientList'
 import StepList from 'components/molecules/StepList'
-import TopBar from 'components/atoms/TopBar'
+import Header from 'components/atoms/Header'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Page from 'components/templates/Page'
 import ImageBanner from 'components/molecules/ImageBanner'
@@ -98,7 +98,7 @@ const RecipeDetails = () => {
           </div>
         </div>
       </LargeMainPage>
-      <TopBar restRef={ref} onMaximizedChanged={setMaximized}>
+      <Header restRef={ref} onMaximizedChanged={setMaximized}>
         {isMaximized => (
           <>
             <Button.Icon url="/recipes" icon={ArrowLeftIcon} />
@@ -123,7 +123,7 @@ const RecipeDetails = () => {
             />
           </>
         )}
-      </TopBar>
+      </Header>
       <SharePopup
         recipe={recipe}
         open={isSharePopupOpen}

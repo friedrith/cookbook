@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { useAppSelector } from 'hooks/redux'
 import { getRecipeList, areRecipesFetched } from 'store'
-import Header from 'components/atoms/Header'
+import HeaderRecipeList from 'components/organisms/HeaderRecipeList'
 import RecipePreview from 'components/molecules/RecipePreview'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import Page from 'components/templates/Page'
@@ -15,6 +15,8 @@ const RecipeList = () => {
   const areFetched = useAppSelector(areRecipesFetched)
   const recipes = useAppSelector(getRecipeList)
   let [searchParams, setSearchParams] = useSearchParams()
+
+  const ref = useRef<HTMLDivElement | null>(null)
 
   const [query, setQuery] = useState(searchParams.get('q') || '')
 
@@ -34,10 +36,10 @@ const RecipeList = () => {
   const { t } = useTranslation()
 
   return (
-    <Page>
-      <LargeMainPage>
-        <Header onSearchChange={onQueryChange} searchValue={query} />
-        <div className="lg:pt-6">
+    <Page title={'Recipes'}>
+      <LargeMainPage className="flex-1 relative z-10">
+        <div className="pt-20">
+          <div ref={ref} />
           {searchedRecipes.length > 0 ? (
             <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
               {searchedRecipes.map(recipe => (
@@ -66,6 +68,11 @@ const RecipeList = () => {
             </div>
           )}
         </div>
+        <HeaderRecipeList
+          restRef={ref}
+          onSearchChange={onQueryChange}
+          searchValue={query}
+        />
       </LargeMainPage>
     </Page>
   )

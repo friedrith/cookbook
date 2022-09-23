@@ -7,7 +7,7 @@ import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Page from 'components/templates/Page'
 import RecipeEditor from 'components/organisms/RecipeEditor'
 import SavingIndicator from 'components/molecules/SavingIndicator'
-import TopBar from 'components/atoms/TopBar'
+import Header from 'components/atoms/Header'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Recipe from 'models/Recipe'
 import NotFound404 from 'components/views/NotFound404'
@@ -94,7 +94,7 @@ const RecipeEdit = () => {
         </div>
       </RecipeEditor>
 
-      <TopBar restRef={ref}>
+      <Header restRef={ref}>
         {isMaximized => (
           <>
             <Button.Icon url={`/recipes/${recipe.id}`} icon={ArrowLeftIcon} />
@@ -110,7 +110,7 @@ const RecipeEdit = () => {
             )}
           </>
         )}
-      </TopBar>
+      </Header>
     </Page>
   )
 }
