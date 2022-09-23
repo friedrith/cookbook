@@ -10,9 +10,8 @@ import Saved from 'components/molecules/Saved'
 import TopBar from 'components/atoms/TopBar'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Recipe from 'models/Recipe'
-import NotFound from 'components/organisms/NotFound'
-import CenterPage from 'components/templates/CenterPage'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import NotFound404 from 'components/views/NotFound404'
+import Loading from 'components/views/Loading'
 import Button from 'components/atoms/Button'
 
 import {
@@ -49,17 +48,9 @@ const RecipeEdit = () => {
 
   if (!recipe || !savedRecipe) {
     if (!areFetched) {
-      return (
-        <CenterPage>
-          <LoadingSpinner />
-        </CenterPage>
-      )
+      return <Loading />
     }
-    return (
-      <CenterPage>
-        <NotFound />
-      </CenterPage>
-    )
+    return <NotFound404 />
   }
 
   const saveDebounced = (newRecipe: Recipe) => {

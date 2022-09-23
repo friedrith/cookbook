@@ -12,8 +12,8 @@ import TopBar from 'components/atoms/TopBar'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Page from 'components/templates/Page'
 import ImageBanner from 'components/atoms/ImageBanner'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
-import NotFound from 'components/organisms/NotFound'
+import Loading from 'components/views/Loading'
+import NotFound404 from 'components/views/NotFound404'
 import CenterPage from 'components/templates/CenterPage'
 import Button from 'components/atoms/Button'
 
@@ -49,17 +49,9 @@ const RecipeDetails = () => {
 
   if (!recipe || !formattedRecipe) {
     if (!areFetched) {
-      return (
-        <CenterPage>
-          <LoadingSpinner />
-        </CenterPage>
-      )
+      return <Loading />
     }
-    return (
-      <CenterPage>
-        <NotFound />
-      </CenterPage>
-    )
+    return <NotFound404 />
   }
 
   const changeRecipeProgress = (index: number) => {
