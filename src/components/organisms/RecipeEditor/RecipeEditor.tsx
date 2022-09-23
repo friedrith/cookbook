@@ -88,7 +88,7 @@ const RecipeEditor = forwardRef(
 
     return (
       <>
-        <ImageBanner imageUrl={imageUrl} alt={name}></ImageBanner>
+        <ImageBanner imageUrl={imageUrl} alt={name} />
         <div className="h-64 md:h-96 absolute top-0 left-0 right-0 flex">
           <ImageUploader
             ref={uploadRef}

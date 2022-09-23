@@ -72,7 +72,7 @@ export async function patch(req: Request, res: Response) {
 }
 
 const sortByDate = (recipeA: any, recipeB: any) =>
-  recipeA.createdAt.localeCompare(recipeB.createdAt)
+  recipeA?.createdAt?.localeCompare(recipeB?.createdAt) || 0
 
 // https://firebase.google.com/docs/database/admin/start#node.js
 export async function all(req: Request, res: Response) {

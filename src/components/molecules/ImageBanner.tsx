@@ -2,23 +2,15 @@ type Props = {
   imageUrl: string
   alt: string
   loading?: boolean
-  children?: React.ReactNode
 }
 
-const ImageBanner = ({ imageUrl, alt, children, loading }: Props) => {
+const ImageBanner = ({ imageUrl, alt, loading }: Props) => {
   return (
     <div className="h-96">
       <div
-        className="h-96 w-full"
-        style={{
-          background: `url(${imageUrl})`,
-          backgroundAttachment: 'fixed',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
-      >
-        {children}
-      </div>
+        className="h-96 w-full bg-fixed bg-cover bg-center"
+        style={{ backgroundImage: `url('${imageUrl}')` }}
+      />
     </div>
   )
 }
