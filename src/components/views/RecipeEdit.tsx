@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Page from 'components/templates/Page'
 import RecipeEditor from 'components/organisms/RecipeEditor'
-import Saved from 'components/molecules/Saved'
+import SavingIndicator from 'components/molecules/SavingIndicator'
 import TopBar from 'components/atoms/TopBar'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Recipe from 'models/Recipe'
@@ -28,7 +28,7 @@ const RecipeEdit = () => {
 
   const [recipe, setRecipe] = useState(savedRecipe)
 
-  const [saved, setSaved] = useState(false)
+  const [saved, setSaved] = useState(true)
 
   useEffect(() => {
     if (!recipe?.name) {
@@ -76,6 +76,8 @@ const RecipeEdit = () => {
     navigate(`/recipes`)
   }
 
+  const saving = !saved
+
   return (
     <Page title={recipe.name}>
       <RecipeEditor
@@ -100,10 +102,11 @@ const RecipeEdit = () => {
               <RecipeHeader
                 recipeName={recipe?.name}
                 keywords={recipe?.keywords}
-                saved={saved}
-              />
+              >
+                {saving && <SavingIndicator className="ml-5" />}
+              </RecipeHeader>
             ) : (
-              <>{saved && <Saved className="ml-2" />}</>
+              <>{saving && <SavingIndicator className="ml-2" />}</>
             )}
           </>
         )}

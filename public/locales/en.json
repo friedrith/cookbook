@@ -46,5 +46,6 @@
   "_Go back home": "Go back home",
   "_delete recipe": "Delete Recipe",
   "_Recipe deleted": "Recipe \"{{recipeName}}\" deleted",
-  "_Undo": "Undo"
+  "_Undo": "Undo",
+  "_Saving": "Saving..."
 }

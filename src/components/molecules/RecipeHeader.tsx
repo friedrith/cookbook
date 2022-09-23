@@ -2,20 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Badge from 'components/atoms/Badge'
-import Saved from 'components/molecules/Saved'
 
 type Props = {
   recipeName: string
-  saved?: boolean
   keywords: string[]
-  children?: (isMaximized: boolean) => React.ReactNode
+  children?: React.ReactNode
 }
 
-const RecipeHeader = ({ recipeName, saved, keywords }: Props) => {
+const RecipeHeader = ({ recipeName, children, keywords }: Props) => {
   return (
     <div className="p-1 pl-2 pb-4 pt-4 flex-1 ">
       <h1 className="font-bold leading-5 text-gray-900 text-lg lg:text-2xl sm:truncate text-left flex items-center">
-        {recipeName} {saved && <Saved className="ml-5" />}
+        {recipeName} {children}
       </h1>
       <div className="text-left">
         {keywords.map(keyword => (
