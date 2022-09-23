@@ -1,5 +1,3 @@
-import uuseEventListener from 'hooks/useEventListener'
-
 let deferredPrompt = null
 
 // https://web.dev/customize-install/
@@ -11,13 +9,6 @@ window.addEventListener('beforeinstallprompt', event => {
   deferredPrompt = event
   // Update UI notify the user they can install the PWA
 })
-
-export const useBeforeInstallPrompt = (callback: (e: Event) => void) => {
-  uuseEventListener('beforeinstallprompt', event => {
-    event.preventDefault()
-    callback(event)
-  })
-}
 
 export const getPWAInstallationPrompt = () => deferredPrompt
 

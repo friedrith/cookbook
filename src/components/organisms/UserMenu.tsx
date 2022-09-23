@@ -3,18 +3,20 @@ import { Fragment, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Menu, Transition } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/outline'
 
 import classNames from 'utils/classNames'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { logout, getCurrentUser } from 'store'
+import { useAppDispatch } from 'hooks/redux'
+import { logout } from 'store'
 import { isMobile } from 'utils/platforms/mobile'
 import {
   getPWAInstallationPrompt,
   resetPWAInstallationPrompt,
-  useBeforeInstallPrompt,
 } from 'utils/platforms/pwa'
+
+import useBeforeInstallPrompt from 'hooks/useBeforeInstallPrompt'
+import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
 
 const UserMenu = () => {
   const dispatch = useAppDispatch()
@@ -23,12 +25,14 @@ const UserMenu = () => {
 
   const navigate = useNavigate()
 
+  const isStandalone = useIsStandalonePWA()
+
   const [appInstallationEnabled, setAppInstallationEnabled] = useState(
-    getPWAInstallationPrompt()
+    getPWAInstallationPrompt() && !isStandalone
   )
 
   useBeforeInstallPrompt(() => {
-    setAppInstallationEnabled(true)
+    setAppInstallationEnabled(true && !isStandalone)
   })
 
   // useBeforeInstallPrompt()
