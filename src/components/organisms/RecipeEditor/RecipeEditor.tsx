@@ -73,6 +73,17 @@ const RecipeEditor = forwardRef(
       change({ keywords: [...keywords, tag.text] })
     }
 
+    const handleDrag = (
+      tag: Tag,
+      currentPosition: number,
+      newPosition: number
+    ) => {
+      const newKeywords = [...keywords]
+      newKeywords.splice(currentPosition, 1)
+      newKeywords.splice(newPosition, 0, tag.text)
+      change({ keywords: newKeywords })
+    }
+
     const tags = keywords.map(k => ({ id: k, text: k }))
 
     return (
@@ -139,6 +150,7 @@ const RecipeEditor = forwardRef(
                   inputFieldPosition="inline"
                   handleDelete={handleDelete}
                   handleAddition={handleAddition}
+                  handleDrag={handleDrag}
                   inline
                   classNames={{
                     selected: 'flex flex-row items-center flex-wrap',
@@ -149,7 +161,7 @@ const RecipeEditor = forwardRef(
                       'border-0 overflow-none focus:ring-0 w-full p-0',
                     remove: 'ml-0.5',
                   }}
-                  allowDragDrop={false}
+                  allowDragDrop={true}
                   placeholder={t('_Press enter to add a keyword')}
                 />
               </div>
