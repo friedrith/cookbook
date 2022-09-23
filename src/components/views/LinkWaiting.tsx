@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next'
+import { ArrowLeftIcon } from '@heroicons/react/outline'
 
 import LoginPage from 'components/templates/LoginPage'
-import BackButton from 'components/atoms/BackButton'
+import Button from 'components/atoms/Button'
 
 const LinkWaiting = () => {
   const { t } = useTranslation()
@@ -10,7 +11,12 @@ const LinkWaiting = () => {
 
   return (
     <LoginPage title={t('_Waiting for link')}>
-      <BackButton to="/" />
+      <Button.Icon
+        url="/"
+        icon={ArrowLeftIcon}
+        basic
+        className="fixed top-5 left-5 lg:top-10 lg:left-10"
+      />
       <div>
         {/* <img
                 className="h-12 w-auto"

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import CenterPage from 'components/templates/CenterPage'
 import { useAppDispatch } from 'hooks/redux'
 import { verifyLink, verifyLinkWithEmail } from 'store'
+import Loading from 'components/views/Loading'
 
 const LinkVerification = () => {
   const dispatch = useAppDispatch()
@@ -50,6 +51,10 @@ const LinkVerification = () => {
       console.log('error', error)
       setErrorMessage(t('_Sorry that link is no longer valid') || '')
     }
+  }
+
+  if (!emailRequired && !errorMessage) {
+    return <Loading />
   }
 
   return (
@@ -101,9 +106,6 @@ const LinkVerification = () => {
             </div>
           </form>
         </div>
-      )}
-      {!emailRequired && !errorMessage && (
-        <div>{t('_Verification of the link')}</div>
       )}
     </CenterPage>
   )

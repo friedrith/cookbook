@@ -8,12 +8,11 @@ import findUnitIcon from 'utils/findUnitIcon'
 import { storeFile } from 'utils/api/firebase'
 import Input from 'components/atoms/Input'
 import TextArea from 'components/atoms/TextArea'
-import ImageBanner from 'components/atoms/ImageBanner'
+import ImageBanner from 'components/molecules/ImageBanner'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import Box from 'components/atoms/Box'
 import SectionTitle from 'components/atoms/SectionTitle'
-import ImageUploader from 'components/atoms/ImageUploader'
-import TopBarButton from 'components/molecules/TopBarButton'
+import ImageUploader from 'components/molecules/ImageUploader'
 import StatInput from './StatInput'
 import Recipe from 'models/Recipe'
 import Button from 'components/atoms/Button'
@@ -85,13 +84,13 @@ const RecipeEditor = forwardRef(
             onChange={changeImageUrl}
             isUploading={isUploading}
           >
-            <TopBarButton
+            <Button.Icon
               blur
               onClick={() => uploadRef.current?.click()}
               icon={PhotographIcon}
             >
               {t('_Change image')}
-            </TopBarButton>
+            </Button.Icon>
           </ImageUploader>
         </div>
         <LargeMainPage>

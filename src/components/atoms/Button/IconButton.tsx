@@ -17,6 +17,7 @@ type Props = {
   disabled?: boolean
   blur?: boolean
   label?: string
+  basic?: boolean
 }
 
 const IconButton = ({
@@ -28,13 +29,14 @@ const IconButton = ({
   disabled = false,
   blur = false,
   label = '',
+  basic = false,
 }: Props) => {
   const { isMaximized } = useContext(TopBarContext)
 
   const classes = classNames(
     'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center bg-white pointer-events-auto',
     disabled ? 'cursor-no-drop' : 'cursor-pointer',
-    isMaximized ? '' : 'shadow rounded-md',
+    isMaximized || basic ? '' : 'shadow rounded-md',
     blur ? 'bg-opacity-50 backdrop-filter backdrop-blur' : '',
     className
   )

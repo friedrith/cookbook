@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
-import Notification from 'components/atoms/Notification'
+import Notification from 'components/molecules/Notification'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { getRecipesToDelete, cancelDeletion } from 'store'
 

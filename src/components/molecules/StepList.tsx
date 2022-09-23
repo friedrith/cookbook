@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import { FormattedRecipe } from 'models/Recipe'
 import Step from 'models/Step'
-import StepItem from 'components/atoms/StepItem'
+import StepItem from 'components/molecules/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'
 
 type Props = {
