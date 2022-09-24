@@ -1,16 +1,15 @@
+import { useState } from 'react'
 import { ShareIcon } from '@heroicons/react/outline'
-import Recipe from 'models/Recipe'
 import { useTranslation } from 'react-i18next'
 
+import Recipe from 'models/Recipe'
 import Modal from 'components/atoms/Modal'
 import { shareRecipe, shareIngredients, isCopiedToClipboard } from 'utils/share'
-import { useState } from 'react'
 
 type Props = {
   open: boolean
   recipe: Recipe
   onClose: () => void
-  onSubmit: () => void
 }
 
 const waitFor = (milliseconds: number) =>

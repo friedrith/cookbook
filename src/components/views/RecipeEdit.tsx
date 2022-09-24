@@ -97,7 +97,11 @@ const RecipeEdit = () => {
       <Header restRef={ref}>
         {isMaximized => (
           <>
-            <Button.Icon url={`/recipes/${recipe.id}`} icon={ArrowLeftIcon} />
+            <Button.Icon
+              url={`/recipes/${recipe.id}`}
+              icon={ArrowLeftIcon}
+              disabled={saving}
+            />
             {isMaximized ? (
               <RecipeHeader
                 recipeName={recipe?.name}

@@ -18,6 +18,7 @@ type Props = {
   blur?: boolean
   label?: string
   basic?: boolean
+  title?: string
 }
 
 const IconButton = ({
@@ -30,12 +31,13 @@ const IconButton = ({
   blur = false,
   label = '',
   basic = false,
+  title = '',
 }: Props) => {
   const { isMaximized } = useContext(TopBarContext)
 
   const classes = classNames(
     'p-2 text-base font-medium text-gray-900 hover:text-gray-900 flex h-15 w-15 items-center bg-white pointer-events-auto',
-    disabled ? 'cursor-no-drop' : 'cursor-pointer',
+    disabled ? 'cursor-no-drop opacity-50' : 'cursor-pointer',
     isMaximized || basic ? '' : 'shadow rounded-md',
     blur ? 'bg-opacity-50 backdrop-filter backdrop-blur' : '',
     className
@@ -44,7 +46,7 @@ const IconButton = ({
   return (
     <>
       {url ? (
-        <Link className={classes} to={url}>
+        <Link className={classes} to={url} onClick={onClick}>
           {Icon && <Icon className="h-7 w-7" aria-hidden="true" />}
           {label && (
             <span className="ml-0.5 hidden sm:inline text-normal">{label}</span>
@@ -52,7 +54,12 @@ const IconButton = ({
           {children}
         </Link>
       ) : (
-        <button className={classes} onClick={onClick} disabled={disabled}>
+        <button
+          className={classes}
+          onClick={onClick}
+          disabled={disabled}
+          title={title}
+        >
           {Icon && <Icon className="h-7 w-7" aria-hidden="true" />}
           {label && (
             <span className="ml-0.5 hidden sm:inline text-normal">{label}</span>

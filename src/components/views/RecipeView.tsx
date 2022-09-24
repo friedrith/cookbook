@@ -16,6 +16,7 @@ import Loading from 'components/views/Loading'
 import NotFound404 from 'components/views/NotFound404'
 import Button from 'components/atoms/Button'
 import SharePopup from 'components/organisms/SharePopup'
+import usePopup from 'hooks/usePopup'
 
 import {
   getRecipe,
@@ -42,7 +43,7 @@ const RecipeDetails = () => {
 
   const [isMaximized, setMaximized] = useState(false)
 
-  const [isSharePopupOpen, openSharePopup] = useState(false)
+  const sharePopup = usePopup()
 
   const formattedRecipe = useMemo(
     () => (recipe ? parseRecipe(recipe) : null),
@@ -112,7 +113,7 @@ const RecipeDetails = () => {
             )}
             <Button.Icon
               className="mr-3"
-              onClick={() => openSharePopup(true)}
+              onClick={sharePopup.open}
               icon={ShareIcon}
               blur
             />
@@ -126,9 +127,8 @@ const RecipeDetails = () => {
       </Header>
       <SharePopup
         recipe={recipe}
-        open={isSharePopupOpen}
-        onClose={() => openSharePopup(false)}
-        onSubmit={() => openSharePopup(false)}
+        open={sharePopup.isOpen}
+        onClose={sharePopup.close}
       />
     </Page>
   )

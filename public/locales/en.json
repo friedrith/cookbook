@@ -60,5 +60,8 @@
   "_AppName": "CookBook",
   "_Most Recents": "Most Recents",
   "_All": "All",
-  "_Results": "Results"
+  "_Results": "Results",
+  "_Lose my recipe": "Leave, I am ok to lose my recipe",
+  "_I stay": "I stay",
+  "_If you leave": "If you leave, you will lose the current recipe."
 }

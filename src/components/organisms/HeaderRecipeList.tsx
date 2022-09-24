@@ -93,12 +93,12 @@ const HeaderRecipeList = ({ onSearchChange, restRef, searchValue }: Props) => {
           {/* <PrimaryButton to="/recipes/new" className="ml-2 hidden lg:block">
  {t('_New Recipe')}
 </PrimaryButton> */}
-          <Button.Icon
-            url="/recipes/new"
+          <Button.Primary
+            to="/recipes/new"
             className="hidden lg:block rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>
-          </Button.Icon>
+          </Button.Primary>
 
           {!searchOnMobileIsVisible && (
             <div className="ml-2 lg:ml-4 flex items-center">
