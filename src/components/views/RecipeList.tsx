@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { useAppSelector } from 'hooks/redux'
 import { getRecipeList, areRecipesFetched } from 'store'
-import HeaderRecipeList from 'components/organisms/HeaderRecipeList'
+import RecipeListHeader from 'components/organisms/RecipeListHeader'
 import RecipePreview from 'components/molecules/RecipePreview'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import Page from 'components/templates/Page'
@@ -85,7 +85,7 @@ const RecipeList = () => {
           )}
         </div>
       </LargeMainPage>
-      <HeaderRecipeList
+      <RecipeListHeader
         restRef={ref}
         onSearchChange={onQueryChange}
         searchValue={query}

@@ -8,7 +8,7 @@ type Props = {
 
 const RecipeListSection = ({ title, recipes }: Props) => {
   return (
-    <div className="pb-20">
+    <div className="pb-10 md:pb-20">
       {title && (
         <div className="relative">
           <div

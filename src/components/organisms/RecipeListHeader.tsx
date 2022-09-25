@@ -21,7 +21,7 @@ type Props = {
   searchValue: string
 }
 
-const HeaderRecipeList = ({ onSearchChange, restRef, searchValue }: Props) => {
+const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
   const { t } = useTranslation()
 
   const [searchOnMobileIsVisible, showSearchOnMobile] = useState(false)
@@ -101,18 +101,18 @@ const HeaderRecipeList = ({ onSearchChange, restRef, searchValue }: Props) => {
           </Button.Primary>
 
           {!searchOnMobileIsVisible && (
-            <div className="ml-2 lg:ml-4 flex items-center">
-              <button
-                className="mr-4 block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                onClick={() => showSearchOnMobile(true)}
-              >
-                <SearchIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
-              </button>
+            <div className="flex items-center">
               <Button.Icon
                 url="/recipes/new"
                 icon={PlusIcon}
                 className="block lg:hidden rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               />
+              <button
+                className="ml-2 lg:ml-4 block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={() => showSearchOnMobile(true)}
+              >
+                <SearchIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
+              </button>
 
               {/* <Link
      to="/recipes/new"
@@ -138,4 +138,4 @@ const HeaderRecipeList = ({ onSearchChange, restRef, searchValue }: Props) => {
   )
 }
 
-export default HeaderRecipeList
+export default RecipeListHeader
