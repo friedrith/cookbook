@@ -5,7 +5,7 @@ const Logo = () => {
   const { t } = useTranslation()
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center pointer-events-none	select-none">
       <CakeIcon
         className="h-8 w-8 stroke-1 text-gray-900 mr-1"
         aria-hidden="true"

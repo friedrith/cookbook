@@ -54,22 +54,34 @@ export async function patch(req: Request, res: Response) {
       return
     }
 
+    const { uid } = res.locals
+
     const ref = admin.database().ref(COLLECTION_PATH)
     const recipeRef = ref.child(id)
 
-    const recipe = omit({ ...req.body, updatedAt: new Date().toISOString() }, [
-      'userId',
-      'id',
-      'createdAt',
-    ])
-    recipeRef.update(recipe)
-
     recipeRef.once(
       'value',
-      snapshot => {
-        const updatedRecipe = snapshot.val()
-        console.log('updatedRecipe', updatedRecipe)
-        res.status(200).send({ recipe: convert(updatedRecipe) })
+      snapshotBefore => {
+        if (snapshotBefore.val()?.userId === uid) {
+          const recipe = omit(
+            { ...req.body, updatedAt: new Date().toISOString() },
+            ['userId', 'id', 'createdAt']
+          )
+          recipeRef.update(recipe)
+
+          recipeRef.once(
+            'value',
+            snapshot => {
+              const updatedRecipe = snapshot.val()
+              res.status(200).send({ recipe: convert(updatedRecipe) })
+            },
+            errorObject => {
+              res.status(500).send({ error: errorObject.name })
+            }
+          )
+        } else {
+          res.status(403).send({ error: 'not your recipe' })
+        }
       },
       errorObject => {
         res.status(500).send({ error: errorObject.name })
@@ -115,10 +127,25 @@ export async function remove(req: Request, res: Response) {
   try {
     const { id } = req.params
     const ref = admin.database().ref(COLLECTION_PATH)
+
     const recipeRef = ref.child(id)
-    recipeRef.set(null)
-    return res.status(204).send({})
+    const { uid } = res.locals
+
+    recipeRef.once(
+      'value',
+      snapshot => {
+        if (snapshot.val()?.userId === uid) {
+          recipeRef.set(null)
+          res.status(204).send({})
+        } else {
+          res.status(403).send({ error: 'not your recipe' })
+        }
+      },
+      errorObject => {
+        res.status(500).send({ error: errorObject.name })
+      }
+    )
   } catch (err) {
-    return handleError(res, err)
+    handleError(res, err)
   }
 }

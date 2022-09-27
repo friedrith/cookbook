@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import Roles from 'models/Roles'
 
-import Welcome from 'components/views/Welcome'
+import LandingPage from 'components/views/LandingPage'
 import RecipeList from 'components/views/RecipeList'
 import RecipeView from 'components/views/RecipeView'
 import Preferences from 'components/views/Preferences'
@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Welcome />} />
+      <Route path="/" element={<LandingPage />} />
       <Route
         path="/recipes"
         element={<ProtectedPage onlyRoles={[Roles.User]} />}

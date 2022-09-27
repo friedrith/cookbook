@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import Footer from 'components/atoms/Footer'
 import Page from 'components/templates/Page'
+import Hero from 'components/organisms/Hero'
 
 import { useAppSelector } from 'hooks/redux'
 import { getCurrentUser } from 'store'
@@ -15,8 +16,9 @@ export const LandingPage = () => {
   const { t } = useTranslation()
 
   return (
-    <Page className={`bg-blue-500`}>
-      <div className="bg-indigo-700">
+    <Page>
+      <Hero />
+      {/* <div className="bg-indigo-700">
         <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
             <span className="block">Boost your productivity.</span>
@@ -33,7 +35,7 @@ export const LandingPage = () => {
             {user ? t('_Open CookBook') : t('_Log in')}
           </Link>
         </div>
-      </div>
+      </div> */}
       <Footer />
     </Page>
   )

@@ -26,6 +26,7 @@ const Notifications = () => {
       <div className="w-full flex flex-col items-center space-y-4 sm:items-start">
         {recipes.map(recipe => (
           <Notification
+            key={recipe.id}
             message={t('_Recipe deleted', { recipeName: recipe.name })}
             actions={[
               {

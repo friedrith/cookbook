@@ -34,7 +34,7 @@ const Page = ({ className = '', children, title }: Props) => {
         <title>{fullTitle}</title>
       </Helmet>
       <div
-        className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto	${className}`}
+        className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto select-none	${className}`}
         id="page"
         ref={ref}
       >
