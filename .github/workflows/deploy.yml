@@ -37,9 +37,10 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
 
-      - name: Deploy to Firebase
-        uses: chrissank/deploy-firebase-functions@1.0.0
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          TARGET: default
+      # - name: Deploy to Firebase
+      #   uses: chrissank/deploy-firebase-functions@1.0.0
+      #   env:
+      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      #     TARGET: default
