@@ -1,11 +1,10 @@
-import { useRef, useEffect, useState, useMemo } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
 import { useAppSelector } from 'hooks/redux'
 import { getRecipeList, areRecipesFetched } from 'store'
 import RecipeListHeader from 'components/organisms/RecipeListHeader'
-import RecipePreview from 'components/molecules/RecipePreview'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import Page from 'components/templates/Page'
 import EmptyMessage from 'components/atoms/EmptyMessage'

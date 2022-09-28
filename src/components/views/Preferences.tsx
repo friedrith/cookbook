@@ -1,13 +1,13 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
 import { useTranslation } from 'react-i18next'
 
 import Page from 'components/templates/Page'
 import MainPage from 'components/templates/MainPage'
 import Header from 'components/atoms/Header'
-import RecipePreview from 'components/molecules/RecipePreview'
-import LargeMainPage from 'components/templates/LargeMainPage'
+// import RecipePreview from 'components/molecules/RecipePreview'
+// import LargeMainPage from 'components/templates/LargeMainPage'
 import Button from 'components/atoms/Button'
 
 import PreferencesEntry from 'components/organisms/PreferencesEntry'

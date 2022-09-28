@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import { PhotographIcon } from '@heroicons/react/outline'
 import { WithContext as ReactTags } from 'react-tag-input'
 
-import findUnitIcon from 'utils/findUnitIcon'
 import { storeFile } from 'utils/api/firebase'
 import Input from 'components/atoms/Input'
 import TextArea from 'components/atoms/TextArea'
@@ -13,7 +12,7 @@ import LargeMainPage from 'components/templates/LargeMainPage'
 import Box from 'components/atoms/Box'
 import SectionTitle from 'components/atoms/SectionTitle'
 import ImageUploader from 'components/molecules/ImageUploader'
-import StatInput from './StatInput'
+// import StatInput from './StatInput'
 import Recipe from 'models/Recipe'
 import Button from 'components/atoms/Button'
 
@@ -62,8 +61,8 @@ const RecipeEditor = forwardRef(
 
     const { name, ingredients, steps, keywords, imageUrl } = recipe
 
-    const DurationIcon = findUnitIcon('min')
-    const ServingsIcon = findUnitIcon('servings')
+    // const DurationIcon = findUnitIcon('min')
+    // const ServingsIcon = findUnitIcon('servings')
 
     const handleDelete = (i: number) => {
       change({ keywords: keywords.filter((k, index) => index !== i) })

@@ -30,7 +30,7 @@ const TopBar = ({
         onMaximizedChanged(isMaximized)
       }
     },
-    [restRef, onMaximizedChanged]
+    [restRef, onMaximizedChanged, offset]
   )
 
   const [page, setPage] = useState<HTMLElement | null>(null)

@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next'
-import { useAppSelector } from 'hooks/redux'
 
 // import { getIngredientList } from 'store'
 import { FormattedRecipe } from 'models/Recipe'

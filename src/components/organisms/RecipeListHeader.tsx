@@ -1,12 +1,6 @@
 import { useState, useRef, KeyboardEvent } from 'react'
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import {
-  SearchIcon,
-  AdjustmentsIcon,
-  PlusIcon,
-  XIcon,
-} from '@heroicons/react/solid'
+import { SearchIcon, PlusIcon, XIcon } from '@heroicons/react/solid'
 import classNames from 'classnames'
 
 import useEventListener from 'hooks/useEventListener'

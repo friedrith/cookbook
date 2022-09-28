@@ -1,19 +1,19 @@
-import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+// import { Link } from 'react-router-dom'
+// import { useTranslation } from 'react-i18next'
 
 import Footer from 'components/atoms/Footer'
 import Page from 'components/templates/Page'
 import Hero from 'components/organisms/Hero'
 
-import { useAppSelector } from 'hooks/redux'
-import { getCurrentUser } from 'store'
+// import { useAppSelector } from 'hooks/redux'
+// import { getCurrentUser } from 'store'
 
 // TODO: follow inspiration https://salient.tailwindui.com/
 
 export const LandingPage = () => {
-  const user = useAppSelector(getCurrentUser)
+  // const user = useAppSelector(getCurrentUser)
 
-  const { t } = useTranslation()
+  // const { t } = useTranslation()
 
   return (
     <Page>

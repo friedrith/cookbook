@@ -32,6 +32,7 @@ const parseAsExplicitUnit = (line: string): Ingredient | null => {
   )
 
   if (match) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [value, _, unit, name] = match.slice(1)
     return {
       name,
@@ -49,6 +50,7 @@ const parseWithoutUnit = (line: string): Ingredient | null => {
   const matchWithoutUnit = line.match(/^(([0-9]|\.|\s|\/)*[0-9]) ([a-zA-Z]+)/)
 
   if (matchWithoutUnit) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [value, _, name] = matchWithoutUnit.slice(1)
     return {
       name,

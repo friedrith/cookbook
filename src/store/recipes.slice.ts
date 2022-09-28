@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
 import type { RootState } from 'store'
 import Recipe from 'models/Recipe'
-import Ingredient from 'models/Ingredient'
 
 import * as recipesApi from 'utils/api/recipes.api'
 
