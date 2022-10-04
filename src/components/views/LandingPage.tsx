@@ -1,7 +1,7 @@
 // import { Link } from 'react-router-dom'
 // import { useTranslation } from 'react-i18next'
 
-import Footer from 'components/atoms/Footer'
+// import Footer from 'components/atoms/Footer'
 import Page from 'components/templates/Page'
 import Hero from 'components/organisms/Hero'
 
