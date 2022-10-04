@@ -1,5 +1,4 @@
 {
-  "_Try banana bread": "Try \"Banana Bread\"",
   "_View Recipe": "View Recipe",
   "_Ingredients": "Ingredients",
   "_No Recipes found": "No Recipes found",
@@ -18,6 +17,7 @@
   "_Verification of the link": "Verification of the link",
   "_Enter your email": "Enter your email",
   "_Open CookBook": "Open CookBook",
+  "_Try CookBook": "Try CookBook",
   "_Account": "Account",
   "_Settings": "Settings",
   "_Create Recipe": "Create Recipe",
@@ -63,5 +63,9 @@
   "_Results": "Results",
   "_Lose my recipe": "Leave, I am ok to lose my recipe",
   "_I stay": "I stay",
-  "_If you leave": "If you leave, you will lose the current recipe."
+  "_If you leave": "If you leave, you will lose the current recipe.",
+  "_The recipe book": "The recipe book",
+  "_made simple": "made simple",
+  "_for everybody": "for everybody",
+  "_Cooking your best recipes will be never easier": "Cooking your best recipes will be never easier"
 }
