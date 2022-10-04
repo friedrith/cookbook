@@ -46,8 +46,7 @@
     "test": "react-scripts test",
     "serve": "npx serve -s build",
     "lint": "eslint --max-warnings=0 .",
-    "format": "prettier --check .",
-    "prepare": "husky install"
+    "format": "prettier --check ."
   },
   "eslintConfig": {
     "extends": [
