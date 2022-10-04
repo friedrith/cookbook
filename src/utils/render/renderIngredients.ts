@@ -1,8 +1,8 @@
 import Recipe from 'models/Recipe'
-import cleanIngredients from 'utils/parser/cleanIngredients'
+import cleanLines from 'utils/parser/cleanLines'
 
 const renderIngredients = (recipe: Recipe) => {
-  return cleanIngredients(recipe.ingredients).join('\n')
+  return cleanLines(recipe.ingredients).join('\n')
 }
 
 export default renderIngredients

@@ -1,5 +1,7 @@
 import parseIngredients from '../parseIngredients'
 
+import allFixtures from '../__fixtures__/'
+
 describe('parseIngredients', () => {
   describe('Some explicit', () => {
     it('should return some as unit when some is explicit', () => {
@@ -136,6 +138,14 @@ describe('parseIngredients', () => {
       }
 
       expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+    })
+  })
+
+  allFixtures.forEach(fixtures => {
+    Object.entries(fixtures).forEach(([text, expectedIngredient]) => {
+      it(`should parse ${text}`, () => {
+        expect(parseIngredients(text)).toEqual([expectedIngredient])
+      })
     })
   })
 })

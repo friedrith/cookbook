@@ -1,10 +1,10 @@
 import Ingredient from 'models/Ingredient'
 import ParsingError from 'models/ParsingError'
 
-import cleanIngredients from './cleanIngredients'
+import cleanLines from './cleanLines'
 
 const parseAsExplicitSome = (line: string): Ingredient | null => {
-  const matchExplicitSome = line.match(/^some ([a-zA-Z]+)/i)
+  const matchExplicitSome = line.match(/^some (.+)/i)
 
   if (matchExplicitSome) {
     const [name] = matchExplicitSome.slice(1)
@@ -28,7 +28,7 @@ const parseValue = (value: string) => {
 
 const parseAsExplicitUnit = (line: string): Ingredient | null => {
   const match = line.match(
-    /^(([0-9]|\.|\s|\/)*[0-9])\s*([a-zA-Z]*)\s*of\s*([a-zA-Z]+)/i
+    /^(([0-9]|\.|\s|\/)*[0-9])\s*([a-zA-Z]*)\s*of\s*(.+)/i
   )
 
   if (match) {
@@ -46,8 +46,28 @@ const parseAsExplicitUnit = (line: string): Ingredient | null => {
   return null
 }
 
+const parseAsExplicitUnitFrench = (line: string): Ingredient | null => {
+  const match = line.match(
+    /^(([0-9]|\.|\s|\/)*[0-9])\s*([a-zA-Z]*)\s*(de|d')\s*(.+)/i
+  )
+
+  if (match) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [value, _, unit, _2, name] = match.slice(1)
+    return {
+      name,
+      measure: {
+        unit,
+        value: parseValue(value),
+      },
+    }
+  }
+
+  return null
+}
+
 const parseWithoutUnit = (line: string): Ingredient | null => {
-  const matchWithoutUnit = line.match(/^(([0-9]|\.|\s|\/)*[0-9]) ([a-zA-Z]+)/)
+  const matchWithoutUnit = line.match(/^(([0-9]|\.|\s|\/)*[0-9]) (.+)/)
 
   if (matchWithoutUnit) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -78,6 +98,7 @@ export const parseIngredient = (line: string): Ingredient | ParsingError => {
   const ingredient = [
     parseAsExplicitSome,
     parseAsExplicitUnit,
+    parseAsExplicitUnitFrench,
     parseWithoutUnit,
     parseDefault,
   ]
@@ -94,7 +115,7 @@ export const parseIngredient = (line: string): Ingredient | ParsingError => {
 }
 
 const parseIngredients = (ingredientsText: string): Ingredient[] => {
-  return cleanIngredients(ingredientsText)
+  return cleanLines(ingredientsText)
     .map(parseIngredient)
     .filter(e => !('source' in e))
     .map(e => e as Ingredient)
