@@ -19,7 +19,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/#/recipes",
+  "start_url": "/recipes",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff"
