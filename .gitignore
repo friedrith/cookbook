@@ -28,3 +28,12 @@ yarn-error.log*
 ui-debug.log
 database-debug.log
 firebase-debug.log
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarnrc.yml
