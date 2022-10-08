@@ -41,7 +41,7 @@ const parseRecipe = (recipe: Recipe): FormattedRecipe => {
     ...recipe,
     ingredients,
     steps: recipe.steps
-      .split('\n')
+      .split(/\n|\r\n/)
       .filter(s => s.trim())
       .filter(Boolean)
       .map(i => i.replace(/^-/, '').trim())

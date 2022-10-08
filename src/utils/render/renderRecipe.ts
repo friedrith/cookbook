@@ -1,4 +1,5 @@
 import Recipe from 'models/Recipe'
+import { endOfLine } from 'utils/platform'
 
 const renderRecipe = (recipe: Recipe) => {
   return `${recipe.name}
@@ -10,7 +11,7 @@ ${recipe.ingredients}
 
 Steps 
 ${recipe.steps}  
-  `
+  `.replace(/\n/, endOfLine())
 }
 
 export default renderRecipe

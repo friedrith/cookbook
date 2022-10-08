@@ -8,6 +8,13 @@ describe('cleanLines', () => {
     expect(cleanLines(text)).toEqual(expectedLines)
   })
 
+  it('should return remove - on windows', () => {
+    const text = '-foo\r\n- bar'
+    const expectedLines = ['foo', 'bar']
+
+    expect(cleanLines(text)).toEqual(expectedLines)
+  })
+
   it('should return remove empty lines', () => {
     const text = '-foo\n\n- bar'
     const expectedLines = ['foo', 'bar']
