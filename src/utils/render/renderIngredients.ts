@@ -1,8 +1,10 @@
-import Recipe from 'models/Recipe'
-import cleanLines from 'utils/parser/cleanLines'
+import Ingredient from 'models/Ingredient'
+import renderMeasure from './renderMeasure'
 
-const renderIngredients = (recipe: Recipe) => {
-  return cleanLines(recipe.ingredients).join('\n')
+const renderIngredients = (ingredients: Ingredient[]) => {
+  return ingredients
+    .map(i => `${renderMeasure(i.measure)} ${i.name}`)
+    .join('\n')
 }
 
 export default renderIngredients

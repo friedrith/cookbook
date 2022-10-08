@@ -7,7 +7,7 @@ type Props = {
 const SectionTitle = ({ children, more, className }: Props) => {
   return (
     <h2
-      className={`text-lg leading-6 text-xl font-semibold text-indigo-600 pb-6 flex items-center ${className}`}
+      className={`text-lg leading-6 text-xl font-semibold text-indigo-600 pb-6 flex flex-row items-center justify-left ${className}`}
     >
       <div className="flex-1">{children}</div>
       {more}

@@ -10,6 +10,7 @@ const usePopup = (initialState: boolean = false) => {
     isOpen,
     open,
     close,
+    toggle: () => (isOpen ? close() : open()),
   }
 }
 

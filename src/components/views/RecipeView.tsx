@@ -1,7 +1,7 @@
 import { useRef, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { PencilIcon, ArrowLeftIcon, ShareIcon } from '@heroicons/react/outline'
+import { PencilIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Box from 'components/atoms/Box'
@@ -111,12 +111,12 @@ const RecipeDetails = () => {
             ) : (
               <div className="flex-1" />
             )}
-            <Button.Icon
+            {/* <Button.Icon
               className="mr-3"
               onClick={sharePopup.open}
               icon={ShareIcon}
               blur
-            />
+            /> */}
             <Button.Icon
               url={`/recipes/${recipeId}/edit`}
               icon={PencilIcon}

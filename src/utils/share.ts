@@ -1,4 +1,5 @@
 import Recipe from 'models/Recipe'
+import Ingredient from 'models/Ingredient'
 import renderRecipe from 'utils/render/renderRecipe'
 import renderIngredients from 'utils/render/renderIngredients'
 
@@ -9,24 +10,29 @@ enum SharingStatus {
   Clipboard,
 }
 
-const share = async (text: string): Promise<SharingStatus> => {
+type SharingResult = {
+  status: SharingStatus
+  isCopied: boolean
+}
+
+const share = async (text: string): Promise<SharingResult> => {
   try {
     await navigator.share({ text })
-    return SharingStatus.Share
+    return { status: SharingStatus.Share, isCopied: false }
   } catch (err) {
     console.error('Share Api is not working')
     sendToClipboard(text)
-    return SharingStatus.Clipboard
+    return { status: SharingStatus.Clipboard, isCopied: true }
   }
 }
 
 export const shareIngredients = async (
-  recipe: Recipe
-): Promise<SharingStatus> => {
-  return await share(renderIngredients(recipe))
+  ingredients: Ingredient[]
+): Promise<SharingResult> => {
+  return await share(renderIngredients(ingredients))
 }
 
-export const shareRecipe = async (recipe: Recipe): Promise<SharingStatus> => {
+export const shareRecipe = async (recipe: Recipe): Promise<SharingResult> => {
   return await share(renderRecipe(recipe))
 }
 
