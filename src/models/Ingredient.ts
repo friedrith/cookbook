@@ -6,3 +6,15 @@ type Ingredient = {
 }
 
 export default Ingredient
+
+export const buildIngredient = (
+  name: string,
+  value: string | number,
+  unit: string
+): Ingredient => ({
+  name,
+  measure: {
+    unit,
+    value,
+  },
+})

@@ -1,6 +1,7 @@
 import Recipe, { FormattedRecipe } from 'models/Recipe'
 import Ingredient from 'models/Ingredient'
-import parseIngredients from './parseIngredients'
+import parseIngredient from './parseIngredient'
+import parseLines from './parseLines'
 
 export const parseStep = (step: string, ingredients: Ingredient[]) => ({
   description: step,
@@ -35,17 +36,15 @@ const parseRecipe = (recipe: Recipe): FormattedRecipe => {
   //   })
   // }
 
-  const ingredients = parseIngredients(recipe.ingredients)
+  const ingredients = parseLines(recipe.ingredients)
+    .map(parseIngredient)
+    .filter(e => !('source' in e))
+    .map(e => e as Ingredient)
 
   return {
     ...recipe,
     ingredients,
-    steps: recipe.steps
-      .split(/\n|\r\n/)
-      .filter(s => s.trim())
-      .filter(Boolean)
-      .map(i => i.replace(/^-/, '').trim())
-      .map(step => parseStep(step, ingredients)),
+    steps: parseLines(recipe.steps).map(step => parseStep(step, ingredients)),
     keywords: recipe.keywords.filter(Boolean),
   }
 }

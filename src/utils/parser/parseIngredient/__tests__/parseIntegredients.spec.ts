@@ -1,8 +1,8 @@
-import parseIngredients from '../parseIngredients'
+import parseIngredient from '../'
 
-import allFixtures from '../__fixtures__/'
+import allFixtures from '../__fixtures__'
 
-describe('parseIngredients', () => {
+describe('parseIngredient', () => {
   describe('Some explicit', () => {
     it('should return some as unit when some is explicit', () => {
       const ingredient = 'some milk'
@@ -14,7 +14,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
 
     it('should return some as unit with Some is explicit', () => {
@@ -27,7 +27,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
   })
 
@@ -42,7 +42,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
 
     it('should return the unit with space between number and unit', () => {
@@ -55,7 +55,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
 
     it('should return the unit with no unit', () => {
@@ -68,7 +68,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
 
     it('should return the unit with fraction', () => {
@@ -81,7 +81,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
 
     it('should return the unit with sophisticated fraction', () => {
@@ -94,7 +94,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
   })
 
@@ -109,7 +109,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
 
     it('should return as a count event for fraction', () => {
@@ -122,7 +122,7 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
   })
 
@@ -137,14 +137,14 @@ describe('parseIngredients', () => {
         },
       }
 
-      expect(parseIngredients(ingredient)).toEqual([expectedIngredient])
+      expect(parseIngredient(ingredient)).toEqual(expectedIngredient)
     })
   })
 
   allFixtures.forEach(fixtures => {
     Object.entries(fixtures).forEach(([text, expectedIngredient]) => {
       it(`should parse ${text}`, () => {
-        expect(parseIngredients(text)).toEqual([expectedIngredient])
+        expect(parseIngredient(text)).toEqual(expectedIngredient)
       })
     })
   })
