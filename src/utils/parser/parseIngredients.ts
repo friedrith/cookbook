@@ -67,7 +67,7 @@ const parseAsExplicitUnitFrench = (line: string): Ingredient | null => {
 }
 
 const parseWithoutUnit = (line: string): Ingredient | null => {
-  const matchWithoutUnit = line.match(/^(([0-9]|\.|\s|\/)*[0-9]) (.+)/)
+  const matchWithoutUnit = line.match(/^(([0-9]|\.|\s|\/|-)*[0-9]) (.+)/)
 
   if (matchWithoutUnit) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
