@@ -5,8 +5,6 @@ import Ingredient, { buildIngredient } from 'models/Ingredient'
 const parseAsExplicitUnitFrench = (line: string): Ingredient | null => {
   const match = line.match(/^([0-9.\s/½]*[0-9½])\s*(.*)\s+(de|d'|d’)\s*(.+)/i)
 
-  console.log('match', match)
-
   if (match) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [value, unit, _2, name] = match.slice(1)
