@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 // import { Link } from 'react-router-dom'
-import { ArrowLeftIcon } from '@heroicons/react/outline'
 import { useTranslation } from 'react-i18next'
 
 import Page from 'components/templates/Page'
@@ -8,7 +7,7 @@ import MainPage from 'components/templates/MainPage'
 import Header from 'components/atoms/Header'
 // import RecipePreview from 'components/molecules/RecipePreview'
 // import LargeMainPage from 'components/templates/LargeMainPage'
-import Button from 'components/atoms/Button'
+import BackButton from 'components/molecules/BackButton'
 
 import PreferencesEntry from 'components/organisms/PreferencesEntry'
 import PreferencesSection from 'components/organisms/PreferencesSection'
@@ -63,7 +62,7 @@ const Preferences = () => {
       <Header restRef={ref}>
         {isMaximized => (
           <>
-            <Button.Icon url="/recipes" icon={ArrowLeftIcon} basic />
+            <BackButton url="/recipes" basic />
 
             <h1 className="text-3xl font-extrabold text-gray-900 pl-4">
               {t('_Settings')}

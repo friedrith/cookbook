@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeftIcon, TrashIcon } from '@heroicons/react/outline'
+import { TrashIcon } from '@heroicons/react/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
@@ -13,6 +13,7 @@ import Recipe from 'models/Recipe'
 import NotFound404 from 'components/views/NotFound404'
 import Loading from 'components/views/Loading'
 import Button from 'components/atoms/Button'
+import BackButton from 'components/molecules/BackButton'
 
 import {
   getRecipe,
@@ -97,11 +98,7 @@ const RecipeEdit = () => {
       <Header restRef={ref}>
         {isMaximized => (
           <>
-            <Button.Icon
-              url={`/recipes/${recipe.id}`}
-              icon={ArrowLeftIcon}
-              disabled={saving}
-            />
+            <BackButton url={`/recipes/${recipe.id}`} disabled={saving} />
             {isMaximized ? (
               <RecipeHeader
                 recipeName={recipe?.name}

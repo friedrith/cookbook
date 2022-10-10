@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowLeftIcon } from '@heroicons/react/outline'
 
 import { useAppDispatch } from 'hooks/redux'
 import { loginWithMagicLink } from 'store'
 import LoginPage from 'components/templates/LoginPage'
-import Button from 'components/atoms/Button'
+import BackButton from 'components/molecules/BackButton'
 
 const Login = () => {
   const { t } = useTranslation()
@@ -19,17 +18,12 @@ const Login = () => {
     event.preventDefault()
     dispatch(loginWithMagicLink(email))
 
-    navigate('/waiting-for-link')
+    navigate('/login/waiting-for-link')
   }
 
   return (
     <LoginPage title={t('_Log in')}>
-      <Button.Icon
-        url="/"
-        icon={ArrowLeftIcon}
-        basic
-        className="fixed top-5 left-5 lg:top-10 lg:left-10"
-      />
+      <BackButton url="/" className="fixed top-5 left-5 lg:top-10 lg:left-10" />
       <div>
         {/* <img
                 className="h-12 w-auto"

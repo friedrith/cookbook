@@ -7,6 +7,8 @@ import { useAppDispatch } from 'hooks/redux'
 import Page from 'components/templates/Page'
 import RecipeEditor from 'components/organisms/RecipeEditor'
 import Header from 'components/atoms/Header'
+import BackButton from 'components/molecules/BackButton'
+
 import { createRecipe } from 'models/Recipe'
 import { addRecipe } from 'store'
 import Button from 'components/atoms/Button'
@@ -58,7 +60,7 @@ const RecipeNew = () => {
         {isMaximized => (
           <>
             {disabled ? (
-              <Button.Icon url="/recipes" icon={ArrowLeftIcon} />
+              <BackButton url="/recipes" />
             ) : (
               <Button.Icon
                 icon={ArrowLeftIcon}

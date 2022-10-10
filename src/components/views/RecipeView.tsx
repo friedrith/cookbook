@@ -1,7 +1,7 @@
 import { useRef, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { PencilIcon, ArrowLeftIcon } from '@heroicons/react/outline'
+import { PencilIcon } from '@heroicons/react/outline'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Box from 'components/atoms/Box'
@@ -17,6 +17,7 @@ import NotFound404 from 'components/views/NotFound404'
 import Button from 'components/atoms/Button'
 import SharePopup from 'components/organisms/SharePopup'
 import usePopup from 'hooks/usePopup'
+import BackButton from 'components/molecules/BackButton'
 
 import {
   getRecipe,
@@ -102,7 +103,7 @@ const RecipeDetails = () => {
       <Header restRef={ref} onMaximizedChanged={setMaximized}>
         {isMaximized => (
           <>
-            <Button.Icon url="/recipes" icon={ArrowLeftIcon} />
+            <BackButton url="/recipes" />
             {isMaximized ? (
               <RecipeHeader
                 recipeName={formattedRecipe.name}

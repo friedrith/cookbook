@@ -50,7 +50,7 @@ const TopBar = ({
         isMaximized ? 'bg-white shadow' : ''
       )}
     >
-      <div className="max-w-screen-xl m-auto flex items-center h-20">
+      <div className="max-w-screen-xl m-auto flex items-center h-16 lg:h-20">
         <TopBarContext.Provider value={{ isMaximized }}>
           {children ? children(isMaximized) : null}
         </TopBarContext.Provider>

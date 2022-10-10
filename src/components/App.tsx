@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Routes, Route, useLocation, Location } from 'react-router-dom'
 
 import Roles from 'models/Roles'
 
@@ -17,8 +17,20 @@ import Faq from 'components/views/Faq'
 import NotFound404 from 'components/views/NotFound404'
 import Help from 'components/views/Help'
 
+import HistoryContext from 'contexts/History'
+
 import { useAppDispatch } from 'hooks/redux'
 import { initSession } from 'store'
+import { isMobile } from 'utils/platforms/mobile'
+
+const areLocationIncludes = (
+  location1: Location,
+  location2: Location,
+  routes: string[]
+) =>
+  routes.some(
+    r => location1.pathname.includes(r) && location2.pathname.includes(r)
+  )
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -26,33 +38,74 @@ const App = () => {
     dispatch(initSession())
   }, [dispatch])
 
-  return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route
-        path="/recipes"
-        element={<ProtectedPage onlyRoles={[Roles.User]} />}
-      >
-        <Route path="" element={<RecipeList />} />
-        <Route path="new" element={<RecipeNew />} />
-        <Route path=":recipeId" element={<RecipeView />} />
-        <Route path=":recipeId/edit" element={<RecipeEdit />} />
-      </Route>
-      <Route
-        path="/preferences"
-        element={
-          <ProtectedPage onlyRoles={[Roles.User]}>
-            <Preferences />
-          </ProtectedPage>
+  const location = useLocation()
+
+  const [previousLocation, setPreviousLocation] = useState(null)
+
+  const [displayLocation, setDisplayLocation] = useState(location)
+  const [transitionStage, setTransistionStage] = useState('')
+
+  useEffect(() => {
+    if (location !== displayLocation) {
+      if (
+        isMobile() &&
+        areLocationIncludes(location, displayLocation, ['/recipes', '/login'])
+      ) {
+        if (displayLocation.pathname.includes(location.pathname)) {
+          setTransistionStage('slideRight')
+        } else {
+          setTransistionStage('slideLeft')
         }
-      />
-      <Route path="/login" element={<Login />} />
-      <Route path="/waiting-for-link" element={<LinkWaiting />} />
-      <Route path="/verify-link" element={<LinkVerification />} />
-      <Route path="/faq" element={<Faq />} />
-      <Route path="/help" element={<Help />} />
-      <Route path="/*" element={<NotFound404 />} />
-    </Routes>
+      } else {
+        setDisplayLocation(location)
+      }
+
+      setPreviousLocation(displayLocation)
+    }
+  }, [location, displayLocation])
+
+  return (
+    <div
+      className={`${transitionStage}`}
+      onAnimationEnd={() => {
+        if (transitionStage === 'slideRight') {
+          setTransistionStage('slideRightEnd')
+          setDisplayLocation(location)
+        } else if (transitionStage === 'slideLeft') {
+          setTransistionStage('slideLeftEnd')
+          setDisplayLocation(location)
+        }
+      }}
+    >
+      <HistoryContext.Provider value={{ previousLocation }}>
+        <Routes location={displayLocation}>
+          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/recipes"
+            element={<ProtectedPage onlyRoles={[Roles.User]} />}
+          >
+            <Route path="" element={<RecipeList />} />
+            <Route path="new" element={<RecipeNew />} />
+            <Route path=":recipeId" element={<RecipeView />} />
+            <Route path=":recipeId/edit" element={<RecipeEdit />} />
+          </Route>
+          <Route
+            path="/preferences"
+            element={
+              <ProtectedPage onlyRoles={[Roles.User]}>
+                <Preferences />
+              </ProtectedPage>
+            }
+          />
+          <Route path="/login/waiting-for-link" element={<LinkWaiting />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/verify-link" element={<LinkVerification />} />
+          <Route path="/faq" element={<Faq />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="/*" element={<NotFound404 />} />
+        </Routes>
+      </HistoryContext.Provider>
+    </div>
   )
 }
 
