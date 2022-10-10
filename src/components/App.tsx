@@ -40,7 +40,7 @@ const App = () => {
 
   const location = useLocation()
 
-  const [previousLocation, setPreviousLocation] = useState(null)
+  const [previousLocation, setPreviousLocation] = useState('')
 
   const [displayLocation, setDisplayLocation] = useState(location)
   const [transitionStage, setTransistionStage] = useState('')
@@ -60,12 +60,13 @@ const App = () => {
         setDisplayLocation(location)
       }
 
-      setPreviousLocation(displayLocation)
+      setPreviousLocation(displayLocation.pathname)
     }
   }, [location, displayLocation])
 
   return (
     <div
+      id="app"
       className={`${transitionStage}`}
       onAnimationEnd={() => {
         if (transitionStage === 'slideRight') {

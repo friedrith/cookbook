@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 const HistoryContext = createContext({
-  previousLocation: null,
+  previousLocation: '',
 })
 
 export default HistoryContext

@@ -8,12 +8,16 @@ html {
   padding: 0;
   height: 100%;
   overflow: hidden;
+  position: fixed;
 }
 
-#root {
+#root,
+#app {
   height: 100%;
-  position: relative;
+  position: fixed;
   overflow: hidden;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 @layer utilities {
