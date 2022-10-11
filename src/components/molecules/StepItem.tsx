@@ -61,7 +61,7 @@ const StepItemGeneric = ({
           <div className="text-left">
             {ingredientsForStep.map((ingredient, index) => (
               <Badge
-                color="pink"
+                color="blue"
                 className="mr-1"
                 key={`${ingredient.name} ${index}`}
               >{`${renderMeasure(ingredient.measure)} ${
