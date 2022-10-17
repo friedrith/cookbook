@@ -40,6 +40,18 @@ const fixtures = {
     name: '(2 c. à soupe) de tahini',
     measure: { unit: 'ml', value: 30 },
   },
+  '6 pommes de terre': {
+    name: 'pommes de terre',
+    measure: { unit: 'count', value: 6 },
+  },
+  '3 c.à.s de farine': {
+    name: 'farine',
+    measure: { unit: 'c.à.s', value: 3 },
+  },
+  '3 c.à.c de sel': {
+    name: 'sel',
+    measure: { unit: 'c.à.c', value: 3 },
+  },
 }
 
 export default fixtures

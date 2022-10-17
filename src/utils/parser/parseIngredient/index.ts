@@ -14,9 +14,11 @@ const parsers = [
 export const parseValue = (value: string | number) => {
   if (typeof value === 'number') return value
 
-  const number = parseFloat(value)
+  const cleanedValue = value.trim()
 
-  return `${number}` === value ? number : value
+  const number = parseFloat(cleanedValue)
+
+  return `${number}` === cleanedValue ? number : cleanedValue
 }
 
 const cleanIngredient = (ingredient: Ingredient) => ({
