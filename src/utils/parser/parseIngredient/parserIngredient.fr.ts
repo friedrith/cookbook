@@ -33,15 +33,11 @@ const units = [
 ]
 
 const parseKnownUnit = (line: string): Ingredient | null => {
-  // console.log('parseAsWithUnitWithoutOf', parseAsWithUnitWithoutOf)
   const result = units
     .map(u => {
       const match = line.match(
         new RegExp(`([0-9\\s½]+)[ ]*(${u})[ ]+(de|d'|d’|)*(.*)`, 'i')
       )
-      if (line === '6 pommes de terre') {
-        console.log('match', match)
-      }
       return match ? { value: match[1], unit: match[2], name: match[4] } : null
     })
     .find(Boolean)
