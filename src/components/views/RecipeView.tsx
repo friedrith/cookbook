@@ -70,7 +70,7 @@ const RecipeDetails = () => {
           <div ref={ref} />
           <div className="flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
             <Box className={`p-4 md:w-[400px] ${position(isMaximized)}`}>
-              <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center lg:text-left pb-2">
+              <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center lg:text-left pb-2 select-text">
                 {formattedRecipe.name}
               </h1>
               <div className="text-center lg:text-left">

@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { CheckIcon } from '@heroicons/react/solid'
 
 import Step from 'models/Step'
@@ -7,6 +8,7 @@ import classNames from 'utils/classNames'
 import matchingIngredients from 'utils/matchingIngredients'
 import Badge from 'components/atoms/Badge'
 import renderMeasure from 'utils/render/renderMeasure'
+import { replaceUrlsByLinks } from 'utils/parser/parseStep'
 
 type PropsGeneric = {
   className?: string
@@ -35,6 +37,11 @@ const StepItemGeneric = ({
     matchingIngredients(description)
   )
 
+  const descriptionParsed = useMemo(
+    () => replaceUrlsByLinks(description, 'underline'),
+    [description]
+  )
+
   return (
     <li className={className}>
       {!isLastOne ? (
@@ -55,9 +62,10 @@ const StepItemGeneric = ({
           </span>
         </span>
         <div className="ml-4 min-w-0 flex flex-col">
-          <div className={`text-sm text-left ${descriptionClassName}`}>
-            {description}
-          </div>
+          <div
+            className={`text-sm text-left select-text ${descriptionClassName}`}
+            dangerouslySetInnerHTML={{ __html: descriptionParsed }}
+          ></div>
           <div className="text-left">
             {ingredientsForStep.map((ingredient, index) => (
               <Badge
