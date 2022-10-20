@@ -4,4 +4,8 @@ const expression =
 export const replaceUrlsByLinks = (
   description: string,
   className: string = ''
-) => description.replace(expression, `<a href="$1" class="${className}">$1</a>`)
+) =>
+  description.replace(
+    expression,
+    `<a href="$1" target="_blank" class="${className}">$1</a>`
+  )
