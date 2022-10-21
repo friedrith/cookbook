@@ -97,10 +97,10 @@ const IngredientList = ({ recipe }: Props) => {
                   />
                 )}
               </td>
-              <td className="whitespace-nowrap py-4 text-sm font-medium text-gray-900 text-right w-20">
+              <td className="whitespace-nowrap py-4 align-top text-sm font-medium text-gray-900 text-right w-20">
                 {renderMeasure(ingredient.measure, { explicit: true })}
               </td>
-              <td className="whitespace-nowrap px-3 py-4 pr-6 text-sm text-gray-500 w-60">
+              <td className="px-3 py-4 pr-6 text-sm text-gray-500 w-60">
                 {ingredient.name}
               </td>
             </tr>
