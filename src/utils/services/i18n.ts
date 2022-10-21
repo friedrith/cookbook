@@ -25,7 +25,7 @@ i18n
     debug: false && process.env.NODE_ENV !== 'production',
 
     load: 'all',
-    supportedLngs: ['en'],
+    supportedLngs: ['en', 'fr'],
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

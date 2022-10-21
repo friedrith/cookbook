@@ -25,7 +25,7 @@ const Preferences = () => {
   const ref = useRef<HTMLInputElement>(null)
 
   return (
-    <Page title={t('_Settings')}>
+    <Page title={t('_settings')}>
       <MainPage className="flex-1 relative z-10">
         <div className="pt-20">
           <PreferencesSection title="User Interface">
@@ -65,7 +65,7 @@ const Preferences = () => {
             <BackButton url="/recipes" basic />
 
             <h1 className="text-3xl font-extrabold text-gray-900 pl-4">
-              {t('_Settings')}
+              {t('_settings')}
             </h1>
           </>
         )}

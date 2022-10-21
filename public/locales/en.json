@@ -5,7 +5,6 @@
   "_Try a different search.": "Try a different search.",
   "_No Recipes created": "No Recipes created",
   "_Get started by creating a new recipe": "Get started by creating a new recipe.",
-  "_sign out": "Sign Out",
   "_settings": "Settings",
   "_Log in": "Log in",
   "_Send magic link": "Send a magic link",
@@ -20,7 +19,6 @@
   "_Try CookBook": "Try CookBook",
   "_Try banana bread": "Try banana bread",
   "_Account": "Account",
-  "_Settings": "Settings",
   "_Create Recipe": "Create Recipe",
   "_New Recipe": "New Recipe",
   "_Waiting for link": "Waiting for link",
@@ -70,5 +68,9 @@
   "_for everybody": "for everybody",
   "_Cooking your best recipes will be never easier": "Cooking your best recipes will be never easier",
   "_Create shopping list": "Create shopping list",
-  "_Shopping list copied to clipboard": "Shopping list copied to clipboard"
+  "_Shopping list copied to clipboard": "Shopping list copied to clipboard",
+  "_Get a magic link sent to your email": "Get a magic link sent to your email that'll log in instantly.",
+  "_Why a magic link": "Why a magic link?",
+  "_We sent an email": "We sent an email to <strong>{{email}}</strong>. You will find a magic link that will log you in instantly.",
+  "_This link will expire 24 hours.": "This link will expire 24 hours."
 }

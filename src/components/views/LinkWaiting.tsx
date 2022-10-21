@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 
 import BackButton from 'components/molecules/BackButton'
 import LoginPage from 'components/templates/LoginPage'
@@ -23,11 +23,10 @@ const LinkWaiting = () => {
         </h2>
 
         <p className="mt-2 text-sm text-gray-600">
-          We sent an email to <strong>{email}</strong>. You will find a magic
-          link that will log you in instantly.
+          <Trans i18nKey="_We sent an email" values={{ email }} />
         </p>
         <p className="mt-2 text-sm text-gray-600">
-          This link will expire 24 hours.
+          {t('_This link will expire 24 hours.')}
         </p>
 
         {/* <div className="mt-8">

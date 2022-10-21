@@ -35,7 +35,7 @@ const Login = () => {
         </h2>
         {
           <p className="mt-2 text-sm text-gray-600">
-            Get a magic link sent to your email that'll log in instantly.{' '}
+            {t('_Get a magic link sent to your email')}
           </p>
         }
       </div>
@@ -78,7 +78,7 @@ const Login = () => {
                 to="/faq"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
-                Why a magic link?
+                {t('_Why a magic link')}
               </Link>
             </p>
           </div>
