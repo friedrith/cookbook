@@ -5,10 +5,10 @@ import Step from 'models/Step'
 import Ingredient from 'models/Ingredient'
 import StepStatus from 'models/StepStatus'
 import classNames from 'utils/classNames'
-import matchingIngredients from 'utils/matchingIngredients'
 import Badge from 'components/atoms/Badge'
 import renderMeasure from 'utils/render/renderMeasure'
 import { replaceUrlsByLinks } from 'utils/parser/parseStep'
+import shortenIngredientName from 'utils/parser/shortenIngredientName'
 
 type PropsGeneric = {
   className?: string
@@ -33,10 +33,6 @@ const StepItemGeneric = ({
   onClick,
   ingredients,
 }: PropsGeneric) => {
-  const ingredientsForStep = ingredients.filter(
-    matchingIngredients(description)
-  )
-
   const descriptionParsed = useMemo(
     () => replaceUrlsByLinks(description, 'underline'),
     [description]
@@ -65,16 +61,16 @@ const StepItemGeneric = ({
           <div
             className={`text-sm text-left select-text ${descriptionClassName}`}
             dangerouslySetInnerHTML={{ __html: descriptionParsed }}
-          ></div>
+          />
           <div className="text-left">
-            {ingredientsForStep.map((ingredient, index) => (
+            {ingredients.map((ingredient, index) => (
               <Badge
                 color="blue"
                 className="mr-1"
                 key={`${ingredient.name} ${index}`}
-              >{`${renderMeasure(ingredient.measure)} ${
-                ingredient.name
-              }`}</Badge>
+              >{`${renderMeasure(ingredient.measure)} ${shortenIngredientName(
+                ingredient
+              )}`}</Badge>
             ))}
           </div>
         </div>

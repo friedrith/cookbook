@@ -3,6 +3,7 @@ import Measure from './Measure'
 type Ingredient = {
   name: string
   measure: Measure
+  hash: string
 }
 
 export default Ingredient
@@ -17,4 +18,5 @@ export const buildIngredient = (
     unit,
     value,
   },
+  hash: `${name}//${value}//${unit}`,
 })

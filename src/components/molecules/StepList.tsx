@@ -4,6 +4,9 @@ import { FormattedRecipe } from 'models/Recipe'
 import Step from 'models/Step'
 import StepItem from 'components/molecules/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'
+import matchIngredient from 'utils/parser/matchIngredient'
+import Ingredient from 'models/Ingredient'
+import shortenIngredientName from 'utils/parser/shortenIngredientName'
 
 type Props = {
   recipe: FormattedRecipe
@@ -21,8 +24,34 @@ const evaluateStatus = (index: number, currentStepIndex: number) => {
     : 'todo'
 }
 
+const notInIfLongerThan =
+  (list: Ingredient[], length: number) => (ingredient: Ingredient) =>
+    shortenIngredientName(ingredient).length > length
+      ? list.every(i => i.hash !== ingredient.hash)
+      : true
+
 const StepList = ({ recipe, progress, onSelectStep }: Props) => {
   const { t } = useTranslation()
+
+  const ingredientsByStep = recipe.steps.reduce(
+    (
+      acc: { steps: Ingredient[][]; ingredientsAlreadyUsed: Ingredient[] },
+      step: Step
+    ): { steps: Ingredient[][]; ingredientsAlreadyUsed: Ingredient[] } => {
+      const { steps, ingredientsAlreadyUsed } = acc
+
+      const ingredients = recipe.ingredients
+        .filter(matchIngredient(step.description))
+        .filter(notInIfLongerThan(ingredientsAlreadyUsed, 10))
+
+      return {
+        steps: [...steps, ingredients],
+        ingredientsAlreadyUsed: [...ingredientsAlreadyUsed, ...ingredients],
+      }
+    },
+
+    { steps: [], ingredientsAlreadyUsed: [] }
+  )?.steps
 
   return (
     <div className="py-4 lg:px-10 relative z-10">
@@ -36,7 +65,7 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
               isLastOne={stepIdx === recipe.steps.length - 1}
               status={evaluateStatus(stepIdx, progress)}
               onClick={() => onSelectStep(stepIdx)}
-              ingredients={recipe.ingredients}
+              ingredients={ingredientsByStep[stepIdx]}
             />
           ))}
         </ol>

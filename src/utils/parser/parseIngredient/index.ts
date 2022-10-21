@@ -22,6 +22,7 @@ export const parseValue = (value: string | number) => {
 }
 
 const cleanIngredient = (ingredient: Ingredient) => ({
+  ...ingredient,
   name: ingredient.name.trim(),
   measure: {
     unit: ingredient.measure.unit.trim(),
