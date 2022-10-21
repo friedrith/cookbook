@@ -5,7 +5,7 @@ import Step from 'models/Step'
 import StepItem from 'components/molecules/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'
 import matchIngredient from 'utils/parser/matchIngredient'
-import Ingredient from 'models/Ingredient'
+import Ingredient, { areEqual } from 'models/Ingredient'
 import shortenIngredientName from 'utils/parser/shortenIngredientName'
 
 type Props = {
@@ -27,7 +27,7 @@ const evaluateStatus = (index: number, currentStepIndex: number) => {
 const notInIfLongerThan =
   (list: Ingredient[], length: number) => (ingredient: Ingredient) =>
     shortenIngredientName(ingredient).length > length
-      ? list.every(i => i.hash !== ingredient.hash)
+      ? list.every(i => !areEqual(i, ingredient))
       : true
 
 const StepList = ({ recipe, progress, onSelectStep }: Props) => {

@@ -3,7 +3,6 @@ import Measure from './Measure'
 type Ingredient = {
   name: string
   measure: Measure
-  hash: string
 }
 
 export default Ingredient
@@ -18,5 +17,9 @@ export const buildIngredient = (
     unit,
     value,
   },
-  hash: `${name}//${value}//${unit}`,
 })
+
+export const areEqual = (ingredientA: Ingredient, ingredientB: Ingredient) =>
+  ingredientA.name === ingredientB.name &&
+  ingredientA.measure.value === ingredientB.measure.value &&
+  ingredientA.measure.unit === ingredientB.measure.unit
