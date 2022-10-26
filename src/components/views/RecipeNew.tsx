@@ -27,7 +27,7 @@ const RecipeNew = () => {
     if (disabled) return
     try {
       const newRecipe = await dispatch(addRecipe(recipe)).unwrap()
-      navigate(`/recipes/${newRecipe.id}`)
+      navigate(`/recipes/${newRecipe.id}`, { replace: true })
     } catch (error) {
       console.log('error', error)
     }
@@ -42,7 +42,7 @@ const RecipeNew = () => {
   const ref = useRef<HTMLDivElement | null>(null)
 
   const confirmLosing = () => {
-    navigate('/recipes')
+    navigate(-1)
   }
 
   useEventListener('beforeunload', event => {
