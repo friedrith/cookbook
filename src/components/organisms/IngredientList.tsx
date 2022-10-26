@@ -81,8 +81,8 @@ const IngredientList = ({ recipe }: Props) => {
               key={key(ingredient, index)}
               onClick={toggleCheckedIngredient(index)}
               className={`${
-                shoppingBag.isOpen ? 'cursor-pointer' : ''
-              } select-text`}
+                shoppingBag.isOpen ? 'cursor-pointer' : 'select-text'
+              } `}
             >
               <td className="w-10 align-middle text-center">
                 {shoppingBag.isOpen && (
