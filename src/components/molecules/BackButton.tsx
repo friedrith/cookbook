@@ -17,8 +17,6 @@ const BackButton = ({ url, className, basic, disabled }: Props) => {
   const { previousLocation } = useContext(HistoryContext)
   const navigate = useNavigate()
 
-  console.log('previousLocation', previousLocation)
-
   if (previousLocation) {
     return (
       <Button.Icon

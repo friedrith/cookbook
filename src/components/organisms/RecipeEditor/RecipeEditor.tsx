@@ -5,7 +5,6 @@ import { PhotographIcon } from '@heroicons/react/outline'
 import { WithContext as ReactTags } from 'react-tag-input'
 
 import { storeFile } from 'utils/api/firebase'
-import Input from 'components/atoms/Input'
 import TextArea from 'components/atoms/TextArea'
 import ImageBanner from 'components/molecules/ImageBanner'
 import LargeMainPage from 'components/templates/LargeMainPage'
@@ -106,12 +105,13 @@ const RecipeEditor = forwardRef(
         <LargeMainPage>
           <Box className="p-4 relative top-[-7rem]">
             <div className="max-w-screen-md m-auto sm:p-6 space-y-8" ref={ref}>
-              <Input.Basic
-                placeholder={t('_Recipe Name [required]')}
-                id="recipe-name"
+              <TextArea.Basic
                 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 w-full"
+                id="recipe-name"
+                rows={1}
+                placeholder={t('_Recipe Name [required]')}
                 value={name}
-                onChange={name => change({ name })}
+                onChange={name => change({ name: name.replace(/\n/g, '') })}
               />
               <div>
                 <SectionTitle className="pb-3">
