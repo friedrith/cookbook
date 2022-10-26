@@ -2,8 +2,10 @@ import Ingredient from 'models/Ingredient'
 
 import excludingWords from './excludingWords.en'
 
+const cleanWord = (word: string) => word.toLowerCase().replace(/s$/, '')
+
 const match = (wordA: string, wordB: string) =>
-  wordA.toLowerCase() === wordB.toLowerCase()
+  cleanWord(wordA) === cleanWord(wordB)
 
 const matchingIngredients =
   (description: string) => (ingredient: Ingredient) => {
