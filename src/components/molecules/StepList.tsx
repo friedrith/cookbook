@@ -42,7 +42,7 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
 
       const ingredients = recipe.ingredients
         .filter(matchIngredient(step.description))
-        .filter(notInIfLongerThan(ingredientsAlreadyUsed, 10))
+        .filter(notInIfLongerThan(ingredientsAlreadyUsed, 15))
 
       return {
         steps: [...steps, ingredients],

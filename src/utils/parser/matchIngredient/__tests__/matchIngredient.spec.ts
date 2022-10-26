@@ -16,6 +16,13 @@ describe('matchingIngredient', () => {
     expect(matchIngredient(description)(ingredient)).toEqual(true)
   })
 
+  it('should return true when the description includes exactly the ingredient with case insensitivity', () => {
+    const ingredient = anIngredient('Bar')
+    const description = 'foo bar'
+
+    expect(matchIngredient(description)(ingredient)).toEqual(true)
+  })
+
   it('should return true when the description includes a word of the ingredient', () => {
     const ingredient = anIngredient('extra virgin olive oil')
     const description =
@@ -29,5 +36,13 @@ describe('matchingIngredient', () => {
     const description = 'A spoon of water'
 
     expect(matchIngredient(description)(ingredient)).toEqual(false)
+  })
+
+  it('should return true when the description includes a word of the ingredient with case insensitivity', () => {
+    const ingredient = anIngredient('extra virgin olive Oil')
+    const description =
+      'Put the sweet potatoes into a large bowl and add the oil'
+
+    expect(matchIngredient(description)(ingredient)).toEqual(true)
   })
 })
