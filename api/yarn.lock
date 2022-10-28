@@ -207,6 +207,13 @@
     "@types/connect" "*"
     "@types/node" "*"
 
+"@types/child-process-promise@^2.2.2":
+  "integrity" "sha512-4eGTIhKW0jb9DlS81Fgo/UyZ12DMhDhz3Ec8tdHW53l4ubteynNIuy7Z1HNnyHn1jTzXa/o9iX0WoAdiSoDs+Q=="
+  "resolved" "https://registry.npmjs.org/@types/child-process-promise/-/child-process-promise-2.2.2.tgz"
+  "version" "2.2.2"
+  dependencies:
+    "@types/node" "*"
+
 "@types/connect@*":
   "version" "3.4.35"
   dependencies:

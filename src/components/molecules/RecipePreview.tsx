@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import thumbnailUrl from 'utils/thumbnailUrl'
 import Recipe from 'models/Recipe'
 
 type Props = {
@@ -10,13 +12,16 @@ type Props = {
 const RecipePreview = ({ recipe }: Props) => {
   const { t } = useTranslation()
 
+  const [previewUrl, setPreviewUrl] = useState(thumbnailUrl(recipe.imageUrl))
+
   return (
     <Link className="relative group" to={`/recipes/${recipe.id}`}>
       <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-gray-200">
         <img
-          src={recipe.imageUrl}
+          src={previewUrl}
           alt={recipe.name}
           className="object-center object-cover"
+          onError={() => setPreviewUrl(recipe.imageUrl)}
         />
         <div
           className="flex items-end opacity-0 p-4 group-hover:opacity-100"

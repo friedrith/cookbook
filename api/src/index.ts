@@ -18,14 +18,14 @@ export const api = functions.https.onRequest(app)
 
 import * as path from 'path'
 import { tmpdir } from 'os'
-import { spawn } from 'node:child_process'
+import { spawn } from 'child-process-promise'
 import { unlinkSync } from 'fs'
 
 // https://firebase.google.com/docs/storage/extend-with-functions
 export const generateThumbnail = functions.storage
   .object()
   .onFinalize(async object => {
-    console.log('generate thumbnail')
+    console.log('generating thumbnail...')
     const fileBucket = object.bucket // The Storage bucket that contains the file.
     const filePath = object.name || '' // File path in the bucket.
     const contentType = object.contentType || '' // File content type.
@@ -52,7 +52,12 @@ export const generateThumbnail = functions.storage
     await bucket.file(filePath).download({ destination: tempFilePath })
     functions.logger.log('Image downloaded locally to', tempFilePath)
     // Generate a thumbnail using ImageMagick.
-    spawn('convert', [tempFilePath, '-thumbnail', '200x200>', tempFilePath])
+    await spawn('convert', [
+      tempFilePath,
+      '-thumbnail',
+      '300x300>',
+      tempFilePath,
+    ])
     functions.logger.log('Thumbnail created at', tempFilePath)
     // We add a 'thumb_' prefix to thumbnails file name. That's where we'll upload the thumbnail.
     const thumbFileName = `thumb_${fileName}`
