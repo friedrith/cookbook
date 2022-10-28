@@ -19,6 +19,7 @@ const NotFound404 = () => {
           <Link
             to="/recipes"
             className="text-base font-medium text-indigo-600 hover:text-indigo-500"
+            title={t('_Back to landing page')}
           >
             {t('_Go back home')}
             <span aria-hidden="true"> &rarr;</span>

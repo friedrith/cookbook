@@ -28,3 +28,4 @@ ngrok
 ## Useful links
 
 - https://web.dev/add-manifest/
+- [Accessibility](https://reactjs.org/docs/accessibility.html)

@@ -47,7 +47,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
             <label htmlFor="search" className="sr-only">
               {t('_Try banana bread')}
             </label>
-            <div className="relative clas">
+            <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <SearchIcon
                   className="h-5 w-5 text-gray-400"
@@ -64,6 +64,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                 onChange={onSearchChange}
                 autoComplete="off"
                 defaultValue={searchValue}
+                aria-label={t('_Search in recipes')}
               />
               <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5 hidden lg:block">
                 <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
@@ -90,6 +91,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
           <Button.Primary
             to="/recipes/new"
             className="hidden lg:block rounded-md mr-6 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            aria-label={t('_Create Recipe')}
           >
             <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>
           </Button.Primary>
@@ -100,10 +102,12 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                 url="/recipes/new"
                 icon={PlusIcon}
                 className="block lg:hidden rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                aria-label={t('_Create Recipe')}
               />
               <button
                 className="ml-2 lg:ml-4 block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 onClick={() => showSearchOnMobile(true)}
+                aria-label={t('_Search in recipes')}
               >
                 <SearchIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
               </button>

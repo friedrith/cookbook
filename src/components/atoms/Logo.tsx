@@ -14,7 +14,7 @@ const Logo = () => {
         <h2 className="text-2xl sm:text-2xl font-bold leading-7 text-gray-900  sm:truncate ">
           {t('_AppName')}
         </h2>
-        <span className="relative ml-0.5 bottom-[-3px] inline-flex items-center rounded-full bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
+        <span className="relative ml-0.5 bottom-[-3px] inline-flex items-center rounded-full bg-red-600 px-2.5 py-0.5 text-xs font-medium text-white">
           {t('_Beta')}
         </span>
       </div>

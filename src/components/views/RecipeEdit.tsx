@@ -98,7 +98,11 @@ const RecipeEdit = () => {
       <Header restRef={ref}>
         {isMaximized => (
           <>
-            <BackButton url={`/recipes/${recipe.id}`} disabled={saving} />
+            <BackButton
+              url={`/recipes/${recipe.id}`}
+              disabled={saving}
+              title={t('_Back to recipes')}
+            />
             {isMaximized ? (
               <RecipeHeader
                 recipeName={recipe?.name}

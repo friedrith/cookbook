@@ -62,7 +62,7 @@ const Preferences = () => {
       <Header restRef={ref}>
         {isMaximized => (
           <>
-            <BackButton url="/recipes" basic />
+            <BackButton url="/recipes" basic title={t('_Back to recipes')} />
 
             <h1 className="text-3xl font-extrabold text-gray-900 pl-4">
               {t('_settings')}

@@ -53,10 +53,12 @@
     "extends": [
       "prettier",
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:jsx-a11y/recommended"
     ],
     "plugins": [
-      "prettier"
+      "prettier",
+      "jsx-a11y"
     ]
   },
   "eslintIgnore": [

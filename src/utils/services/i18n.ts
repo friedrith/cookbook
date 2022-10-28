@@ -22,7 +22,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     fallbackLng: 'en',
-    debug: false && process.env.NODE_ENV !== 'production',
+    debug: process.env.NODE_ENV !== 'production',
 
     load: 'all',
     supportedLngs: ['fr', 'en'],

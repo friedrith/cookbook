@@ -78,5 +78,13 @@
     "Shopping list copied to clipboard": "Shopping list copied to clipboard",
     "Share shopping list": "Share shopping list"
   },
-  "_Beta": "Beta"
+  "editor": {
+    "Add ingredients there": "Add ingredients there, one ingredient by line",
+    "Add steps there": "Add step there, one step by line"
+  },
+  "_Beta": "Beta",
+  "_Edit Recipe": "Edit Recipe",
+  "_Back to landing page": "Go back to landing page",
+  "_Back to recipes": "Go back to recipes",
+  "_Search in recipes": "Search in recipes"
 }

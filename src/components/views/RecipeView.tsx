@@ -27,6 +27,7 @@ import {
 } from 'store'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import parseRecipe from 'utils/parser/parseRecipe'
+import { t } from 'i18next'
 
 const position = (isMaximized: boolean) =>
   isMaximized ? `md:fixed md:top-[-1rem]` : 'relative'
@@ -103,7 +104,7 @@ const RecipeDetails = () => {
       <Header restRef={ref} onMaximizedChanged={setMaximized}>
         {isMaximized => (
           <>
-            <BackButton url="/recipes" />
+            <BackButton url="/recipes" title={t('_Back to recipes')} />
             {isMaximized ? (
               <RecipeHeader
                 recipeName={formattedRecipe.name}
@@ -121,6 +122,7 @@ const RecipeDetails = () => {
             <Button.Icon
               url={`/recipes/${recipeId}/edit`}
               icon={PencilIcon}
+              title={t('_Edit Recipe')}
               blur
             />
           </>

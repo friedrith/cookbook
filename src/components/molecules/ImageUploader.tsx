@@ -117,6 +117,7 @@ const ImageUploader = forwardRef(
           id="file-upload"
           name="file-upload"
           type="file"
+          aria-label={t('_Change image')}
           className="sr-only"
           accept={authorizedTypes.join(', ')}
           onChange={onUploadImage}

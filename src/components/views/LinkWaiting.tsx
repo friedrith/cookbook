@@ -10,7 +10,11 @@ const LinkWaiting = () => {
 
   return (
     <LoginPage title={t('_Waiting for link')}>
-      <BackButton url="/" className="fixed top-5 left-5 lg:top-10 lg:left-10" />
+      <BackButton
+        url="/"
+        className="fixed top-5 left-5 lg:top-10 lg:left-10"
+        title={t('_Back to landing page')}
+      />
 
       <div>
         {/* <img

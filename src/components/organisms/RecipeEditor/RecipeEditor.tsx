@@ -105,7 +105,7 @@ const RecipeEditor = forwardRef(
         <LargeMainPage>
           <Box className="p-4 relative top-[-7rem]">
             <div className="max-w-screen-md m-auto sm:p-6 space-y-8" ref={ref}>
-              <TextArea.Basic
+              <TextArea.Primary
                 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 w-full"
                 id="recipe-name"
                 rows={1}
@@ -117,11 +117,11 @@ const RecipeEditor = forwardRef(
                 <SectionTitle className="pb-3">
                   <label htmlFor="ingredients">{t('_Ingredients')}</label>
                 </SectionTitle>
-                <TextArea.Basic
+                <TextArea.Primary
                   className="mt-1 w-full resize-none"
                   id="ingredients"
                   rows={5}
-                  placeholder="- ..."
+                  placeholder={t('editor.Add ingredients there')}
                   value={ingredients}
                   onChange={ingredients => change({ ingredients })}
                 />
@@ -130,18 +130,18 @@ const RecipeEditor = forwardRef(
                 <SectionTitle className="pb-3">
                   <label htmlFor="steps">{t('_Steps')}</label>
                 </SectionTitle>
-                <TextArea.Basic
+                <TextArea.Primary
                   className="mt-1 w-full resize-none"
                   id="steps"
                   rows={5}
-                  placeholder="- ..."
+                  placeholder={t('editor.Add steps there')}
                   value={steps}
                   onChange={steps => change({ steps })}
                 />
               </div>
               <div>
                 <SectionTitle className="pb-3">
-                  <label htmlFor="steps">{t('_Keywords')}</label>
+                  <label htmlFor="keywords">{t('_Keywords')}</label>
                 </SectionTitle>
                 <ReactTags
                   tags={tags}
@@ -151,13 +151,13 @@ const RecipeEditor = forwardRef(
                   handleAddition={handleAddition}
                   handleDrag={handleDrag}
                   inline
+                  id="keywords"
                   classNames={{
                     selected: 'flex flex-row items-center flex-wrap',
                     tag: 'p-0.25 px-1 my-1 mx-1 rounded font-medium bg-indigo-100 text-indigo-800',
-                    tagInput:
-                      'border-0 overflow-none focus:ring-0 flex-1 min-w-[100px]',
+                    tagInput: 'border-0 overflow-none flex-1 min-w-[100px]',
                     tagInputField:
-                      'border-0 overflow-none focus:ring-0 w-full p-0',
+                      'border border-gray-300  overflow-none focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm rounded-md w-full p-1.5',
                     remove: 'ml-0.5',
                   }}
                   allowDragDrop={true}

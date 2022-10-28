@@ -90,26 +90,28 @@ const UserMenu = () => {
             {appInstallationEnabled && (
               <Menu.Item>
                 {({ active }) => (
-                  <div
+                  <button
+                    type="button"
                     className={classNames(
                       active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
+                      'block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left'
                     )}
                     onClick={installApp}
                   >
                     {isMobile()
                       ? t('_Install Mobile App')
                       : t('_Install Desktop App')}
-                  </div>
+                  </button>
                 )}
               </Menu.Item>
             )}
             <Menu.Item>
               {({ active }) => (
-                <div
+                <button
+                  type="button"
                   className={classNames(
                     active ? 'bg-gray-100' : '',
-                    'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
+                    'block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left'
                   )}
                   onClick={() => {
                     dispatch(logout())
@@ -117,7 +119,7 @@ const UserMenu = () => {
                   }}
                 >
                   {t('_Logout')}
-                </div>
+                </button>
               )}
             </Menu.Item>
           </Menu.Items>

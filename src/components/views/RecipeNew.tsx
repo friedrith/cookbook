@@ -60,10 +60,11 @@ const RecipeNew = () => {
         {isMaximized => (
           <>
             {disabled ? (
-              <BackButton url="/recipes" />
+              <BackButton url="/recipes" title={t('_Back to recipes')} />
             ) : (
               <Button.Icon
                 icon={ArrowLeftIcon}
+                title={t('_Back to recipes')}
                 onClick={deleteConfirmationPopup.open}
               />
             )}

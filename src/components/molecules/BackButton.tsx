@@ -11,9 +11,10 @@ type Props = {
   className?: string
   basic?: boolean
   disabled?: boolean
+  title?: string
 }
 
-const BackButton = ({ url, className, basic, disabled }: Props) => {
+const BackButton = ({ url, className, basic, disabled, title }: Props) => {
   const { previousLocation } = useContext(HistoryContext)
   const navigate = useNavigate()
 
@@ -25,6 +26,7 @@ const BackButton = ({ url, className, basic, disabled }: Props) => {
         basic={basic}
         className={className}
         disabled={disabled}
+        title={title}
       />
     )
   }
@@ -36,6 +38,7 @@ const BackButton = ({ url, className, basic, disabled }: Props) => {
       basic={basic}
       className={className}
       disabled={disabled}
+      title={title}
     />
   )
 }
