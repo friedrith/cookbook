@@ -11,6 +11,7 @@ import EmptyMessage from 'components/atoms/EmptyMessage'
 import RecipeListSection from 'components/organisms/RecipeListSection'
 import useFuse from 'hooks/useFuse'
 import { sortByUpdatedAt } from 'models/Recipe'
+import LoadingSpinner from 'components/atoms/LoadingSpinner'
 
 const RecipeList = () => {
   const areFetched = useAppSelector(areRecipesFetched)
@@ -78,7 +79,7 @@ const RecipeList = () => {
                     message={t('_Get started by creating a new recipe')}
                   />
                 )}
-                {!areFetched && <EmptyMessage title={t('_Loading')} />}
+                {!areFetched && <LoadingSpinner />}
               </div>
             </div>
           )}

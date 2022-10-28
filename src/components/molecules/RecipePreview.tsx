@@ -12,7 +12,7 @@ const RecipePreview = ({ recipe }: Props) => {
 
   return (
     <Link className="relative group" to={`/recipes/${recipe.id}`}>
-      <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-gray-100">
+      <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden bg-gray-200">
         <img
           src={recipe.imageUrl}
           alt={recipe.name}
