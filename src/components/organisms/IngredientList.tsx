@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ShoppingBagIcon } from '@heroicons/react/outline'
+import { ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
+import ReactTooltip from 'react-tooltip'
 
 import { FormattedRecipe } from 'models/Recipe'
 import usePopup from 'hooks/usePopup'
@@ -8,10 +9,12 @@ import Ingredient from 'models/Ingredient'
 import SectionTitle from 'components/atoms/SectionTitle'
 import renderMeasure from 'utils/render/renderMeasure'
 import Button from 'components/atoms/Button'
-import { shareIngredients } from 'utils/share'
+import renderIngredients from 'utils/render/renderIngredients'
+import { canShare, share, isShared, isCopiedToClipboard } from 'utils/share'
 import { useAppSelector } from 'hooks/redux'
 import { getRecipe } from 'store'
 import waitFor from 'utils/waitFor'
+import { isMobile } from 'utils/platforms/mobile'
 
 type Props = {
   recipe: FormattedRecipe
@@ -62,15 +65,50 @@ const IngredientList = ({ recipe }: Props) => {
     checkedIngredients.includes(index)
   )
 
+  const shareIngredients = async () => {
+    const result = await share(renderIngredients(ingredientsToBeShared))
+
+    if (isCopiedToClipboard(result)) {
+      setSharedIngredientsWithClipboard(true)
+      await waitFor(5000)
+      shoppingBag.close()
+      setSharedIngredientsWithClipboard(false)
+    } else if (isShared(result)) {
+      shoppingBag.close()
+    }
+  }
+
   return (
     <div>
       <SectionTitle>
         <div className="flex items-center justify-left">
           <span className="flex-1">{t('_Ingredients')}</span>
-          <ShoppingBagIcon
-            className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer"
-            aria-hidden="true"
-            onClick={shoppingBag.toggle}
+          <span data-tip="ffds" data-scroll-hide>
+            {shoppingBag.isOpen ? (
+              <XIcon
+                className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer focus:outline-none"
+                aria-hidden="true"
+                onClick={shoppingBag.toggle}
+              />
+            ) : (
+              <ShoppingBagIcon
+                className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer focus:outline-none"
+                aria-hidden="true"
+                onClick={shoppingBag.toggle}
+              />
+            )}
+          </span>
+
+          <ReactTooltip
+            place="left"
+            effect="solid"
+            getContent={() =>
+              shoppingBag.isOpen
+                ? t('shoppingList.Close shopping list')
+                : t('shoppingList.Create shopping list')
+            }
+            disable={isMobile()}
+            backgroundColor="black"
           />
         </div>
       </SectionTitle>
@@ -112,22 +150,14 @@ const IngredientList = ({ recipe }: Props) => {
           <Button.Primary
             className="w-full justify-center !p-3 "
             disabled={checkedIngredients.length === 0}
-            onClick={async () => {
-              const result = await shareIngredients(ingredientsToBeShared)
-              if (result.isCopied) {
-                setSharedIngredientsWithClipboard(true)
-                await waitFor(1000)
-                shoppingBag.close()
-                await waitFor(500)
-                setSharedIngredientsWithClipboard(false)
-              } else {
-                shoppingBag.close()
-              }
-            }}
+            onClick={shareIngredients}
           >
-            {sharedIngredientsWithClipboard
-              ? t('_Shopping list copied to clipboard')
-              : t('_Create shopping list')}
+            {sharedIngredientsWithClipboard &&
+              t('shoppingList.Shopping list copied to clipboard')}
+            {!sharedIngredientsWithClipboard &&
+              (canShare()
+                ? t('shoppingList.Share shopping list')
+                : t('shoppingList.Copy shopping list to clipboard'))}
           </Button.Primary>
         </div>
       )}

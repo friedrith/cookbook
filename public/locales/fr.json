@@ -67,10 +67,15 @@
   "_made simple": "rendu simple",
   "_for everybody": "pour tout le monde",
   "_Cooking your best recipes will be never easier": "Cuisiner votre meilleures recettes ne sera jamais aussi simple.",
-  "_Create shopping list": "Créer la liste de courses",
-  "_Shopping list copied to clipboard": "Liste de courses copiée dans le presse-papier",
   "_Get a magic link sent to your email": "Recevoir un lien magique par email pour s'authentifier automatiquement.",
   "_Why a magic link": "Pourquoi un lien magique ?",
   "_We sent an email": "Un email a été envoyé à <strong>{{email}}</strong>. Vous allez y trouver un lien magique pour s'authentifier instantanément.",
-  "_This link will expire 24 hours.": "Ce lien magique expirera dans 24 heures."
+  "_This link will expire 24 hours.": "Ce lien magique expirera dans 24 heures.",
+  "shoppingList": {
+    "Create shopping list": "Créer une liste de courses",
+    "Close shopping list": "Fermer la liste de courses",
+    "Copy shopping list to clipboard": "Copier dans le presse-papier ",
+    "Shopping list copied to clipboard": "Copiée dans le presse-papier",
+    "Share shopping list": "Partager la liste de courses"
+  }
 }

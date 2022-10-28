@@ -1,40 +1,39 @@
 import Recipe from 'models/Recipe'
-import Ingredient from 'models/Ingredient'
 import renderRecipe from 'utils/render/renderRecipe'
-import renderIngredients from 'utils/render/renderIngredients'
 
 const sendToClipboard = (text: string) => navigator.clipboard.writeText(text)
 
 enum SharingStatus {
-  Share,
-  Clipboard,
+  Shared,
+  ShareCancelled,
+  CopiedToClipboard,
 }
 
 type SharingResult = {
   status: SharingStatus
-  isCopied: boolean
 }
 
-const share = async (text: string): Promise<SharingResult> => {
+export const canShare = () => typeof navigator.share === 'function'
+
+export const share = async (text: string): Promise<SharingResult> => {
+  if (!canShare()) {
+    await sendToClipboard(text)
+    return { status: SharingStatus.CopiedToClipboard }
+  }
   try {
     await navigator.share({ text })
-    return { status: SharingStatus.Share, isCopied: false }
+    return { status: SharingStatus.Shared }
   } catch (err) {
-    console.error('Share Api is not working')
-    sendToClipboard(text)
-    return { status: SharingStatus.Clipboard, isCopied: true }
+    return { status: SharingStatus.ShareCancelled }
   }
-}
-
-export const shareIngredients = async (
-  ingredients: Ingredient[]
-): Promise<SharingResult> => {
-  return await share(renderIngredients(ingredients))
 }
 
 export const shareRecipe = async (recipe: Recipe): Promise<SharingResult> => {
   return await share(renderRecipe(recipe))
 }
 
-export const isCopiedToClipboard = (status: SharingStatus) =>
-  status === SharingStatus.Clipboard
+export const isCopiedToClipboard = (result: SharingResult) =>
+  result.status === SharingStatus.CopiedToClipboard
+
+export const isShared = (result: SharingResult) =>
+  result.status === SharingStatus.Shared
