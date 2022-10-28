@@ -87,24 +87,23 @@ const UserMenu = () => {
                 </Link>
               )}
             </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <div
-                  className={classNames(
-                    active && appInstallationEnabled ? 'bg-gray-100' : '',
-                    appInstallationEnabled
-                      ? 'text-gray-700 cursor-pointer'
-                      : 'text-gray-300',
-                    'block px-4 py-2 text-sm'
-                  )}
-                  onClick={installApp}
-                >
-                  {isMobile()
-                    ? t('_Install Mobile App')
-                    : t('_Install Desktop App')}
-                </div>
-              )}
-            </Menu.Item>
+            {appInstallationEnabled && (
+              <Menu.Item>
+                {({ active }) => (
+                  <div
+                    className={classNames(
+                      active ? 'bg-gray-100' : '',
+                      'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
+                    )}
+                    onClick={installApp}
+                  >
+                    {isMobile()
+                      ? t('_Install Mobile App')
+                      : t('_Install Desktop App')}
+                  </div>
+                )}
+              </Menu.Item>
+            )}
             <Menu.Item>
               {({ active }) => (
                 <div
