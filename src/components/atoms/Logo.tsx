@@ -5,14 +5,19 @@ const Logo = () => {
   const { t } = useTranslation()
 
   return (
-    <div className="flex items-center pointer-events-none	select-none">
+    <div className="flex items-center pointer-events-none	select-none overflow-visible">
       <CakeIcon
         className="h-8 w-8 stroke-1 text-gray-900 mr-1"
         aria-hidden="true"
       />
-      <h2 className="text-2xl sm:text-2xl font-bold leading-7 text-gray-900  sm:truncate">
-        {t('_AppName')}
-      </h2>
+      <div className="relative overflow-visible flex items-center">
+        <h2 className="text-2xl sm:text-2xl font-bold leading-7 text-gray-900  sm:truncate ">
+          {t('_AppName')}
+        </h2>
+        <span className="relative bottom-[-6px] inline-flex items-center rounded-full bg-red-500 px-2.5 py-0.5 text-xs font-medium text-white">
+          {t('_Beta')}
+        </span>
+      </div>
     </div>
   )
 }
