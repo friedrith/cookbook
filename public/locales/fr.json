@@ -78,5 +78,20 @@
     "Shopping list copied to clipboard": "Copiée dans le presse-papier",
     "Share shopping list": "Partager la liste de courses"
   },
-  "_Beta": "Beta"
+  "_Beta": "Beta",
+  "_Back to landing page": "Retourner à la page d'accueil",
+  "_Back to recipes": "Retourner aux recettes",
+  "_Edit Recipe": "Éditer la recette",
+  "_FAQ": "Foire Aux Questions",
+  "_Open Menu": "Ouvrir menu",
+  "_Search in recipes": "Rechercher dans les recettes",
+  "_Sign out": "Se déconnecter",
+  "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
+  "editor": {
+    "Add ingredients there": "Ajouter les ingrédients ici, une ligne par ingrédient",
+    "Add steps there": "Ajouter les étapes ici, une ligne par étapes"
+  },
+  "notifications": {
+    "Close": "Fermer"
+  }
 }

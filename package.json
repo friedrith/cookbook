@@ -47,6 +47,7 @@
     "test": "react-scripts test",
     "serve": "npx serve -s build",
     "lint": "eslint --max-warnings=0 .",
+    "lint:translation": "eslint --max-warnings=0 ./public/locales/*.json",
     "format": "prettier --check ."
   },
   "eslintConfig": {
@@ -55,13 +56,27 @@
       "react-app",
       "react-app/jest",
       "plugin:jsx-a11y/recommended",
-      "plugin:i18next/recommended"
+      "plugin:i18next/recommended",
+      "plugin:i18n-json/recommended"
     ],
     "plugins": [
       "prettier",
       "jsx-a11y",
       "i18next"
     ],
+    "rules": {
+      "i18n-json/sorted-keys": "off",
+      "i18n-json/valid-message-syntax": "off",
+      "i18n-json/identical-keys": [
+        2,
+        {
+          "filePath": {
+            "en.json": "../../../../public/locales/fr.json",
+            "fr.json": "../../../../public/locales/en.json"
+          }
+        }
+      ]
+    },
     "overrides": [
       {
         "files": [
@@ -78,7 +93,7 @@
     "node_modules"
   ],
   "simple-git-hooks": {
-    "pre-commit": "yarn lint && yarn format && yarn test --watchAll=false && yarn build"
+    "pre-commit": "yarn lint && yarn format && yarn:translation && yarn test --watchAll=false && yarn build"
   },
   "browserslist": {
     "production": [
@@ -101,6 +116,7 @@
     "autoprefixer": "^10.4.7",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-i18n-json": "^4.0.0",
     "eslint-plugin-i18next": "next",
     "eslint-plugin-prettier": "^4.2.1",
     "postcss": "^8.4.14",
