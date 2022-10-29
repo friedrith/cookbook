@@ -29,3 +29,4 @@ ngrok
 
 - https://web.dev/add-manifest/
 - [Accessibility](https://reactjs.org/docs/accessibility.html)
+- [Single page applications for github pages](https://github.com/rafgraph/spa-github-pages)
