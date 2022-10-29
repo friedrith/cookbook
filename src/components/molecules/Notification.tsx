@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 export type Action = {
   label: string
   onClick: () => void
@@ -9,6 +11,7 @@ type Props = {
 }
 
 const Notification = ({ message, actions }: Props) => {
+  const { t } = useTranslation()
   return (
     <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
       <div className="p-4">
@@ -32,7 +35,7 @@ const Notification = ({ message, actions }: Props) => {
               type="button"
               className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              <span className="sr-only">Close</span>
+              <span className="sr-only">{t('notifications.Close')}</span>
               <svg
                 className="h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"

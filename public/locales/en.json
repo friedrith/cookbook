@@ -7,6 +7,7 @@
   "_Get started by creating a new recipe": "Get started by creating a new recipe.",
   "_settings": "Settings",
   "_Log in": "Log in",
+  "_Sign out": "Sign out",
   "_Send magic link": "Send a magic link",
   "_Email address": "Email address",
   "_An email on its way": "An email on its way",
@@ -86,5 +87,11 @@
   "_Edit Recipe": "Edit Recipe",
   "_Back to landing page": "Go back to landing page",
   "_Back to recipes": "Go back to recipes",
-  "_Search in recipes": "Search in recipes"
+  "_Search in recipes": "Search in recipes",
+  "_FAQ": "Frequently Asked Questions",
+  "_Open Menu": "Open menu",
+  "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
+  "notifications": {
+    "Close": "Close"
+  }
 }

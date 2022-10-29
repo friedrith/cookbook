@@ -54,11 +54,23 @@
       "prettier",
       "react-app",
       "react-app/jest",
-      "plugin:jsx-a11y/recommended"
+      "plugin:jsx-a11y/recommended",
+      "plugin:i18next/recommended"
     ],
     "plugins": [
       "prettier",
-      "jsx-a11y"
+      "jsx-a11y",
+      "i18next"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/**/*"
+        ],
+        "rules": {
+          "i18next/no-literal-string": 0
+        }
+      }
     ]
   },
   "eslintIgnore": [
@@ -89,6 +101,7 @@
     "autoprefixer": "^10.4.7",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-i18next": "next",
     "eslint-plugin-prettier": "^4.2.1",
     "postcss": "^8.4.14",
     "prettier": "^2.6.2",

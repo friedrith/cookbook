@@ -51,7 +51,7 @@ const Preferences = () => {
                     onClick={() => dispatch(logout())}
                     className="bg-white rounded-md font-medium text-purple-600 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                   >
-                    Sign out
+                    {t('_Sign out')}
                   </button>
                 </span>
               </dd>

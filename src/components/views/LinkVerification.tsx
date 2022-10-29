@@ -73,6 +73,7 @@ const LinkVerification = () => {
                   className="text-base font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   {t('_Send a new magic link')}
+                  {/* eslint-disable-next-line i18next/no-literal-string */}
                   <span aria-hidden="true"> &rarr;</span>
                 </Link>
               </div>

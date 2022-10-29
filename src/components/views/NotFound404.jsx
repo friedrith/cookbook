@@ -22,6 +22,7 @@ const NotFound404 = () => {
             title={t('_Back to landing page')}
           >
             {t('_Go back home')}
+            {/* eslint-disable-next-line i18next/no-literal-string */}
             <span aria-hidden="true"> &rarr;</span>
           </Link>
         </div>

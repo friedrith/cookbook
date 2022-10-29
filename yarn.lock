@@ -5482,6 +5482,7 @@ __metadata:
     clsx: ^1.2.1
     eslint: ^8.24.0
     eslint-config-prettier: ^8.5.0
+    eslint-plugin-i18next: next
     eslint-plugin-prettier: ^4.2.1
     firebase: ^9.8.1
     fuse.js: ^6.6.2
@@ -6602,6 +6603,15 @@ __metadata:
     "@babel/plugin-transform-react-jsx": ^7.14.9
     eslint: ^8.1.0
   checksum: 30e63c5357b0b5571f39afed51e59c140084f4aa53c106b1fd04f26da42b268908466daa6020b92943e71409bdaee1c67202515ed9012404d027cc92cb03cefa
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-i18next@npm:next":
+  version: 6.0.0-2
+  resolution: "eslint-plugin-i18next@npm:6.0.0-2"
+  dependencies:
+    requireindex: ~1.1.0
+  checksum: 920d7bd1c2e98a3b7c43ca46a5f7400a16360f1920f7d695caf4f04c95a85005300900f5d0d4a44b3625cd8da8b6ef3903188bf1f9e3a74262c7da48dbd11e56
   languageName: node
   linkType: hard
 
@@ -12118,6 +12128,13 @@ __metadata:
   version: 2.0.2
   resolution: "require-from-string@npm:2.0.2"
   checksum: a03ef6895445f33a4015300c426699bc66b2b044ba7b670aa238610381b56d3f07c686251740d575e22f4c87531ba662d06937508f0f3c0f1ddc04db3130560b
+  languageName: node
+  linkType: hard
+
+"requireindex@npm:~1.1.0":
+  version: 1.1.0
+  resolution: "requireindex@npm:1.1.0"
+  checksum: 397057d97d7f753a3851abf0d6db94c295bd8254536f71f622b896ba08ea8c0d3e3771c8b009a557e6ce602f4245c0588836cdf59c4ce588fff721a7b855d323
   languageName: node
   linkType: hard
 

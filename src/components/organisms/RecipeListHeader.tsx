@@ -67,6 +67,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                 aria-label={t('_Search in recipes')}
               />
               <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5 hidden lg:block">
+                {/* eslint-disable-next-line i18next/no-literal-string */}
                 <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
                   ⌘K
                 </kbd>
