@@ -70,6 +70,7 @@
   "_Get a magic link sent to your email": "Recevoir un lien magique par email pour s'authentifier automatiquement.",
   "_Why a magic link": "Pourquoi un lien magique ?",
   "_We sent an email": "Un email a été envoyé à <strong>{{email}}</strong>. Vous allez y trouver un lien magique pour s'authentifier instantanément.",
+  "_We sent an email.pwa": "Un email a été envoyé à <strong>{{email}}</strong>. Copiez le lien magique dans le formulaire ci-dessous.",
   "_This link will expire 24 hours.": "Ce lien magique expirera dans 24 heures.",
   "shoppingList": {
     "Create shopping list": "Créer une liste de courses",
@@ -93,5 +94,7 @@
   },
   "notifications": {
     "Close": "Fermer"
-  }
+  },
+  "_Link sent by email": "Lien envoyé par email",
+  "_Login with magic link": "Se connecter avec le lien magique"
 }

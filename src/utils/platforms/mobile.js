@@ -10,3 +10,8 @@ export const isMobile = () => {
 
   return regex.test(agent) || regex2.test(agent.substr(0, 4))
 }
+
+export const isIpad = () =>
+  navigator.maxTouchPoints &&
+  navigator.maxTouchPoints > 2 &&
+  /MacIntel/.test(navigator.platform)

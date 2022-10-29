@@ -2,11 +2,16 @@ import { useTranslation, Trans } from 'react-i18next'
 
 import BackButton from 'components/molecules/BackButton'
 import LoginPage from 'components/templates/LoginPage'
+import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
+import { isIpad } from 'utils/platforms/mobile'
+import StandaloneLinkValidation from 'components/organisms/StandaloneLinkValidation'
 
 const LinkWaiting = () => {
   const { t } = useTranslation()
 
   const email = window.localStorage.getItem('emailForSignIn')
+
+  const isStandalone = useIsStandalonePWA()
 
   return (
     <LoginPage title={t('_Waiting for link')}>
@@ -27,7 +32,14 @@ const LinkWaiting = () => {
         </h2>
 
         <p className="mt-2 text-sm text-gray-600">
-          <Trans i18nKey="_We sent an email" values={{ email }} />
+          {isStandalone && isIpad() ? (
+            <>
+              <Trans i18nKey="_We sent an email.pwa" values={{ email }} />
+              <StandaloneLinkValidation />
+            </>
+          ) : (
+            <Trans i18nKey="_We sent an email" values={{ email }} />
+          )}
         </p>
         <p className="mt-2 text-sm text-gray-600">
           {t('_This link will expire 24 hours.')}

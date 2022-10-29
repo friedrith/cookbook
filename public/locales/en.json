@@ -71,6 +71,7 @@
   "_Get a magic link sent to your email": "Get a magic link sent to your email that'll log in instantly.",
   "_Why a magic link": "Why a magic link?",
   "_We sent an email": "We sent an email to <strong>{{email}}</strong>. You will find a magic link that will log you in instantly.",
+  "_We sent an email.pwa": "We sent an email to <strong>{{email}}</strong>. Copy the link in your clipboard and enter it in the form below.",
   "_This link will expire 24 hours.": "This link will expire 24 hours.",
   "shoppingList": {
     "Create shopping list": "Create shopping list",
@@ -93,5 +94,7 @@
   "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "notifications": {
     "Close": "Close"
-  }
+  },
+  "_Link sent by email": "Link sent by email",
+  "_Login with magic link": "Login with magic link"
 }
