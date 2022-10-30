@@ -30,6 +30,11 @@ const notInIfLongerThan =
       ? list.every(i => !areEqual(i, ingredient))
       : true
 
+const byIndex = (
+  { index: indexA }: { index: number },
+  { index: indexB }: { index: number }
+) => indexA - indexB
+
 const StepList = ({ recipe, progress, onSelectStep }: Props) => {
   const { t } = useTranslation()
 
@@ -41,7 +46,13 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
       const { steps, ingredientsAlreadyUsed } = acc
 
       const ingredients = recipe.ingredients
-        .filter(matchIngredient(step.description))
+        .map(i => ({
+          ingredient: i,
+          index: matchIngredient(i, step.description),
+        }))
+        .filter(({ index }) => index >= 0)
+        .sort(byIndex)
+        .map(({ ingredient }) => ingredient)
         .filter(notInIfLongerThan(ingredientsAlreadyUsed, 15))
 
       return {
