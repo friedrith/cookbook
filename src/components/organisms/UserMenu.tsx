@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import { Menu, Transition } from '@headlessui/react'
-import { Bars3Icon } from '@heroicons/react/24/outline'
+import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
 
 import classNames from 'utils/classNames'
 import { useAppDispatch } from 'hooks/redux'
@@ -61,7 +61,10 @@ const UserMenu = () => {
         <div>
           <Menu.Button className="flex max-w-xs items-center rounded-full bg-white hover:text-indigo-600 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
             <span className="sr-only">{t('_Open Menu')}</span>
-            <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+            <EllipsisVerticalIcon
+              className="block h-6 w-6"
+              aria-hidden="true"
+            />
           </Menu.Button>
         </div>
         <Transition

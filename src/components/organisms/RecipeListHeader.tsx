@@ -142,23 +142,27 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
               {/* <PrimaryButton to="/recipes/new" className="ml-2 hidden lg:block">
  {t('_New Recipe')}
 </PrimaryButton> */}
+              <button
+                className="mr-4 hidden md:block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={startSearchOnMobile}
+                aria-label={t('_Search in recipes')}
+              >
+                <MagnifyingGlassIcon
+                  className="h-8 w-8 stroke-1 "
+                  aria-hidden="true"
+                />
+              </button>
               <Button.Primary
                 to="/recipes/new"
-                className="hidden lg:block rounded-md mr-6 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="hidden md:block rounded-md mr-4 lg:mr-6 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 aria-label={t('_Create Recipe')}
               >
                 <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>
               </Button.Primary>
 
               <div className="flex items-center">
-                <Button.Icon
-                  url="/recipes/new"
-                  icon={PlusIcon}
-                  className="block lg:hidden rounded-md mr-2 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  aria-label={t('_Create Recipe')}
-                />
                 <button
-                  className="ml-2 lg:ml-4 block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="ml-4 mr-4 block md:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   onClick={startSearchOnMobile}
                   aria-label={t('_Search in recipes')}
                 >
@@ -167,6 +171,12 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                     aria-hidden="true"
                   />
                 </button>
+                <Button.Icon
+                  url="/recipes/new"
+                  icon={PlusIcon}
+                  className="block md:hidden rounded-md !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  aria-label={t('_Create Recipe')}
+                />
 
                 {/* <Link
      to="/recipes/new"
