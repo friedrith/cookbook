@@ -20,26 +20,30 @@ const BackButton = ({ url, className, basic, disabled, title }: Props) => {
 
   if (previousLocation) {
     return (
+      <span data-tip={title}>
+        <Button.Icon
+          onClick={() => navigate(-1)}
+          icon={ArrowLeftIcon}
+          basic={basic}
+          className={className}
+          disabled={disabled}
+          title={title}
+        />
+      </span>
+    )
+  }
+
+  return (
+    <span data-tip={title}>
       <Button.Icon
-        onClick={() => navigate(-1)}
+        url={url}
         icon={ArrowLeftIcon}
         basic={basic}
         className={className}
         disabled={disabled}
         title={title}
       />
-    )
-  }
-
-  return (
-    <Button.Icon
-      url={url}
-      icon={ArrowLeftIcon}
-      basic={basic}
-      className={className}
-      disabled={disabled}
-      title={title}
-    />
+    </span>
   )
 }
 

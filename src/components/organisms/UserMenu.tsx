@@ -58,7 +58,7 @@ const UserMenu = () => {
     <div className="flex sm:items-center pl-2 md:pl-0">
       {/* Profile dropdown */}
       <Menu as="div" className="relative">
-        <div>
+        <div data-tip={t('_Open Menu')}>
           <Menu.Button className="flex max-w-xs items-center rounded-full bg-white hover:text-indigo-600 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
             <span className="sr-only">{t('_Open Menu')}</span>
             <EllipsisVerticalIcon

@@ -1,7 +1,9 @@
 import { Helmet } from 'react-helmet'
 import { useRef, useEffect } from 'react'
+import ReactTooltip from 'react-tooltip'
 import { useTranslation } from 'react-i18next'
 
+import { isMobile } from 'utils/platforms/mobile'
 import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
 
 type Props = {
@@ -33,6 +35,13 @@ const Page = ({ className = '', children, title }: Props) => {
         <meta charSet="utf-8" />
         <title>{fullTitle}</title>
       </Helmet>
+      <ReactTooltip
+        effect="solid"
+        getContent={dataTip => dataTip}
+        disable={isMobile()}
+        backgroundColor="black"
+        delayShow={250}
+      />
       <div
         className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto select-none	${className}`}
         id="page"

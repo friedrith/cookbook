@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import ReactTooltip from 'react-tooltip'
 
 import { FormattedRecipe } from 'models/Recipe'
 import usePopup from 'hooks/usePopup'
@@ -14,7 +13,6 @@ import { canShare, share, isShared, isCopiedToClipboard } from 'utils/share'
 import { useAppSelector } from 'hooks/redux'
 import { getRecipe } from 'store'
 import waitFor from 'utils/waitFor'
-import { isMobile } from 'utils/platforms/mobile'
 
 type Props = {
   recipe: FormattedRecipe
@@ -83,7 +81,15 @@ const IngredientList = ({ recipe }: Props) => {
       <SectionTitle>
         <div className="flex items-center justify-left">
           <span className="flex-1">{t('_Ingredients')}</span>
-          <span data-tip="ffds" data-scroll-hide>
+          <span
+            data-tip={
+              shoppingBag.isOpen
+                ? t('shoppingList.Close shopping list')
+                : t('shoppingList.Create shopping list')
+            }
+            data-scroll-hide
+            data-place="left"
+          >
             {shoppingBag.isOpen ? (
               <XMarkIcon
                 className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer focus:outline-none"
@@ -98,18 +104,6 @@ const IngredientList = ({ recipe }: Props) => {
               />
             )}
           </span>
-
-          <ReactTooltip
-            place="left"
-            effect="solid"
-            getContent={() =>
-              shoppingBag.isOpen
-                ? t('shoppingList.Close shopping list')
-                : t('shoppingList.Create shopping list')
-            }
-            disable={isMobile()}
-            backgroundColor="black"
-          />
         </div>
       </SectionTitle>
       <table className="min-w-full divide-y divide-gray-300">

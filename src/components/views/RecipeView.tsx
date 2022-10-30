@@ -125,18 +125,28 @@ const RecipeDetails = () => {
             ) : (
               <div className="flex-1" />
             )}
-            <Button.Icon
-              className="mr-3"
-              onClick={startSharing}
-              icon={ShareIcon}
-              blur
-            />
-            <Button.Icon
-              url={`/recipes/${recipeId}/edit`}
-              icon={PencilIcon}
-              title={t('_Edit Recipe')}
-              blur
-            />
+            <span data-tip={t('_Share Recipe')}>
+              <Button.Icon
+                className="mr-3"
+                onClick={startSharing}
+                icon={ShareIcon}
+                blur
+                title={t('_Share Recipe')}
+              />
+            </span>
+            <span data-tip={t('_Edit Recipe')}>
+              <Button.Icon
+                url={`/recipes/${recipeId}/edit`}
+                icon={PencilIcon}
+                title={t('_Edit Recipe')}
+                blur
+              />
+            </span>
+            {/* <ReactTooltip
+              place="bottom"
+              effect="solid"
+              backgroundColor="black"
+            /> */}
           </>
         )}
       </Header>
