@@ -20,7 +20,7 @@ const RecipePreview = ({ recipe }: Props) => {
         <img
           src={previewUrl}
           alt={recipe.name}
-          className="object-center object-cover"
+          className="object-center object-cover indent-[-9999px]"
           onError={() => setPreviewUrl(recipe.imageUrl)}
         />
         <div
