@@ -24,9 +24,7 @@ const RecipeList = () => {
 
   const searchedRecipes = useFuse(recipes, query)
 
-  const onQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuery = event.target.value
-
+  const onQueryChange = (newQuery: string) => {
     setQuery(newQuery)
     if (newQuery) {
       setSearchParams({ q: newQuery })

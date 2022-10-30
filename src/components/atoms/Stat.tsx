@@ -1,4 +1,4 @@
-import { ClockIcon, UsersIcon } from '@heroicons/react/outline'
+import { ClockIcon, UsersIcon } from '@heroicons/react/24/outline'
 
 import Measure from 'models/Measure'
 import renderMeasure from 'utils/render/renderMeasure'

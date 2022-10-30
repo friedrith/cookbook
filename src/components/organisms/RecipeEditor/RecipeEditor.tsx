@@ -1,7 +1,7 @@
 import { useState, useRef, forwardRef, ForwardedRef } from 'react'
 
 import { useTranslation } from 'react-i18next'
-import { PhotographIcon } from '@heroicons/react/outline'
+import { PhotoIcon } from '@heroicons/react/24/outline'
 import { WithContext as ReactTags } from 'react-tag-input'
 
 import { storeFile } from 'utils/api/firebase'
@@ -96,7 +96,7 @@ const RecipeEditor = forwardRef(
             <Button.Icon
               blur
               onClick={() => uploadRef.current?.click()}
-              icon={PhotographIcon}
+              icon={PhotoIcon}
             >
               {t('_Change image')}
             </Button.Icon>

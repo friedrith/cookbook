@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ShoppingBagIcon, XIcon } from '@heroicons/react/outline'
+import { ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import ReactTooltip from 'react-tooltip'
 
 import { FormattedRecipe } from 'models/Recipe'
@@ -85,7 +85,7 @@ const IngredientList = ({ recipe }: Props) => {
           <span className="flex-1">{t('_Ingredients')}</span>
           <span data-tip="ffds" data-scroll-hide>
             {shoppingBag.isOpen ? (
-              <XIcon
+              <XMarkIcon
                 className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer focus:outline-none"
                 aria-hidden="true"
                 onClick={shoppingBag.toggle}

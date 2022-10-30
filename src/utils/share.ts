@@ -1,6 +1,3 @@
-import Recipe from 'models/Recipe'
-import renderRecipe from 'utils/render/renderRecipe'
-
 const sendToClipboard = (text: string) => navigator.clipboard.writeText(text)
 
 enum SharingStatus {
@@ -26,10 +23,6 @@ export const share = async (text: string): Promise<SharingResult> => {
   } catch (err) {
     return { status: SharingStatus.ShareCancelled }
   }
-}
-
-export const shareRecipe = async (recipe: Recipe): Promise<SharingResult> => {
-  return await share(renderRecipe(recipe))
 }
 
 export const isCopiedToClipboard = (result: SharingResult) =>

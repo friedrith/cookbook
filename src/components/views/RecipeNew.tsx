@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CheckIcon, ArrowLeftIcon } from '@heroicons/react/outline'
+import { CheckIcon, ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppDispatch } from 'hooks/redux'

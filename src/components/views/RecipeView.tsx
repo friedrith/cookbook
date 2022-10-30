@@ -1,7 +1,8 @@
 import { useRef, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { PencilIcon } from '@heroicons/react/outline'
+import { PencilIcon, ShareIcon } from '@heroicons/react/24/outline'
+import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Box from 'components/atoms/Box'
@@ -18,6 +19,7 @@ import Button from 'components/atoms/Button'
 import SharePopup from 'components/organisms/SharePopup'
 import usePopup from 'hooks/usePopup'
 import BackButton from 'components/molecules/BackButton'
+import renderRecipe from 'utils/render/renderRecipe'
 
 import {
   getRecipe,
@@ -27,7 +29,7 @@ import {
 } from 'store'
 import LargeMainPage from 'components/templates/LargeMainPage'
 import parseRecipe from 'utils/parser/parseRecipe'
-import { t } from 'i18next'
+import { canShare, share } from 'utils/share'
 
 const position = (isMaximized: boolean) =>
   isMaximized ? `md:fixed md:top-[-1rem]` : 'relative'
@@ -52,6 +54,8 @@ const RecipeDetails = () => {
     [recipe]
   )
 
+  const { t } = useTranslation()
+
   if (!recipe || !formattedRecipe) {
     if (!areFetched) {
       return <Loading />
@@ -61,6 +65,14 @@ const RecipeDetails = () => {
 
   const changeRecipeProgress = (index: number) => {
     dispatch(setRecipeProgress({ recipeId, index }))
+  }
+
+  const startSharing = async () => {
+    if (canShare()) {
+      await share(renderRecipe(recipe))
+    } else {
+      sharePopup.open()
+    }
   }
 
   return (
@@ -113,12 +125,12 @@ const RecipeDetails = () => {
             ) : (
               <div className="flex-1" />
             )}
-            {/* <Button.Icon
+            <Button.Icon
               className="mr-3"
-              onClick={sharePopup.open}
+              onClick={startSharing}
               icon={ShareIcon}
               blur
-            /> */}
+            />
             <Button.Icon
               url={`/recipes/${recipeId}/edit`}
               icon={PencilIcon}

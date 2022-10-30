@@ -1,4 +1,4 @@
-import { ExclamationIcon } from '@heroicons/react/outline'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import Modal, { PopupType } from 'components/atoms/Modal'
@@ -16,7 +16,7 @@ const DeleteConfirmation = ({ open, onClose, onSubmit }: Props) => {
     <Modal
       open={open}
       onClose={onClose}
-      icon={ExclamationIcon}
+      icon={ExclamationTriangleIcon}
       type={PopupType.Warning}
       description={t('_If you leave')}
     >

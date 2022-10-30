@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { TrashIcon } from '@heroicons/react/outline'
+import { TrashIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'

@@ -10,13 +10,15 @@ type Props = {
   children?: (isMaximized: boolean) => React.ReactNode
   onMaximizedChanged?: (isMaximized: boolean) => void
   offset?: number
+  className?: string
 }
 
-const TopBar = ({
+const Header = ({
   restRef,
   children,
   onMaximizedChanged = () => {},
   offset = 90,
+  className = '',
 }: Props) => {
   const [isMaximized, setMaximized] = useState(false)
 
@@ -46,6 +48,7 @@ const TopBar = ({
   return (
     <div
       className={classNames(
+        className,
         'fixed z-40 top-0 left-0 right-0 px-4 lg:px-10 ',
         isMaximized ? 'bg-white shadow' : ''
       )}
@@ -60,4 +63,4 @@ const TopBar = ({
   )
 }
 
-export default TopBar
+export default Header

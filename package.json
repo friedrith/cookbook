@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.6.2",
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "latest",
     "@notionhq/client": "^1.0.4",
     "@reduxjs/toolkit": "^1.8.1",
     "@tailwindcss/line-clamp": "^0.4.2",

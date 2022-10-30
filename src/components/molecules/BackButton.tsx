@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { ArrowLeftIcon } from '@heroicons/react/outline'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 
 import Button from 'components/atoms/Button'
 import HistoryContext from 'contexts/History'

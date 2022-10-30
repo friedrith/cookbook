@@ -32,6 +32,9 @@ const areLocationIncludes = (
     r => location1.pathname.includes(r) && location2.pathname.includes(r)
   )
 
+const areLocationDifferent = (location1: Location, location2: Location) =>
+  location1.pathname !== location2.pathname
+
 const App = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
@@ -46,7 +49,7 @@ const App = () => {
   const [transitionStage, setTransistionStage] = useState('')
 
   useEffect(() => {
-    if (location !== displayLocation) {
+    if (areLocationDifferent(location, displayLocation)) {
       if (
         isMobile() &&
         areLocationIncludes(location, displayLocation, ['/recipes', '/login'])

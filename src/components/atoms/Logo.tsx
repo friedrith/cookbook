@@ -1,4 +1,4 @@
-import { CakeIcon } from '@heroicons/react/solid'
+import { CakeIcon } from '@heroicons/react/24/solid'
 import { useTranslation } from 'react-i18next'
 
 import usePopup from 'hooks/usePopup'

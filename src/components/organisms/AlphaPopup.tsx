@@ -1,4 +1,4 @@
-import { ShieldCheckIcon } from '@heroicons/react/outline'
+import { ShieldCheckIcon } from '@heroicons/react/24/outline'
 import { useTranslation, Trans } from 'react-i18next'
 
 import Modal, { PopupType } from 'components/atoms/Modal'

@@ -1,5 +1,5 @@
 import { useState, forwardRef, ForwardedRef, useEffect } from 'react'
-import { CloudUploadIcon, BanIcon } from '@heroicons/react/outline'
+import { CloudArrowUpIcon, NoSymbolIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import useEventListener from 'hooks/useEventListener'
@@ -101,13 +101,13 @@ const ImageUploader = forwardRef(
           {isUploading && <LoadingSpinner />}
           {isDragging && areFilesAuthorized && (
             <div className="flex flex-col items-center">
-              <CloudUploadIcon className="h-7 w-7" aria-hidden="true" />
+              <CloudArrowUpIcon className="h-7 w-7" aria-hidden="true" />
               <div>{t('_Drop image there')}</div>
             </div>
           )}
           {isDragging && !areFilesAuthorized && (
             <div className="flex flex-col items-center">
-              <BanIcon className="h-7 w-7" aria-hidden="true" />
+              <NoSymbolIcon className="h-7 w-7" aria-hidden="true" />
               <div>{t('_only PNG, JPG, GIF up to 10MB')}</div>
             </div>
           )}
