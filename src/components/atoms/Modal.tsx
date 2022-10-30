@@ -17,7 +17,7 @@ type Props = {
   onClose: () => void
   children: React.ReactNode
   type?: PopupType
-  description?: string
+  description?: string | React.ReactNode
 }
 
 const colors = {

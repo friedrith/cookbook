@@ -46,7 +46,7 @@ const TopBar = ({
   return (
     <div
       className={classNames(
-        'fixed z-40 top-0 left-0 right-0 px-4 lg:px-10 pointer-events-none',
+        'fixed z-40 top-0 left-0 right-0 px-4 lg:px-10 ',
         isMaximized ? 'bg-white shadow' : ''
       )}
     >

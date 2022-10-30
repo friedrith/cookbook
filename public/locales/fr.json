@@ -80,6 +80,7 @@
     "Share shopping list": "Partager la liste de courses"
   },
   "_Beta": "Beta",
+  "_Alpha": "Alpha",
   "_Back to landing page": "Retourner à la page d'accueil",
   "_Back to recipes": "Retourner aux recettes",
   "_Edit Recipe": "Éditer la recette",
@@ -96,5 +97,7 @@
     "Close": "Fermer"
   },
   "_Link sent by email": "Lien envoyé par email",
-  "_Login with magic link": "Se connecter avec le lien magique"
+  "_Login with magic link": "Se connecter avec le lien magique",
+  "_Ok Got it": "Oui j'ai compris !",
+  "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.  <br/><br/><strong>S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.</strong>"
 }

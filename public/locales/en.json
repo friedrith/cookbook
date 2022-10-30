@@ -85,6 +85,7 @@
     "Add steps there": "Add step there, one step by line"
   },
   "_Beta": "Beta",
+  "_Alpha": "Alpha",
   "_Edit Recipe": "Edit Recipe",
   "_Back to landing page": "Go back to landing page",
   "_Back to recipes": "Go back to recipes",
@@ -96,5 +97,7 @@
     "Close": "Close"
   },
   "_Link sent by email": "Link sent by email",
-  "_Login with magic link": "Login with magic link"
+  "_Login with magic link": "Login with magic link",
+  "_Ok Got it": "Ok Got it!",
+  "_CookBook is in alpha": "CookBook is currently in Alpha version. It means it may contain few bugs and it is not ready to be used by everybody. You were sent an access to this version to help finalizing CookBook. <br/><br/><strong>Please do not sent it to anyone else without the authorization of the author of CookBook.</strong>"
 }
