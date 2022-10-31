@@ -46,13 +46,7 @@ const IconButton = ({
   return (
     <>
       {url ? (
-        <Link
-          className={classes}
-          to={url}
-          onClick={onClick}
-          aria-label={title}
-          title={title}
-        >
+        <Link className={classes} to={url} onClick={onClick} aria-label={title}>
           {Icon && <Icon className="h-7 w-7" aria-hidden="true" />}
           {label && (
             <span className="ml-0.5 hidden sm:inline text-normal">{label}</span>
@@ -64,7 +58,6 @@ const IconButton = ({
           className={classes}
           onClick={onClick}
           disabled={disabled}
-          title={title}
           aria-label={title}
         >
           {Icon && <Icon className="h-7 w-7" aria-hidden="true" />}
