@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import Notification from 'components/molecules/Notification'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { getRecipesToDelete, cancelDeletion } from 'store'
+import { getRecipesToDelete, cancelDeletion, confirmDeletion } from 'store'
 
 const Notifications = () => {
   const dispatch = useAppDispatch()
@@ -34,6 +34,7 @@ const Notifications = () => {
                 onClick: () => dispatch(cancelDeletion(recipe)),
               },
             ]}
+            onClose={() => dispatch(confirmDeletion(recipe))}
           />
         ))}
       </div>

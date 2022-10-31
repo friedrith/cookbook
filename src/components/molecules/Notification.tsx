@@ -8,22 +8,23 @@ export type Action = {
 type Props = {
   message: string
   actions: Action[]
+  onClose: () => void
 }
 
-const Notification = ({ message, actions }: Props) => {
+const Notification = ({ message, actions, onClose }: Props) => {
   const { t } = useTranslation()
   return (
-    <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
+    <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-gray-900 shadow-lg ring-1 ring-black ring-opacity-5">
       <div className="p-4">
         <div className="flex items-center">
           <div className="flex w-0 flex-1 justify-between">
-            <p className="w-0 flex-1 text-sm font-medium text-gray-900">
+            <p className="w-0 flex-1 text-sm font-medium text-gray-400">
               {message}
             </p>
             {actions.map(({ label, onClick }) => (
               <button
                 type="button"
-                className="ml-3 flex-shrink-0 rounded-md bg-white text-sm font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="ml-3 flex-shrink-0 rounded-md bg-gray-900 text-sm font-medium text-white hover:text-gray-300"
                 onClick={onClick}
               >
                 {label}
@@ -33,7 +34,8 @@ const Notification = ({ message, actions }: Props) => {
           <div className="ml-4 flex flex-shrink-0">
             <button
               type="button"
-              className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="inline-flex rounded-md bg-gray-900 hover:bg-gray-800 text-gray-400 focus:text-white"
+              onClick={onClose}
             >
               <span className="sr-only">{t('notifications.Close')}</span>
               <svg

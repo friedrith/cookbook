@@ -66,6 +66,14 @@ export const cancelDeletion = createAsyncThunk(
   }
 )
 
+export const confirmDeletion = createAsyncThunk(
+  'recipes/confirmDelete',
+  async (recipe: Recipe, thunkApi) => {
+    clearTimeout(timeouts[recipe.id])
+    await thunkApi.dispatch(deleteRecipe(recipe))
+  }
+)
+
 const initializeMetadata = (state: RecipesState, recipeId: string) => {
   if (!state.metadataById[recipeId]) {
     state.metadataById[recipeId] = {
@@ -143,6 +151,12 @@ export const recipesSlice = createSlice({
     })
 
     builder.addCase(cancelDeletion.fulfilled, (state, action) => {
+      const recipe = action.meta.arg
+
+      state.trashQueue = state.trashQueue.filter(id => id !== recipe.id)
+    })
+
+    builder.addCase(confirmDeletion.fulfilled, (state, action) => {
       const recipe = action.meta.arg
 
       state.trashQueue = state.trashQueue.filter(id => id !== recipe.id)
