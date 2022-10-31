@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { /*Link,*/ useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Menu, Transition } from '@headlessui/react'
 import {
@@ -8,7 +8,7 @@ import {
   ArrowRightOnRectangleIcon,
   QuestionMarkCircleIcon,
   ArrowTopRightOnSquareIcon,
-  CogIcon,
+  // CogIcon,
 } from '@heroicons/react/24/outline'
 
 import classNames from 'utils/classNames'
@@ -86,7 +86,7 @@ const UserMenu = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <Menu.Item>
+            {/* <Menu.Item>
               {({ active }) => (
                 <Link
                   to="/help"
@@ -102,7 +102,7 @@ const UserMenu = () => {
                   {t('_Settings')}
                 </Link>
               )}
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item>
               {({ active }) => (
                 <button

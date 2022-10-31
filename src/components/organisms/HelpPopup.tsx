@@ -26,14 +26,14 @@ const resources = [
   {
     name: 'Report a bug',
     description: 'Help us to understand your situation and fix it.',
-    href: 'https://github.com/friedrith/cookbook/issues',
+    href: 'https://github.com/friedrith/cookbook/issues/new?assignees=&labels=bug&template=bug_report.md&title=%5BBug%5D%3A+',
     icon: BugAntIcon,
     blank: true,
   },
   {
     name: 'Suggest a feature',
     description: 'Tell us what is missing and how we can improve CookBook.',
-    href: 'https://github.com/friedrith/cookbook/issues',
+    href: 'https://github.com/friedrith/cookbook/issues/new?assignees=&labels=issue%3A+proposal%2C+needs+triage&template=proposal.md',
     icon: SparklesIcon,
     blank: true,
   },
