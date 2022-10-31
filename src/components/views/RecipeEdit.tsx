@@ -95,7 +95,7 @@ const RecipeEdit = () => {
         </div>
       </RecipeEditor>
 
-      <Header restRef={ref}>
+      <Header restRef={ref} className="pointer-events-none">
         {isMaximized => (
           <>
             <BackButton

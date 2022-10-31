@@ -113,7 +113,11 @@ const RecipeDetails = () => {
           </div>
         </div>
       </LargeMainPage>
-      <Header restRef={ref} onMaximizedChanged={setMaximized}>
+      <Header
+        restRef={ref}
+        onMaximizedChanged={setMaximized}
+        className="pointer-events-none"
+      >
         {isMaximized => (
           <>
             <BackButton url="/recipes" title={t('_Back to recipes')} />
