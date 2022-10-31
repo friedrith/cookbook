@@ -2,9 +2,13 @@
 import { Fragment, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
 import { Menu, Transition } from '@headlessui/react'
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline'
+import {
+  EllipsisVerticalIcon,
+  ArrowRightOnRectangleIcon,
+  QuestionMarkCircleIcon,
+  ArrowTopRightOnSquareIcon,
+} from '@heroicons/react/24/outline'
 
 import classNames from 'utils/classNames'
 import { useAppDispatch } from 'hooks/redux'
@@ -83,9 +87,13 @@ const UserMenu = () => {
                   to="/help"
                   className={classNames(
                     active ? 'bg-gray-100' : '',
-                    'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
+                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer flex items-center'
                   )}
                 >
+                  <QuestionMarkCircleIcon
+                    className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
                   {t('_Help')}
                 </Link>
               )}
@@ -97,10 +105,14 @@ const UserMenu = () => {
                     type="button"
                     className={classNames(
                       active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left'
+                      'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left flex items-center'
                     )}
                     onClick={installApp}
                   >
+                    <ArrowTopRightOnSquareIcon
+                      className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
                     {isMobile()
                       ? t('_Install Mobile App')
                       : t('_Install Desktop App')}
@@ -114,13 +126,17 @@ const UserMenu = () => {
                   type="button"
                   className={classNames(
                     active ? 'bg-gray-100' : '',
-                    'block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left'
+                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left flex items-center'
                   )}
                   onClick={() => {
                     dispatch(logout())
                     navigate('/')
                   }}
                 >
+                  <ArrowRightOnRectangleIcon
+                    className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
                   {t('_Logout')}
                 </button>
               )}
