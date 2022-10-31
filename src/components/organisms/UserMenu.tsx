@@ -61,7 +61,7 @@ const UserMenu = () => {
     }
   }
 
-  const helpPopup = usePopup(true)
+  const helpPopup = usePopup(false)
 
   return (
     <div className="flex sm:items-center pl-2 md:pl-0">
