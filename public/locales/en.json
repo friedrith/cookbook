@@ -108,7 +108,7 @@
   "settings": {
     "temperatures": {
       "Temperatures": "Temperatures",
-      "keepUnchanged": "Does not change",
+      "keepUnchanged": "Do not change",
       "Farenheit": "Farenheit",
       "Celsius": "Celsius"
     },
