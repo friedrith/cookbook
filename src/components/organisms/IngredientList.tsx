@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/outline'
 
 import { FormattedRecipe } from 'models/Recipe'
 import usePopup from 'hooks/usePopup'
@@ -91,7 +91,7 @@ const IngredientList = ({ recipe }: Props) => {
             data-place="left"
           >
             {shoppingBag.isOpen ? (
-              <XMarkIcon
+              <XCircleIcon
                 className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer focus:outline-none"
                 aria-hidden="true"
                 onClick={shoppingBag.toggle}
