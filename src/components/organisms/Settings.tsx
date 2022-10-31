@@ -20,7 +20,7 @@ const Settings = () => {
   const ingredientTemplate = useAppSelector(getIngredienTemplate)
 
   return (
-    <form>
+    <form className="md:w-auto" onSubmit={event => event.preventDefault()}>
       <div className="space-y-6">
         <div>
           <label
