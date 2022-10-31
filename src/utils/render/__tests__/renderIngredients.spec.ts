@@ -8,6 +8,6 @@ describe('renderIngredients', () => {
     ]
     const expectedIngredients = `sugar\n120 g flour`
 
-    expect(renderIngredients(ingredients)).toEqual(expectedIngredients)
+    expect(renderIngredients(ingredients, '')).toEqual(expectedIngredients)
   })
 })

@@ -11,7 +11,7 @@ import Button from 'components/atoms/Button'
 import renderIngredients from 'utils/render/renderIngredients'
 import { canShare, share, isShared, isCopiedToClipboard } from 'utils/share'
 import { useAppSelector } from 'hooks/redux'
-import { getRecipe } from 'store'
+import { getRecipe, getIngredienTemplate } from 'store'
 import waitFor from 'utils/waitFor'
 
 type Props = {
@@ -22,10 +22,6 @@ const key = (ingredient: Ingredient, index: number) =>
   `${ingredient.name}${index}`
 
 const IngredientList = ({ recipe }: Props) => {
-  // const ingredients = useAppSelector(state =>
-  //   getIngredientList(state, recipe.id)
-  // )
-
   const { t } = useTranslation()
 
   const shoppingBag = usePopup(false)
@@ -36,6 +32,8 @@ const IngredientList = ({ recipe }: Props) => {
 
   const [sharedIngredientsWithClipboard, setSharedIngredientsWithClipboard] =
     useState(false)
+
+  const ingredientTemplate = useAppSelector(getIngredienTemplate)
 
   const toggleCheckedIngredient =
     (ingredientIndex: number) => (event: React.SyntheticEvent) => {
@@ -64,7 +62,11 @@ const IngredientList = ({ recipe }: Props) => {
   )
 
   const shareIngredients = async () => {
-    const result = await share(renderIngredients(ingredientsToBeShared))
+    const ingredients = renderIngredients(
+      ingredientsToBeShared,
+      ingredientTemplate
+    )
+    const result = await share(ingredients)
 
     if (isCopiedToClipboard(result)) {
       setSharedIngredientsWithClipboard(true)

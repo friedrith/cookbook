@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from 'react'
-import { /*Link,*/ useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Menu, Transition } from '@headlessui/react'
 import {
@@ -8,7 +8,7 @@ import {
   ArrowRightOnRectangleIcon,
   QuestionMarkCircleIcon,
   ArrowTopRightOnSquareIcon,
-  // CogIcon,
+  CogIcon,
 } from '@heroicons/react/24/outline'
 
 import classNames from 'utils/classNames'
@@ -24,6 +24,7 @@ import useBeforeInstallPrompt from 'hooks/useBeforeInstallPrompt'
 import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
 import HelpPopup from 'components/organisms/HelpPopup'
 import usePopup from 'hooks/usePopup'
+import SettingsPopup from './SettingsPopup'
 
 const UserMenu = () => {
   const dispatch = useAppDispatch()
@@ -63,6 +64,8 @@ const UserMenu = () => {
 
   const helpPopup = usePopup(false)
 
+  const settingsPopup = usePopup(false)
+
   return (
     <div className="flex sm:items-center pl-2 md:pl-0">
       {/* Profile dropdown */}
@@ -86,23 +89,23 @@ const UserMenu = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            {/* <Menu.Item>
+            <Menu.Item>
               {({ active }) => (
-                <Link
-                  to="/help"
+                <button
                   className={classNames(
                     active ? 'bg-gray-100' : '',
-                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer flex items-center'
+                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full flex items-center'
                   )}
+                  onClick={settingsPopup.open}
                 >
                   <CogIcon
                     className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
                   {t('_Settings')}
-                </Link>
+                </button>
               )}
-            </Menu.Item> */}
+            </Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <button
@@ -167,6 +170,10 @@ const UserMenu = () => {
         </Transition>
       </Menu>
       <HelpPopup open={helpPopup.isOpen} onClose={helpPopup.close} />
+      <SettingsPopup
+        open={settingsPopup.isOpen}
+        onClose={settingsPopup.close}
+      />
     </div>
   )
 }

@@ -9,6 +9,9 @@ import Badge from 'components/atoms/Badge'
 import renderMeasure from 'utils/render/renderMeasure'
 import { replaceUrlsByLinks } from 'utils/parser/parseStep'
 import shortenIngredientName from 'utils/parser/shortenIngredientName'
+import { useAppSelector } from 'hooks/redux'
+import { getTemperature } from 'store'
+import { replaceTemperature } from 'utils/parser/temperatures'
 
 type PropsGeneric = {
   className?: string
@@ -33,10 +36,18 @@ const StepItemGeneric = ({
   onClick,
   ingredients,
 }: PropsGeneric) => {
+  const temperature = useAppSelector(getTemperature)
+
   const descriptionParsed = useMemo(
-    () => replaceUrlsByLinks(description, 'underline'),
-    [description]
+    () =>
+      replaceTemperature(
+        replaceUrlsByLinks(description, 'underline'),
+        temperature
+      ),
+    [description, temperature]
   )
+
+  console.log('temperature')
 
   return (
     <li className={className}>

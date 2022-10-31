@@ -48,8 +48,8 @@
   "_Undo": "Annuler",
   "_Saving": "Sauvegarde...",
   "_Share Recipe": "Partager",
+  "_Copy Recipe to clipboard": "Copier la recette dans le presse-papier",
   "_Recipe copied to clipboard": "Recette copiée dans le presse-papier.",
-  "_Share Ingredients": "Partager les Ingrédients",
   "_Ingredients copied to clipboard": "Ingredients copiées dans le presse-papier.",
   "_Logout": "Se déconnecter",
   "_Help": "Aide",
@@ -101,5 +101,19 @@
   "_Ok Got it": "Oui j'ai compris !",
   "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.  <br/><br/><strong>S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.</strong>",
   "_Version": "Version {{version}}",
-  "_Settings": "Réglages"
+  "_Settings": "Réglages",
+  "languages": {
+    "Language": "Langue"
+  },
+  "settings": {
+    "temperatures": {
+      "Temperatures": "Températures",
+      "keepUnchanged": "Ne pas changer",
+      "Farenheit": "Farenheit",
+      "Celsius": "Celsius"
+    },
+    "ingredient template": "Template pour les ingrédients dans la liste de courses",
+    "Show advanced": "Afficher les réglages avancés",
+    "Hide advanced": "Cacher les réglages avancés"
+  }
 }

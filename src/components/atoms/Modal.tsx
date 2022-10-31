@@ -5,6 +5,7 @@ export enum PopupType {
   Warning,
   Info,
   Success,
+  Black,
 }
 
 type Props = {
@@ -24,6 +25,7 @@ type Props = {
 
 const colors = {
   [PopupType.Warning]: 'red',
+  [PopupType.Black]: 'black',
   [PopupType.Info]: 'indigo',
   [PopupType.Success]: 'green',
 }
@@ -78,16 +80,18 @@ const Modal = ({
                       />
                     </div>
                   )}
-                  {(description || title) && (
+                  <div className="mt-1 text-center">
+                    {title && (
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg font-medium leading-6 text-gray-900"
+                      >
+                        {title}
+                      </Dialog.Title>
+                    )}
+                  </div>
+                  {description && (
                     <div className="mt-3 text-center sm:mt-5">
-                      {title && (
-                        <Dialog.Title
-                          as="h3"
-                          className="text-lg font-medium leading-6 text-gray-900"
-                        >
-                          {title}
-                        </Dialog.Title>
-                      )}
                       {description && (
                         <div className="mt-2">
                           <p className="text-sm text-gray-500">{description}</p>
