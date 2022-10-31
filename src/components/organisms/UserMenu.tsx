@@ -8,6 +8,7 @@ import {
   ArrowRightOnRectangleIcon,
   QuestionMarkCircleIcon,
   ArrowTopRightOnSquareIcon,
+  CogIcon,
 } from '@heroicons/react/24/outline'
 
 import classNames from 'utils/classNames'
@@ -21,6 +22,8 @@ import {
 
 import useBeforeInstallPrompt from 'hooks/useBeforeInstallPrompt'
 import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
+import HelpPopup from 'components/organisms/HelpPopup'
+import usePopup from 'hooks/usePopup'
 
 const UserMenu = () => {
   const dispatch = useAppDispatch()
@@ -58,6 +61,8 @@ const UserMenu = () => {
     }
   }
 
+  const helpPopup = usePopup(true)
+
   return (
     <div className="flex sm:items-center pl-2 md:pl-0">
       {/* Profile dropdown */}
@@ -90,12 +95,29 @@ const UserMenu = () => {
                     'group block px-4 py-2 text-sm text-gray-700 cursor-pointer flex items-center'
                   )}
                 >
+                  <CogIcon
+                    className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  {t('_Settings')}
+                </Link>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <button
+                  className={classNames(
+                    active ? 'bg-gray-100' : '',
+                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left flex items-center'
+                  )}
+                  onClick={helpPopup.open}
+                >
                   <QuestionMarkCircleIcon
                     className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
                   {t('_Help')}
-                </Link>
+                </button>
               )}
             </Menu.Item>
             {appInstallationEnabled && (
@@ -144,6 +166,7 @@ const UserMenu = () => {
           </Menu.Items>
         </Transition>
       </Menu>
+      <HelpPopup open={helpPopup.isOpen} onClose={helpPopup.close} />
     </div>
   )
 }

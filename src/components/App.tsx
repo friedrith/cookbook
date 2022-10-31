@@ -15,7 +15,6 @@ import ProtectedPage from 'components/templates/ProtectedPage'
 import RecipeEdit from 'components/views/RecipeEdit'
 import Faq from 'components/views/Faq'
 import NotFound404 from 'components/views/NotFound404'
-import Help from 'components/views/Help'
 
 import HistoryContext from 'contexts/History'
 
@@ -105,7 +104,6 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/verify-link" element={<LinkVerification />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/help" element={<Help />} />
           <Route path="/*" element={<NotFound404 />} />
         </Routes>
       </HistoryContext.Provider>

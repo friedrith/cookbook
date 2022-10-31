@@ -17,7 +17,9 @@ type Props = {
   onClose: () => void
   children: React.ReactNode
   type?: PopupType
+  title?: string | React.ReactNode
   description?: string | React.ReactNode
+  rawIcon?: React.ReactNode
 }
 
 const colors = {
@@ -32,7 +34,9 @@ const Modal = ({
   onClose,
   children,
   type = PopupType.Info,
+  title = '',
   description = '',
+  rawIcon = false,
 }: Props) => {
   const color = colors[type]
 
@@ -64,27 +68,31 @@ const Modal = ({
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                 <div>
-                  <div
-                    className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-${color}-100`}
-                  >
-                    {Icon && (
+                  {Icon && (
+                    <div
+                      className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-${color}-100`}
+                    >
                       <Icon
                         className={`h-6 w-6 text-${color}-600`}
                         aria-hidden="true"
                       />
-                    )}
-                  </div>
-                  {description && (
+                    </div>
+                  )}
+                  {(description || title) && (
                     <div className="mt-3 text-center sm:mt-5">
-                      {/* <Dialog.Title
-                      as="h3"
-                      className="text-lg font-medium leading-6 text-gray-900"
-                    >
-                      Share
-                    </Dialog.Title> */}
-                      <div className="mt-2">
-                        <p className="text-sm text-gray-500">{description}</p>
-                      </div>
+                      {title && (
+                        <Dialog.Title
+                          as="h3"
+                          className="text-lg font-medium leading-6 text-gray-900"
+                        >
+                          {title}
+                        </Dialog.Title>
+                      )}
+                      {description && (
+                        <div className="mt-2">
+                          <p className="text-sm text-gray-500">{description}</p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
