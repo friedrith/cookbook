@@ -19,6 +19,8 @@ type Recipe = {
   steps: string
   createdAt: Date | null
   updatedAt?: Date | null
+  originUrl?: string
+  author?: string
 }
 
 export type FormattedRecipe = {
@@ -31,6 +33,8 @@ export type FormattedRecipe = {
   steps: Step[]
   createdAt: Date | null
   updatedAt?: Date | null
+  originUrl?: string
+  author?: string
 }
 
 export default Recipe

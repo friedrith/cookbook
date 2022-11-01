@@ -1,7 +1,11 @@
 import { useRef, useState, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { PencilIcon, ShareIcon } from '@heroicons/react/24/outline'
+import {
+  PencilIcon,
+  ShareIcon,
+  ArrowUpOnSquareIcon,
+} from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
@@ -20,7 +24,6 @@ import SharePopup from 'components/organisms/SharePopup'
 import usePopup from 'hooks/usePopup'
 import BackButton from 'components/molecules/BackButton'
 import renderRecipe from 'utils/render/renderRecipe'
-
 import {
   getRecipe,
   getRecipeProgress,
@@ -30,6 +33,7 @@ import {
 import LargeMainPage from 'components/templates/LargeMainPage'
 import parseRecipe from 'utils/parser/parseRecipe'
 import { canShare, share } from 'utils/share'
+import { isMacLike } from 'utils/platforms/mobile'
 
 const position = (isMaximized: boolean) =>
   isMaximized ? `md:fixed md:top-[-1rem]` : 'relative'
@@ -133,7 +137,7 @@ const RecipeDetails = () => {
               <Button.Icon
                 className="mr-3"
                 onClick={startSharing}
-                icon={ShareIcon}
+                icon={isMacLike() ? ArrowUpOnSquareIcon : ShareIcon}
                 blur
                 title={t('_Share Recipe')}
               />

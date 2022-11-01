@@ -11,7 +11,6 @@ import {
   CogIcon,
 } from '@heroicons/react/24/outline'
 
-import classNames from 'utils/classNames'
 import { useAppDispatch } from 'hooks/redux'
 import { logout } from 'store'
 import { isMobile } from 'utils/platforms/mobile'
@@ -19,6 +18,7 @@ import {
   getPWAInstallationPrompt,
   resetPWAInstallationPrompt,
 } from 'utils/platforms/pwa'
+import MenuItem from 'components/molecules/MenuItem'
 
 import useBeforeInstallPrompt from 'hooks/useBeforeInstallPrompt'
 import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
@@ -43,9 +43,7 @@ const UserMenu = () => {
     setAppInstallationEnabled(true && !isStandalone)
   })
 
-  // useBeforeInstallPrompt()
-
-  const installApp = async (event: React.MouseEvent<HTMLElement>) => {
+  const installApp = async (event: React.SyntheticEvent) => {
     const deferredPrompt = getPWAInstallationPrompt()
 
     if (deferredPrompt) {
@@ -66,11 +64,38 @@ const UserMenu = () => {
 
   const settingsPopup = usePopup(false)
 
+  const menuOptions = [
+    {
+      icon: CogIcon,
+      label: '_Settings',
+      onClick: settingsPopup.open,
+    },
+    {
+      icon: ArrowTopRightOnSquareIcon,
+      label: isMobile() ? '_Install Mobile App' : '_Install Desktop App',
+      onClick: installApp,
+    },
+    {
+      icon: QuestionMarkCircleIcon,
+      label: '_Help',
+      onClick: helpPopup.open,
+      disabled: appInstallationEnabled,
+    },
+    {
+      icon: ArrowRightOnRectangleIcon,
+      label: '_Logout',
+      onClick: () => {
+        dispatch(logout())
+        navigate('/')
+      },
+    },
+  ]
+
   return (
     <div className="flex sm:items-center pl-2 md:pl-0">
       {/* Profile dropdown */}
       <Menu as="div" className="relative">
-        <div data-tip={t('_Open Menu')}>
+        <div>
           <Menu.Button className="flex max-w-xs items-center rounded-full bg-white hover:text-indigo-600 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
             <span className="sr-only">{t('_Open Menu')}</span>
             <EllipsisVerticalIcon
@@ -89,83 +114,17 @@ const UserMenu = () => {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={classNames(
-                    active ? 'bg-gray-100' : '',
-                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full flex items-center'
+            {menuOptions
+              .filter(({ disabled }) => !disabled)
+              .map(({ label, onClick, icon }) => (
+                <Menu.Item>
+                  {({ active }) => (
+                    <MenuItem active={active} icon={icon} onClick={onClick}>
+                      {t(label)}
+                    </MenuItem>
                   )}
-                  onClick={settingsPopup.open}
-                >
-                  <CogIcon
-                    className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                  {t('_Settings')}
-                </button>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  className={classNames(
-                    active ? 'bg-gray-100' : '',
-                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left flex items-center'
-                  )}
-                  onClick={helpPopup.open}
-                >
-                  <QuestionMarkCircleIcon
-                    className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                  {t('_Help')}
-                </button>
-              )}
-            </Menu.Item>
-            {appInstallationEnabled && (
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    type="button"
-                    className={classNames(
-                      active ? 'bg-gray-100' : '',
-                      'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left flex items-center'
-                    )}
-                    onClick={installApp}
-                  >
-                    <ArrowTopRightOnSquareIcon
-                      className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                    {isMobile()
-                      ? t('_Install Mobile App')
-                      : t('_Install Desktop App')}
-                  </button>
-                )}
-              </Menu.Item>
-            )}
-            <Menu.Item>
-              {({ active }) => (
-                <button
-                  type="button"
-                  className={classNames(
-                    active ? 'bg-gray-100' : '',
-                    'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full text-left flex items-center'
-                  )}
-                  onClick={() => {
-                    dispatch(logout())
-                    navigate('/')
-                  }}
-                >
-                  <ArrowRightOnRectangleIcon
-                    className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                  {t('_Logout')}
-                </button>
-              )}
-            </Menu.Item>
+                </Menu.Item>
+              ))}
           </Menu.Items>
         </Transition>
       </Menu>

@@ -15,3 +15,6 @@ export const isIpad = () =>
   navigator.maxTouchPoints &&
   navigator.maxTouchPoints > 2 &&
   /MacIntel/.test(navigator.platform)
+
+export const isMacLike = () =>
+  /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)

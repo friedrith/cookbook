@@ -30,6 +30,11 @@ type HttpRecipe = {
   updatedAt?: Date | null
 }
 
+export const importOne = async (url: string) => {
+  const response = await api().post(`${baseURL}/import`, { url })
+  return convertFromHttp(response?.data?.recipe)
+}
+
 export const createOne = async (recipe: Recipe) => {
   const response = await api().post(baseURL, recipe)
   return convertFromHttp(response?.data?.recipe)

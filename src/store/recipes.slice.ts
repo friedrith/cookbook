@@ -36,6 +36,11 @@ export const updateRecipe = createAsyncThunk(
   async (recipe: Recipe) => recipesApi.updateOne(recipe)
 )
 
+export const importRecipe = createAsyncThunk(
+  'recipes/import',
+  async (url: string) => recipesApi.importOne(url)
+)
+
 export const addRecipe = createAsyncThunk(
   'recipes/add',
   async (recipe: Recipe) => recipesApi.createOne(recipe)
@@ -129,6 +134,13 @@ export const recipesSlice = createSlice({
     })
 
     builder.addCase(addRecipe.fulfilled, (state, action) => {
+      const recipe = action.payload
+      state.byId[recipe.id] = recipe
+
+      state.allIds.push(recipe.id)
+    })
+
+    builder.addCase(importRecipe.fulfilled, (state, action) => {
       const recipe = action.payload
       state.byId[recipe.id] = recipe
 

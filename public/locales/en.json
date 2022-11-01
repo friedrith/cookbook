@@ -115,5 +115,16 @@
     "ingredient template": "Template for ingredients in shopping list",
     "Show advanced": "Show advanced settings",
     "Hide advanced": "Hide advanced settings"
-  }
+  },
+  "import": {
+    "Import from a recipe catalog": "Import from a website",
+    "Enter a url": "Enter an url",
+    "Import": "Import",
+    "or": "or",
+    "Create new from blank page": "Create new from blank page",
+    "Enter a valid url": "Enter a valid url",
+    "Only few recipe catalog are managed": "Only few websites are managed.",
+    "Check the list there": "Check the list there."
+  },
+  "_originUrl": "Recipe originally coming from {{url}}"
 }

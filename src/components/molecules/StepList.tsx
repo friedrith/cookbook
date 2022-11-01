@@ -73,12 +73,23 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
             <StepItem
               key={key(step, stepIdx)}
               step={step}
-              isLastOne={stepIdx === recipe.steps.length - 1}
+              isLastOne={
+                recipe.originUrl ? false : stepIdx === recipe.steps.length - 1
+              }
               status={evaluateStatus(stepIdx, progress)}
               onClick={() => onSelectStep(stepIdx)}
               ingredients={ingredientsByStep[stepIdx]}
             />
           ))}
+          {recipe.originUrl && (
+            <StepItem
+              step={{ description: t('_originUrl', { url: recipe.originUrl }) }}
+              isLastOne
+              status={evaluateStatus(recipe.steps.length, progress)}
+              onClick={() => onSelectStep(recipe.steps.length)}
+              ingredients={[]}
+            />
+          )}
         </ol>
       </div>
     </div>

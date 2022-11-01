@@ -115,5 +115,16 @@
     "ingredient template": "Template pour les ingrédients dans la liste de courses",
     "Show advanced": "Afficher les réglages avancés",
     "Hide advanced": "Cacher les réglages avancés"
-  }
+  },
+  "import": {
+    "Import from a recipe catalog": "Importer depuis un site interner",
+    "Enter a url": "Ajouter une url",
+    "Import": "Importer",
+    "or": "ou",
+    "Create new from blank page": "Créer depuis une page blanche",
+    "Enter a valid url": "Entrer une valide url",
+    "Only few recipe catalog are managed": "Uniquement quelques sites sont gérés.",
+    "Check the list there": "Vérifier les sites internet ici."
+  },
+  "_originUrl": "Recette venant initialement de {{url}}"
 }

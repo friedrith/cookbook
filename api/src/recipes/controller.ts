@@ -1,7 +1,9 @@
 import { Request, Response } from 'express'
 import * as admin from 'firebase-admin'
-import { v4 as uuidv4 } from 'uuid'
 import { omit } from 'lodash'
+import { v4 as uuidv4 } from 'uuid'
+import * as db from './database'
+import { parseRecipe } from './parser'
 
 const COLLECTION_PATH = 'server/saving-data/cookbook/recipes'
 
@@ -15,31 +17,67 @@ const convert = (recipe: any) => ({
   updatedAt: recipe.updatedAt ? new Date(recipe.updatedAt) : null,
 })
 
+const createRecipe = async (obj: any) => {
+  const recipe = {
+    ...obj,
+    id: uuidv4(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  }
+
+  await db.insert(COLLECTION_PATH, recipe.id, recipe)
+
+  return recipe
+}
+
 export async function create(req: Request, res: Response) {
   try {
     const { name, keywords, imageUrl, stats, ingredients, steps } = req.body
 
-    const ref = admin.database().ref(COLLECTION_PATH)
-
     const { uid } = res.locals
 
-    const recipe = {
-      id: uuidv4(),
+    const recipe = await createRecipe({
       name,
       keywords,
       imageUrl,
       stats,
       ingredients,
       steps,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
       userId: uid,
-    }
-    const recipeRef = ref.child(recipe.id)
-
-    recipeRef.set(recipe)
+    })
 
     return res.status(201).send({ recipe: convert(recipe) })
+  } catch (err) {
+    return handleError(res, err)
+  }
+}
+
+export async function importRecipe(req: Request, res: Response) {
+  try {
+    const { url } = req.body
+
+    const dom = await (await fetch(url.toString())).text()
+
+    const { name, keywords, imageUrl, stats, ingredients, steps, author } =
+      parseRecipe(dom)
+
+    const { uid } = res.locals
+
+    const recipe = await createRecipe({
+      name,
+      keywords,
+      imageUrl,
+      stats,
+      ingredients,
+      steps,
+      originUrl: url,
+      author,
+      userId: uid,
+    })
+
+    return res.status(200).send({
+      recipe: convert(recipe),
+    })
   } catch (err) {
     return handleError(res, err)
   }
