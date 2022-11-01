@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 import { useTranslation } from 'react-i18next'
-import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Transition } from '@headlessui/react'
 
@@ -108,12 +108,12 @@ const NewRecipeForm = () => {
             {status === ImportUrlStatus.NotAManagedWebsite && (
               <>
                 {t('import.Only few recipe catalog are managed')}{' '}
-                {/* <Link
-                  to="/faq"
+                <Link
+                  to="/faq#website-list"
                   className="text-indigo-600 hover:text-indigo-500 cursor-pointer"
                 >
                   {t('import.Check the list there')}
-                </Link> */}
+                </Link>
               </>
             )}
           </span>
