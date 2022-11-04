@@ -68,6 +68,11 @@ const fixtures = {
     name: 'ground paprika',
     measure: { unit: 'tsp.', value: '½' },
   },
+  '1 12–14-lb. turkey, neck reserved for gravy, giblets discarded, patted dry':
+    {
+      name: 'turkey, neck reserved for gravy, giblets discarded, patted dry',
+      measure: { unit: 'lb.', value: '1 12–14' },
+    },
 }
 
 export default fixtures

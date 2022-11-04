@@ -1,5 +1,5 @@
 import { first } from 'lodash'
-import { parse } from '../utils/schemaOrgParser'
+import { parse } from '../schemaOrgParser'
 
 describe('parse', () => {
   it('should return default object', () => {

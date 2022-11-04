@@ -10,7 +10,7 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
     "test": "jest src/",
-    "fixture": "ts-node src/recipes/parser/__fixtures__/generateFixtures.ts"
+    "fixture": "ts-node src/utils/parser/__fixtures__/generateFixtures.ts"
   },
   "engines": {
     "node": "16"

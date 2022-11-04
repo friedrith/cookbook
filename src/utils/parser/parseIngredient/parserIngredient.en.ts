@@ -50,7 +50,7 @@ const units = [
 const parseAsWithUnitWithoutOf = (line: string): Ingredient | null => {
   const unit = units
     .map(u => {
-      const match = line.match(new RegExp(`[0-9\\s]+(${u}[a-z.]*) (of|)`, 'i'))
+      const match = line.match(new RegExp(`[0-9\\s-]+(${u}[a-z.]*) (of|)`, 'i'))
       return match ? match[1] : null
     })
     .find(Boolean)

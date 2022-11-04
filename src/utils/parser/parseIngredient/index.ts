@@ -14,7 +14,7 @@ const parsers = [
 export const parseValue = (value: string | number) => {
   if (typeof value === 'number') return value
 
-  const cleanedValue = value.trim()
+  const cleanedValue = value.trim().replace(/-$/, '')
 
   const number = parseFloat(cleanedValue)
 

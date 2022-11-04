@@ -76,13 +76,22 @@ export async function importRecipe(req: Request, res: Response) {
       userId: uid,
     })
 
-    await websitesDb.insert(uuidv4(), { url, status: 'ok' })
+    await websitesDb.insert(uuidv4(), {
+      url,
+      status: 'ok',
+      createdAt: new Date().toISOString(),
+    })
 
     return res.status(200).send({
       recipe: convert(recipe),
     })
   } catch (err) {
-    await websitesDb.insert(uuidv4(), { url, status: 'error', error: err })
+    await websitesDb.insert(uuidv4(), {
+      url,
+      status: 'error',
+      error: err,
+      createdAt: new Date().toISOString(),
+    })
     return handleError(res, err)
   }
 }

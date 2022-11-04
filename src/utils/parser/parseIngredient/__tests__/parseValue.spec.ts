@@ -16,4 +16,8 @@ describe('parseValue', () => {
   it('should return string when range', () => {
     expect(parseValue('1-2')).toEqual('1-2')
   })
+
+  it('should return string when range with - at the end', () => {
+    expect(parseValue('1-2-')).toEqual('1-2')
+  })
 })
