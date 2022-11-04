@@ -12,7 +12,6 @@ type Metadata = {
 
 export interface RecipesState {
   byId: Record<string, Recipe>
-  allIds: string[]
   areFetched: boolean
   metadataById: Record<string, Metadata>
   trashQueue: string[]
@@ -20,7 +19,6 @@ export interface RecipesState {
 
 export const recipesInitialState: RecipesState = {
   byId: {},
-  allIds: [],
   areFetched: false,
   metadataById: {},
   trashQueue: [],
@@ -124,7 +122,6 @@ export const recipesSlice = createSlice({
         (acc, recipe) => ({ ...acc, [recipe.id]: recipe }),
         {}
       )
-      state.allIds = recipes.map(r => r.id)
       state.areFetched = true
     })
 
@@ -136,22 +133,16 @@ export const recipesSlice = createSlice({
     builder.addCase(addRecipe.fulfilled, (state, action) => {
       const recipe = action.payload
       state.byId[recipe.id] = recipe
-
-      state.allIds.push(recipe.id)
     })
 
     builder.addCase(importRecipe.fulfilled, (state, action) => {
       const recipe = action.payload
       state.byId[recipe.id] = recipe
-
-      state.allIds.push(recipe.id)
     })
 
     builder.addCase(deleteRecipe.fulfilled, (state, action) => {
       const recipe = action.meta.arg
       delete state.byId[recipe.id]
-
-      state.allIds = state.allIds.filter(id => id !== recipe.id)
 
       state.trashQueue = state.trashQueue.filter(id => id !== recipe.id)
     })
@@ -187,11 +178,10 @@ export const {
 export const areRecipesFetched = (state: RootState) => state.recipes.areFetched
 
 export const getRecipeList = createSelector(
-  (state: RootState) => state.recipes.allIds,
   (state: RootState) => state.recipes.byId,
   (state: RootState) => state.recipes.trashQueue,
-  (allIds, byId, trashQueue) =>
-    allIds.filter(id => !trashQueue.includes(id)).map(id => byId[id])
+  (byId, trashQueue) =>
+    Object.values(byId).filter(recipe => !trashQueue.includes(recipe.id))
 )
 
 const cleanId = (id: string | undefined) => (id === undefined ? '' : id)

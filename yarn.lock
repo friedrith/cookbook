@@ -3653,6 +3653,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.14.188":
+  version: 4.14.188
+  resolution: "@types/lodash@npm:4.14.188"
+  checksum: 89c32f0a18e0da6ae914b430e76b3d0451c4c85b9c838b440c0c9a8d4966c8e2a76dbb30964c7126402856b2997ec56a8c36d8d6461ec14387689ec37594f09f
+  languageName: node
+  linkType: hard
+
 "@types/long@npm:^4.0.1":
   version: 4.0.2
   resolution: "@types/long@npm:4.0.2"
@@ -5523,6 +5530,7 @@ __metadata:
     "@testing-library/react": ^13.0.0
     "@testing-library/user-event": ^13.2.1
     "@types/jest": ^27.0.1
+    "@types/lodash": ^4.14.188
     "@types/node": ^16.7.13
     "@types/react": ^18.0.0
     "@types/react-dom": ^18.0.0
@@ -5544,6 +5552,7 @@ __metadata:
     i18next: ^21.8.3
     i18next-browser-languagedetector: ^6.1.4
     i18next-http-backend: ^1.4.0
+    lodash: ^4.17.21
     postcss: ^8.4.14
     prettier: ^2.6.2
     react: ^18.1.0

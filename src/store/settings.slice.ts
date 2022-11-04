@@ -19,11 +19,9 @@ export const settingsSlice = createSlice({
   initialState: settingsInitialState,
   reducers: {
     setTemperature: (state, action) => {
-      localStorage.setItem('temperature', action.payload)
       state.temperature = action.payload
     },
     setIngredientTemplate: (state, action) => {
-      localStorage.setItem('ingredientTemplate', action.payload)
       state.ingredientTemplate = action.payload
     },
   },
