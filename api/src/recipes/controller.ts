@@ -4,9 +4,8 @@ import { omit } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 import * as db from './database'
 import { parseRecipe } from '../utils/parser'
-import * as websitesDb from '../officialWebsites/database'
 
-const COLLECTION_PATH = 'server/saving-data/cookbook/recipes'
+const COLLECTION_PATH = 'server/saving-data/cookbook/recipes/byUsers'
 
 const handleError = (res: Response, err: any) => {
   return res.status(500).send({ message: `${err.code} - ${err.message}` })
@@ -26,7 +25,7 @@ const createRecipe = async (obj: any) => {
     updatedAt: new Date().toISOString(),
   }
 
-  await db.insert(COLLECTION_PATH, recipe.id, recipe)
+  await db.insert(COLLECTION_PATH, recipe)
 
   return recipe
 }
@@ -53,16 +52,30 @@ export async function create(req: Request, res: Response) {
   }
 }
 
+const addImportLog = async (obj: any) => {
+  const ref = admin
+    .database()
+    .ref('server/saving-data/cookbook/recipes/imports')
+
+  const logId = uuidv4()
+
+  const logRef = ref.child(logId)
+
+  logRef.set({
+    ...obj,
+    createdAt: new Date().toISOString(),
+  })
+}
+
 export async function importRecipe(req: Request, res: Response) {
   const { url } = req.body
+  const { uid } = res.locals
 
   try {
     const dom = await (await fetch(url.toString())).text()
 
     const { name, keywords, imageUrl, stats, ingredients, steps, author } =
       await parseRecipe(url, dom)
-
-    const { uid } = res.locals
 
     const recipe = await createRecipe({
       name,
@@ -76,22 +89,14 @@ export async function importRecipe(req: Request, res: Response) {
       userId: uid,
     })
 
-    await websitesDb.insert(uuidv4(), {
-      url,
-      status: 'ok',
-      createdAt: new Date().toISOString(),
-    })
+    await addImportLog({ url, status: 'ok', userId: uid })
 
     return res.status(200).send({
       recipe: convert(recipe),
     })
   } catch (err) {
-    await websitesDb.insert(uuidv4(), {
-      url,
-      status: 'error',
-      error: err,
-      createdAt: new Date().toISOString(),
-    })
+    addImportLog({ url, status: 'error', error: err, userId: uid })
+
     return handleError(res, err)
   }
 }
@@ -108,31 +113,22 @@ export async function patch(req: Request, res: Response) {
     const { uid } = res.locals
 
     const ref = admin.database().ref(COLLECTION_PATH)
-    const recipeRef = ref.child(id)
+    const userRef = ref.child(uid)
+    const recipeRef = userRef.child(id)
+
+    const recipe = omit({ ...req.body, updatedAt: new Date().toISOString() }, [
+      'userId',
+      'id',
+      'createdAt',
+      'author',
+      'originUrl',
+    ])
+    recipeRef.update(recipe)
 
     recipeRef.once(
       'value',
-      snapshotBefore => {
-        if (snapshotBefore.val()?.userId === uid) {
-          const recipe = omit(
-            { ...req.body, updatedAt: new Date().toISOString() },
-            ['userId', 'id', 'createdAt']
-          )
-          recipeRef.update(recipe)
-
-          recipeRef.once(
-            'value',
-            snapshot => {
-              const updatedRecipe = snapshot.val()
-              res.status(200).send({ recipe: convert(updatedRecipe) })
-            },
-            errorObject => {
-              res.status(500).send({ error: errorObject.name })
-            }
-          )
-        } else {
-          res.status(403).send({ error: 'not your recipe' })
-        }
+      snapshot => {
+        res.status(200).send({ recipe: convert(snapshot.val()) })
       },
       errorObject => {
         res.status(500).send({ error: errorObject.name })
@@ -143,27 +139,20 @@ export async function patch(req: Request, res: Response) {
   }
 }
 
-const sortByDate = (recipeA: any, recipeB: any) =>
-  recipeA?.createdAt?.localeCompare(recipeB?.createdAt) || 0
-
 // https://firebase.google.com/docs/database/admin/start#node.js
 export async function all(req: Request, res: Response) {
   try {
-    const ref = admin.database().ref(COLLECTION_PATH)
-
     const { uid } = res.locals
 
-    ref.once(
+    const ref = admin.database().ref(COLLECTION_PATH)
+    const userRef = ref.child(uid)
+
+    userRef.once(
       'value',
       snapshot => {
         let recipes = Object.values(snapshot.val() || {})
 
-        recipes = recipes
-          .sort(sortByDate)
-          .filter((r: any) => r.userId === uid)
-          .map(convert)
-
-        res.status(200).send({ recipes })
+        res.status(200).send({ recipes: recipes.map(convert) })
       },
       errorObject => {
         res.status(500).send({ error: errorObject.name })
@@ -177,25 +166,28 @@ export async function all(req: Request, res: Response) {
 export async function remove(req: Request, res: Response) {
   try {
     const { id } = req.params
-    const ref = admin.database().ref(COLLECTION_PATH)
-
-    const recipeRef = ref.child(id)
     const { uid } = res.locals
 
-    recipeRef.once(
-      'value',
-      snapshot => {
-        if (snapshot.val()?.userId === uid) {
-          recipeRef.set(null)
-          res.status(204).send({})
-        } else {
-          res.status(403).send({ error: 'not your recipe' })
-        }
-      },
-      errorObject => {
-        res.status(500).send({ error: errorObject.name })
-      }
-    )
+    const ref = admin.database().ref(COLLECTION_PATH)
+
+    const userRef = ref.child(uid)
+    const recipeRef = userRef.child(id)
+
+    recipeRef.set(null)
+  } catch (err) {
+    handleError(res, err)
+  }
+}
+
+export async function removeAll(req: Request, res: Response) {
+  try {
+    const { uid } = res.locals
+
+    const ref = admin.database().ref(COLLECTION_PATH)
+
+    const userRef = ref.child(uid)
+
+    userRef.set(null)
   } catch (err) {
     handleError(res, err)
   }

@@ -38,6 +38,10 @@ export const logout = createAsyncThunk('auth/logout', async () =>
   firebaseApi.logout()
 )
 
+export const deleteAccount = createAsyncThunk('auth/deleteAccount', async () =>
+  firebaseApi.deleteAccount()
+)
+
 export const initSession = createAsyncThunk('auth/init', async () =>
   firebaseApi.initSession()
 )

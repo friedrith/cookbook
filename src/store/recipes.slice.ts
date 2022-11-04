@@ -51,6 +51,13 @@ export const deleteRecipe = createAsyncThunk(
   }
 )
 
+export const deleteAllRecipes = createAsyncThunk(
+  'recipes/deleteAll',
+  async () => {
+    recipesApi.removeAll()
+  }
+)
+
 const timeouts: Record<string, NodeJS.Timeout> = {}
 
 export const addRecipeToDeleteQueue = createAsyncThunk(

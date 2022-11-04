@@ -9,7 +9,12 @@ import {
   setTemperature,
   getIngredienTemplate,
   setIngredientTemplate,
+  deleteAccount,
+  deleteAllRecipes,
+  logout,
 } from 'store'
+import Button from 'components/atoms/Button'
+import usePopup from 'hooks/usePopup'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()
@@ -18,6 +23,18 @@ const Settings = () => {
 
   const temperature = useAppSelector(getTemperature)
   const ingredientTemplate = useAppSelector(getIngredienTemplate)
+
+  const confirmDeleteAccountPopup = usePopup(false)
+
+  const deleteAccountConfirmed = async () => {
+    try {
+      await dispatch(deleteAllRecipes()).unwrap()
+      await dispatch(deleteAccount()).unwrap()
+      await dispatch(logout()).unwrap()
+    } catch (error) {
+      console.error('error while removing account', error)
+    }
+  }
 
   return (
     <form className="md:w-auto" onSubmit={event => event.preventDefault()}>
@@ -102,6 +119,54 @@ const Settings = () => {
             </>
           )}
         </Disclosure>
+        <div className="pt-7">
+          <div className="relative ">
+            <div
+              className="relative flex w-[200%] transition-all duration-300"
+              style={{
+                left: confirmDeleteAccountPopup.isOpen ? '-100%' : '0%',
+              }}
+            >
+              <div className="relative flex-1	flex ">
+                {!confirmDeleteAccountPopup.isOpen && (
+                  <Button.Error
+                    className="flex-1 flex justify-center !py-2.5"
+                    onClick={confirmDeleteAccountPopup.open}
+                  >
+                    {t('_Delete account')}
+                  </Button.Error>
+                )}
+              </div>
+              <div className="relative flex-1	">
+                {confirmDeleteAccountPopup.isOpen && (
+                  <>
+                    <div className="font-medium text-red-600 text-sm">
+                      {t('_Do you really want to delete your account?')}
+                    </div>
+                    <div className="font-medium text-red-600 text-xs pb-3">
+                      {t('_This action is definitive.')}
+                    </div>
+                    <div className="flex">
+                      <Button.Error
+                        className="flex-1 flex justify-center !py-2.5 mr-1"
+                        onClick={deleteAccountConfirmed}
+                      >
+                        {t('_Confirm')}
+                      </Button.Error>
+
+                      <Button.Black
+                        className="flex-1 flex justify-center !py-2.5 ml-1"
+                        onClick={confirmDeleteAccountPopup.close}
+                      >
+                        {t('_Cancel')}
+                      </Button.Black>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </form>
   )

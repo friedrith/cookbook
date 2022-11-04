@@ -53,11 +53,16 @@ const RecipeList = () => {
           )}
           {searchedRecipes.length > 0 && !query && (
             <>
+              {searchedRecipes.length > 8 && (
+                <RecipeListSection
+                  title={t('_Most Recents')}
+                  recipes={mostRecentRecipes}
+                />
+              )}
               <RecipeListSection
-                title={t('_Most Recents')}
-                recipes={mostRecentRecipes}
+                title={searchedRecipes.length > 8 ? t('_All') : ''}
+                recipes={searchedRecipes}
               />
-              <RecipeListSection title={t('_All')} recipes={searchedRecipes} />
             </>
           )}
           {searchedRecipes.length === 0 && (

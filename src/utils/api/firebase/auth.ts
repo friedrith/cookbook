@@ -5,6 +5,7 @@ import {
   signInWithEmailLink,
   signOut,
   setPersistence,
+  deleteUser,
   browserLocalPersistence,
 } from 'firebase/auth'
 
@@ -81,4 +82,11 @@ export const initSession = async () => {
 
   await retrieveToken()
   return convertUser(auth.currentUser)
+}
+
+export const deleteAccount = async () => {
+  const auth = getAuth()
+  if (auth.currentUser) {
+    await deleteUser(auth.currentUser)
+  }
 }

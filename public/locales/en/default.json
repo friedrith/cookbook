@@ -130,5 +130,9 @@
     "Check the list there": "Check the websites officially supported.",
     "Oups an error happened. We suggest you to enter the recipe manually this time.": "Oups an error happened. We suggest you to enter the recipe manually this time."
   },
-  "_originUrl": "Recipe originally coming from {{url}}"
+  "_originUrl": "Recipe originally coming from {{url}}",
+  "_Delete account": "Delete account",
+  "_Confirm": "Confirm",
+  "_Do you really want to delete your account?": "Do you really want to delete your account?",
+  "_This action is definitive.": "This action is definitive"
 }

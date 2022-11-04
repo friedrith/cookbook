@@ -1,6 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
 import { useTranslation } from 'react-i18next'
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Transition } from '@headlessui/react'
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { importRecipe } from 'store'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import { getOfficialWebsites } from 'store/officialWebsites'
+import Button from 'components/atoms/Button'
 
 const NewRecipeForm = () => {
   const { t } = useTranslation()
@@ -25,8 +26,6 @@ const NewRecipeForm = () => {
     setStatus(parseRecipeImportUrl(newUrl))
   }
 
-  const inputRef = useRef<HTMLInputElement | null>(null)
-
   const init = useCallback(async () => {
     const newUrl = await navigator.clipboard.readText()
     if (parseRecipeImportUrl(newUrl) === ImportUrlStatus.NotUrl) return
@@ -35,9 +34,6 @@ const NewRecipeForm = () => {
 
   useEffect(() => {
     // init()
-    if (inputRef.current) {
-      inputRef.current.focus()
-    }
   }, [init])
 
   const dispatch = useAppDispatch()
@@ -87,7 +83,6 @@ const NewRecipeForm = () => {
               placeholder={t('import.Enter a url')}
               onChange={event => processUrl(event.target.value)}
               value={url}
-              ref={inputRef}
               autoComplete="off"
             />
           </div>
@@ -154,12 +149,12 @@ const NewRecipeForm = () => {
           </span>
         </div>
       </div>
-      <Link
+      <Button.Black
         to="/recipes/new"
-        className="flex w-full items-center justify-center rounded-md text-sm font-medium shadow-sm border border-transparent bg-black py-2 text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+        className="flex w-full items-center justify-center bg-black py-2.5 text-white hover:bg-gray-800 focus:ring-gray-900"
       >
         {t('import.Create new from blank page')}
-      </Link>
+      </Button.Black>
     </div>
   )
 }
