@@ -91,12 +91,8 @@
   "_Back to recipes": "Go back to recipes",
   "_Search in recipes": "Search in recipes",
   "faq": {
-    "FAQ": "Frequently Asked Questions",
-    "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
-    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
-    "proposal": "proposal",
-    " or contact us at ": " or contact us at ",
-    ".": "."
+    "shortTitle": "FAQ",
+    "title": "Frequently Asked Questions"
   },
   "_Open Menu": "Open menu",
   "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",

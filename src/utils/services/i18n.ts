@@ -26,6 +26,7 @@ i18n
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
+    ns: ['default'],
     fallbackLng: 'en',
     debug: process.env.NODE_ENV !== 'production',
 
@@ -36,7 +37,7 @@ i18n
       escapeValue: false, // not needed for react as it escapes by default
     },
     backend: {
-      loadPath: `/locales/{{lng}}.json`,
+      loadPath: `/locales/{{lng}}/{{ns}}.json`,
     },
   })
 

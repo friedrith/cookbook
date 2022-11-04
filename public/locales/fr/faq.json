@@ -1,0 +1,17 @@
+{
+  "why-magic-link": {
+    "_question": "Pourquoi uniquement un lien magique pour s'authentifier ?",
+    "_answer": "L'équipe CookBook croit en la sécurité par conception. En n'utilisant que des liens magiques, nous nous assurerons que personne ne puisse pirater vos mots de passe quel que soit leur fiabilité. Dans le futur, nous proposerons d'autres systèmes d'authentification comme Google ou Apple ou un système à code unique."
+  },
+  "why-not-proposing": {
+    "_question": "Pourquoi ne pas proposer de recettes ?",
+    "_answer": "CookBook est un outil numérique en remplacement du livre de recettes de votre grand-mère. De manière à vraiment pouvoir améliorer l'expérience utilisateur, nous voulons nous focaliser sur cette partie, à partir du moment où vous avez la recette jusqu'à ce que vous déguster le résultat de votre travail. "
+  },
+  "website-list": {
+    "CookBook officially support recipe import from the following websites": "CookBook supporte officiellement l'import de recettes provenant des sites internet suivants:",
+    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "Cependant l'import depuis d'autres sites internet contenant des recettes peut fonctionner. Si votre recette n'a pas été importée avec succès, faites le nous savoir en écrivant une ",
+    "proposal": "demande d'amélioration",
+    " or contact us at ": " ou en nous contactant à ",
+    "_question": "Quels sont les sites internets dont on peut importer les recettes ?"
+  }
+}

@@ -1,6 +1,6 @@
 import { useTranslation, Trans } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, Suspense } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
@@ -16,16 +16,16 @@ import { getOfficialWebsites } from 'store/officialWebsites'
 const WebsiteList = () => {
   const officialWebsites = useAppSelector(getOfficialWebsites)
 
-  const { t } = useTranslation()
+  const { t } = useTranslation('faq', { keyPrefix: 'website-list' })
 
   return (
-    <p>
+    <>
       {t(
-        'faq.CookBook officially support recipe import from the following websites'
+        'CookBook officially support recipe import from the following websites'
       )}
       <ul className="list-disc ml-10 my-1">
         {officialWebsites.map((w: string) => (
-          <li>
+          <li key={w}>
             <a
               className="text-indigo-600 hover:text-indigo-500"
               href={`https://${w}`}
@@ -38,7 +38,7 @@ const WebsiteList = () => {
         ))}
       </ul>
       {t(
-        'faq.However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a '
+        'However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a '
       )}
       <a
         className="text-indigo-600 hover:text-indigo-500"
@@ -46,9 +46,9 @@ const WebsiteList = () => {
         target="_blank"
         rel="noreferrer"
       >
-        {t('faq.proposal')}
+        {t('proposal')}
       </a>
-      {t('faq. or contact us at ')}
+      {t(' or contact us at ')}
       <a
         className="text-indigo-600 hover:text-indigo-500"
         href="mailto:thibault.friedrich@gmail.com"
@@ -58,34 +58,21 @@ const WebsiteList = () => {
       >
         thibault.friedrich@gmail.com
       </a>
-      {t('faq..')}
-    </p>
+    </>
   )
 }
 
 const faqs = [
-  {
-    id: 'why-magic-link',
-    question: 'Why only a magic link for authentication?',
-    answer:
-      'The CookBook believes in security by design. By using only a magic link we are sure no one can hack your password. In the future, we would like to propose new login systems like Google or Apple authentication or 6-digits codes.',
-  },
-  {
-    id: 'why-not-proposing',
-    question: 'Why not proposing recipes?',
-    answer:
-      'CookBook is the digital replacement of your grandmother recipe book. In order to really improve the user experience, we want to focus on this scope, from once you have the recipe until you smell the nice meal ready.',
-  },
+  'why-magic-link',
+  'why-not-proposing',
   {
     id: 'website-list',
-    question: 'Which are the websites I can import the recipes from?',
     component: WebsiteList,
   },
-  // More questions...
 ]
 
 const Help = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['default', 'faq'])
 
   const ref = useRef<HTMLInputElement>(null)
 
@@ -102,7 +89,7 @@ const Help = () => {
   }, [questionId])
 
   return (
-    <Page title={t('faq.FAQ')}>
+    <Page title={t('faq.shortTitle')}>
       <LargeMainPage className="flex-1 relative z-10">
         <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           {/* <div className="flex flex-shrink-0 justify-center">
@@ -113,47 +100,61 @@ const Help = () => {
             ref={ref}
           >
             <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              {t('faq.FAQ')}
+              {t('faq.title')}
             </h2>
             <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-              {faqs.map(question => (
-                <Disclosure
-                  as="div"
-                  key={question.id}
-                  className="pt-6"
-                  defaultOpen={questionId === question.id}
-                >
-                  {({ open }) => (
-                    <>
-                      <dt className="text-lg" id={question.id}>
-                        <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-400">
-                          <span className="font-medium text-gray-900">
-                            {question.question}
-                          </span>
-                          <span className="ml-6 flex h-7 items-center">
-                            <ChevronDownIcon
-                              className={classNames(
-                                open ? '-rotate-180' : 'rotate-0',
-                                'h-6 w-6 transform'
-                              )}
-                              aria-hidden="true"
-                            />
-                          </span>
-                        </Disclosure.Button>
-                      </dt>
-                      <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                        <p className="text-base text-gray-500">
-                          {question.component ? (
-                            <question.component />
-                          ) : (
-                            <Trans i18nKey={question.answer} />
-                          )}
-                        </p>
-                      </Disclosure.Panel>
-                    </>
-                  )}
-                </Disclosure>
-              ))}
+              {faqs
+                .map(question =>
+                  typeof question === 'string'
+                    ? { id: question, component: null }
+                    : question
+                )
+                .map(question => (
+                  <Disclosure
+                    as="div"
+                    key={question.id}
+                    className="pt-6"
+                    defaultOpen={questionId === question.id}
+                  >
+                    {({ open }) => (
+                      <>
+                        <dt className="text-lg" id={question.id}>
+                          <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-400">
+                            <span className="font-medium text-gray-900">
+                              <Trans
+                                i18nKey={`${question.id}._question`}
+                                ns="faq"
+                              />
+                            </span>
+                            <span className="ml-6 flex h-7 items-center">
+                              <ChevronDownIcon
+                                className={classNames(
+                                  open ? '-rotate-180' : 'rotate-0',
+                                  'h-6 w-6 transform'
+                                )}
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </Disclosure.Button>
+                        </dt>
+                        <Disclosure.Panel as="dd" className="mt-2 pr-12">
+                          <div className="text-base text-gray-500">
+                            {question.component ? (
+                              <Suspense>
+                                <question.component />
+                              </Suspense>
+                            ) : (
+                              <Trans
+                                i18nKey={`${question.id}._answer`}
+                                ns="faq"
+                              />
+                            )}
+                          </div>
+                        </Disclosure.Panel>
+                      </>
+                    )}
+                  </Disclosure>
+                ))}
             </dl>
           </div>
           <div className="mt-12 text-center">

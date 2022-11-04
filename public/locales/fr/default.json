@@ -80,12 +80,8 @@
     "Share shopping list": "Partager la liste de courses"
   },
   "faq": {
-    "FAQ": "Foire Aux Questions",
-    "CookBook officially support recipe import from the following websites": "CookBook supporte officiellement l'import de recettes provenant des sites internet suivants:",
-    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "Cependant l'import depuis d'autres sites internet contenant des recettes peut fonctionner. Si votre recette n'a pas été importée avec succès, faites le nous savoir en écrivant une ",
-    "proposal": "demande d'amélioration",
-    " or contact us at ": " ou en nous contactant à ",
-    ".": "."
+    "shortTitle": "FAQ",
+    "title": "Foire Aux Questions"
   },
   "_Beta": "Beta",
   "_Alpha": "Alpha",

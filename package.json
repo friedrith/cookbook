@@ -48,7 +48,7 @@
     "test": "react-scripts test",
     "serve": "npx serve -s build",
     "lint": "eslint --max-warnings=0 .",
-    "lint:translation": "eslint --max-warnings=0 ./public/locales/*.json",
+    "lint:translation": "eslint --max-warnings=0 ./public/locales/**/*.json",
     "format": "prettier --check ."
   },
   "eslintConfig": {
@@ -72,8 +72,10 @@
         2,
         {
           "filePath": {
-            "en.json": "../../../../public/locales/fr.json",
-            "fr.json": "../../../../public/locales/en.json"
+            "fr/default.json": "../../../../public/locales/en/default.json",
+            "fr/faq.json": "../../../../public/locales/en/faq.json",
+            "en/default.json": "../../../../public/locales/fr/default.json",
+            "en/faq.json": "../../../../public/locales/fr/faq.json"
           }
         }
       ]
