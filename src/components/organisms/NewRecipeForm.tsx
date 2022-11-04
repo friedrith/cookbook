@@ -3,7 +3,10 @@ import { useTranslation } from 'react-i18next'
 import { useState, useEffect, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Transition } from '@headlessui/react'
-import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
+import {
+  ExclamationCircleIcon,
+  QuestionMarkCircleIcon,
+} from '@heroicons/react/20/solid'
 
 import { parseRecipeImportUrl, ImportUrlStatus } from 'utils/importRecipe'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
@@ -63,18 +66,16 @@ const NewRecipeForm = () => {
       <div className="text-left w-full">
         <label
           htmlFor="url"
-          className="block text-sm font-medium text-gray-700"
+          className="flex text-sm font-medium text-gray-700 items-center"
         >
           {t('import.Import from a recipe catalog')}
+          <a target="_blank" rel="noreferrer" href="/faq#website-list">
+            <span className="sr-only">{t('_See the official websites')}</span>
+            <QuestionMarkCircleIcon className="inline h-4 w-4 ml-1" />
+          </a>
         </label>
         <div className="mt-1 flex rounded-md shadow-sm w-full">
           <div className="relative flex flex-grow items-stretch focus-within:z-10">
-            {/* <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <GlobeAltIcon
-                className="h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-            </div> */}
             <input
               type="text"
               name="url"

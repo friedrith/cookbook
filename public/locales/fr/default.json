@@ -131,5 +131,6 @@
     "Oups an error happened. We suggest you to enter the recipe manually this time.": "Oups une erreur est apparue. Nous vous suggérons d'entrer la recette manuellement cette fois-ci."
   },
   "_originUrl": "Recette venant initialement de {{url}}",
-  "_For security reasons": "Pour des raisons de sécurité, vous devez vous déconnecter, vous reconnecter et ensuite vous pourrez supprimer ce compte."
+  "_For security reasons": "Pour des raisons de sécurité, vous devez vous déconnecter, vous reconnecter et ensuite vous pourrez supprimer ce compte.",
+  "_See the official websites": "Voir les sites internet officiellement supportés."
 }

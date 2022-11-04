@@ -135,5 +135,6 @@
   "_Confirm": "Confirm",
   "_Do you really want to delete your account?": "Do you really want to delete your account?",
   "_This action is definitive.": "This action is definitive",
-  "_For security reasons": "For security reasons, you should logout, login and then you will be able to delete this account"
+  "_For security reasons": "For security reasons, you should logout, login and then you will be able to delete this account",
+  "_See the official websites": "See the websites officially supported."
 }
