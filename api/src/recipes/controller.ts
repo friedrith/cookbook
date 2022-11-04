@@ -3,7 +3,8 @@ import * as admin from 'firebase-admin'
 import { omit } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 import * as db from './database'
-import { parseRecipe } from './parser'
+import { parseRecipe } from '../utils/parser'
+import * as websitesDb from '../officialWebsites/database'
 
 const COLLECTION_PATH = 'server/saving-data/cookbook/recipes'
 
@@ -53,13 +54,13 @@ export async function create(req: Request, res: Response) {
 }
 
 export async function importRecipe(req: Request, res: Response) {
-  try {
-    const { url } = req.body
+  const { url } = req.body
 
+  try {
     const dom = await (await fetch(url.toString())).text()
 
     const { name, keywords, imageUrl, stats, ingredients, steps, author } =
-      parseRecipe(dom)
+      await parseRecipe(url, dom)
 
     const { uid } = res.locals
 
@@ -75,10 +76,13 @@ export async function importRecipe(req: Request, res: Response) {
       userId: uid,
     })
 
+    await websitesDb.insert(uuidv4(), { url, status: 'ok' })
+
     return res.status(200).send({
       recipe: convert(recipe),
     })
   } catch (err) {
+    await websitesDb.insert(uuidv4(), { url, status: 'error', error: err })
     return handleError(res, err)
   }
 }

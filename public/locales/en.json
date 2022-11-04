@@ -90,7 +90,14 @@
   "_Back to landing page": "Go back to landing page",
   "_Back to recipes": "Go back to recipes",
   "_Search in recipes": "Search in recipes",
-  "_FAQ": "Frequently Asked Questions",
+  "faq": {
+    "FAQ": "Frequently Asked Questions",
+    "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
+    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
+    "proposal": "proposal",
+    " or contact us at ": " or contact us at ",
+    ".": "."
+  },
   "_Open Menu": "Open menu",
   "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "notifications": {
@@ -122,9 +129,10 @@
     "Import": "Import",
     "or": "or",
     "Create new from blank page": "Create new from blank page",
-    "Enter a valid url": "Enter a valid url",
-    "Only few recipe catalog are managed": "Only few websites are managed.",
-    "Check the list there": "Check the list there."
+    "Enter a valid url": "Url not valid",
+    "Only few recipe catalog are managed": "Impossible to import from this website.",
+    "Check the list there": "Check the websites officially supported.",
+    "Oups an error happened. We suggest you to enter the recipe manually this time.": "Oups an error happened. We suggest you to enter the recipe manually this time."
   },
   "_originUrl": "Recipe originally coming from {{url}}"
 }

@@ -1,4 +1,4 @@
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import {
@@ -35,9 +35,6 @@ import parseRecipe from 'utils/parser/parseRecipe'
 import { canShare, share } from 'utils/share'
 import { isMacLike } from 'utils/platforms/mobile'
 
-const position = (isMaximized: boolean) =>
-  isMaximized ? `md:fixed md:top-[-1rem]` : 'relative'
-
 const RecipeDetails = () => {
   const { recipeId } = useParams()
   const recipe = useAppSelector(state => getRecipe(state, recipeId))
@@ -48,8 +45,6 @@ const RecipeDetails = () => {
   const dispatch = useAppDispatch()
 
   const ref = useRef<HTMLInputElement>(null)
-
-  const [isMaximized, setMaximized] = useState(false)
 
   const sharePopup = usePopup()
 
@@ -86,7 +81,7 @@ const RecipeDetails = () => {
         <div className="flex flex-col items-stretch lg:flex-row lg:items-start">
           <div ref={ref} />
           <div className="flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
-            <Box className={`p-4 md:w-[400px] ${position(isMaximized)}`}>
+            <Box className={`p-4 md:w-[400px] relative`}>
               <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center lg:text-left pb-2 select-text">
                 {formattedRecipe.name}
               </h1>
@@ -117,11 +112,7 @@ const RecipeDetails = () => {
           </div>
         </div>
       </LargeMainPage>
-      <Header
-        restRef={ref}
-        onMaximizedChanged={setMaximized}
-        className="pointer-events-none"
-      >
+      <Header restRef={ref} className="pointer-events-none">
         {isMaximized => (
           <>
             <BackButton url="/recipes" title={t('_Back to recipes')} />
@@ -150,11 +141,6 @@ const RecipeDetails = () => {
                 blur
               />
             </span>
-            {/* <ReactTooltip
-              place="bottom"
-              effect="solid"
-              backgroundColor="black"
-            /> */}
           </>
         )}
       </Header>

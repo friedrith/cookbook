@@ -7,8 +7,10 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2017",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types"],
-    "types": ["long"]
+    "types": ["long", "jest", "node"]
   },
   "compileOnSave": true,
   "include": ["src/**/*"]

@@ -117,7 +117,7 @@ const UserMenu = () => {
             {menuOptions
               .filter(({ disabled }) => !disabled)
               .map(({ label, onClick, icon }) => (
-                <Menu.Item>
+                <Menu.Item key={label}>
                   {({ active }) => (
                     <MenuItem active={active} icon={icon} onClick={onClick}>
                       {t(label)}

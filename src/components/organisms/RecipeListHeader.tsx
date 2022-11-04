@@ -159,18 +159,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                     aria-hidden="true"
                   />
                 </button>
-                <SelectMenu
-                  button={
-                    <Button.Primary
-                      className="hidden md:block rounded-md  !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      aria-label={t('_New Recipe')}
-                    >
-                      <span className="ml-0.5 text-normal">
-                        {t('_New Recipe')}
-                      </span>
-                    </Button.Primary>
-                  }
-                >
+                <SelectMenu>
                   <NewRecipeForm />
                 </SelectMenu>
                 {/* <Button.Primary

@@ -47,8 +47,6 @@ const StepItemGeneric = ({
     [description, temperature]
   )
 
-  console.log('temperature')
-
   return (
     <li className={className}>
       {!isLastOne ? (

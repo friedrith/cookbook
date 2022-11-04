@@ -1,10 +1,11 @@
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
-import * as express from 'express'
-import * as cors from 'cors'
+import express from 'express'
+import cors from 'cors'
 import * as bodyParser from 'body-parser'
 
 import * as recipes from './recipes/routes-config'
+import * as officialWebsites from './officialWebsites/routes-config'
 
 admin.initializeApp()
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json())
 app.use(cors({ origin: true }))
 
 recipes.routesConfig(app)
+officialWebsites.routesConfig(app)
 
 export const api = functions.https.onRequest(app)
 

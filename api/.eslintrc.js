@@ -19,7 +19,9 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   ignorePatterns: [
-    '/lib/**/*', // Ignore built files.
+    './src/**/__fixtures__/*',
+    '/lib/**/*',
+    './jest.config.js', // Ignore built files.
   ],
   plugins: ['@typescript-eslint', 'import'],
   rules: {

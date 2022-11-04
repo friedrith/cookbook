@@ -3,11 +3,13 @@ import { useTranslation } from 'react-i18next'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Transition } from '@headlessui/react'
+import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 
 import { parseRecipeImportUrl, ImportUrlStatus } from 'utils/importRecipe'
-import { useAppDispatch } from 'hooks/redux'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { importRecipe } from 'store'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import { getOfficialWebsites } from 'store/officialWebsites'
 
 const NewRecipeForm = () => {
   const { t } = useTranslation()
@@ -15,6 +17,8 @@ const NewRecipeForm = () => {
   const [url, setUrl] = useState('')
   const [status, setStatus] = useState(ImportUrlStatus.Empty)
   const [isLoading, setLoading] = useState(false)
+
+  const officialWebsites = useAppSelector(getOfficialWebsites)
 
   const processUrl = (newUrl: string) => {
     setUrl(newUrl)
@@ -42,10 +46,20 @@ const NewRecipeForm = () => {
 
   const startImportingRecipe = async () => {
     if (isLoading) return
-    setLoading(true)
-    const recipe = await dispatch(importRecipe(url)).unwrap()
-    navigate(`/recipes/${recipe.id}`)
-    setLoading(false)
+    try {
+      setLoading(true)
+      const recipe = await dispatch(importRecipe(url)).unwrap()
+      navigate(`/recipes/${recipe.id}`)
+    } catch {
+      const { hostname } = new URL(url)
+      if (officialWebsites.includes(hostname)) {
+        setStatus(ImportUrlStatus.Error)
+      } else {
+        setStatus(ImportUrlStatus.NotAManagedWebsite)
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -103,19 +117,30 @@ const NewRecipeForm = () => {
           leaveFrom="h-4"
           leaveTo="h-0"
         >
-          <span className="block mt-2 text-xs text-red-600">
-            {status === ImportUrlStatus.NotUrl && t('import.Enter a valid url')}
-            {status === ImportUrlStatus.NotAManagedWebsite && (
-              <>
-                {t('import.Only few recipe catalog are managed')}{' '}
-                <Link
-                  to="/faq#website-list"
-                  className="text-indigo-600 hover:text-indigo-500 cursor-pointer"
-                >
-                  {t('import.Check the list there')}
-                </Link>
-              </>
-            )}
+          <span className="flex items-center mt-2 text-xs text-red-600 ">
+            {status !== ImportUrlStatus.Ok &&
+              status !== ImportUrlStatus.Empty && (
+                <ExclamationCircleIcon className="inline w-5 h-5 align-middle mr-1" />
+              )}
+            <span>
+              {status === ImportUrlStatus.NotUrl &&
+                t('import.Enter a valid url')}
+              {status === ImportUrlStatus.Error &&
+                t(
+                  'import.Oups an error happened. We suggest you to enter the recipe manually this time.'
+                )}
+              {status === ImportUrlStatus.NotAManagedWebsite && (
+                <>
+                  {t('import.Only few recipe catalog are managed')}{' '}
+                  <Link
+                    to="/faq#website-list"
+                    className="text-indigo-600 hover:text-indigo-500 cursor-pointer"
+                  >
+                    {t('import.Check the list there')}
+                  </Link>
+                </>
+              )}
+            </span>
           </span>
         </Transition>
       </div>

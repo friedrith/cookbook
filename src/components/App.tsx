@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { Routes, Route, useLocation, Location } from 'react-router-dom'
 
 import Roles from 'models/Roles'
@@ -21,6 +21,7 @@ import HistoryContext from 'contexts/History'
 import { useAppDispatch } from 'hooks/redux'
 import { initSession } from 'store'
 import { isMobile } from 'utils/platforms/mobile'
+import { fetchOfficialWebsites } from 'store/officialWebsites'
 
 const areLocationIncludes = (
   location1: Location,
@@ -36,8 +37,9 @@ const areLocationDifferent = (location1: Location, location2: Location) =>
 
 const App = () => {
   const dispatch = useAppDispatch()
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(initSession())
+    dispatch(fetchOfficialWebsites())
   }, [dispatch])
 
   const location = useLocation()
