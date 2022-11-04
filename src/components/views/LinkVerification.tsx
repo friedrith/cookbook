@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -20,7 +20,7 @@ const LinkVerification = () => {
   const { t } = useTranslation()
 
   // TODO clean up
-  useLayoutEffect(() => {
+  useEffect(() => {
     ;(async () => {
       try {
         const result = await dispatch(verifyLink()).unwrap()

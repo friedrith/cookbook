@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, useLocation, Location } from 'react-router-dom'
 
 import Roles from 'models/Roles'
@@ -37,7 +37,7 @@ const areLocationDifferent = (location1: Location, location2: Location) =>
 
 const App = () => {
   const dispatch = useAppDispatch()
-  useLayoutEffect(() => {
+  useEffect(() => {
     dispatch(initSession())
     dispatch(fetchOfficialWebsites())
   }, [dispatch])

@@ -16,6 +16,8 @@ const Login = () => {
 
   const login = (event: React.SyntheticEvent) => {
     event.preventDefault()
+    window.localStorage.setItem('emailForSignIn', email)
+
     dispatch(loginWithMagicLink(email))
 
     navigate('/login/waiting-for-link')
