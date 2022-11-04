@@ -43,7 +43,7 @@ const Page = ({ className = '', children, title }: Props) => {
         delayShow={250}
       />
       <div
-        className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto select-none	${className}`}
+        className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto select-none z-20	${className}`}
         id="page"
         ref={ref}
       >

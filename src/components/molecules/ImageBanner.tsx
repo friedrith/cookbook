@@ -1,3 +1,5 @@
+import { ParallaxBanner } from 'react-scroll-parallax'
+
 type Props = {
   imageUrl: string
   alt: string
@@ -6,10 +8,15 @@ type Props = {
 
 const ImageBanner = ({ imageUrl, alt, loading }: Props) => {
   return (
-    <div className="h-96">
-      <div
-        className="h-96 w-full bg-fixed bg-cover bg-center"
-        style={{ backgroundImage: `url('${imageUrl}')` }}
+    <div className="h-96 relative">
+      <ParallaxBanner
+        layers={[
+          {
+            image: imageUrl,
+            speed: -20,
+          },
+        ]}
+        className="h-96 "
       />
     </div>
   )
