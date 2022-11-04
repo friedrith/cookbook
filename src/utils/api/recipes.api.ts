@@ -43,7 +43,7 @@ export const createOne = async (recipe: Recipe) => {
 export const removeOne = async (recipe: Recipe) =>
   api().delete(`${baseURL}/${recipe.id}`)
 
-export const removeAll = async () => api().delete(`${baseURL}/all}`)
+export const removeAll = async () => api().delete(`${baseURL}/all`)
 
 export const updateOne = async (recipe: Recipe) => {
   const response = await api().patch(`${baseURL}/${recipe.id}`, recipe)

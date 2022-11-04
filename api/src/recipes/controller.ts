@@ -174,6 +174,7 @@ export async function remove(req: Request, res: Response) {
     const recipeRef = userRef.child(id)
 
     recipeRef.set(null)
+    res.status(200).send({})
   } catch (err) {
     handleError(res, err)
   }
@@ -188,6 +189,7 @@ export async function removeAll(req: Request, res: Response) {
     const userRef = ref.child(uid)
 
     userRef.set(null)
+    res.status(200).send({})
   } catch (err) {
     handleError(res, err)
   }

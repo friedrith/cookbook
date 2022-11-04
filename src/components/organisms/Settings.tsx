@@ -1,4 +1,5 @@
 import { Disclosure } from '@headlessui/react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { languages } from 'utils/services/i18n'
@@ -15,6 +16,7 @@ import {
 } from 'store'
 import Button from 'components/atoms/Button'
 import usePopup from 'hooks/usePopup'
+import HttpError from 'models/HttpError'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()
@@ -26,13 +28,18 @@ const Settings = () => {
 
   const confirmDeleteAccountPopup = usePopup(false)
 
+  const [error, setError] = useState('')
+
   const deleteAccountConfirmed = async () => {
     try {
       await dispatch(deleteAllRecipes()).unwrap()
       await dispatch(deleteAccount()).unwrap()
       await dispatch(logout()).unwrap()
     } catch (error) {
-      console.error('error while removing account', error)
+      const exception = error as HttpError
+      if (exception.code === 'auth/requires-recent-login') {
+        setError(t('__For security reasons'))
+      }
     }
   }
 
@@ -147,19 +154,25 @@ const Settings = () => {
                       {t('_This action is definitive.')}
                     </div>
                     <div className="flex">
-                      <Button.Error
-                        className="flex-1 flex justify-center !py-2.5 mr-1"
-                        onClick={deleteAccountConfirmed}
-                      >
-                        {t('_Confirm')}
-                      </Button.Error>
+                      {error ? (
+                        <span>{error}</span>
+                      ) : (
+                        <>
+                          <Button.Error
+                            className="flex-1 flex justify-center !py-2.5 mr-1"
+                            onClick={deleteAccountConfirmed}
+                          >
+                            {t('_Confirm')}
+                          </Button.Error>
 
-                      <Button.Black
-                        className="flex-1 flex justify-center !py-2.5 ml-1"
-                        onClick={confirmDeleteAccountPopup.close}
-                      >
-                        {t('_Cancel')}
-                      </Button.Black>
+                          <Button.Black
+                            className="flex-1 flex justify-center !py-2.5 ml-1"
+                            onClick={confirmDeleteAccountPopup.close}
+                          >
+                            {t('_Cancel')}
+                          </Button.Black>
+                        </>
+                      )}
                     </div>
                   </>
                 )}

@@ -154,6 +154,10 @@ export const recipesSlice = createSlice({
       state.trashQueue = state.trashQueue.filter(id => id !== recipe.id)
     })
 
+    builder.addCase(deleteAllRecipes.fulfilled, (state, action) => {
+      state.byId = {}
+    })
+
     builder.addCase(addRecipeToDeleteQueue.fulfilled, (state, action) => {
       const recipe = action.meta.arg
 

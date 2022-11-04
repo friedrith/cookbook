@@ -24,11 +24,13 @@ const initialState = {
 }
 
 const persistedState = loadState()
-const preloadedState = {
-  ...initialState,
-  settings: persistedState.settings,
-  recipes: { ...initialState.recipes, byId: persistedState.recipes.byId },
-}
+const preloadedState = persistedState
+  ? {
+      ...initialState,
+      settings: persistedState.settings,
+      recipes: { ...initialState.recipes, byId: persistedState.recipes.byId },
+    }
+  : initialState
 
 const store = configureStore({
   reducer,
