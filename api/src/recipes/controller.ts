@@ -4,15 +4,7 @@ import { omit } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
 import * as db from './database'
 import { parseRecipe } from '../utils/parser'
-
-// https://stackoverflow.com/questions/70142391/importing-node-fetch-in-node-project-with-typescript
-// eslint-disable-next-line no-new-func
-const importDynamic = new Function('modulePath', 'return import(modulePath)')
-
-const nodeFetch = async (...args: any[]) => {
-  const module = await importDynamic('node-fetch')
-  return module.default(...args)
-}
+import nodeFetch from '../utils/nodeFetch'
 
 const COLLECTION_PATH = 'server/saving-data/cookbook/recipes/byUsers'
 
@@ -81,7 +73,7 @@ export async function importRecipe(req: Request, res: Response) {
   const { uid } = res.locals
 
   try {
-    const dom = await (await nodeFetch(url.toString())).text()
+    const dom = await nodeFetch(url.toString())
 
     const { name, keywords, imageUrl, stats, ingredients, steps, author } =
       await parseRecipe(url, dom)
