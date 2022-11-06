@@ -131,6 +131,12 @@
     "Oups an error happened. We suggest you to enter the recipe manually this time.": "Oups une erreur est apparue. Nous vous suggérons d'entrer la recette manuellement cette fois-ci."
   },
   "_originUrl": "Recette venant initialement de {{url}}",
+  "_Delete account": "Supprimer compte",
+  "_Confirm": "Confirmer",
+  "_Do you really want to delete your account?": "Voulez-vous vraiment supprimer votre compte ?",
+  "_This action is definitive.": "This action is definitive",
   "_For security reasons": "Pour des raisons de sécurité, vous devez vous déconnecter, vous reconnecter et ensuite vous pourrez supprimer ce compte.",
-  "_See the official websites": "Voir les sites internet officiellement supportés."
+  "_See the official websites": "Voir les sites internet officiellement supportés.",
+  "_Automatic import": "Import automatique",
+  "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "Si vous cliquer sur nouvelle recette avec une url valide dans le presse-papier, elle sera automatiquement importée."
 }
