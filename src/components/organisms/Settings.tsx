@@ -1,4 +1,4 @@
-import { Disclosure, Switch } from '@headlessui/react'
+import { Disclosure, Switch, Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
@@ -105,72 +105,81 @@ const Settings = () => {
                     : t('settings.Show advanced')}
                 </span>
               </Disclosure.Button>
-              <Disclosure.Panel as="div" className="pt-2">
-                <>
-                  <label
-                    htmlFor="project-name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    {t('settings.ingredient template')}
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="project-name"
-                      id="project-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
-                      placeholder="$1"
-                      defaultValue={ingredientTemplate}
-                      onChange={event =>
-                        dispatch(setIngredientTemplate(event.target.value))
-                      }
-                    />
-                  </div>
-                </>
-                <div>
-                  <Switch.Group
-                    as="li"
-                    className="flex items-center justify-between py-4"
-                  >
-                    <div className="flex flex-col">
-                      <Switch.Label
-                        as="p"
-                        className="text-sm font-medium text-gray-700"
-                        passive
-                      >
-                        {t('_Automatic import')}
-                      </Switch.Label>
-                      <Switch.Description className="mt-1 text-xs text-gray-500">
-                        {t(
-                          '_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.'
-                        )}
-                      </Switch.Description>
-                    </div>
-                    <Switch
-                      checked={automaticImport}
-                      onChange={async (v: boolean) => {
-                        if (v) {
-                          await navigator.clipboard.readText()
-                        }
-
-                        dispatch(setAutomaticimport(v))
-                      }}
-                      className={classNames(
-                        automaticImport ? 'bg-indigo-600' : 'bg-gray-200',
-                        'mt-1  relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
-                      )}
+              <Transition
+                enter="transition duration-100 ease-out"
+                enterFrom="transform scale-95 opacity-0"
+                enterTo="transform scale-100 opacity-100"
+                leave="transition duration-75 ease-out"
+                leaveFrom="transform scale-100 opacity-100"
+                leaveTo="transform scale-95 opacity-0"
+              >
+                <Disclosure.Panel as="div" className="pt-2">
+                  <>
+                    <label
+                      htmlFor="project-name"
+                      className="block text-sm font-medium text-gray-700"
                     >
-                      <span
-                        aria-hidden="true"
-                        className={classNames(
-                          automaticImport ? 'translate-x-5' : 'translate-x-0',
-                          'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
-                        )}
+                      {t('settings.ingredient template')}
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        type="text"
+                        name="project-name"
+                        id="project-name"
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                        placeholder="$1"
+                        defaultValue={ingredientTemplate}
+                        onChange={event =>
+                          dispatch(setIngredientTemplate(event.target.value))
+                        }
                       />
-                    </Switch>
-                  </Switch.Group>
-                </div>
-              </Disclosure.Panel>
+                    </div>
+                  </>
+                  <div>
+                    <Switch.Group
+                      as="li"
+                      className="flex items-center justify-between py-4"
+                    >
+                      <div className="flex flex-col">
+                        <Switch.Label
+                          as="p"
+                          className="text-sm font-medium text-gray-700"
+                          passive
+                        >
+                          {t('_Automatic import')}
+                        </Switch.Label>
+                        <Switch.Description className="mt-1 text-xs text-gray-500">
+                          {t(
+                            '_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.'
+                          )}
+                        </Switch.Description>
+                      </div>
+                      <Switch
+                        checked={automaticImport}
+                        onChange={async (v: boolean) => {
+                          if (v) {
+                            await navigator.clipboard.readText()
+                          }
+
+                          dispatch(setAutomaticimport(v))
+                        }}
+                        className={classNames(
+                          automaticImport ? 'bg-indigo-600' : 'bg-gray-200',
+                          'mt-1  relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
+                        )}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={classNames(
+                            automaticImport ? 'translate-x-5' : 'translate-x-0',
+                            'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
+                          )}
+                        />
+                      </Switch>
+                    </Switch.Group>
+                  </div>
+                </Disclosure.Panel>
+              </Transition>
             </>
           )}
         </Disclosure>
