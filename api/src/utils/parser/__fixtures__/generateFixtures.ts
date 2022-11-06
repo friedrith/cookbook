@@ -4,6 +4,15 @@ import * as path from 'path'
 import examplesUrls from '../examplesUrls'
 import * as parser from '../index'
 
+// https://stackoverflow.com/questions/70142391/importing-node-fetch-in-node-project-with-typescript
+// eslint-disable-next-line no-new-func
+const importDynamic = new Function('modulePath', 'return import(modulePath)')
+
+const nodeFetch = async (...args: any[]) => {
+  const module = await importDynamic('node-fetch')
+  return module.default(...args)
+}
+
 const fixturesfolder = path.join(__dirname)
 
 const generateFixture = async (url: string) => {
@@ -18,7 +27,7 @@ const generateFixture = async (url: string) => {
   try {
     dom = await fs.readFile(htmlFixtureFilename, { encoding: 'utf8' })
   } catch {
-    dom = await (await fetch(url.toString())).text()
+    dom = await (await nodeFetch(url.toString())).text()
 
     await fs.writeFile(htmlFixtureFilename, dom)
   }

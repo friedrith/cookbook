@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import classNames from 'classnames'
 
 import { FormattedRecipe } from 'models/Recipe'
 import usePopup from 'hooks/usePopup'
@@ -131,10 +132,18 @@ const IngredientList = ({ recipe }: Props) => {
                   />
                 )}
               </td>
-              <td className="whitespace-nowrap py-4 align-top text-sm font-medium text-gray-900 text-right w-20">
+              <td
+                className={classNames(
+                  'whitespace-wrap py-4 align-top text-sm font-medium text-gray-900 text-right w-20',
+                  renderMeasure(ingredient.measure, { explicit: true }).length >
+                    15
+                    ? 'whitespace-wrap'
+                    : 'whitespace-nowrap'
+                )}
+              >
                 {renderMeasure(ingredient.measure, { explicit: true })}
               </td>
-              <td className="px-3 py-4 pr-6 text-sm text-gray-500 w-60">
+              <td className="px-3 py-4 pr-6 align-top text-sm text-gray-500 w-60">
                 {ingredient.name}
               </td>
             </tr>
