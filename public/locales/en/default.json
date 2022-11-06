@@ -136,5 +136,7 @@
   "_Do you really want to delete your account?": "Do you really want to delete your account?",
   "_This action is definitive.": "This action is definitive",
   "_For security reasons": "For security reasons, you should logout, login and then you will be able to delete this account",
-  "_See the official websites": "See the websites officially supported."
+  "_See the official websites": "See the websites officially supported.",
+  "_Automatic import": "Automatic import",
+  "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "If you click on new recipe with a valid url in your clipboard, it will be automatically imported."
 }

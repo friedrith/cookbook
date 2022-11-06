@@ -1,6 +1,7 @@
-import { Disclosure } from '@headlessui/react'
+import { Disclosure, Switch } from '@headlessui/react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import classNames from 'classnames'
 
 import { languages } from 'utils/services/i18n'
 import { choices } from 'utils/parser/temperatures'
@@ -12,6 +13,8 @@ import {
   setIngredientTemplate,
   deleteAccount,
   deleteAllRecipes,
+  getAutomaticImport,
+  setAutomaticimport,
   logout,
 } from 'store'
 import Button from 'components/atoms/Button'
@@ -25,6 +28,7 @@ const Settings = () => {
 
   const temperature = useAppSelector(getTemperature)
   const ingredientTemplate = useAppSelector(getIngredienTemplate)
+  const automaticImport = useAppSelector(getAutomaticImport)
 
   const confirmDeleteAccountPopup = usePopup(false)
 
@@ -90,6 +94,7 @@ const Settings = () => {
             ))}
           </select>
         </div>
+
         <Disclosure as="div" className="pt-6">
           {({ open }) => (
             <>
@@ -122,6 +127,49 @@ const Settings = () => {
                     />
                   </div>
                 </>
+                <div>
+                  <Switch.Group
+                    as="li"
+                    className="flex items-center justify-between py-4"
+                  >
+                    <div className="flex flex-col">
+                      <Switch.Label
+                        as="p"
+                        className="text-sm font-medium text-gray-700"
+                        passive
+                      >
+                        {t('_Automatic import')}
+                      </Switch.Label>
+                      <Switch.Description className="mt-1 text-xs text-gray-500">
+                        {t(
+                          '_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.'
+                        )}
+                      </Switch.Description>
+                    </div>
+                    <Switch
+                      checked={automaticImport}
+                      onChange={async (v: boolean) => {
+                        if (v) {
+                          await navigator.clipboard.readText()
+                        }
+
+                        dispatch(setAutomaticimport(v))
+                      }}
+                      className={classNames(
+                        automaticImport ? 'bg-indigo-600' : 'bg-gray-200',
+                        'mt-1  relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
+                      )}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={classNames(
+                          automaticImport ? 'translate-x-5' : 'translate-x-0',
+                          'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
+                        )}
+                      />
+                    </Switch>
+                  </Switch.Group>
+                </div>
               </Disclosure.Panel>
             </>
           )}

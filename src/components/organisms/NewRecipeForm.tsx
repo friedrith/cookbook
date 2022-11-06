@@ -10,7 +10,7 @@ import {
 
 import { parseRecipeImportUrl, ImportUrlStatus } from 'utils/importRecipe'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { importRecipe } from 'store'
+import { getAutomaticImport, importRecipe } from 'store'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import { getOfficialWebsites } from 'store/officialWebsites'
 import Button from 'components/atoms/Button'
@@ -24,26 +24,18 @@ const NewRecipeForm = () => {
 
   const officialWebsites = useAppSelector(getOfficialWebsites)
 
+  const automaticImport = useAppSelector(getAutomaticImport)
+
   const processUrl = (newUrl: string) => {
     setUrl(newUrl)
     setStatus(parseRecipeImportUrl(newUrl))
   }
 
-  const init = useCallback(async () => {
-    const newUrl = await navigator.clipboard.readText()
-    if (parseRecipeImportUrl(newUrl) === ImportUrlStatus.NotUrl) return
-    processUrl(newUrl)
-  }, [])
-
-  useEffect(() => {
-    // init()
-  }, [init])
-
   const dispatch = useAppDispatch()
 
   const navigate = useNavigate()
 
-  const startImportingRecipe = async () => {
+  const startImportingRecipe = useCallback(async () => {
     if (isLoading) return
     try {
       setLoading(true)
@@ -59,7 +51,19 @@ const NewRecipeForm = () => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [url, dispatch, setLoading, navigate, isLoading, officialWebsites])
+
+  const init = useCallback(async () => {
+    const newUrl = await navigator.clipboard.readText()
+    if (parseRecipeImportUrl(newUrl) === ImportUrlStatus.NotUrl) return
+    processUrl(newUrl)
+  }, [])
+
+  useEffect(() => {
+    if (automaticImport) {
+      init()
+    }
+  }, [init, automaticImport, startImportingRecipe])
 
   return (
     <div className="p-5">
