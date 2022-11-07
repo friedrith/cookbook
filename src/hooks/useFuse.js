@@ -14,7 +14,7 @@ const sortByName = (a, b) => {
   return a.name.localeCompare(b.name)
 }
 
-const useFuse = (list: any[], query: string) => {
+const useFuse = (list: Recipe[], query: string) => {
   const fuse = useRef(initializeFuse(list))
 
   useEffect(() => {
@@ -26,6 +26,7 @@ const useFuse = (list: any[], query: string) => {
       return fuse.current
         .search(query)
         .sort(sortByScore)
+        .filter(item => item.score < 0.1)
         .map(i => i.item)
     }
     return [...list].sort(sortByName)
