@@ -57,7 +57,7 @@ export const generateThumbnail = functions.storage
     await spawn('convert', [
       tempFilePath,
       '-thumbnail',
-      '300x300>',
+      '500x500>',
       tempFilePath,
     ])
     functions.logger.log('Thumbnail created at', tempFilePath)

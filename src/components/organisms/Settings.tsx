@@ -2,9 +2,11 @@ import { Disclosure, Switch, Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
+import { ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 
 import { languages } from 'utils/services/i18n'
-import { choices } from 'utils/parser/temperatures'
+import * as temperatures from 'utils/parser/temperatures'
+// import * as units from 'utils/parser/units'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import {
   getTemperature,
@@ -16,10 +18,12 @@ import {
   getAutomaticImport,
   setAutomaticimport,
   logout,
+  getRecipeList,
 } from 'store'
 import Button from 'components/atoms/Button'
 import usePopup from 'hooks/usePopup'
 import HttpError from 'models/HttpError'
+import downloadAllRecipes from 'utils/export'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()
@@ -29,6 +33,7 @@ const Settings = () => {
   const temperature = useAppSelector(getTemperature)
   const ingredientTemplate = useAppSelector(getIngredienTemplate)
   const automaticImport = useAppSelector(getAutomaticImport)
+  const recipes = useAppSelector(getRecipeList)
 
   const confirmDeleteAccountPopup = usePopup(false)
 
@@ -42,7 +47,7 @@ const Settings = () => {
     } catch (error) {
       const exception = error as HttpError
       if (exception.code === 'auth/requires-recent-login') {
-        setError(t('__For security reasons'))
+        setError('_For security reasons')
       }
     }
   }
@@ -87,14 +92,55 @@ const Settings = () => {
             }}
             value={temperature}
           >
-            {choices.map(({ label, symbol, value }) => (
+            {temperatures.choices.map(({ label, symbol, value }) => (
               <option key={value} value={value}>
                 {t(label)} {symbol}
               </option>
             ))}
           </select>
         </div>
-
+        {/* <div>
+          <label
+            htmlFor="units"
+            className="block text-sm font-medium text-gray-700"
+          >
+            {t('settings.units.Other units')}
+          </label>
+          <select
+            id="units"
+            name="units"
+            className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm cursor-pointer"
+            onChange={event => {
+              dispatch(setTemperature(event.target.value))
+            }}
+            value={temperature}
+          >
+            {units.choices.map(({ label, value }) => (
+              <option key={value} value={value}>
+                {t(label)}
+              </option>
+            ))}
+          </select>
+        </div> */}
+        <div>
+          <label
+            htmlFor="temperature"
+            className="block text-sm font-medium text-gray-700"
+          >
+            {t('settings.Export')}
+          </label>
+          <Button.White
+            className="w-full mt-1 flex-1 flex justify-center !py-0 "
+            onClick={async () => {
+              await downloadAllRecipes(recipes)
+            }}
+          >
+            <span className="!py-2.5">
+              {t('settings.Download all your recipes')}
+            </span>
+            <ArchiveBoxArrowDownIcon className="h-5 w-5  ml-2" />
+          </Button.White>
+        </div>
         <Disclosure as="div" className="pt-6">
           {({ open }) => (
             <>
@@ -183,6 +229,7 @@ const Settings = () => {
             </>
           )}
         </Disclosure>
+
         <div className="pt-7">
           <div className="relative ">
             <div
@@ -212,7 +259,7 @@ const Settings = () => {
                     </div>
                     <div className="flex">
                       {error ? (
-                        <span>{error}</span>
+                        <span className="text-sm font-bold	">{t(error)}</span>
                       ) : (
                         <>
                           <Button.Error

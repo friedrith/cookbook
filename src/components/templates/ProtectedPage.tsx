@@ -7,6 +7,7 @@ import useWhenLoggedIn from 'hooks/useWhenLoggedIn'
 import useWhenLoggedOut from 'hooks/useWhenLoggedOut'
 import { areRecipesFetched, fetchRecipes } from 'store'
 import Notifications from 'components/organisms/Notifications'
+import useEventListener from 'hooks/useEventListener'
 
 type Props = {
   children?: React.ReactNode
@@ -30,6 +31,17 @@ const ProtectedPage = ({ onlyRoles, children }: Props) => {
   }, [recipesFetched, dispatch])
 
   useWhenLoggedIn(fetch)
+
+  useEventListener(
+    'visibilitychange',
+    () => {
+      console.log('visibilitychange', document.visibilityState)
+      if (document.visibilityState === 'visible') {
+        dispatch(fetchRecipes())
+      }
+    },
+    window
+  )
 
   return (
     <>

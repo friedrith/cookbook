@@ -5,7 +5,7 @@
   "_Try a different search.": "Try a different search.",
   "_No Recipes created": "No Recipes created",
   "_Get started by creating a new recipe": "Get started by creating a new recipe.",
-  "_settings": "Settings",
+  "_settings": "Account",
   "_Log in": "Log in",
   "_Sign out": "Sign out",
   "_Send magic link": "Send a magic link",
@@ -104,20 +104,27 @@
   "_Ok Got it": "Ok Got it!",
   "_CookBook is in alpha": "CookBook is currently in Alpha version. It means it may contain few bugs and it is not ready to be used by everybody. You were sent an access to this version to help finalizing CookBook. <br/><br/><strong>Please do not sent it to anyone else without the authorization of the author of CookBook.</strong>",
   "_Version": "Version {{version}}",
-  "_Settings": "Settings",
+  "_Settings": "Account",
   "languages": {
     "Language": "Language"
   },
   "settings": {
     "temperatures": {
-      "Temperatures": "Temperatures",
+      "Temperatures": "Temperatures unit in recipes",
       "keepUnchanged": "Do not change",
       "Farenheit": "Farenheit",
       "Celsius": "Celsius"
     },
+    "units": {
+      "keepUnchanged": "Do not change",
+      "Other units": "Other units in recipes",
+      "International system": "International system (ml, kg, etc.)"
+    },
     "ingredient template": "Template for ingredients in shopping list",
     "Show advanced": "Show advanced settings",
-    "Hide advanced": "Hide advanced settings"
+    "Hide advanced": "Hide advanced settings",
+    "Export": "Export",
+    "Download all your recipes": "Download all recipes"
   },
   "import": {
     "Import from a recipe catalog": "Import from a website",

@@ -8,7 +8,7 @@ import {
   ArrowRightOnRectangleIcon,
   QuestionMarkCircleIcon,
   ArrowTopRightOnSquareIcon,
-  CogIcon,
+  UserCircleIcon,
 } from '@heroicons/react/24/outline'
 
 import { useAppDispatch } from 'hooks/redux'
@@ -66,7 +66,7 @@ const UserMenu = () => {
 
   const menuOptions = [
     {
-      icon: CogIcon,
+      icon: UserCircleIcon,
       label: '_Settings',
       onClick: settingsPopup.open,
     },

@@ -5,7 +5,7 @@
   "_Try a different search.": "Tenter une différente recherche.",
   "_No Recipes created": "Aucune recette créée.",
   "_Get started by creating a new recipe": "Il faut commencer par créer une nouvelle recette.",
-  "_settings": "Préferences",
+  "_settings": "Compte",
   "_Log in": "S'authentifier",
   "_Send magic link": "Envoyer un lien magique",
   "_Email address": "Adresse email",
@@ -104,20 +104,27 @@
   "_Ok Got it": "Oui j'ai compris !",
   "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.  <br/><br/><strong>S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.</strong>",
   "_Version": "Version {{version}}",
-  "_Settings": "Réglages",
+  "_Settings": "Compte",
   "languages": {
     "Language": "Langue"
   },
   "settings": {
     "temperatures": {
-      "Temperatures": "Températures",
+      "Temperatures": "Unités de température dans les recettes",
       "keepUnchanged": "Ne pas changer",
       "Farenheit": "Farenheit",
       "Celsius": "Celsius"
     },
-    "ingredient template": "Template pour les ingrédients dans la liste de courses",
-    "Show advanced": "Afficher les réglages avancés",
-    "Hide advanced": "Cacher les réglages avancés"
+    "units": {
+      "keepUnchanged": "Do not change",
+      "Other units": "Other units in recipes",
+      "International system": "International system (ml, kg, etc.)"
+    },
+    "ingredient template": "Template for ingredients in shopping list",
+    "Show advanced": "Show advanced settings",
+    "Hide advanced": "Hide advanced settings",
+    "Export": "Export",
+    "Download all your recipes": "Download all recipes"
   },
   "import": {
     "Import from a recipe catalog": "Importer depuis un site interner",
