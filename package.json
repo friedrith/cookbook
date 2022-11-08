@@ -93,7 +93,10 @@
           "i18next/no-literal-string": 0
         }
       }
-    ]
+    ],
+    "globals": {
+      "plausible": "readonly"
+    }
   },
   "eslintIgnore": [
     "build",

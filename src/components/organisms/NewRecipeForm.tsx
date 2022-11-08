@@ -40,6 +40,7 @@ const NewRecipeForm = () => {
     try {
       setLoading(true)
       const recipe = await dispatch(importRecipe(url)).unwrap()
+      plausible('ImportRecipe')
       navigate(`/recipes/${recipe.id}`)
     } catch {
       const { hostname } = new URL(url)
