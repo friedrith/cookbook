@@ -39,7 +39,7 @@ const NewRecipeForm = () => {
   const startImportingRecipe = useCallback(async () => {
     if (isLoading) return
     try {
-      track('ImportRecipe', { url })
+      track('ImportRecipe')
       setLoading(true)
       const recipe = await dispatch(importRecipe(url)).unwrap()
       plausible('ImportRecipe')
@@ -52,7 +52,7 @@ const NewRecipeForm = () => {
       } else {
         setStatus(ImportUrlStatus.NotAManagedWebsite)
       }
-      track('ImportRecipeError', { error })
+      track('ImportRecipeError')
     } finally {
       setLoading(false)
     }

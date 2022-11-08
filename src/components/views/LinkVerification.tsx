@@ -40,7 +40,7 @@ const LinkVerification = () => {
         } else if (code === 'auth/invalid-email') {
           setEmailRequired(true)
         }
-        track('VerifyLinkError', { origin: code })
+        track('VerifyLinkError')
       }
     })()
   }, [dispatch, navigate, t])

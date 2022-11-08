@@ -52,7 +52,7 @@ const Settings = () => {
       if (exception.code === 'auth/requires-recent-login') {
         setError('_For security reasons')
       }
-      track('DeleteAccountError', { error })
+      track('DeleteAccountError')
     }
   }
 
