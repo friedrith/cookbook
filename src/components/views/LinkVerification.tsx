@@ -6,6 +6,7 @@ import CenterPage from 'components/templates/CenterPage'
 import { useAppDispatch } from 'hooks/redux'
 import { verifyLink, verifyLinkWithEmail } from 'store'
 import Loading from 'components/views/Loading'
+import { track } from 'utils/services/tracking'
 
 const LinkVerification = () => {
   const dispatch = useAppDispatch()
@@ -23,9 +24,11 @@ const LinkVerification = () => {
   useEffect(() => {
     ;(async () => {
       try {
+        track('VerifyLink')
         const result = await dispatch(verifyLink()).unwrap()
         if (result) {
           navigate('/recipes')
+          track('VerifyLinkSuccess')
         } else {
           setEmailRequired(true)
         }
@@ -37,6 +40,7 @@ const LinkVerification = () => {
         } else if (code === 'auth/invalid-email') {
           setEmailRequired(true)
         }
+        track('VerifyLinkError', { origin: code })
       }
     })()
   }, [dispatch, navigate, t])
@@ -47,6 +51,7 @@ const LinkVerification = () => {
     try {
       await dispatch(verifyLinkWithEmail(email)).unwrap()
       navigate('/recipes')
+      track('VerifyLinkSuccess')
     } catch (error) {
       console.log('error', error)
       setErrorMessage(t('_Sorry that link is no longer valid') || '')

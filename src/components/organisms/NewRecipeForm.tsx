@@ -14,6 +14,7 @@ import { getAutomaticImport, importRecipe } from 'store'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import { getOfficialWebsites } from 'store/officialWebsites'
 import Button from 'components/atoms/Button'
+import { track } from 'utils/services/tracking'
 
 const NewRecipeForm = () => {
   const { t } = useTranslation()
@@ -38,17 +39,20 @@ const NewRecipeForm = () => {
   const startImportingRecipe = useCallback(async () => {
     if (isLoading) return
     try {
+      track('ImportRecipe', { url })
       setLoading(true)
       const recipe = await dispatch(importRecipe(url)).unwrap()
       plausible('ImportRecipe')
       navigate(`/recipes/${recipe.id}`)
-    } catch {
+      track('ImportRecipeSuccess')
+    } catch (error) {
       const { hostname } = new URL(url)
       if (officialWebsites.includes(hostname)) {
         setStatus(ImportUrlStatus.Error)
       } else {
         setStatus(ImportUrlStatus.NotAManagedWebsite)
       }
+      track('ImportRecipeError', { error })
     } finally {
       setLoading(false)
     }
@@ -134,6 +138,7 @@ const NewRecipeForm = () => {
                 <>
                   {t('import.Only few recipe catalog are managed')}{' '}
                   <Link
+                    onClick={() => track('NewRecipe')}
                     to="/faq#website-list"
                     className="text-indigo-600 hover:text-indigo-500 cursor-pointer"
                   >

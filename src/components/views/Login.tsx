@@ -6,6 +6,7 @@ import { useAppDispatch } from 'hooks/redux'
 import { loginWithMagicLink } from 'store'
 import LoginPage from 'components/templates/LoginPage'
 import BackButton from 'components/molecules/BackButton'
+import { track } from 'utils/services/tracking'
 
 const Login = () => {
   const { t } = useTranslation()
@@ -19,6 +20,7 @@ const Login = () => {
     window.localStorage.setItem('emailForSignIn', email)
 
     dispatch(loginWithMagicLink(email))
+    track('Login')
 
     navigate('/login/waiting-for-link')
   }

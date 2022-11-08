@@ -24,6 +24,7 @@ import Button from 'components/atoms/Button'
 import usePopup from 'hooks/usePopup'
 import HttpError from 'models/HttpError'
 import downloadAllRecipes from 'utils/export'
+import { track } from 'utils/services/tracking'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()
@@ -41,14 +42,17 @@ const Settings = () => {
 
   const deleteAccountConfirmed = async () => {
     try {
+      track('DeleteAccount')
       await dispatch(deleteAllRecipes()).unwrap()
       await dispatch(deleteAccount()).unwrap()
+      track('DeleteAccountSuccess')
       await dispatch(logout()).unwrap()
     } catch (error) {
       const exception = error as HttpError
       if (exception.code === 'auth/requires-recent-login') {
         setError('_For security reasons')
       }
+      track('DeleteAccountError', { error })
     }
   }
 
