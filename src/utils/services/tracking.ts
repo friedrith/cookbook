@@ -4,4 +4,10 @@ mixpanel.init(process.env.REACT_APP_MIX_PANEL_ID || '', {
   debug: process.env.NODE_ENV !== 'production',
 })
 
-export const track = (eventName: string) => mixpanel.track(eventName)
+export const track = (eventName: string) => {
+  try {
+    mixpanel.track(eventName)
+  } catch (error) {
+    console.error('error while tracking', error)
+  }
+}
