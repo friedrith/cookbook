@@ -73,13 +73,13 @@ const UserMenu = () => {
     {
       icon: ArrowTopRightOnSquareIcon,
       label: isMobile() ? '_Install Mobile App' : '_Install Desktop App',
+      disabled: appInstallationEnabled,
       onClick: installApp,
     },
     {
       icon: QuestionMarkCircleIcon,
       label: '_Help',
       onClick: helpPopup.open,
-      disabled: appInstallationEnabled,
     },
     {
       icon: ArrowRightOnRectangleIcon,

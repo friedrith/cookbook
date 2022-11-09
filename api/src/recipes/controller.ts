@@ -2,9 +2,11 @@ import { Request, Response } from 'express'
 import * as admin from 'firebase-admin'
 import { omit } from 'lodash'
 import { v4 as uuidv4 } from 'uuid'
+
 import * as db from './database'
 import { parseRecipe } from '../utils/parser'
 import nodeFetch from '../utils/nodeFetch'
+import escapeEntry from '../utils/escape'
 
 const COLLECTION_PATH = 'server/saving-data/cookbook/recipes/byUsers'
 
@@ -20,7 +22,7 @@ const convert = (recipe: any) => ({
 
 const createRecipe = async (obj: any) => {
   const recipe = {
-    ...obj,
+    ...escapeEntry(obj),
     id: uuidv4(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
@@ -117,13 +119,16 @@ export async function patch(req: Request, res: Response) {
     const userRef = ref.child(uid)
     const recipeRef = userRef.child(id)
 
-    const recipe = omit({ ...req.body, updatedAt: new Date().toISOString() }, [
-      'userId',
-      'id',
-      'createdAt',
-      'author',
-      'originUrl',
-    ])
+    const recipe = escapeEntry(
+      omit({ ...req.body, updatedAt: new Date().toISOString() }, [
+        'userId',
+        'id',
+        'createdAt',
+        'author',
+        'originUrl',
+      ])
+    )
+
     recipeRef.update(recipe)
 
     recipeRef.once(
