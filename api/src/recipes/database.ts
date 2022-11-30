@@ -1,8 +1,6 @@
 import * as admin from 'firebase-admin'
 
-import Recipe from '../models/Recipe'
-
-export const insert = async (collection: string, recipe: Recipe) => {
+export const insert = async (collection: string, recipe: any) => {
   const ref = admin.database().ref(collection)
 
   const userRef = ref.child(recipe.userId)
