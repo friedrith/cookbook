@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { Routes, Route, useLocation, Location } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 import Roles from 'models/Roles'
 
@@ -19,21 +19,9 @@ import NotFound404 from 'components/views/NotFound404'
 import HistoryContext from 'contexts/History'
 
 import { useAppDispatch } from 'hooks/redux'
+import useTransition from 'hooks/useTransition'
 import { initSession } from 'store'
-import { isMobile } from 'utils/platforms/mobile'
 import { fetchOfficialWebsites } from 'store/officialWebsites'
-
-const areLocationIncludes = (
-  location1: Location,
-  location2: Location,
-  routes: string[]
-) =>
-  routes.some(
-    r => location1.pathname.includes(r) && location2.pathname.includes(r)
-  )
-
-const areLocationDifferent = (location1: Location, location2: Location) =>
-  location1.pathname !== location2.pathname
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -42,45 +30,14 @@ const App = () => {
     dispatch(fetchOfficialWebsites())
   }, [dispatch])
 
-  const location = useLocation()
-
-  const [previousLocation, setPreviousLocation] = useState('')
-
-  const [displayLocation, setDisplayLocation] = useState(location)
-  const [transitionStage, setTransistionStage] = useState('')
-
-  useEffect(() => {
-    if (areLocationDifferent(location, displayLocation)) {
-      if (
-        isMobile() &&
-        areLocationIncludes(location, displayLocation, ['/recipes', '/login'])
-      ) {
-        if (displayLocation.pathname.includes(location.pathname)) {
-          setTransistionStage('slideRight')
-        } else {
-          setTransistionStage('slideLeft')
-        }
-      } else {
-        setDisplayLocation(location)
-      }
-
-      setPreviousLocation(displayLocation.pathname)
-    }
-  }, [location, displayLocation])
+  const [transitionStage, previousLocation, displayLocation, onAnimationEnd] =
+    useTransition()
 
   return (
     <div
       id="app"
       className={`${transitionStage}`}
-      onAnimationEnd={() => {
-        if (transitionStage === 'slideRight') {
-          setTransistionStage('slideRightEnd')
-          setDisplayLocation(location)
-        } else if (transitionStage === 'slideLeft') {
-          setTransistionStage('slideLeftEnd')
-          setDisplayLocation(location)
-        }
-      }}
+      onAnimationEnd={onAnimationEnd}
     >
       <HistoryContext.Provider value={{ previousLocation }}>
         <Routes location={displayLocation}>

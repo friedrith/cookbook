@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet'
-import { useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
 import { useTranslation } from 'react-i18next'
 
@@ -10,16 +10,24 @@ type Props = {
   className?: string
   children: React.ReactNode
   title?: string
+  onScroll?: (number: number) => void
+  scroll?: number
 }
 
-const Page = ({ className = '', children, title }: Props) => {
+const Page = ({
+  className = '',
+  children,
+  title,
+  onScroll = () => {},
+  scroll = 0,
+}: Props) => {
   const ref = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (ref.current) {
-      ref.current.scrollTo(0, 0)
+      ref.current.scrollTo(0, scroll)
     }
-  }, [])
+  }, [scroll])
 
   const { t } = useTranslation()
 
@@ -46,6 +54,7 @@ const Page = ({ className = '', children, title }: Props) => {
         className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto select-none z-20	${className}`}
         id="page"
         ref={ref}
+        onScroll={() => onScroll(ref.current?.scrollTop || 0)}
       >
         {children}
       </div>

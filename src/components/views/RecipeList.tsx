@@ -13,6 +13,8 @@ import useFuse from 'hooks/useFuse'
 import { sortByUpdatedAt } from 'models/Recipe'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 
+let scroll = 0
+
 const RecipeList = () => {
   const areFetched = useAppSelector(areRecipesFetched)
   const recipes = useAppSelector(getRecipeList)
@@ -40,8 +42,12 @@ const RecipeList = () => {
     [recipes]
   )
 
+  const onScroll = (number: number) => {
+    scroll = number
+  }
+
   return (
-    <Page title={'Recipes'}>
+    <Page title={'Recipes'} onScroll={onScroll} scroll={scroll}>
       <LargeMainPage className="flex-1 relative z-10">
         <div className="pt-20">
           <div ref={ref} />
