@@ -23,6 +23,7 @@ const convert = (recipe: any) => ({
 const createRecipe = async (obj: any) => {
   const recipe = {
     ...escapeEntry(obj),
+    imageUrl: obj.imageUrl,
     id: uuidv4(),
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
