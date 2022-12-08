@@ -1,7 +1,7 @@
 import validator from 'validator'
 import { mapValues } from 'lodash'
 
-const escapeEntry = (obj: any): Object => {
+const escapeEntry = (obj: any): any => {
   return mapValues(obj, (value: any) => {
     if (typeof value === 'string') {
       return validator.escape(value)

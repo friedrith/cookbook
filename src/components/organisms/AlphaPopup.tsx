@@ -1,5 +1,5 @@
 import { ShieldCheckIcon } from '@heroicons/react/24/outline'
-import { useTranslation, Trans } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 import Modal, { PopupType } from 'components/atoms/Modal'
 
@@ -16,7 +16,16 @@ const AlphaPopup = ({ open, onClose }: Props) => {
       open={open}
       onClose={onClose}
       icon={ShieldCheckIcon}
-      description={<Trans i18nKey={'_CookBook is in alpha'} />}
+      description={
+        <>
+          <p>{t('_CookBook is in alpha')}</p>
+          <p className="pt-3 font-bold">
+            {t(
+              '_Please do not sent it to anyone else without the authorization of the author of CookBook'
+            )}
+          </p>
+        </>
+      }
       type={PopupType.Warning}
     >
       <button

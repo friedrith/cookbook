@@ -8,6 +8,8 @@ type Props = {
   to?: string
   onClick?: () => void
   disabled?: boolean
+  id?: string
+  name?: string
 }
 
 const WhiteButton = ({
@@ -17,6 +19,7 @@ const WhiteButton = ({
   to,
   onClick,
   disabled = false,
+  ...props
 }: Props) => {
   const allClassName = classNames(
     'bg-white text-gray-700 hover:text-gray-900 border-gray-300 hover:bg-gray-100 focus:ring-gray-300',
@@ -26,7 +29,12 @@ const WhiteButton = ({
 
   if (to) {
     return (
-      <GenericButton to={to} className={allClassName} disabled={disabled}>
+      <GenericButton
+        to={to}
+        className={allClassName}
+        disabled={disabled}
+        {...props}
+      >
         {children}
       </GenericButton>
     )

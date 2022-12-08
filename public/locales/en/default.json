@@ -78,7 +78,8 @@
     "Close shopping list": "Close shopping list",
     "Copy shopping list to clipboard": "Copy shopping list to clipboard",
     "Shopping list copied to clipboard": "Shopping list copied to clipboard",
-    "Share shopping list": "Share shopping list"
+    "Share shopping list": "Share shopping list",
+    "Shopping list": "Shopping list"
   },
   "editor": {
     "Add ingredients there": "Add ingredients there, one ingredient by line",
@@ -89,6 +90,7 @@
   "_Edit Recipe": "Edit Recipe",
   "_Back to landing page": "Go back to landing page",
   "_Back to recipes": "Go back to recipes",
+  "_Back to recipe": "Go back to recipe",
   "_Search in recipes": "Search in recipes",
   "faq": {
     "shortTitle": "FAQ",
@@ -102,7 +104,8 @@
   "_Link sent by email": "Link sent by email",
   "_Login with magic link": "Login with magic link",
   "_Ok Got it": "Ok Got it!",
-  "_CookBook is in alpha": "CookBook is currently in Alpha version. It means it may contain few bugs and it is not ready to be used by everybody. You were sent an access to this version to help finalizing CookBook. <br/><br/><strong>Please do not sent it to anyone else without the authorization of the author of CookBook.</strong>",
+  "_CookBook is in alpha": "CookBook is currently in Alpha version. It means it may contain few bugs and it is not ready to be used by everybody. You were sent an access to this version to help finalizing CookBook.",
+  "_Please do not sent it to anyone else without the authorization of the author of CookBook": "Please do not sent it to anyone else without the authorization of the author of CookBook",
   "_Version": "Version {{version}}",
   "_Settings": "Account",
   "languages": {
@@ -145,5 +148,23 @@
   "_For security reasons": "For security reasons, you should logout, login and then you will be able to delete this account",
   "_See the official websites": "See the websites officially supported.",
   "_Automatic import": "Automatic import",
-  "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "If you click on new recipe with a valid url in your clipboard, it will be automatically imported."
+  "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "If you click on new recipe with a valid url in your clipboard, it will be automatically imported.",
+  "_Focus Mode": "Cooking mode",
+  "Toggle focus mode": "Toggle cooking mode",
+  "focusMode": {
+    "Step": "Step {{stepIndex}} / {{stepLength}}",
+    "Next Step": "Next Step",
+    "Enjoy your meal": "Finished!",
+    "And remember to take photos": "Enjoy your meal and remember to take photos.",
+    "Start Timer": "Start Timer",
+    "Voice control": "Voice Control",
+    "Gesture control": "Gesture Control",
+    "Controls settings": "Controls settings",
+    "Say next to Move to the next step": "Say <strong>\"Next\"</strong> to move to the next step.",
+    "Make a thumbs up": "Make a <strong>thumbs up</strong> gesture to move to the next step.",
+    "Voice recognition not supported by your browser": "Voice recognition not supported by your browser",
+    "While the focus mode is activated, your device still stay awake": "In the cooking mode, your device will never go to sleep.",
+    "Are you sure you want to activate the focus mode": "Are you sure you want to activate the Cooking mode?",
+    "Activate": "Active Cooking mode"
+  }
 }

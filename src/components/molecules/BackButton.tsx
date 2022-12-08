@@ -18,7 +18,7 @@ const BackButton = ({ url, className, basic, disabled, title }: Props) => {
   const { previousLocation } = useContext(HistoryContext)
   const navigate = useNavigate()
 
-  if (previousLocation) {
+  if (previousLocation && previousLocation === url) {
     return (
       <span data-tip={title}>
         <Button.Icon

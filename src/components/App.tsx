@@ -13,6 +13,7 @@ import LinkVerification from 'components/views/LinkVerification'
 import RecipeNew from 'components/views/RecipeNew'
 import ProtectedPage from 'components/templates/ProtectedPage'
 import RecipeEdit from 'components/views/RecipeEdit'
+import RecipeFocus from 'components/views/RecipeFocus'
 import Faq from 'components/views/Faq'
 import NotFound404 from 'components/views/NotFound404'
 
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="" element={<RecipeList />} />
             <Route path="new" element={<RecipeNew />} />
             <Route path=":recipeId" element={<RecipeView />} />
+            <Route path=":recipeId/focus" element={<RecipeFocus />} />
             <Route path=":recipeId/edit" element={<RecipeEdit />} />
           </Route>
           <Route

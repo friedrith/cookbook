@@ -14,6 +14,7 @@ import { canShare, share, isShared, isCopiedToClipboard } from 'utils/share'
 import { useAppSelector } from 'hooks/redux'
 import { getRecipe, getIngredienTemplate } from 'store'
 import waitFor from 'utils/waitFor'
+import SectionAction from 'components/atoms/SectionAction'
 
 type Props = {
   recipe: FormattedRecipe
@@ -81,33 +82,37 @@ const IngredientList = ({ recipe }: Props) => {
 
   return (
     <div>
-      <SectionTitle>
-        <div className="flex items-center justify-left">
-          <span className="flex-1">{t('_Ingredients')}</span>
-          <span
-            data-tip={
+      <SectionTitle
+        more={
+          <SectionAction
+            label={
+              shoppingBag.isOpen
+                ? t('shoppingList.Close shopping list')
+                : t('shoppingList.Shopping list')
+            }
+            onClick={shoppingBag.toggle}
+            tooltip={
               shoppingBag.isOpen
                 ? t('shoppingList.Close shopping list')
                 : t('shoppingList.Create shopping list')
             }
-            data-scroll-hide
-            data-place="left"
           >
             {shoppingBag.isOpen ? (
               <XCircleIcon
-                className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer focus:outline-none"
+                className="h-7 w-7 focus:outline-none"
                 aria-hidden="true"
-                onClick={shoppingBag.toggle}
               />
             ) : (
               <ShoppingBagIcon
-                className="h-7 w-7 text-gray-400 hover:text-indigo-600 cursor-pointer focus:outline-none"
+                className="h-7 w-7 cursor-pointer focus:outline-none"
                 aria-hidden="true"
                 onClick={shoppingBag.toggle}
               />
             )}
-          </span>
-        </div>
+          </SectionAction>
+        }
+      >
+        {t('_Ingredients')}
       </SectionTitle>
       <table className="min-w-full divide-y divide-gray-300">
         <tbody className="divide-y divide-gray-200 bg-white">

@@ -1,12 +1,20 @@
 import { useTranslation } from 'react-i18next'
+import { useState, useEffect } from 'react'
+import { BoltIcon } from '@heroicons/react/24/solid'
 
 import { FormattedRecipe } from 'models/Recipe'
 import Step from 'models/Step'
 import StepItem from 'components/molecules/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'
-import matchIngredient from 'utils/parser/matchIngredient'
-import Ingredient, { areEqual } from 'models/Ingredient'
-import shortenIngredientName from 'utils/parser/shortenIngredientName'
+import { getStepsWithIngredients } from 'utils/parser/parserStep'
+import Toggle from 'components/atoms/Toggle'
+import SectionAction from 'components/atoms/SectionAction'
+import usePopup from 'hooks/usePopup'
+import Modal from 'components/atoms/Modal'
+import Button from 'components/atoms/Button'
+import { releaseWakeLock, requestWakeLock } from 'utils/services/wakeLock'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { cookingModeActivated, getCookingModeActivatedOnce } from 'store'
 
 type Props = {
   recipe: FormattedRecipe
@@ -24,50 +32,60 @@ const evaluateStatus = (index: number, currentStepIndex: number) => {
     : 'todo'
 }
 
-const notInIfLongerThan =
-  (list: Ingredient[], length: number) => (ingredient: Ingredient) =>
-    shortenIngredientName(ingredient).length > length
-      ? list.every(i => !areEqual(i, ingredient))
-      : true
-
-const byIndex = (
-  { index: indexA }: { index: number },
-  { index: indexB }: { index: number }
-) => indexA - indexB
-
 const StepList = ({ recipe, progress, onSelectStep }: Props) => {
   const { t } = useTranslation()
 
-  const ingredientsByStep = recipe.steps.reduce(
-    (
-      acc: { steps: Ingredient[][]; ingredientsAlreadyUsed: Ingredient[] },
-      step: Step
-    ): { steps: Ingredient[][]; ingredientsAlreadyUsed: Ingredient[] } => {
-      const { steps, ingredientsAlreadyUsed } = acc
+  const ingredientsByStep = getStepsWithIngredients(recipe)
 
-      const ingredients = recipe.ingredients
-        .map(i => ({
-          ingredient: i,
-          index: matchIngredient(i, step.description),
-        }))
-        .filter(({ index }) => index >= 0)
-        .sort(byIndex)
-        .map(({ ingredient }) => ingredient)
-        .filter(notInIfLongerThan(ingredientsAlreadyUsed, 15))
+  const [focusModeEnabled, enableFocusMode] = useState(false)
 
-      return {
-        steps: [...steps, ingredients],
-        ingredientsAlreadyUsed: [...ingredientsAlreadyUsed, ...ingredients],
-      }
-    },
+  const confirmCookingMode = usePopup()
 
-    { steps: [], ingredientsAlreadyUsed: [] }
-  )?.steps
+  const cookingModeActivatedOnce = useAppSelector(getCookingModeActivatedOnce)
+
+  const toggleFocusMode = () => {
+    if (focusModeEnabled) {
+      enableFocusMode(false)
+    } else if (cookingModeActivatedOnce) {
+      requestWakeLock()
+      enableFocusMode(true)
+    } else {
+      confirmCookingMode.open()
+    }
+  }
+
+  useEffect(() => {
+    return () => {
+      releaseWakeLock()
+    }
+  }, [])
+
+  const dispatch = useAppDispatch()
 
   return (
     <div className="py-4 lg:px-10 relative z-10">
       <div className="">
-        <SectionTitle>{t('_Steps')}</SectionTitle>
+        <SectionTitle
+          more={
+            <SectionAction
+              label={t('_Focus Mode')}
+              onClick={toggleFocusMode}
+              tooltip={
+                focusModeEnabled
+                  ? t('shoppingList.Close shopping list')
+                  : t('shoppingList.Create shopping list')
+              }
+            >
+              <Toggle
+                enabled={focusModeEnabled}
+                onChange={toggleFocusMode}
+                aria-label={t('Toggle focus mode')}
+              />
+            </SectionAction>
+          }
+        >
+          {t('_Steps')}
+        </SectionTitle>
         <ol className="overflow-hidden">
           {recipe.steps.map((step, stepIdx) => (
             <StepItem
@@ -92,6 +110,41 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
           )}
         </ol>
       </div>
+      <Modal
+        open={confirmCookingMode.isOpen}
+        onClose={confirmCookingMode.close}
+        icon={BoltIcon}
+        description={
+          <>
+            <p>
+              {t(
+                'focusMode.While the focus mode is activated, your device still stay awake'
+              )}
+            </p>
+            <p className="pt-3 font-bold">
+              {t('focusMode.Are you sure you want to activate the focus mode')}
+            </p>
+          </>
+        }
+      >
+        <Button.White
+          className="mb-3 w-full"
+          onClick={confirmCookingMode.close}
+        >
+          {t('_Cancel')}
+        </Button.White>
+        <Button.Primary
+          className="mb-3 w-full"
+          onClick={() => {
+            dispatch(cookingModeActivated())
+            enableFocusMode(true)
+            requestWakeLock()
+            confirmCookingMode.close()
+          }}
+        >
+          {t('focusMode.Activate')}
+        </Button.Primary>
+      </Modal>
     </div>
   )
 }

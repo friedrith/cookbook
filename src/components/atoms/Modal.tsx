@@ -92,7 +92,9 @@ const Modal = ({
                     <div className="mt-3 text-center sm:mt-5">
                       {description && (
                         <div className="mt-2">
-                          <p className="text-sm text-gray-500">{description}</p>
+                          <div className="text-sm text-gray-500">
+                            {description}
+                          </div>
                         </div>
                       )}
                     </div>

@@ -9,6 +9,8 @@ type Props = {
   to?: string
   onClick?: () => void
   disabled?: boolean
+  id?: string
+  name?: string
 }
 
 const GenericButton = ({
@@ -18,15 +20,17 @@ const GenericButton = ({
   to,
   onClick,
   disabled = false,
+  id,
+  name,
 }: Props) => {
   const allClassName = classNames(
-    'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2',
+    'inline-flex justify-center items-center px-3 py-2 border border-transparent text-base sm:text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2',
     className
   )
 
   if (to) {
     return (
-      <Link to={to} className={allClassName}>
+      <Link to={to} className={allClassName} id={id}>
         <span className="sr-only">{title}</span>
         {children}
       </Link>
@@ -38,6 +42,8 @@ const GenericButton = ({
       className={allClassName}
       onClick={onClick}
       disabled={disabled}
+      id={id}
+      name={name}
     >
       <span className="sr-only">{title}</span>
       {children}

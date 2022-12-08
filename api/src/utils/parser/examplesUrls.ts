@@ -18,6 +18,7 @@ const officialWebsites = [
   'https://www.recipetineats.com/cinnamon-apple-bread/',
   'https://www.inspiredtaste.net/26901/easy-tahini-recipe/',
   'https://cookieandkate.com/best-quinoa-salad-recipe/',
+  'https://www.bigoven.com/recipe/cheesecake-stuffed-strawberries/263081',
   // 'https://www.realcaliforniamilk.com/recipe/bean-and-cheese-molletes',
   'https://www.bonappetit.com/recipe/dry-rubbed-roast-turkey',
   'https://www.marmiton.org/recettes/recette_bechamel_23880.aspx',

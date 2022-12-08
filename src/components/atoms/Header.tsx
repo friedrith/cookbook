@@ -11,6 +11,7 @@ type Props = {
   onMaximizedChanged?: (isMaximized: boolean) => void
   offset?: number
   className?: string
+  disableMaximize?: boolean
 }
 
 const Header = ({
@@ -19,12 +20,13 @@ const Header = ({
   onMaximizedChanged = () => {},
   offset = 90,
   className = '',
+  disableMaximize = false,
 }: Props) => {
   const [isMaximized, setMaximized] = useState(false)
 
   const onScroll = useMemo(
     () => () => {
-      if (ref.current && restRef.current) {
+      if (ref.current && restRef.current && !disableMaximize) {
         const positionY = ref.current.getBoundingClientRect().top
         const positionY2 = restRef.current.getBoundingClientRect().top
         const isMaximized = positionY > positionY2 - offset
@@ -32,7 +34,7 @@ const Header = ({
         onMaximizedChanged(isMaximized)
       }
     },
-    [restRef, onMaximizedChanged, offset]
+    [restRef, onMaximizedChanged, offset, disableMaximize]
   )
 
   const [page, setPage] = useState<HTMLElement | null>(null)

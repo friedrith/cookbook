@@ -1,17 +1,16 @@
 import { useMemo } from 'react'
 import { CheckIcon } from '@heroicons/react/24/solid'
+import { unescape } from 'lodash'
 
 import Step from 'models/Step'
 import Ingredient from 'models/Ingredient'
 import StepStatus from 'models/StepStatus'
 import classNames from 'utils/classNames'
-import Badge from 'components/atoms/Badge'
-import renderMeasure from 'utils/render/renderMeasure'
-import { replaceUrlsByLinks } from 'utils/parser/parseStep'
-import shortenIngredientName from 'utils/parser/shortenIngredientName'
+import { replaceUrlsByLinks } from 'utils/parser/parserStep'
 import { useAppSelector } from 'hooks/redux'
 import { getTemperature } from 'store'
 import { replaceTemperature } from 'utils/parser/temperatures'
+import IngredientBadge from 'components/organisms/IngredientBadge'
 
 type PropsGeneric = {
   className?: string
@@ -41,7 +40,7 @@ const StepItemGeneric = ({
   const descriptionParsed = useMemo(
     () =>
       replaceTemperature(
-        replaceUrlsByLinks(description, 'underline'),
+        replaceUrlsByLinks(unescape(description), 'underline'),
         temperature
       ),
     [description, temperature]
@@ -73,13 +72,11 @@ const StepItemGeneric = ({
           />
           <div className="text-left">
             {ingredients.map((ingredient, index) => (
-              <Badge
-                color="blue"
-                className="mr-1"
+              <IngredientBadge
+                className="mr-1 mb-1"
                 key={`${ingredient.name} ${index}`}
-              >{`${renderMeasure(ingredient.measure)} ${shortenIngredientName(
-                ingredient
-              )}`}</Badge>
+                ingredient={ingredient}
+              />
             ))}
           </div>
         </div>

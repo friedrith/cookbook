@@ -12,6 +12,7 @@ type Props = {
   title?: string
   onScroll?: (number: number) => void
   scroll?: number
+  style?: React.CSSProperties
 }
 
 const Page = ({
@@ -20,6 +21,7 @@ const Page = ({
   title,
   onScroll = () => {},
   scroll = 0,
+  style,
 }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null)
 
@@ -52,6 +54,7 @@ const Page = ({
       />
       <div
         className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto select-none z-20	${className}`}
+        style={style}
         id="page"
         ref={ref}
         onScroll={() => onScroll(ref.current?.scrollTop || 0)}

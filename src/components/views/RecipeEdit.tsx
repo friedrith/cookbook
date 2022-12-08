@@ -101,7 +101,7 @@ const RecipeEdit = () => {
             <BackButton
               url={`/recipes/${recipe.id}`}
               disabled={saving}
-              title={t('_Back to recipes')}
+              title={t('_Back to recipe')}
             />
             {isMaximized ? (
               <RecipeHeader

@@ -1,5 +1,4 @@
-import { useRef, useMemo } from 'react'
-import { useParams } from 'react-router-dom'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   PencilIcon,
@@ -24,34 +23,24 @@ import SharePopup from 'components/organisms/SharePopup'
 import usePopup from 'hooks/usePopup'
 import BackButton from 'components/molecules/BackButton'
 import renderRecipe from 'utils/render/renderRecipe'
-import {
-  getRecipe,
-  getRecipeProgress,
-  setRecipeProgress,
-  areRecipesFetched,
-} from 'store'
+import { getRecipeProgress, setRecipeProgress, areRecipesFetched } from 'store'
 import LargeMainPage from 'components/templates/LargeMainPage'
-import parseRecipe from 'utils/parser/parseRecipe'
 import { canShare, share } from 'utils/share'
 import { isMacLike } from 'utils/platforms/mobile'
+import useCurrentRecipe from 'hooks/useCurrentRecipe'
 
-const RecipeDetails = () => {
-  const { recipeId } = useParams()
-  const recipe = useAppSelector(state => getRecipe(state, recipeId))
+const RecipeView = () => {
+  const [recipe, formattedRecipe] = useCurrentRecipe()
+
   const areFetched = useAppSelector(areRecipesFetched)
 
-  const progress = useAppSelector(state => getRecipeProgress(state, recipeId))
+  const progress = useAppSelector(state => getRecipeProgress(state, recipe?.id))
 
   const dispatch = useAppDispatch()
 
   const ref = useRef<HTMLInputElement>(null)
 
   const sharePopup = usePopup()
-
-  const formattedRecipe = useMemo(
-    () => (recipe ? parseRecipe(recipe) : null),
-    [recipe]
-  )
 
   const { t } = useTranslation()
 
@@ -63,7 +52,7 @@ const RecipeDetails = () => {
   }
 
   const changeRecipeProgress = (index: number) => {
-    dispatch(setRecipeProgress({ recipeId, index }))
+    dispatch(setRecipeProgress({ recipeId: recipe.id, index }))
   }
 
   const startSharing = async () => {
@@ -124,6 +113,15 @@ const RecipeDetails = () => {
             ) : (
               <div className="flex-1" />
             )}
+            {/* <span data-tip={t('_Focus Mode')}>
+              <Button.Icon
+                className="mr-3"
+                url={`/recipes/${recipe.id}/focus`}
+                icon={PlayIcon}
+                title={t('_Focus Mode')}
+                blur
+              />
+            </span> */}
             <span data-tip={t('_Share Recipe')}>
               <Button.Icon
                 className="mr-3"
@@ -135,7 +133,7 @@ const RecipeDetails = () => {
             </span>
             <span data-tip={t('_Edit Recipe')}>
               <Button.Icon
-                url={`/recipes/${recipeId}/edit`}
+                url={`/recipes/${recipe.id}/edit`}
                 icon={PencilIcon}
                 title={t('_Edit Recipe')}
                 blur
@@ -153,4 +151,4 @@ const RecipeDetails = () => {
   )
 }
 
-export default RecipeDetails
+export default RecipeView
