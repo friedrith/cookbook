@@ -114,15 +114,13 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
         open={confirmCookingMode.isOpen}
         onClose={confirmCookingMode.close}
         icon={BoltIcon}
+        title={t('_Focus Mode')}
         description={
           <>
             <p>
               {t(
                 'focusMode.While the focus mode is activated, your device still stay awake'
               )}
-            </p>
-            <p className="pt-3 font-bold">
-              {t('focusMode.Are you sure you want to activate the focus mode')}
             </p>
           </>
         }

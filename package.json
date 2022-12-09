@@ -109,7 +109,7 @@
     "node_modules"
   ],
   "simple-git-hooks": {
-    "pre-commit": "yarn lint && yarn format && yarn:translation && yarn test --watchAll=false && yarn build"
+    "pre-commit": "yarn lint && yarn format && yarn lint:translation && yarn test --watchAll=false && yarn build"
   },
   "browserslist": {
     "production": [

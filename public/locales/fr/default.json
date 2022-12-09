@@ -77,7 +77,8 @@
     "Close shopping list": "Fermer la liste de courses",
     "Copy shopping list to clipboard": "Copier dans le presse-papier ",
     "Shopping list copied to clipboard": "Copiée dans le presse-papier",
-    "Share shopping list": "Partager la liste de courses"
+    "Share shopping list": "Partager la liste de courses",
+    "Shopping list": "Liste de courses"
   },
   "faq": {
     "shortTitle": "FAQ",
@@ -87,6 +88,7 @@
   "_Alpha": "Alpha",
   "_Back to landing page": "Retourner à la page d'accueil",
   "_Back to recipes": "Retourner aux recettes",
+  "_Back to recipe": "Retourner à la recette",
   "_Edit Recipe": "Éditer la recette",
   "_Open Menu": "Ouvrir menu",
   "_Search in recipes": "Rechercher dans les recettes",
@@ -102,7 +104,8 @@
   "_Link sent by email": "Lien envoyé par email",
   "_Login with magic link": "Se connecter avec le lien magique",
   "_Ok Got it": "Oui j'ai compris !",
-  "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.  <br/><br/><strong>S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.</strong>",
+  "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.",
+  "_Please do not sent it to anyone else without the authorization of the author of CookBook": "S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.",
   "_Version": "Version {{version}}",
   "_Settings": "Compte",
   "languages": {
@@ -145,5 +148,22 @@
   "_For security reasons": "Pour des raisons de sécurité, vous devez vous déconnecter, vous reconnecter et ensuite vous pourrez supprimer ce compte.",
   "_See the official websites": "Voir les sites internet officiellement supportés.",
   "_Automatic import": "Import automatique",
-  "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "Si vous cliquer sur nouvelle recette avec une url valide dans le presse-papier, elle sera automatiquement importée."
+  "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "Si vous cliquer sur nouvelle recette avec une url valide dans le presse-papier, elle sera automatiquement importée.",
+  "_Focus Mode": "Mode cuisine",
+  "Toggle focus mode": "Activer/désactiver mode cuisine",
+  "focusMode": {
+    "Step": "Étape {{stepIndex}} / {{stepLength}}",
+    "Next Step": "Étape Suivante",
+    "Enjoy your meal": "Fini !",
+    "And remember to take photos": "Appréciez votre repas.",
+    "Start Timer": "Démarrer Chrono",
+    "Voice control": "Contrôle par la voix",
+    "Gesture control": "Contrôle par les gestes",
+    "Controls settings": "Préférence des contrôles",
+    "Say next to Move to the next step": "Dites <strong>\"Suivant\"</strong> pour passer à la prochaines étape.",
+    "Make a thumbs up": "Faire <strong>pouce levé</strong> pour paser à la prochaine étape.",
+    "Voice recognition not supported by your browser": "La reconnaissance vocale n'est pas reconnue par votre navigateur.",
+    "While the focus mode is activated, your device still stay awake": "Dans le mode cuisine, votre appareil ne se mettra pas en veille pour que vous puissiez suivre facilement les étapes.",
+    "Activate": "Active Cooking mode"
+  }
 }

@@ -163,8 +163,7 @@
     "Say next to Move to the next step": "Say <strong>\"Next\"</strong> to move to the next step.",
     "Make a thumbs up": "Make a <strong>thumbs up</strong> gesture to move to the next step.",
     "Voice recognition not supported by your browser": "Voice recognition not supported by your browser",
-    "While the focus mode is activated, your device still stay awake": "In the cooking mode, your device will never go to sleep.",
-    "Are you sure you want to activate the focus mode": "Are you sure you want to activate the Cooking mode?",
+    "While the focus mode is activated, your device still stay awake": "In the cooking mode, your device will never go to sleep so you can follow the steps easily.",
     "Activate": "Active Cooking mode"
   }
 }
