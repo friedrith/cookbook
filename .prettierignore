@@ -3,3 +3,4 @@ old
 api/lib
 api/src/**/__fixtures__/**/*.html
 api/src/**/__fixtures__/**/*.json
+CHANGELOG.md
