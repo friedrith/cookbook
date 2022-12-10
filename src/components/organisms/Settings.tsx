@@ -1,12 +1,10 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-// import classNames from 'classnames'
 import { ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 
 import { languages } from 'utils/services/i18n'
 import * as temperatures from 'utils/parser/temperatures'
-// import * as units from 'utils/parser/units'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import {
   getTemperature,
@@ -26,6 +24,9 @@ import HttpError from 'models/HttpError'
 import downloadAllRecipes from 'utils/export'
 import { track } from 'utils/services/tracking'
 import Form from 'components/atoms/Form'
+import Input from 'components/atoms/Input'
+import useSetting from 'hooks/useSetting'
+import Select from 'components/atoms/Select'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()
@@ -33,13 +34,17 @@ const Settings = () => {
   const dispatch = useAppDispatch()
 
   const temperature = useAppSelector(getTemperature)
-  const ingredientTemplate = useAppSelector(getIngredienTemplate)
   const automaticImport = useAppSelector(getAutomaticImport)
   const recipes = useAppSelector(getRecipeList)
 
   const confirmDeleteAccountPopup = usePopup(false)
 
   const [error, setError] = useState('')
+
+  const [ingredientTemplate, changeIngredientTemplate] = useSetting(
+    getIngredienTemplate,
+    setIngredientTemplate
+  )
 
   const deleteAccountConfirmed = async () => {
     try {
@@ -60,63 +65,31 @@ const Settings = () => {
   return (
     <Form className="md:w-auto space-y-6">
       <Form.Item id="languages" label={t('languages.Language')}>
-        <select
+        <Select
           id="languages"
           name="languages"
-          className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm cursor-pointer"
+          className="mt-1"
           defaultValue={i18n.language}
-          onChange={event => i18n.changeLanguage(event.target.value)}
-        >
-          {languages.map(({ key, lang }) => (
-            <option key={key} value={key}>
-              {lang}
-            </option>
-          ))}
-        </select>
+          onChange={language => i18n.changeLanguage(language)}
+          options={languages}
+        />
       </Form.Item>
       <Form.Item
         id="temperature"
         label={t('settings.temperatures.Temperatures')}
       >
-        <select
+        <Select
           id="temperature"
           name="temperature"
-          className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm cursor-pointer"
-          onChange={event => {
-            dispatch(setTemperature(event.target.value))
-          }}
-          value={temperature}
-        >
-          {temperatures.choices.map(({ label, symbol, value }) => (
-            <option key={value} value={value}>
-              {t(label)} {symbol}
-            </option>
-          ))}
-        </select>
+          className="mt-1"
+          defaultValue={temperature}
+          onChange={value => dispatch(setTemperature(value))}
+          options={temperatures.choices.map(({ label, symbol, value }) => ({
+            value,
+            label: `${t(label)} ${symbol}`,
+          }))}
+        />
       </Form.Item>
-      {/* <div>
-          <label
-            htmlFor="units"
-            className="block text-sm font-medium text-gray-700"
-          >
-            {t('settings.units.Other units')}
-          </label>
-          <select
-            id="units"
-            name="units"
-            className="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm cursor-pointer"
-            onChange={event => {
-              dispatch(setTemperature(event.target.value))
-            }}
-            value={temperature}
-          >
-            {units.choices.map(({ label, value }) => (
-              <option key={value} value={value}>
-                {t(label)}
-              </option>
-            ))}
-          </select>
-        </div> */}
       <Form.Item id="export" label={t('settings.Export')}>
         <Button.White
           id="export"
@@ -136,7 +109,7 @@ const Settings = () => {
         {({ open }) => (
           <>
             <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-400">
-              <span className="font-medium text-indigo-500 group-hover:text-indigo-900 text-sm">
+              <span className="font-medium text-primary-500 group-hover:text-indigo-900 text-sm">
                 {open
                   ? t('settings.Hide advanced')
                   : t('settings.Show advanced')}
@@ -155,20 +128,18 @@ const Settings = () => {
                   id="template"
                   label={t('settings.ingredient template')}
                 >
-                  <input
+                  <Input.Black
                     type="text"
                     name="template"
                     id="template"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-500 focus:ring-sky-500 sm:text-sm"
+                    className="mt-1"
                     placeholder="$1"
-                    defaultValue={ingredientTemplate}
-                    onChange={event =>
-                      dispatch(setIngredientTemplate(event.target.value))
-                    }
+                    value={ingredientTemplate}
+                    onChange={changeIngredientTemplate}
                   />
                 </Form.Item>
                 <Form.Item id="import" label={t('_Automatic import')}>
-                  <Form.Select
+                  <Form.Switch
                     description={t(
                       '_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.'
                     )}
@@ -182,49 +153,6 @@ const Settings = () => {
                     }}
                   />
                 </Form.Item>
-                {/* <div>
-                    <Switch.Group
-                      as="li"
-                      className="flex items-center justify-between py-4"
-                    >
-                      <div className="flex flex-col">
-                        <Switch.Label
-                          as="p"
-                          className="text-sm font-medium text-gray-700"
-                          passive
-                        >
-                          {t('_Automatic import')}
-                        </Switch.Label>
-                        <Switch.Description className="mt-1 text-xs text-gray-500">
-                          {t(
-                            '_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.'
-                          )}
-                        </Switch.Description>
-                      </div>
-                      <Switch
-                        checked={automaticImport}
-                        onChange={async (v: boolean) => {
-                          if (v) {
-                            await navigator.clipboard.readText()
-                          }
-
-                          dispatch(setAutomaticimport(v))
-                        }}
-                        className={classNames(
-                          automaticImport ? 'bg-indigo-600' : 'bg-gray-200',
-                          'mt-1  relative ml-4 inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
-                        )}
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={classNames(
-                            automaticImport ? 'translate-x-5' : 'translate-x-0',
-                            'inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
-                          )}
-                        />
-                      </Switch>
-                    </Switch.Group>
-                  </div> */}
               </Disclosure.Panel>
             </Transition>
           </>

@@ -232,7 +232,7 @@ const RecipeFocus = () => {
       >
         <Form className="space-y-6">
           <Form.Item label={t('focusMode.Voice control')}>
-            <Form.Select
+            <Form.Switch
               checked={voiceControlEnabled}
               onChange={v => setVoiceControlEnable(v)}
               disabled={!browserSupportsSpeechRecognition}
@@ -240,7 +240,7 @@ const RecipeFocus = () => {
             />
           </Form.Item>
           <Form.Item label={t('focusMode.Gesture control')}>
-            <Form.Select
+            <Form.Switch
               checked={gestureControlEnabled}
               onChange={v => setGestureControlEnable(v)}
               description={<Trans i18nKey={'focusMode.Make a thumbs up'} />}

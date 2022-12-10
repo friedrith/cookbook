@@ -1,9 +1,9 @@
 import InputBasic from './InputBasic'
-import InputNormal from './InputNormal'
+import InputBlack from './InputBlack'
 
 const Input = {
   Basic: InputBasic,
-  Normal: InputNormal,
+  Black: InputBlack,
 }
 
 export default Input

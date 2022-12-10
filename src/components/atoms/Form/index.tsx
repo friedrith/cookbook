@@ -1,5 +1,5 @@
 import Form from './Form'
 import FormItem from './FormItem'
-import FormSelect from './FormSelect'
+import FormSwitch from './FormSwitch'
 
-export default Object.assign(Form, { Item: FormItem, Select: FormSelect })
+export default Object.assign(Form, { Item: FormItem, Switch: FormSwitch })

@@ -131,7 +131,7 @@ const IngredientList = ({ recipe }: Props) => {
                     aria-describedby="candidates-description"
                     name="candidates"
                     type="checkbox"
-                    className="relative h-4 w-4 top-[-2px] rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                    className="relative h-4 w-4 top-[-2px] rounded border-gray-300 text-primary-400 focus:ring-primary-400 cursor-pointer"
                     checked={checkedIngredients.includes(index)}
                     onChange={toggleCheckedIngredient(index)}
                   />

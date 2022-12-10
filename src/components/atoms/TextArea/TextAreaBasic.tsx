@@ -27,7 +27,7 @@ const TextArea = ({
       className={classNames(
         'relative relative before:block before:absolute before:top-0 before:bottom-0 before:left-[-10px] before:w-1',
         {
-          'before:bg-indigo-500': isFocused,
+          'before:bg-primary-500': isFocused,
           'before:bg-gray-200': !isFocused,
         }
       )}

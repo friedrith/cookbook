@@ -15,8 +15,13 @@ const colors = [
   'pink',
 ]
 
+const sum = (...args: number[]): number =>
+  args.length > 0 ? args[0] + sum(...args.slice(1)) : 0
+
 const findColor = (children: string) => {
-  const colorIndex = children.toUpperCase().charCodeAt(0) % colors.length
+  const colorIndex =
+    sum(...children.split(' ').map(l => l.toUpperCase().charCodeAt(0))) %
+    colors.length
 
   return colors[colorIndex]
 }

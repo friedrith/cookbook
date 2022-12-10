@@ -9,8 +9,8 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 // for passing in lng and translations on init
 
 export const languages = [
-  { key: 'fr', lang: 'Français' },
-  { key: 'en', lang: 'English' },
+  { value: 'fr', label: 'Français' },
+  { value: 'en', label: 'English' },
 ]
 
 i18n

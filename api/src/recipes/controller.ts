@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid'
 import * as db from './database'
 import { parseRecipe } from '../utils/parser'
 import nodeFetch from '../utils/nodeFetch'
-import escapeEntry from '../utils/escape'
 
 const COLLECTION_PATH = 'server/saving-data/cookbook/recipes/byUsers'
 
@@ -119,15 +118,13 @@ export async function patch(req: Request, res: Response) {
     const userRef = ref.child(uid)
     const recipeRef = userRef.child(id)
 
-    const recipe = escapeEntry(
-      omit({ ...req.body, updatedAt: new Date().toISOString() }, [
-        'userId',
-        'id',
-        'createdAt',
-        'author',
-        'originUrl',
-      ])
-    )
+    const recipe = omit({ ...req.body, updatedAt: new Date().toISOString() }, [
+      'userId',
+      'id',
+      'createdAt',
+      'author',
+      'originUrl',
+    ])
 
     recipeRef.update(recipe)
 

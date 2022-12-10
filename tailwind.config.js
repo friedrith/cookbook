@@ -1,9 +1,23 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          100: '#f499af',
+          300: '#E71E4D',
+          400: '#E21A5F',
+          500: '#D70466',
+          600: '#5e012c',
+          800: '#5e012c',
+        },
+      },
+    },
   },
   safelist: [
+    {
+      pattern: /(bg|text)-(primary)-(100|800)/,
+    },
     'bg-gray-100',
     'text-gray-800',
     'bg-red-100',

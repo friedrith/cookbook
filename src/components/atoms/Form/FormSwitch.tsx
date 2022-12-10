@@ -8,7 +8,7 @@ type Props = {
   disabled?: boolean
 }
 
-const FormSelect = ({ description, checked, onChange, disabled }: Props) => {
+const FormSwitch = ({ description, checked, onChange, disabled }: Props) => {
   return (
     <Switch.Group as="li" className="flex items-center justify-between">
       <div className="flex flex-col">
@@ -25,7 +25,7 @@ const FormSelect = ({ description, checked, onChange, disabled }: Props) => {
         disabled={disabled}
         onChange={onChange}
         className={classNames(
-          checked && !disabled ? 'bg-indigo-600' : 'bg-gray-200',
+          checked && !disabled ? 'bg-black' : 'bg-gray-200',
           { 'cursor-pointer': !disabled },
           'mt-1  relative ml-4 inline-flex h-6 w-11 flex-shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
         )}
@@ -42,4 +42,4 @@ const FormSelect = ({ description, checked, onChange, disabled }: Props) => {
   )
 }
 
-export default FormSelect
+export default FormSwitch

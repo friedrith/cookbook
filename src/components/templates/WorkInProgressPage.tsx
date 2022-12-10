@@ -26,7 +26,7 @@ const WorkInProgress = ({ title }: Props) => {
           <div className="mt-6">
             <Link
               to="/recipes"
-              className="text-base font-medium text-indigo-600 hover:text-indigo-500"
+              className="text-base font-medium text-indigo-600 hover:text-primary-500"
             >
               {t('_Go back home')}
               {/* eslint-disable-next-line i18next/no-literal-string */}

@@ -1,14 +1,5 @@
-import GenericButton from './GenericButton'
+import GenericButton, { Props } from './GenericButton'
 import classNames from 'utils/classNames'
-
-type Props = {
-  className?: string
-  children?: React.ReactNode
-  title?: string
-  to?: string
-  onClick?: () => void
-  disabled?: boolean
-}
 
 const BlackButton = ({
   className = '',
@@ -17,6 +8,7 @@ const BlackButton = ({
   to,
   onClick,
   disabled = false,
+  ...props
 }: Props) => {
   const allClassName = classNames(
     'bg-black text-white hover:bg-gray-800 focus:ring-gray-900',
@@ -26,7 +18,12 @@ const BlackButton = ({
 
   if (to) {
     return (
-      <GenericButton to={to} className={allClassName} disabled={disabled}>
+      <GenericButton
+        to={to}
+        className={allClassName}
+        disabled={disabled}
+        {...props}
+      >
         {children}
       </GenericButton>
     )
@@ -36,6 +33,7 @@ const BlackButton = ({
       className={allClassName}
       onClick={onClick}
       disabled={disabled}
+      {...props}
     >
       {children}
     </GenericButton>

@@ -14,8 +14,8 @@ const Toggle = ({ enabled, onChange, 'aria-label': ariaLabel }: Props) => {
       checked={enabled}
       onChange={onChange}
       className={classNames(
-        enabled ? 'bg-indigo-600' : 'bg-gray-300',
-        'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+        enabled ? 'bg-primary-400' : 'bg-gray-300',
+        'relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2'
       )}
     >
       <span className="sr-only">{ariaLabel}</span>
@@ -57,7 +57,7 @@ const Toggle = ({ enabled, onChange, 'aria-label': ariaLabel }: Props) => {
           )}
           aria-hidden="true"
         >
-          <BoltIcon className="h-3 w-3 text-indigo-600" />
+          <BoltIcon className="h-3 w-3 text-primary-500" />
         </span>
       </span>
     </Switch>

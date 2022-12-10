@@ -1,42 +1,34 @@
-import GenericButton from './GenericButton'
+import GenericButton, { Props } from './GenericButton'
 import classNames from 'utils/classNames'
-
-type Props = {
-  className?: string
-  children?: React.ReactNode
-  title?: string
-  to?: string
-  onClick?: () => void
-  disabled?: boolean
-}
 
 const PrimaryButton = ({
   className = '',
   children = null,
   title = '',
   to,
-  onClick,
-  disabled = false,
+  disabled,
+  ...props
 }: Props) => {
   const allClassName = classNames(
-    'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500',
+    'transition-colors	bg-gradient-to-r from-primary-300 via-primary-400 to-primary-500 hover:from-primary-500 hover:via-primary-500 hover:to-primary-500 focus:ring-primary-500',
     className,
     disabled ? 'opacity-70' : ''
   )
 
   if (to) {
     return (
-      <GenericButton to={to} className={allClassName} disabled={disabled}>
+      <GenericButton
+        to={to}
+        className={allClassName}
+        disabled={disabled}
+        {...props}
+      >
         {children}
       </GenericButton>
     )
   }
   return (
-    <GenericButton
-      className={allClassName}
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <GenericButton className={allClassName} disabled={disabled} {...props}>
       {children}
     </GenericButton>
   )

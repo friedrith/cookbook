@@ -87,7 +87,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                     <input
                       id="search"
                       name="search"
-                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                       placeholder={t('_Try banana bread')}
                       type="text"
                       ref={inputMobileRef}
@@ -127,7 +127,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                     <input
                       id="search"
                       name="search"
-                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                       placeholder={t('_Try banana bread')}
                       type="text"
                       ref={inputRef}
@@ -146,11 +146,9 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                 </div>
 
                 <div className="flex-1" />
-                {/* <PrimaryButton to="/recipes/new" className="ml-2 hidden lg:block">
- {t('_New Recipe')}
-</PrimaryButton> */}
+
                 <button
-                  className="mr-4 hidden md:block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="mr-4 hidden md:block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                   onClick={startSearchOnMobile}
                   aria-label={t('_Search in recipes')}
                 >
@@ -162,17 +160,10 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                 <SelectMenu>
                   <NewRecipeForm />
                 </SelectMenu>
-                {/* <Button.Primary
-                to="/recipes/new"
-                className="hidden md:block rounded-md mr-4 lg:mr-6 !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                aria-label={t('_Create Recipe')}
-              >
-                <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>
-              </Button.Primary> */}
 
                 <div className="flex items-center ml-4 lg:ml-6">
                   <button
-                    className="ml-4 mr-4 block md:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="ml-4 mr-4 block md:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     onClick={startSearchOnMobile}
                     aria-label={t('_Search in recipes')}
                   >
@@ -184,26 +175,10 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                   <Button.Icon
                     onClick={newRecipePopup.open}
                     icon={PlusIcon}
-                    className="block md:hidden rounded-md !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="block md:hidden rounded-md !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     aria-label={t('_Create Recipe')}
                   />
-
-                  {/* <Link
-     to="/recipes/new"
-     className="mr-4 block lg:hidden text-white border border-transparent rounded-md bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-   >
-     <PlusIcon className="h-8 w-8 stroke-1 " aria-hidden="true" />
-   </Link> */}
                   <UserMenu />
-                  {/* <Link
-                to="/preferences"
-                className="text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                <AdjustmentsIcon
-                  className="h-8 w-8 stroke-0"
-                  aria-hidden="true"
-                />
-              </Link> */}
                 </div>
               </>
             )}

@@ -10,7 +10,7 @@ import { getStepsWithIngredients } from 'utils/parser/parserStep'
 import Toggle from 'components/atoms/Toggle'
 import SectionAction from 'components/atoms/SectionAction'
 import usePopup from 'hooks/usePopup'
-import Modal from 'components/atoms/Modal'
+import Modal, { PopupType } from 'components/atoms/Modal'
 import Button from 'components/atoms/Button'
 import { releaseWakeLock, requestWakeLock } from 'utils/services/wakeLock'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
@@ -115,6 +115,7 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
         onClose={confirmCookingMode.close}
         icon={BoltIcon}
         title={t('_Focus Mode')}
+        type={PopupType.Info}
         description={
           <>
             <p>

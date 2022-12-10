@@ -8,7 +8,7 @@ type Props = {
 const SectionAction = ({ label, onClick, tooltip, children }: Props) => {
   return (
     <button
-      className="flex items-center text-gray-400 hover:text-indigo-600 cursor-pointer"
+      className="flex items-center text-gray-400 hover:text-primary-500 cursor-pointer"
       onClick={onClick}
     >
       <div className="mr-2 font-normal text-xs">{label}</div>

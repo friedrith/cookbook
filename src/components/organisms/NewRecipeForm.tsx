@@ -27,7 +27,7 @@ const NewRecipeForm = () => {
 
   const automaticImport = useAppSelector(getAutomaticImport)
 
-  const processUrl = (newUrl: string) => {
+  const onUrlChange = (newUrl: string) => {
     setUrl(newUrl)
     setStatus(parseRecipeImportUrl(newUrl))
   }
@@ -42,7 +42,6 @@ const NewRecipeForm = () => {
       track('ImportRecipe')
       setLoading(true)
       const recipe = await dispatch(importRecipe(url)).unwrap()
-      plausible('ImportRecipe')
       navigate(`/recipes/${recipe.id}`)
       track('ImportRecipeSuccess')
     } catch (error) {
@@ -61,14 +60,16 @@ const NewRecipeForm = () => {
   const init = useCallback(async () => {
     const newUrl = await navigator.clipboard.readText()
     if (parseRecipeImportUrl(newUrl) === ImportUrlStatus.NotUrl) return
-    processUrl(newUrl)
+    setUrl(newUrl)
+
+    onUrlChange(newUrl)
   }, [])
 
   useEffect(() => {
     if (automaticImport) {
       init()
     }
-  }, [init, automaticImport, startImportingRecipe])
+  }, [init, automaticImport])
 
   return (
     <div className="p-5">
@@ -89,9 +90,9 @@ const NewRecipeForm = () => {
               type="text"
               name="url"
               id="url"
-              className="block w-full rounded-none rounded-l-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block w-full rounded-none rounded-l-md border-gray-300 focus:border-primary-400 focus:ring-primary-400 sm:text-sm"
               placeholder={t('import.Enter a url')}
-              onChange={event => processUrl(event.target.value)}
+              onChange={event => onUrlChange(event.target.value)}
               value={url}
               autoComplete="off"
             />
@@ -100,7 +101,7 @@ const NewRecipeForm = () => {
             type="button"
             disabled={status !== ImportUrlStatus.Ok}
             onClick={startImportingRecipe}
-            className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 whitespace-nowrap disabled:opacity-50"
+            className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 whitespace-nowrap disabled:opacity-50"
           >
             <span>
               {isLoading ? (
@@ -140,7 +141,7 @@ const NewRecipeForm = () => {
                   <Link
                     onClick={() => track('NewRecipe')}
                     to="/faq#website-list"
-                    className="text-indigo-600 hover:text-indigo-500 cursor-pointer"
+                    className="text-indigo-600 hover:text-primary-500 cursor-pointer"
                   >
                     {t('import.Check the list there')}
                   </Link>

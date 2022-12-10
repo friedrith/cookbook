@@ -30,3 +30,10 @@ ngrok
 - https://web.dev/add-manifest/
 - [Accessibility](https://reactjs.org/docs/accessibility.html)
 - [Single page applications for github pages](https://github.com/rafgraph/spa-github-pages)
+
+## Colors
+
+- #fd5c63
+- E71E4D
+- E21A5F
+- D70466

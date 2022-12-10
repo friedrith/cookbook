@@ -22,7 +22,7 @@ const TextArea = ({
     <TextareaAutosize
       name={id}
       id={id}
-      className={`focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md resize-none ${className}`}
+      className={`focus:ring-black focus:border-black block w-full shadow-sm sm:text-sm border-gray-300 rounded-md resize-none ${className}`}
       onChange={e => onChange(e.target.value)}
       value={value}
       minRows={rows}

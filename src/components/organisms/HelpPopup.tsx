@@ -5,10 +5,10 @@ import {
   ChatBubbleBottomCenterTextIcon,
   SparklesIcon,
 } from '@heroicons/react/24/outline'
-import { CakeIcon } from '@heroicons/react/24/solid'
 
 import Modal from 'components/atoms/Modal'
 import Logo from 'components/atoms/Logo'
+import AlphaTag from 'components/atoms/AlphaTag'
 import p from '../../../package.json'
 
 type Props = {
@@ -40,7 +40,7 @@ const resources = [
   {
     name: 'Contact us',
     description:
-      'You can send an email at <a class="text-indigo-500 text-bold" href="mailto:thibault.friedrich@gmail.com">thibault.friedrich@gmail.com</a>',
+      'You can send an email at <a class="text-primary-500 text-bold" href="mailto:thibault.friedrich@gmail.com">thibault.friedrich@gmail.com</a>',
     href: 'mailto:thibault.friedrich@gmail.com',
     icon: ChatBubbleBottomCenterTextIcon,
   },
@@ -51,17 +51,10 @@ const HelpPopup = ({ open, onClose }: Props) => {
 
   return (
     <Modal
-      title={
-        <div className="flex flex-col items-center justify-center">
-          <CakeIcon
-            className="h-8 w-8 stroke-1 text-gray-900 mr-1"
-            aria-hidden="true"
-          />
-          <Logo withoutIcon withoutTag />
-        </div>
-      }
+      iconNode={<Logo className="inline-flex" />}
       open={open}
       onClose={onClose}
+      title={<AlphaTag />}
       description={t('_Version', { version: p.version })}
     >
       <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
@@ -74,7 +67,7 @@ const HelpPopup = ({ open, onClose }: Props) => {
             rel="noreferrer"
           >
             <item.icon
-              className="h-6 w-6 flex-shrink-0 text-indigo-600"
+              className="h-6 w-6 flex-shrink-0 text-primary-100"
               aria-hidden="true"
             />
             <div className="ml-4">

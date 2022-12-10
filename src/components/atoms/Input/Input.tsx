@@ -1,10 +1,12 @@
-type Props = {
+export type Props = {
   type?: string
   className?: string
   onChange: (value: string) => void
   id?: string
   value?: string
   name?: string
+  style?: object
+  placeholder?: string
 }
 
 const Input = ({

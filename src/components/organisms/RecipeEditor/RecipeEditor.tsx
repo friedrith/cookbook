@@ -157,7 +157,7 @@ const RecipeEditor = forwardRef(
                     tag: 'p-0.25 px-1 my-1 mx-1 rounded font-medium bg-indigo-100 text-indigo-800',
                     tagInput: 'border-0 overflow-none flex-1 min-w-[100px]',
                     tagInputField:
-                      'border border-gray-300  overflow-none focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm rounded-md w-full p-1.5',
+                      'border border-gray-300  overflow-none focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-black focus:border-black shadow-sm rounded-md w-full p-1.5',
                     remove: 'ml-0.5',
                   }}
                   allowDragDrop={true}

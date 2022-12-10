@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { useTranslation } from 'react-i18next'
+import Button from 'components/atoms/Button'
 
 type Props = {
   children: React.ReactNode
@@ -14,7 +15,8 @@ const SelectMenu = ({ children }: Props) => {
       {({ open }) => (
         <>
           <Popover.Button
-            className="hidden md:block bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white "
+            as={Button.Primary}
+            className="hidden md:block"
             aria-label={t('_New Recipe')}
           >
             <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>

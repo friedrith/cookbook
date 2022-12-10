@@ -27,7 +27,7 @@ const WebsiteList = () => {
         {officialWebsites.map((w: string) => (
           <li key={w}>
             <a
-              className="text-indigo-600 hover:text-indigo-500"
+              className="text-indigo-600 hover:text-primary-500"
               href={`https://${w}`}
               target="_blank"
               rel="noreferrer"
@@ -41,7 +41,7 @@ const WebsiteList = () => {
         'However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a '
       )}
       <a
-        className="text-indigo-600 hover:text-indigo-500"
+        className="text-indigo-600 hover:text-primary-500"
         href="https://github.com/friedrith/cookbook/issues/new?assignees=&labels=issue%3A+proposal%2C+needs+triage&template=proposal.md"
         target="_blank"
         rel="noreferrer"
@@ -50,7 +50,7 @@ const WebsiteList = () => {
       </a>
       {t(' or contact us at ')}
       <a
-        className="text-indigo-600 hover:text-indigo-500"
+        className="text-indigo-600 hover:text-primary-500"
         href="mailto:thibault.friedrich@gmail.com"
         target="_blank"
         rel="noreferrer"
@@ -160,7 +160,7 @@ const Help = () => {
           <div className="mt-12 text-center">
             <Link
               to="/recipes"
-              className="text-base font-medium text-indigo-600 hover:text-indigo-500"
+              className="text-base font-medium text-indigo-600 hover:text-primary-500"
             >
               {t('_Go back home')}
               {/* eslint-disable-next-line i18next/no-literal-string */}

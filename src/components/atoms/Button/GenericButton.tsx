@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import classNames from 'utils/classNames'
 
-type Props = {
+export type Props = {
   className?: string
   children?: React.ReactNode
   title?: string
@@ -11,6 +11,7 @@ type Props = {
   disabled?: boolean
   id?: string
   name?: string
+  type?: 'button' | 'submit'
 }
 
 const GenericButton = ({
@@ -22,6 +23,7 @@ const GenericButton = ({
   disabled = false,
   id,
   name,
+  type = 'button',
 }: Props) => {
   const allClassName = classNames(
     'inline-flex justify-center items-center px-3 py-2 border border-transparent text-base sm:text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2',
@@ -38,7 +40,7 @@ const GenericButton = ({
   }
   return (
     <button
-      type="button"
+      type={type}
       className={allClassName}
       onClick={onClick}
       disabled={disabled}

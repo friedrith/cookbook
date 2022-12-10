@@ -7,6 +7,7 @@ import { useAppDispatch } from 'hooks/redux'
 import { verifyLink, verifyLinkWithEmail } from 'store'
 import Loading from 'components/views/Loading'
 import { track } from 'utils/services/tracking'
+import Button from 'components/atoms/Button'
 
 const LinkVerification = () => {
   const dispatch = useAppDispatch()
@@ -75,7 +76,7 @@ const LinkVerification = () => {
               <div className="mt-6">
                 <Link
                   to="/login"
-                  className="text-base font-medium text-indigo-600 hover:text-indigo-500"
+                  className="text-base font-medium text-indigo-600 hover:text-primary-500"
                 >
                   {t('_Send a new magic link')}
                   {/* eslint-disable-next-line i18next/no-literal-string */}
@@ -98,17 +99,14 @@ const LinkVerification = () => {
               id="email-address"
               autoComplete="email"
               required
-              className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:placeholder-gray-400"
+              className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:placeholder-gray-400"
               placeholder={t('_Enter your email')}
               onChange={event => setEmail(event.target.value)}
             />
             <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <button
-                type="submit"
-                className="w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 bg-origin-border px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white hover:from-purple-700 hover:to-indigo-700"
-              >
+              <Button.Black type="submit" className="w-full">
                 {t('_Log in')}
-              </button>
+              </Button.Black>
             </div>
           </form>
         </div>

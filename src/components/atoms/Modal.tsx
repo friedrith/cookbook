@@ -10,6 +10,7 @@ export enum PopupType {
 
 type Props = {
   open: boolean
+  iconNode?: React.ReactNode
   icon?:
     | ((props: React.SVGProps<SVGSVGElement>) => JSX.Element)
     | React.ExoticComponent<{
@@ -25,12 +26,13 @@ type Props = {
 const colors = {
   [PopupType.Warning]: 'red',
   [PopupType.Black]: 'black',
-  [PopupType.Info]: 'indigo',
+  [PopupType.Info]: 'primary',
   [PopupType.Success]: 'green',
 }
 
 const Modal = ({
   open,
+  iconNode,
   icon: Icon,
   onClose,
   children,
@@ -68,6 +70,11 @@ const Modal = ({
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-sm sm:p-6">
                 <div>
+                  {iconNode && (
+                    <div className={`mx-auto flex items-center justify-center`}>
+                      {iconNode}
+                    </div>
+                  )}
                   {Icon && (
                     <div
                       className={`mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-${color}-100`}
@@ -104,14 +111,14 @@ const Modal = ({
                   {children}
                   {/* <button
                     type="button"
-                    className="mb-3 inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
+                    className="mb-3 inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:text-sm"
                     onClick={onSubmit}
                   >
                     Share Ingredients
                   </button>
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm"
+                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:text-sm"
                     onClick={onSubmit}
                   >
                     Share Recipe

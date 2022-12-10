@@ -96,7 +96,7 @@ const UserMenu = () => {
       {/* Profile dropdown */}
       <Menu
         as="button"
-        menuButtonClassName="flex max-w-xs items-center rounded-full bg-white hover:text-indigo-600 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        menuButtonClassName="flex max-w-xs items-center rounded-full bg-white hover:text-primary-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
         menuButton={
           <>
             <span className="sr-only">{t('_Open Menu')}</span>
@@ -111,7 +111,7 @@ const UserMenu = () => {
           {menuOptions
             .filter(({ disabled }) => !disabled)
             .map(({ label, onClick, icon }) => (
-              <MenuItem icon={icon} onClick={onClick}>
+              <MenuItem icon={icon} onClick={onClick} key={label}>
                 {t(label)}
               </MenuItem>
             ))}
