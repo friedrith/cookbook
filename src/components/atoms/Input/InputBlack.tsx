@@ -3,7 +3,7 @@ import { Props } from './Input'
 const InputBack = ({
   type = 'text',
   className,
-  onChange,
+  onChange = () => {},
   id,
   value,
   name,

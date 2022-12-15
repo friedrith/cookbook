@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import classNames from 'classnames'
 
 type Props = {
   className?: string
@@ -8,7 +8,7 @@ type Props = {
 const Container = ({ className, ...props }: Props) => {
   return (
     <div
-      className={clsx('mx-auto max-w-7xl px-4 sm:px-6 lg:px-8', className)}
+      className={classNames('max-w-screen-xl m-auto px-4 lg:px-10 ', className)}
       {...props}
     />
   )

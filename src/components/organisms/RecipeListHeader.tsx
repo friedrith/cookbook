@@ -175,7 +175,7 @@ const RecipeListHeader = ({ onSearchChange, restRef, searchValue }: Props) => {
                   <Button.Icon
                     onClick={newRecipePopup.open}
                     icon={PlusIcon}
-                    className="block md:hidden rounded-md !text-white !bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                    className="block md:hidden rounded-md !text-white !bg-primary-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
                     aria-label={t('_Create Recipe')}
                   />
                   <UserMenu />

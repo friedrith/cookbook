@@ -1,17 +1,18 @@
 type Props = {
   type?: string
   className?: string
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   id: string
   value: string
   placeholder: string
   style?: object
+  autocomplete?: boolean
 }
 
 const InputBasic = ({
   type = 'text',
   className,
-  onChange,
+  onChange = () => {},
   id,
   value,
   placeholder,

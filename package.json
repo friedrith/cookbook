@@ -25,6 +25,7 @@
     "file-saver": "^2.0.5",
     "fingerpose": "^0.1.0",
     "firebase": "^9.8.1",
+    "framer-motion": "^7.8.0",
     "fuse.js": "^6.6.2",
     "i18next": "^21.8.3",
     "i18next-browser-languagedetector": "^6.1.4",
@@ -49,6 +50,7 @@
     "react-tooltip": "^4.4.3",
     "react-webcam": "^7.0.1",
     "typescript": "^4.4.2",
+    "use-debounce": "^9.0.2",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.0"
   },
@@ -59,7 +61,8 @@
     "serve": "npx serve -s build",
     "lint": "eslint --max-warnings=0 .",
     "lint:translation": "eslint --max-warnings=0 ./public/locales/**/*.json",
-    "format": "prettier --check ."
+    "format": "prettier --check .",
+    "precommit": "yarn lint && yarn format && yarn lint:translation && yarn test --watchAll=false && yarn build"
   },
   "eslintConfig": {
     "extends": [
@@ -83,9 +86,11 @@
         {
           "filePath": {
             "fr/default.json": "../../../../public/locales/en/default.json",
-            "fr/faq.json": "../../../../public/locales/en/faq.json",
             "en/default.json": "../../../../public/locales/fr/default.json",
-            "en/faq.json": "../../../../public/locales/fr/faq.json"
+            "fr/faq.json": "../../../../public/locales/en/faq.json",
+            "en/faq.json": "../../../../public/locales/fr/faq.json",
+            "fr/marketing.json": "../../../../public/locales/en/marketing.json",
+            "en/marketing.json": "../../../../public/locales/fr/marketing.json"
           }
         }
       ]
@@ -109,7 +114,7 @@
     "node_modules"
   ],
   "simple-git-hooks": {
-    "pre-commit": "yarn lint && yarn format && yarn lint:translation && yarn test --watchAll=false && yarn build"
+    "pre-commit": "yarn precommit"
   },
   "browserslist": {
     "production": [

@@ -28,7 +28,7 @@ const MenuItem = forwardRef(
               className,
               disabled ? 'opacity-50' : '',
               active ? 'bg-gray-100' : '',
-              'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full flex items-center hover:bg-gray-100 hover:text-gray-900 relative z-auto'
+              'group block px-4 py-2 text-sm text-gray-700 cursor-pointer w-full flex items-center hover:bg-gray-100 hover:text-gray-900 relative z-auto whitespace-nowrap'
             )}
             onClick={onClick}
             disabled={disabled}

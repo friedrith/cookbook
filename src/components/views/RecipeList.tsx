@@ -12,8 +12,9 @@ import RecipeListSection from 'components/organisms/RecipeListSection'
 import useFuse from 'hooks/useFuse'
 import { sortByUpdatedAt } from 'models/Recipe'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import rememberScroll from 'utils/rememberScroll'
 
-let scroll = 0
+const scroll = rememberScroll()
 
 const RecipeList = () => {
   const areFetched = useAppSelector(areRecipesFetched)
@@ -42,12 +43,12 @@ const RecipeList = () => {
     [recipes]
   )
 
-  const onScroll = (number: number) => {
-    scroll = number
-  }
-
   return (
-    <Page title={'Recipes'} onScroll={onScroll} scroll={scroll}>
+    <Page
+      title={'Recipes'}
+      scroll={scroll.scroll}
+      onScroll={v => scroll.onScroll(v)}
+    >
       <LargeMainPage className="flex-1 relative z-10">
         <div className="pt-20">
           <div ref={ref} />

@@ -1,3 +1,5 @@
+import classNames from 'classnames'
+
 import { ReactComponent as LogoIcon } from 'assets/logo.svg'
 
 type Props = {
@@ -7,7 +9,7 @@ type Props = {
 }
 
 const Logo = ({ className }: Props) => {
-  return <LogoIcon className="h-8" />
+  return <LogoIcon className={classNames('h-9', className)} />
 }
 
 /**

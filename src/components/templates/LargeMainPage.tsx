@@ -1,14 +1,12 @@
+import Container from 'components/atoms/Container'
+
 type Props = {
   children: React.ReactNode
   className?: string
 }
 
 const LargeMainPage = ({ children, className }: Props) => {
-  return (
-    <div className={`bg-white px-4 lg:px-10 py-4 lg:py-10 ${className}`}>
-      <div className="max-w-screen-xl m-auto">{children}</div>
-    </div>
-  )
+  return <Container className={`bg-white ${className}`}>{children}</Container>
 }
 
 export default LargeMainPage
