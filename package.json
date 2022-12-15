@@ -90,7 +90,9 @@
             "fr/faq.json": "../../../../public/locales/en/faq.json",
             "en/faq.json": "../../../../public/locales/fr/faq.json",
             "fr/marketing.json": "../../../../public/locales/en/marketing.json",
-            "en/marketing.json": "../../../../public/locales/fr/marketing.json"
+            "en/marketing.json": "../../../../public/locales/fr/marketing.json",
+            "fr/help.json": "../../../../public/locales/en/help.json",
+            "en/help.json": "../../../../public/locales/fr/help.json"
           }
         }
       ]
