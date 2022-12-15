@@ -29,7 +29,6 @@ export const signInWithMagicLink = async (email: string) => {
 
   const auth = getAuth()
   await sendSignInLinkToEmail(auth, email, actionCodeSettings)
-  console.log('sendSignInLink')
 }
 
 export const verifyLink = async () => {
