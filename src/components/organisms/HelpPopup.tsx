@@ -39,15 +39,14 @@ const resources = [
   },
   {
     name: 'Contact us',
-    description:
-      'You can send an email at <a class="text-primary-500 text-bold" href="mailto:thibault.friedrich@gmail.com">thibault.friedrich@gmail.com</a>',
+    description: 'You can send an email at thibault.friedrich@gmail.com',
     href: 'mailto:thibault.friedrich@gmail.com',
     icon: ChatBubbleBottomCenterTextIcon,
   },
 ]
 
 const HelpPopup = ({ open, onClose }: Props) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation('help')
 
   return (
     <Modal
@@ -55,7 +54,7 @@ const HelpPopup = ({ open, onClose }: Props) => {
       open={open}
       onClose={onClose}
       title={<AlphaTag />}
-      description={t('_Version', { version: p.version })}
+      description={t('Version', { version: p.version })}
     >
       <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
         {resources.map(item => (
@@ -71,11 +70,12 @@ const HelpPopup = ({ open, onClose }: Props) => {
               aria-hidden="true"
             />
             <div className="ml-4">
-              <p className="text-base font-medium text-gray-900">{item.name}</p>
-              <p
-                className="mt-1 text-sm text-gray-500"
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              />
+              <p className="text-base font-medium text-gray-900">
+                {t(item.name)}
+              </p>
+              <p className="mt-1 text-sm text-gray-500">
+                {t(item.description)}
+              </p>
             </div>
           </a>
         ))}
