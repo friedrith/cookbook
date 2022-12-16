@@ -99,6 +99,7 @@ const RecipeList = () => {
         restRef={ref}
         onSearchChange={onQueryChange}
         searchValue={query}
+        hideSearch={recipes.length === 0}
       />
     </Page>
   )

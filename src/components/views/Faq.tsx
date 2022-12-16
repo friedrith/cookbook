@@ -71,7 +71,7 @@ const faqs = [
   },
 ]
 
-const Help = () => {
+const Faq = () => {
   const { t } = useTranslation(['default', 'faq'])
 
   const ref = useRef<HTMLInputElement>(null)
@@ -90,7 +90,7 @@ const Help = () => {
 
   return (
     <Page title={t('faq.shortTitle')}>
-      <LargeMainPage className="flex-1 relative z-10">
+      <LargeMainPage className="flex-1 relative z-10 mt-6">
         <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           {/* <div className="flex flex-shrink-0 justify-center">
           <Logo />
@@ -180,4 +180,4 @@ const Help = () => {
   )
 }
 
-export default Help
+export default Faq
