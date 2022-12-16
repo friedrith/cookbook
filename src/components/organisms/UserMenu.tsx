@@ -55,6 +55,7 @@ const UserMenu = () => {
 
       resetPWAInstallationPrompt()
     } else {
+      console.error('Impossible to install')
       event.preventDefault()
       event.stopPropagation()
     }
@@ -73,7 +74,7 @@ const UserMenu = () => {
     {
       icon: ArrowTopRightOnSquareIcon,
       label: isMobile() ? '_Install Mobile App' : '_Install Desktop App',
-      disabled: appInstallationEnabled,
+      disabled: !appInstallationEnabled,
       onClick: installApp,
     },
     {
