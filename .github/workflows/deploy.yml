@@ -40,6 +40,8 @@ jobs:
           folder: build # The folder the action should deploy.
           clean: true # Automatically remove deleted files from the deploy branch
           repository-name: friedrith/cookbook
+          clean-exclude: |
+            CNAME
           # ssh-key: ${{ secrets.GH_PAGES_SECRET_KEY }}
 
       - name: Deploy to Firebase
