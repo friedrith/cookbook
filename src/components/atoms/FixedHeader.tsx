@@ -28,7 +28,6 @@ const FixedHeader = ({
   const onScroll = useMemo(
     () => () => {
       if (ref.current && restRef.current && !disableMaximize) {
-        console.log('onScroll')
         const positionY = ref.current.getBoundingClientRect().top
         const positionY2 = restRef.current.getBoundingClientRect().top
         const isMaximized = positionY > positionY2 - offset

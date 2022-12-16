@@ -14,6 +14,11 @@ module.exports = {
           800: '#5e012c',
         },
       },
+      screens: {
+        '3xl': '1700px',
+        '4xl': '1900px',
+        '5xl': '2200px',
+      },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },

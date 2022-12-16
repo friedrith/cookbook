@@ -1,5 +1,8 @@
+import classNames from 'classnames'
+
 import Recipe from 'models/Recipe'
 import RecipePreview from 'components/molecules/RecipePreview'
+import useFullWidth from 'hooks/useFullWidth'
 
 type Props = {
   title?: string
@@ -7,6 +10,8 @@ type Props = {
 }
 
 const RecipeListSection = ({ title, recipes }: Props) => {
+  const isFullWidth = useFullWidth()
+
   return (
     <div className="pb-10 md:pb-20">
       {title && (
@@ -22,7 +27,14 @@ const RecipeListSection = ({ title, recipes }: Props) => {
           </div>
         </div>
       )}
-      <div className="mt-6 grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
+      <div
+        className={classNames(
+          'mt-6 grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4',
+          {
+            'xl:grid-cols-5 2xl:grid-cols-6 5xl:grid-cols-7': isFullWidth,
+          }
+        )}
+      >
         {recipes.map(recipe => (
           <RecipePreview key={recipe.id} recipe={recipe} />
         ))}
