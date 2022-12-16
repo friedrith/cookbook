@@ -1,10 +1,11 @@
 import { Helmet } from 'react-helmet'
-import React, { useRef, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
 import { useTranslation } from 'react-i18next'
 
 import { isMobile } from 'utils/platforms/mobile'
 import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
+import useEventListener from 'hooks/useEventListener'
 
 type Props = {
   className?: string
@@ -23,13 +24,13 @@ const Page = ({
   scroll = 0,
   style,
 }: Props) => {
-  const ref = useRef<HTMLDivElement | null>(null)
-
   useEffect(() => {
-    if (ref.current) {
-      ref.current.scrollTo(0, scroll)
-    }
+    window.scrollTo(0, scroll)
   }, [scroll])
+
+  useEventListener('scroll', () => {
+    onScroll(window.scrollY || 0)
+  })
 
   const { t } = useTranslation()
 
@@ -56,8 +57,6 @@ const Page = ({
         className={`relative bg-white overflow-auto scroll-auto select-none z-20	${className}`}
         style={style}
         id="page"
-        ref={ref}
-        onScroll={() => onScroll(ref.current?.scrollTop || 0)}
       >
         {children}
       </div>
