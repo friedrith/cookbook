@@ -5,7 +5,7 @@ import { useSearchParams } from 'react-router-dom'
 import { useAppSelector } from 'hooks/redux'
 import { getRecipeList, areRecipesFetched } from 'store'
 import RecipeListHeader from 'components/organisms/RecipeListHeader'
-import LargeMainPage from 'components/templates/LargeMainPage'
+import Container from 'components/atoms/Container'
 import Page from 'components/templates/Page'
 import EmptyMessage from 'components/atoms/EmptyMessage'
 import RecipeListSection from 'components/organisms/RecipeListSection'
@@ -49,8 +49,8 @@ const RecipeList = () => {
       scroll={scroll.scroll}
       onScroll={v => scroll.onScroll(v)}
     >
-      <LargeMainPage className="flex-1 relative z-10">
-        <div className="pt-20">
+      <Container className="bg-white ">
+        <div className="flex-1 relative z-10 pt-32">
           <div ref={ref} />
           {searchedRecipes.length > 0 && query && (
             <RecipeListSection
@@ -94,7 +94,7 @@ const RecipeList = () => {
             </div>
           )}
         </div>
-      </LargeMainPage>
+      </Container>
       <RecipeListHeader
         restRef={ref}
         onSearchChange={onQueryChange}

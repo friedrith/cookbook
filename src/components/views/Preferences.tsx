@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import Page from 'components/templates/Page'
 import MainPage from 'components/templates/MainPage'
-import Header from 'components/atoms/Header'
+import Header from 'components/atoms/FixedHeader'
 // import RecipePreview from 'components/molecules/RecipePreview'
 // import LargeMainPage from 'components/templates/LargeMainPage'
 import BackButton from 'components/molecules/BackButton'

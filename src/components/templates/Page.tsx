@@ -53,7 +53,7 @@ const Page = ({
         delayShow={250}
       />
       <div
-        className={`relative inset-0 h-full w-screen bg-white overflow-auto scroll-auto select-none z-20	${className}`}
+        className={`relative bg-white overflow-auto scroll-auto select-none z-20	${className}`}
         style={style}
         id="page"
         ref={ref}

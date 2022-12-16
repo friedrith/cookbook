@@ -24,14 +24,14 @@ html {
   margin: 0;
   padding: 0;
   /* height: 100%; */
-  min-height: 100%;
+  /* min-height: 100%;
   overflow: hidden;
-  position: relative;
-  top: 0;
+  position: relative; */
+  /* top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
+  width: 100%; */
 }
 
 #root,
@@ -39,12 +39,12 @@ html {
   /* height: 100%; */
   min-height: 100%;
 
-  position: fixed;
-  overflow: hidden;
-  top: 0;
+  /* position: fixed;
+  overflow: hidden; */
+  /* top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
   -webkit-overflow-scrolling: touch;
 }
 

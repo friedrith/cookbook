@@ -9,7 +9,7 @@ import {
 import useEventListener from 'hooks/useEventListener'
 import Button from 'components/atoms/Button'
 import Logo from 'components/atoms/Logo'
-import Header from 'components/atoms/Header'
+import FixedHeader from 'components/atoms/FixedHeader'
 import UserMenu from 'components/organisms/UserMenu'
 import SelectMenu from 'components/molecules/SelectMenu'
 import NewRecipeForm from 'components/organisms/NewRecipeForm'
@@ -74,7 +74,7 @@ const RecipeListHeader = ({
 
   return (
     <>
-      <Header restRef={restRef} offset={0} className="bg-white">
+      <FixedHeader restRef={restRef} offset={0} className="bg-white">
         {isMaximized => (
           <div className="flex-auto flex items-center pointer-events-auto">
             {searchOnMobileIsVisible ? (
@@ -145,7 +145,7 @@ const RecipeListHeader = ({
                       />
                       <div className="absolute inset-y-0 right-0 flex py-1.5 pr-1.5 hidden lg:block">
                         {/* eslint-disable-next-line i18next/no-literal-string */}
-                        <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400">
+                        <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 bg-white">
                           ⌘K
                         </kbd>
                       </div>
@@ -195,7 +195,7 @@ const RecipeListHeader = ({
             )}
           </div>
         )}
-      </Header>
+      </FixedHeader>
       <Modal
         title={t('_New Recipe')}
         open={newRecipePopup.isOpen}

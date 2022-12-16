@@ -12,7 +12,7 @@ import Box from 'components/atoms/Box'
 import Badge from 'components/atoms/Badge'
 import IngredientList from 'components/organisms/IngredientList'
 import StepList from 'components/molecules/StepList'
-import Header from 'components/atoms/Header'
+import FixedHeader from 'components/atoms/FixedHeader'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Page from 'components/templates/Page'
 import ImageBanner from 'components/molecules/ImageBanner'
@@ -24,7 +24,7 @@ import usePopup from 'hooks/usePopup'
 import BackButton from 'components/molecules/BackButton'
 import renderRecipe from 'utils/render/renderRecipe'
 import { getRecipeProgress, setRecipeProgress, areRecipesFetched } from 'store'
-import LargeMainPage from 'components/templates/LargeMainPage'
+import Container from 'components/atoms/Container'
 import { canShare, share } from 'utils/share'
 import { isMacLike } from 'utils/platforms/mobile'
 import useCurrentRecipe from 'hooks/useCurrentRecipe'
@@ -66,11 +66,11 @@ const RecipeView = () => {
   return (
     <Page title={recipe.name}>
       <ImageBanner imageUrl={recipe.imageUrl} alt={recipe.name} />
-      <LargeMainPage className="flex-1 relative z-10">
+      <Container className="flex-1 relative z-10">
         <div className="flex flex-col items-stretch lg:flex-row lg:items-start">
           <div ref={ref} />
-          <div className="flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
-            <Box className={`p-4 md:w-[400px] relative`}>
+          <div className="w-full lg:flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
+            <Box className="p-4 lg:w-[400px] relative">
               <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center lg:text-left pb-2 select-text">
                 {formattedRecipe.name}
               </h1>
@@ -92,7 +92,7 @@ const RecipeView = () => {
             </Box>
           </div>
 
-          <div className="flex-1 relative pl-4 top-[-5rem] lg:top-[0rem]">
+          <div className="flex-1 relative lg:pl-10 lg:pt-10 top-[-5rem] lg:top-[0rem]">
             <StepList
               recipe={formattedRecipe}
               progress={progress}
@@ -100,8 +100,8 @@ const RecipeView = () => {
             />
           </div>
         </div>
-      </LargeMainPage>
-      <Header restRef={ref} className="pointer-events-none">
+      </Container>
+      <FixedHeader restRef={ref} className="pointer-events-none">
         {isMaximized => (
           <>
             <BackButton url="/recipes" title={t('_Back to recipes')} />
@@ -141,7 +141,7 @@ const RecipeView = () => {
             </span>
           </>
         )}
-      </Header>
+      </FixedHeader>
       <SharePopup
         recipe={recipe}
         open={sharePopup.isOpen}

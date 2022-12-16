@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom'
 
 import Page from 'components/templates/Page'
 import Logo from 'components/atoms/Logo'
-import LargeMainPage from 'components/templates/LargeMainPage'
-import Header from 'components/atoms/Header'
+import Container from 'components/atoms/Container'
+import Header from 'components/atoms/FixedHeader'
 import { useAppSelector } from 'hooks/redux'
 import { getOfficialWebsites } from 'store/officialWebsites'
 
@@ -90,8 +90,8 @@ const Faq = () => {
 
   return (
     <Page title={t('faq.shortTitle')}>
-      <LargeMainPage className="flex-1 relative z-10 mt-6">
-        <div className="mx-auto max-w-7xl py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+      <Container>
+        <div className="flex-1 relative z-10 pt-32">
           {/* <div className="flex flex-shrink-0 justify-center">
           <Logo />
         </div> */}
@@ -168,8 +168,8 @@ const Faq = () => {
             </Link>
           </div>
         </div>
-      </LargeMainPage>
-      <Header restRef={ref} offset={0} className="bg-white">
+      </Container>
+      <Header restRef={ref} offset={0}>
         {() => (
           <>
             <Logo />

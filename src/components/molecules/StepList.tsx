@@ -63,7 +63,7 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
   const dispatch = useAppDispatch()
 
   return (
-    <div className="py-4 lg:px-10 relative z-10">
+    <div className="pb-10 relative z-10">
       <div className="">
         <SectionTitle
           more={

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from 'hooks/redux'
 import Page from 'components/templates/Page'
 import RecipeEditor from 'components/organisms/RecipeEditor'
-import Header from 'components/atoms/Header'
+import FixedHeader from 'components/atoms/FixedHeader'
 import BackButton from 'components/molecules/BackButton'
 
 import { createRecipe } from 'models/Recipe'
@@ -56,7 +56,7 @@ const RecipeNew = () => {
   return (
     <Page title={t('_Create Recipe')}>
       <RecipeEditor recipe={recipe} onChange={setRecipe} ref={ref} />
-      <Header restRef={ref}>
+      <FixedHeader restRef={ref}>
         {isMaximized => (
           <>
             {disabled ? (
@@ -78,7 +78,7 @@ const RecipeNew = () => {
             />
           </>
         )}
-      </Header>
+      </FixedHeader>
       <DeleteConfirmationPopup
         open={deleteConfirmationPopup.isOpen}
         onClose={deleteConfirmationPopup.close}

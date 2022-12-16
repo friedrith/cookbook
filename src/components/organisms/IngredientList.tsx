@@ -139,7 +139,7 @@ const IngredientList = ({ recipe }: Props) => {
               </td>
               <td
                 className={classNames(
-                  'whitespace-wrap py-4 align-top text-sm font-medium text-gray-900 text-right w-20',
+                  'whitespace-wrap py-4 align-top text-sm font-medium text-gray-900 text-right w-10 max-w-10',
                   renderMeasure(ingredient.measure, { explicit: true }).length >
                     15
                     ? 'whitespace-wrap'

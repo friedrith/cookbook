@@ -7,7 +7,7 @@ import { WithContext as ReactTags } from 'react-tag-input'
 import { storeFile } from 'utils/api/firebase'
 import TextArea from 'components/atoms/TextArea'
 import ImageBanner from 'components/molecules/ImageBanner'
-import LargeMainPage from 'components/templates/LargeMainPage'
+import Container from 'components/atoms/Container'
 import Box from 'components/atoms/Box'
 import SectionTitle from 'components/atoms/SectionTitle'
 import ImageUploader from 'components/molecules/ImageUploader'
@@ -102,7 +102,7 @@ const RecipeEditor = forwardRef(
             </Button.Icon>
           </ImageUploader>
         </div>
-        <LargeMainPage>
+        <Container className="bg-white">
           <Box className="p-4 relative top-[-7rem]">
             <div className="max-w-screen-md m-auto sm:p-6 space-y-8" ref={ref}>
               <TextArea.Primary
@@ -193,7 +193,7 @@ const RecipeEditor = forwardRef(
               {children}
             </div>
           </Box>
-        </LargeMainPage>
+        </Container>
       </>
     )
   }

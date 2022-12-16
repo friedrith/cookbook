@@ -9,7 +9,7 @@ import { useAppSelector } from 'hooks/redux'
 // import Badge from 'components/atoms/Badge'
 // import IngredientList from 'components/organisms/IngredientList'
 // import StepList from 'components/molecules/StepList'
-import Header from 'components/atoms/Header'
+import FixedHeader from 'components/atoms/FixedHeader'
 // import RecipeHeader from 'components/molecules/RecipeHeader'
 import Page from 'components/templates/Page'
 // import ImageBanner from 'components/molecules/ImageBanner'
@@ -249,7 +249,11 @@ const RecipeFocus = () => {
         </Form>
       </Modal>
 
-      <Header restRef={ref} className="pointer-events-none" disableMaximize>
+      <FixedHeader
+        restRef={ref}
+        className="pointer-events-none"
+        disableMaximize
+      >
         {isMaximized => (
           <>
             <BackButton
@@ -265,7 +269,7 @@ const RecipeFocus = () => {
             />
           </>
         )}
-      </Header>
+      </FixedHeader>
     </Page>
   )
 }
