@@ -32,16 +32,11 @@ const ProtectedPage = ({ onlyRoles, children }: Props) => {
 
   useWhenLoggedIn(fetch)
 
-  useEventListener(
-    'visibilitychange',
-    () => {
-      console.log('visibilitychange', document.visibilityState)
-      if (document.visibilityState === 'visible') {
-        dispatch(fetchRecipes())
-      }
-    },
-    window
-  )
+  useEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      dispatch(fetchRecipes())
+    }
+  })
 
   return (
     <>
