@@ -1,0 +1,17 @@
+{
+  "why-magic-link": {
+    "_question": "Why only a magic link for authentication?",
+    "_answer": "The CookBook team believes in security by design. By using only a magic link we are sure no one can hack your password. In the future, we would like to propose new login systems like Google or Apple authentication or 6-digits codes."
+  },
+  "why-not-proposing": {
+    "_question": "Why not proposing recipes?",
+    "_answer": "CookBook is the digital replacement of your grandmother recipe book. In order to really improve the user experience, we want to focus on this scope, from once you have the recipe until you smell the nice meal ready."
+  },
+  "website-list": {
+    "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
+    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
+    "proposal": "proposal",
+    " or contact us at ": " or contact us at ",
+    "_question": "Which are the websites I can import the recipes from?"
+  }
+}
