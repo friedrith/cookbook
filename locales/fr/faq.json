@@ -1,7 +1,14 @@
 {
+  "Frequently asked questions": "Foire aux questions",
+  "If you have anything else you want to ask,": "Si vous avez quelque chose à demander, ",
+  "reach out to us": "contactez-nous",
   "why-magic-link": {
     "_question": "Pourquoi uniquement un lien magique pour s'authentifier ?",
-    "_answer": "L'équipe CookBook croit en la sécurité par conception. En n'utilisant que des liens magiques, nous nous assurerons que personne ne puisse pirater vos mots de passe quel que soit leur fiabilité. Dans le futur, nous proposerons d'autres systèmes d'authentification comme Google ou Apple ou un système à code unique."
+    "_answer": "En n'utilisant que des liens magiques, nous nous assurerons que personne ne puisse pirater vos mots de passe quelle que soit leur fiabilité."
+  },
+  "email-not-visible": {
+    "_question": "Pourquoi n'ai-je jamais reçu le lien magique ?",
+    "_answer": "Vérifiez dans le dossier spam de votre boîte email."
   },
   "why-not-proposing": {
     "_question": "Pourquoi ne pas proposer de recettes ?",
@@ -12,6 +19,11 @@
     "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "Cependant l'import depuis d'autres sites internet contenant des recettes peut fonctionner. Si votre recette n'a pas été importée avec succès, faites le nous savoir en écrivant une ",
     "proposal": "demande d'amélioration",
     " or contact us at ": " ou en nous contactant à ",
+    "_answer": "Uniquement une trentaine de sites sont officiellement supportés <Link>(Liste ici)</Link>. Mais pleins d'autres sites fonctionnent. Contactez-nous pour en ajouter.",
     "_question": "Quels sont les sites internets dont on peut importer les recettes ?"
+  },
+  "website-not-working": {
+    "_question": "Que dois-je faire si l'import par url ne fonctionne pas pour ma recette ?",
+    "_answer": "Ajoutez-la manuellement cette fois-ci et pensez à nous notifier pour que nous gérions ce site internet dans le future."
   }
 }

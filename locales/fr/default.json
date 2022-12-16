@@ -136,7 +136,7 @@
     "or": "ou",
     "Create new from blank page": "Créer depuis une page blanche",
     "Enter a valid url": "Entrer une valide url",
-    "Only few recipe catalog are managed": "Uniquement quelques sites sont gérés.",
+    "Only few recipe catalog are managed": "Uniquement quelques sites sont gérés. Nous vous suggérons d'entrer la recette manuellement cette fois-ci.",
     "Check the list there": "Vérifier les sites internet ici.",
     "Oups an error happened. We suggest you to enter the recipe manually this time.": "Oups une erreur est apparue. Nous vous suggérons d'entrer la recette manuellement cette fois-ci."
   },
@@ -165,5 +165,9 @@
     "Voice recognition not supported by your browser": "La reconnaissance vocale n'est pas reconnue par votre navigateur.",
     "While the focus mode is activated, your device still stay awake": "Dans le mode cuisine, votre appareil ne se mettra pas en veille pour que vous puissiez suivre facilement les étapes.",
     "Activate": "Active Cooking mode"
-  }
+  },
+  "CookBook officially support recipe import from the following websites": "CookBook supporte officiellement l'import de recettes provenant des sites internet suivants:",
+  "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "Cependant l'import depuis d'autres sites internet contenant des recettes peut fonctionner. Si votre recette n'a pas été importée avec succès, faites le nous savoir en écrivant une ",
+  "proposal": "demande d'amélioration",
+  " or contact us at ": " ou en nous contactant à "
 }
