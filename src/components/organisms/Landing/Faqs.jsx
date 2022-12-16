@@ -65,7 +65,7 @@ const Faqs = () => {
           <p className="mt-2 text-lg text-gray-600">
             {t('If you have anything else you want to ask,')}
             <a
-              href="mailto:info@example.com"
+              href="mailto:thibault.friedrich@gmail.com"
               className="text-gray-900 underline"
             >
               {t('reach out to us')}
