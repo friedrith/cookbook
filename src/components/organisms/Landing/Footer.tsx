@@ -16,8 +16,8 @@ const Footer = () => {
     <footer className=" border-gray-200 py-4 lg:py-10">
       <Container>
         <div className="flex flex-col items-center border-gray-200 pt-8 pb-12 md:flex-row-reverse md:justify-between md:pt-6">
-          <form className="flex w-full justify-center md:w-auto">
-            {/* <Input.Black
+          {/* <form className="flex w-full justify-center md:w-auto"> */}
+          {/* <Input.Black
               type="email"
               value={email}
               onChange={setEmail}
@@ -29,7 +29,7 @@ const Footer = () => {
               <span className="hidden lg:inline">Join our newsletter</span>
               <span className="lg:hidden">Join newsletter</span>
             </Button.Black> */}
-            {/* <Select
+          {/* <Select
               id="languages"
               name="languages"
               className="mt-1 !text-gray-500 !border-none !focus:outline-none"
@@ -37,12 +37,12 @@ const Footer = () => {
               onChange={language => i18n.changeLanguage(language)}
               options={languages}
             /> */}
-          </form>
+          {/* </form> */}
+          <span className="pl-3 text-sm text-gray-500">
+            {t('All rights reserved', { date: new Date().getFullYear() })}
+          </span>
           <p className="mt-6 text-sm text-gray-500 md:mt-0 flex items-center">
             <Logo />
-            <span className="pl-3">
-              {t('All rights reserved', { date: new Date().getFullYear() })}
-            </span>
           </p>
         </div>
       </Container>
