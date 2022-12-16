@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/friedrith/cookbook/compare/v0.1.1...v0.1.2) (2022-12-16)
+
+
+### Features
+
+* add landing page ([930056f](https://github.com/friedrith/cookbook/commit/930056f5ff1d9f8d100b182068aff54357d4b846))
+* change logo and colors ([07b0ef8](https://github.com/friedrith/cookbook/commit/07b0ef8120290e2660a90405c0f5d35be6278e28))
+* hide search input if no recipes ([37af70a](https://github.com/friedrith/cookbook/commit/37af70ac44a61ba33e021af92848dc04db11f525))
+* translate help popup ([6c9083c](https://github.com/friedrith/cookbook/commit/6c9083cf7ad542a6703e295cf6ab56b4e834bdb9))
+* use full width on desktop ([d6b28b9](https://github.com/friedrith/cookbook/commit/d6b28b9b39aed40908ab2bf9645071cc9a8c2fa6))
+
+
+### Bug Fixes
+
+* header hides scrollbar ([8561486](https://github.com/friedrith/cookbook/commit/8561486da21390d1b2f8c1a7e79ae032bbe46bc1))
+* install app ([9d958ff](https://github.com/friedrith/cookbook/commit/9d958ffb3994c040f924a327ca3aff9110fe0de8))
+* lint translation ([8cee732](https://github.com/friedrith/cookbook/commit/8cee7329812bd2af654afa26f23510f777f9223b))
+* screens of primary features on mobile ([329de18](https://github.com/friedrith/cookbook/commit/329de184ae41f9cd6951ab570b414351e43dc218))
+
 ### 0.1.1 (2022-12-09)
 
 
