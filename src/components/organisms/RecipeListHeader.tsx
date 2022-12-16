@@ -15,6 +15,7 @@ import SelectMenu from 'components/molecules/SelectMenu'
 import NewRecipeForm from 'components/organisms/NewRecipeForm'
 import Modal from 'components/atoms/Modal'
 import usePopup from 'hooks/usePopup'
+import ImportHelpPopup from 'components/organisms/ImportHelpPopup'
 
 type Props = {
   restRef: React.RefObject<HTMLDivElement>
@@ -71,6 +72,7 @@ const RecipeListHeader = ({
   }
 
   const newRecipePopup = usePopup()
+  const importHelpPopup = usePopup()
 
   return (
     <>
@@ -167,7 +169,7 @@ const RecipeListHeader = ({
                   </button>
                 )}
                 <SelectMenu>
-                  <NewRecipeForm />
+                  <NewRecipeForm onHelpRequest={importHelpPopup.open} />
                 </SelectMenu>
 
                 <div className="flex items-center ml-4 lg:ml-6">
@@ -201,8 +203,12 @@ const RecipeListHeader = ({
         open={newRecipePopup.isOpen}
         onClose={newRecipePopup.close}
       >
-        <NewRecipeForm />
+        <NewRecipeForm onHelpRequest={importHelpPopup.open} />
       </Modal>
+      <ImportHelpPopup
+        open={importHelpPopup.isOpen}
+        onClose={importHelpPopup.close}
+      />
     </>
   )
 }

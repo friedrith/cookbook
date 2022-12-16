@@ -14,7 +14,6 @@ import RecipeNew from 'components/views/RecipeNew'
 import ProtectedPage from 'components/templates/ProtectedPage'
 import RecipeEdit from 'components/views/RecipeEdit'
 import RecipeFocus from 'components/views/RecipeFocus'
-import Faq from 'components/views/Faq'
 import NotFound404 from 'components/views/NotFound404'
 
 import HistoryContext from 'contexts/History'
@@ -64,7 +63,6 @@ const App = () => {
           <Route path="/login/waiting-for-link" element={<LinkWaiting />} />
           <Route path="/login" element={<Login />} />
           <Route path="/verify-link" element={<LinkVerification />} />
-          <Route path="/faq" element={<Faq />} />
           <Route path="/*" element={<NotFound404 />} />
         </Routes>
       </HistoryContext.Provider>

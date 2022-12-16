@@ -13,7 +13,7 @@ const Footer = () => {
   const { t } = useTranslation('marketing')
 
   return (
-    <footer className=" border-gray-200 py-4 lg:py-10">
+    <footer className="border-t border-gray-200 py-4 lg:py-10">
       <Container>
         <div className="flex flex-col items-center border-gray-200 pt-8 pb-12 md:flex-row-reverse md:justify-between md:pt-6">
           {/* <form className="flex w-full justify-center md:w-auto"> */}

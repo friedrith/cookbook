@@ -107,23 +107,7 @@ const Modal = ({
                     </div>
                   )}
                 </div>
-                <div className="mt-5 sm:mt-6">
-                  {children}
-                  {/* <button
-                    type="button"
-                    className="mb-3 inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={onSubmit}
-                  >
-                    Share Ingredients
-                  </button>
-                  <button
-                    type="button"
-                    className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 sm:text-sm"
-                    onClick={onSubmit}
-                  >
-                    Share Recipe
-                  </button> */}
-                </div>
+                <div className="mt-5 sm:mt-6">{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>

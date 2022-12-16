@@ -136,7 +136,7 @@
     "or": "or",
     "Create new from blank page": "Create new from blank page",
     "Enter a valid url": "Url not valid",
-    "Only few recipe catalog are managed": "Impossible to import from this website.",
+    "Only few recipe catalog are managed": "Impossible to import from this website. We suggest you to enter the recipe manually this time.",
     "Check the list there": "Check the websites officially supported.",
     "Oups an error happened. We suggest you to enter the recipe manually this time.": "Oups an error happened. We suggest you to enter the recipe manually this time."
   },
@@ -165,5 +165,9 @@
     "Voice recognition not supported by your browser": "Voice recognition not supported by your browser",
     "While the focus mode is activated, your device still stay awake": "In the cooking mode, your device will never go to sleep so you can follow the steps easily.",
     "Activate": "Active Cooking mode"
-  }
+  },
+  "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
+  "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
+  "proposal": "proposal",
+  " or contact us at ": " or contact us at "
 }

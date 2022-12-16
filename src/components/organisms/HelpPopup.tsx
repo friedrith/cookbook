@@ -20,7 +20,7 @@ const resources = [
   {
     name: 'Help Center',
     description: 'Get all of your questions answered in our FAQ.',
-    href: '/faq',
+    href: '/#faqs',
     icon: LifebuoyIcon,
   },
   {
