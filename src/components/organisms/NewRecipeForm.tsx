@@ -86,7 +86,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
             {t('import.Import from a recipe catalog')}
             <button onClick={onHelpRequest}>
               <span className="sr-only">{t('_See the official websites')}</span>
-              <QuestionMarkCircleIcon className="inline h-4 w-4 ml-1" />
+              <QuestionMarkCircleIcon className="inline h-4 w-4 ltr:ml-1 rtl:mr-1" />
             </button>
           </label>
           <div className="mt-1 flex rounded-md shadow-sm w-full">
@@ -95,7 +95,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
                 type="text"
                 name="url"
                 id="url"
-                className="block w-full rounded-none rounded-l-md border-gray-300 focus:border-primary-400 focus:ring-primary-400 sm:text-sm"
+                className="block w-full rounded-none ltr:rounded-l-md rtl:rounded-r-md border-gray-300 focus:border-primary-400 focus:ring-primary-400 sm:text-sm"
                 placeholder={t('import.Enter a url')}
                 onChange={event => onUrlChange(event.target.value)}
                 value={url}
@@ -106,7 +106,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
               type="button"
               disabled={status !== ImportUrlStatus.Ok}
               onClick={startImportingRecipe}
-              className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 whitespace-nowrap disabled:opacity-50"
+              className="relative ltr:-ml-px rtl:-mr-px inline-flex items-center space-x-2 ltr:rounded-r-md rtl:rounded-l-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 whitespace-nowrap disabled:opacity-50"
             >
               <span>
                 {isLoading ? (

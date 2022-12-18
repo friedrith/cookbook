@@ -7,7 +7,10 @@ type Props = {
 const FormItem = ({ id, label, children }: Props) => {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+      <label
+        htmlFor={id}
+        className="block text-sm font-medium text-gray-700 ltr:text-left rtl:text-right"
+      >
         {label}
       </label>
       {children}

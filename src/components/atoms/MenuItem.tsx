@@ -35,7 +35,7 @@ const MenuItem = forwardRef(
           >
             {Icon && (
               <Icon
-                className="inline h-6 w-6 mr-2 text-gray-400 group-hover:text-gray-500"
+                className="inline h-6 w-6 ltr:mr-2 rtl:ml-2 text-gray-400 group-hover:text-gray-500"
                 aria-hidden="true"
               />
             )}

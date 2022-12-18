@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import Roles from 'models/Roles'
 
@@ -32,6 +33,12 @@ const App = () => {
 
   const [transitionStage, previousLocation, displayLocation, onAnimationEnd] =
     useTransition()
+
+  const { i18n } = useTranslation()
+
+  document.body.dir = i18n.dir()
+
+  console.log('i18n.dir()', i18n.dir())
 
   return (
     <div

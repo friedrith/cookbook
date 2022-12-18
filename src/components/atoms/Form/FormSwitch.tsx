@@ -27,7 +27,7 @@ const FormSwitch = ({ description, checked, onChange, disabled }: Props) => {
         className={classNames(
           checked && !disabled ? 'bg-black' : 'bg-gray-200',
           { 'cursor-pointer': !disabled },
-          'mt-1  relative ml-4 inline-flex h-6 w-11 flex-shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
+          'ltr:mt-1 ltr:ml-4 rtl:ml-1 rtl:mr-4 relative  inline-flex h-6 w-11 flex-shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2'
         )}
       >
         <span

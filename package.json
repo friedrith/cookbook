@@ -64,53 +64,6 @@
     "format": "prettier --check .",
     "precommit": "yarn lint && yarn format && yarn lint:translation && yarn test --watchAll=false && yarn build"
   },
-  "eslintConfig": {
-    "extends": [
-      "prettier",
-      "react-app",
-      "react-app/jest",
-      "plugin:jsx-a11y/recommended",
-      "plugin:i18next/recommended",
-      "plugin:i18n-json/recommended"
-    ],
-    "plugins": [
-      "prettier",
-      "jsx-a11y",
-      "i18next"
-    ],
-    "rules": {
-      "i18n-json/sorted-keys": "off",
-      "i18n-json/valid-message-syntax": "off",
-      "i18n-json/identical-keys": [
-        2,
-        {
-          "filePath": {
-            "fr/default.json": "../../../../public/locales/en/default.json",
-            "en/default.json": "../../../../public/locales/fr/default.json",
-            "fr/faq.json": "../../../../public/locales/en/faq.json",
-            "en/faq.json": "../../../../public/locales/fr/faq.json",
-            "fr/marketing.json": "../../../../public/locales/en/marketing.json",
-            "en/marketing.json": "../../../../public/locales/fr/marketing.json",
-            "fr/help.json": "../../../../public/locales/en/help.json",
-            "en/help.json": "../../../../public/locales/fr/help.json"
-          }
-        }
-      ]
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/**/*"
-        ],
-        "rules": {
-          "i18next/no-literal-string": 0
-        }
-      }
-    ],
-    "globals": {
-      "plausible": "readonly"
-    }
-  },
   "eslintIgnore": [
     "build",
     "node_modules"

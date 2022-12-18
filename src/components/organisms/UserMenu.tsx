@@ -7,7 +7,7 @@ import {
   ArrowRightOnRectangleIcon,
   QuestionMarkCircleIcon,
   ArrowTopRightOnSquareIcon,
-  UserCircleIcon,
+  CogIcon,
 } from '@heroicons/react/24/outline'
 
 import { useAppDispatch } from 'hooks/redux'
@@ -67,7 +67,7 @@ const UserMenu = () => {
 
   const menuOptions = [
     {
-      icon: UserCircleIcon,
+      icon: CogIcon,
       label: '_Settings',
       onClick: settingsPopup.open,
     },
@@ -93,7 +93,7 @@ const UserMenu = () => {
   ]
 
   return (
-    <div className="flex sm:items-center pl-2 md:pl-0">
+    <div className="flex sm:items-center ltr:pl-2 rtl:pr-2">
       {/* Profile dropdown */}
       <Menu
         as="button"

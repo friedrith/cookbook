@@ -4,8 +4,6 @@ import { ReactComponent as LogoIcon } from 'assets/logo.svg'
 
 type Props = {
   className?: string
-  withoutIcon?: boolean
-  withoutTag?: boolean
 }
 
 const Logo = ({ className }: Props) => {

@@ -23,7 +23,9 @@ const RecipeListSection = ({ title, recipes }: Props) => {
             <div className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-start">
-            <span className="bg-white pr-2 text-sm text-gray-500">{title}</span>
+            <span className="bg-white ltr:pr-2 rtl:pl-2 text-sm text-gray-500">
+              {title}
+            </span>
           </div>
         </div>
       )}

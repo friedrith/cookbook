@@ -19,7 +19,9 @@ const SelectMenu = ({ children }: Props) => {
             className="hidden md:block"
             aria-label={t('_New Recipe')}
           >
-            <span className="ml-0.5 text-normal">{t('_New Recipe')}</span>
+            <span className="ltr:ml-0.5 rtl:mr-0.5 text-normal">
+              {t('_New Recipe')}
+            </span>
           </Popover.Button>
           <Transition
             show={open}
@@ -28,7 +30,7 @@ const SelectMenu = ({ children }: Props) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Popover.Panel className="absolute cursor-default right-0 z-10 mt-2 w-96 origin-top-right overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-4">
+            <Popover.Panel className="absolute cursor-default w-96 z-10 mt-2 ltr:right-0  ltr:origin-top-right rtl:left-0 rtl:origin-top-left overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none p-4">
               {children}
             </Popover.Panel>
           </Transition>

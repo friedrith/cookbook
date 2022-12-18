@@ -92,7 +92,7 @@ const RecipeView = () => {
             </Box>
           </div>
 
-          <div className="flex-1 relative lg:pl-10 lg:pt-10 top-[-5rem] lg:top-[0rem]">
+          <div className="flex-1 relative ltr:lg:pl-10 rtl:lg:pr-10 lg:pt-10 top-[-5rem] lg:top-[0rem]">
             <StepList
               recipe={formattedRecipe}
               progress={progress}
@@ -124,7 +124,7 @@ const RecipeView = () => {
             </span> */}
             <span data-tip={t('_Share Recipe')}>
               <Button.Icon
-                className="mr-3"
+                className="ltr:mr-3 rtl:ml-3"
                 onClick={startSharing}
                 icon={isMacLike() ? ArrowUpOnSquareIcon : ShareIcon}
                 blur

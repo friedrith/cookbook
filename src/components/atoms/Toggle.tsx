@@ -26,29 +26,6 @@ const Toggle = ({ enabled, onChange, 'aria-label': ariaLabel }: Props) => {
           'pointer-events-none relative inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
         )}
       >
-        {/* <span
-          className={classNames(
-            enabled
-              ? 'opacity-0 ease-out duration-100'
-              : 'opacity-100 ease-in duration-200',
-            'absolute inset-0 flex h-full w-full items-center justify-center transition-opacity'
-          )}
-          aria-hidden="true"
-        >
-          <svg
-            className="h-3 w-3 text-gray-400"
-            fill="none"
-            viewBox="0 0 12 12"
-          >
-            <path
-              d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span> */}
         <span
           className={classNames(
             enabled

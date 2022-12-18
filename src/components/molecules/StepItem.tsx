@@ -50,7 +50,7 @@ const StepItemGeneric = ({
     <li className={className}>
       {!isLastOne ? (
         <div
-          className={`-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full ${linkClassName}`}
+          className={`ltr:-ml-px rtl:-mr-px absolute ltr:mt-0.5 rtl:ml-0.5 top-4 ltr:left-4 rtl:right-4 w-0.5 h-full ${linkClassName}`}
           aria-hidden="true"
         />
       ) : null}
@@ -65,12 +65,12 @@ const StepItemGeneric = ({
             {icon}
           </span>
         </span>
-        <div className="ml-4 min-w-0 flex flex-col">
+        <div className="ltr:ml-4 rtl:mr-4 min-w-0 flex flex-col">
           <div
-            className={`text-sm text-left select-text ${descriptionClassName}`}
+            className={`text-sm ltr:text-left rtl:text-right select-text ${descriptionClassName}`}
             dangerouslySetInnerHTML={{ __html: descriptionParsed }}
           />
-          <div className="text-left">
+          <div className="ltr:text-left rtl:text-right">
             {ingredients.map((ingredient, index) => (
               <IngredientBadge
                 className="mr-1 mb-1"

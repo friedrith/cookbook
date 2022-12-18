@@ -11,6 +11,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 export const languages = [
   { value: 'fr', label: 'Français' },
   { value: 'en', label: 'English' },
+  { value: 'pes', label: 'Farsi' },
 ]
 
 i18n
@@ -27,11 +28,11 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     ns: ['default'],
-    fallbackLng: 'en',
+    fallbackLng: 'pes',
     debug: process.env.NODE_ENV !== 'production',
 
     load: 'all',
-    supportedLngs: ['fr', 'en'],
+    supportedLngs: languages.map(l => l.value),
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default

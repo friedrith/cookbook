@@ -22,7 +22,7 @@ const WhiteButton = ({
   ...props
 }: Props) => {
   const allClassName = classNames(
-    'bg-white text-gray-700 hover:text-gray-900 border-gray-300 hover:bg-gray-100 focus:ring-gray-300',
+    'bg-white text-gray-700 hover:text-gray-900 border !border-gray-300 hover:bg-gray-100 focus:ring-gray-300',
     className,
     disabled ? 'opacity-70' : ''
   )

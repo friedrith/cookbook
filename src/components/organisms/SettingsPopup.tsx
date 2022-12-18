@@ -1,4 +1,4 @@
-import { UserCircleIcon } from '@heroicons/react/24/outline'
+import { CogIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import Modal, { PopupType } from 'components/atoms/Modal'
@@ -16,7 +16,7 @@ const SettingsPopup = ({ open, onClose }: Props) => {
     <Modal
       open={open}
       onClose={onClose}
-      icon={UserCircleIcon}
+      icon={CogIcon}
       title={t('_Settings')}
       type={PopupType.Black}
     >
