@@ -71,7 +71,7 @@ const RecipeView = () => {
           <div ref={ref} />
           <div className="w-full lg:flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
             <Box className="p-4 lg:w-[400px] relative">
-              <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center lg:text-left pb-2 select-text">
+              <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center ltr:lg:text-left rtl:lg:text-right pb-2 select-text">
                 {formattedRecipe.name}
               </h1>
               <div className="text-center lg:text-left">
@@ -113,15 +113,6 @@ const RecipeView = () => {
             ) : (
               <div className="flex-1" />
             )}
-            {/* <span data-tip={t('_Focus Mode')}>
-              <Button.Icon
-                className="mr-3"
-                url={`/recipes/${recipe.id}/focus`}
-                icon={PlayIcon}
-                title={t('_Focus Mode')}
-                blur
-              />
-            </span> */}
             <span data-tip={t('_Share Recipe')}>
               <Button.Icon
                 className="ltr:mr-3 rtl:ml-3"
