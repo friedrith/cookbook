@@ -5,7 +5,7 @@
   "_Try a different search.": "Try a different search.",
   "_No Recipes created": "No Recipes created",
   "_Get started by creating a new recipe": "Get started by creating a new recipe.",
-  "_settings": "Account",
+  "_settings": "Settings",
   "_Log in": "Log in",
   "_Sign out": "Sign out",
   "_Send magic link": "Send a magic link",
@@ -19,7 +19,7 @@
   "_Open CookBook": "Open CookBook",
   "_Try CookBook": "Try CookBook",
   "_Try banana bread": "Try banana bread",
-  "_Account": "Account",
+  "_Account": "Settings",
   "_Create Recipe": "Create Recipe",
   "_New Recipe": "New Recipe",
   "_Waiting for link": "Waiting for link",
@@ -107,7 +107,7 @@
   "_CookBook is in alpha": "CookBook is currently in Alpha version. It means it may contain few bugs and it is not ready to be used by everybody. You were sent an access to this version to help finalizing CookBook.",
   "_Please do not sent it to anyone else without the authorization of the author of CookBook": "Please do not sent it to anyone else without the authorization of the author of CookBook",
   "_Version": "Version {{version}}",
-  "_Settings": "Account",
+  "_Settings": "Settings",
   "languages": {
     "Language": "Language"
   },

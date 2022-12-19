@@ -1,0 +1,29 @@
+{
+  "Frequently asked questions": "Frequently asked questions",
+  "If you have anything else you want to ask,": "If you have anything else you want to ask, ",
+  "reach out to us": "reach out to us",
+  "why-magic-link": {
+    "_question": "Why only a magic link for authentication?",
+    "_answer": "By using only a magic link we are sure no one can hack your password."
+  },
+  "email-not-visible": {
+    "_question": "Why you never receveid the magic link?",
+    "_answer": "The email may be in the junk folder of your mailbox. Check there."
+  },
+  "why-not-proposing": {
+    "_question": "Why not proposing recipes?",
+    "_answer": "CookBook is the digital replacement of your grandmother recipe book. In order to really improve the user experience, we want to focus on this scope, from once you have the recipe until you smell the nice meal ready."
+  },
+  "website-list": {
+    "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
+    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
+    "proposal": "proposal",
+    " or contact us at ": " or contact us at ",
+    "_answer": "Uniquement une trentaine de sites sont officiellement supportés <Link>(Liste there)</Link>. Mais pleins d'autres sites fonctionnent. Contactez-nous pour en ajouter.",
+    "_question": "Quels sont les sites internets dont on peut importer les recettes ?"
+  },
+  "website-not-working": {
+    "_question": "What should I do if the import is not working for url?",
+    "_answer": "Add it manually this time and remember to notify us so we will take care of your website for next time."
+  }
+}
