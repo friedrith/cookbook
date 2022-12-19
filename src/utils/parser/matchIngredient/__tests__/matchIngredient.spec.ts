@@ -45,4 +45,13 @@ describe('matchingIngredient', () => {
 
     expect(matchIngredient(ingredient, description)).toEqual(11)
   })
+
+  it('should return true when ingredients finish with ,', () => {
+    const ingredient = anIngredient('extra virgin olive Oil')
+
+    const description =
+      'In a large bowl mix water, milk, oil, sugar, salt and instant yeast.'
+
+    expect(matchIngredient(ingredient, description)).toEqual(7)
+  })
 })

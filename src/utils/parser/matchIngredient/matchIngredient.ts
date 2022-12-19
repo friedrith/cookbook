@@ -2,10 +2,10 @@ import Ingredient from 'models/Ingredient'
 
 import excludingWords from './excludingWords.en'
 
-const cleanWord = (word: string) => word.toLowerCase().replace(/s$/, '')
+const cleanWord = (word: string) =>
+  word.trim().replace(/^[.,]/, '').replace(/[.,]$/, '').toLowerCase()
 
-const match = (wordA: string, wordB: string) =>
-  cleanWord(wordA) === cleanWord(wordB)
+const match = (wordA: string, wordB: string) => wordA === wordB
 
 const matchingIngredients = (ingredient: Ingredient, description: string) => {
   const indexOfExactIngredient = description
@@ -16,11 +16,13 @@ const matchingIngredients = (ingredient: Ingredient, description: string) => {
 
   const significantWords = ingredient.name
     .split(' ')
+    .map(cleanWord)
     .filter(word => !excludingWords.find(w => match(word, w)))
     .filter(word => word.length >= 3)
 
   return description
     .split(' ')
+    .map(cleanWord)
     .findIndex(word => significantWords.some(w => match(word, w)))
 }
 
