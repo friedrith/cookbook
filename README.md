@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">
+<h1 align="center">
   <img src="src/assets/logo.svg" alt="CookBook" height="50">
 </h1>
 
