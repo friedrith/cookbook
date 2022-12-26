@@ -1,17 +1,20 @@
-# CookBook
+<h1 style="text-align: center;">
+  <img src="src/assets/logo.svg" alt="CookBook" height="50">
+</h1>
+
+CookBook is not like other recipe app. The goal is to reproduce the principle of grandmother cook book but with modern tools. For CookBook, we focus on features that really matter in addition of great accessibility and multiple languages support.
 
 ## Getting started
 
 ```bash
+# You need to initialize some environment variables
 cp .env.template .env
-```
 
-```bash
 yarn
 
 yarn start
 
-# in parallel
+# in parallel (other terminal)
 cd api
 nvm use v16.17.0
 yarn serve
@@ -20,10 +23,13 @@ yarn serve
 For service worker debugging, you need to run in production with https
 
 ```
-ngrok
-
+ngrok ...
 
 ```
+
+## Contributing
+
+Before contributing, please read the [./CONTRIBUTING.md](Guidelines).
 
 ## Useful links
 
@@ -34,6 +40,6 @@ ngrok
 ## Colors
 
 - #fd5c63
-- E71E4D
-- E21A5F
-- D70466
+- #E71E4D
+- #E21A5F
+- #D70466
