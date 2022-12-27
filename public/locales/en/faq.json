@@ -19,8 +19,8 @@
     "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
     "proposal": "proposal",
     " or contact us at ": " or contact us at ",
-    "_answer": "Uniquement une trentaine de sites sont officiellement supportés <Link>(Liste there)</Link>. Mais pleins d'autres sites fonctionnent. Contactez-nous pour en ajouter.",
-    "_question": "Quels sont les sites internets dont on peut importer les recettes ?"
+    "_answer": "Around 30 websites are official supported <Link>(List there)</Link>. But a lots more are working. Contact us to add more of them.",
+    "_question": "From which are the websites can we import the recipes?"
   },
   "website-not-working": {
     "_question": "What should I do if the import is not working for url?",
