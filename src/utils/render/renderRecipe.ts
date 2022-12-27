@@ -1,5 +1,6 @@
 import Recipe from 'models/Recipe'
-import { endOfLine } from 'utils/platform'
+
+import parseLines from 'utils/parser/parseLines'
 
 const renderRecipe = (recipe: Recipe) => {
   return `${recipe.name}
@@ -7,11 +8,15 @@ const renderRecipe = (recipe: Recipe) => {
 ${recipe.keywords.map(k => `#${k}`).join(', ')}
 
 Ingredients
-${recipe.ingredients}
+${parseLines(recipe.ingredients)
+  .map(s => `- ${s}\n`)
+  .join('')}
 
 Steps 
-${recipe.steps}  
-  `.replace(/\n/, endOfLine())
+${parseLines(recipe.steps)
+  .map(s => `- ${s}\n`)
+  .join('')}  
+`
 }
 
 export default renderRecipe

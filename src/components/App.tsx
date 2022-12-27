@@ -38,8 +38,6 @@ const App = () => {
 
   document.body.dir = i18n.dir()
 
-  console.log('i18n.dir()', i18n.dir())
-
   return (
     <div
       id="app"

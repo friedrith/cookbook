@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import Recipe from 'models/Recipe'
@@ -8,6 +7,7 @@ import { isCopiedToClipboard, share, isShared } from 'utils/share'
 import waitFor from 'utils/waitFor'
 import renderRecipe from 'utils/render/renderRecipe'
 import Button from 'components/atoms/Button'
+import ShareIcon from 'assets/ShareIcon'
 
 type Props = {
   open: boolean
@@ -15,7 +15,7 @@ type Props = {
   onClose: () => void
 }
 
-const ShareModal = ({ open, recipe, onClose }: Props) => {
+const SharePopup = ({ open, recipe, onClose }: Props) => {
   const { t } = useTranslation()
 
   const [sharedRecipeWithClipboard, setSharedRecipeWithClipboard] =
@@ -39,7 +39,7 @@ const ShareModal = ({ open, recipe, onClose }: Props) => {
       type={PopupType.Black}
       open={open}
       onClose={onClose}
-      icon={ClipboardDocumentIcon}
+      icon={ShareIcon}
     >
       <Button.Black className="w-full" onClick={startSharing}>
         {sharedRecipeWithClipboard
@@ -50,4 +50,4 @@ const ShareModal = ({ open, recipe, onClose }: Props) => {
   )
 }
 
-export default ShareModal
+export default SharePopup

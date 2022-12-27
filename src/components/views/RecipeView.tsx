@@ -1,10 +1,6 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  PencilIcon,
-  ShareIcon,
-  ArrowUpOnSquareIcon,
-} from '@heroicons/react/24/outline'
+import { PencilIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
@@ -22,12 +18,10 @@ import Button from 'components/atoms/Button'
 import SharePopup from 'components/organisms/SharePopup'
 import usePopup from 'hooks/usePopup'
 import BackButton from 'components/molecules/BackButton'
-import renderRecipe from 'utils/render/renderRecipe'
 import { getRecipeProgress, setRecipeProgress, areRecipesFetched } from 'store'
 import Container from 'components/atoms/Container'
-import { canShare, share } from 'utils/share'
-import { isMacLike } from 'utils/platforms/mobile'
 import useCurrentRecipe from 'hooks/useCurrentRecipe'
+import ShareIcon from 'assets/ShareIcon'
 
 const RecipeView = () => {
   const [recipe, formattedRecipe] = useCurrentRecipe()
@@ -53,14 +47,6 @@ const RecipeView = () => {
 
   const changeRecipeProgress = (index: number) => {
     dispatch(setRecipeProgress({ recipeId: recipe.id, index }))
-  }
-
-  const startSharing = async () => {
-    if (canShare()) {
-      await share(renderRecipe(recipe))
-    } else {
-      sharePopup.open()
-    }
   }
 
   return (
@@ -116,8 +102,8 @@ const RecipeView = () => {
             <span data-tip={t('_Share Recipe')}>
               <Button.Icon
                 className="ltr:mr-3 rtl:ml-3"
-                onClick={startSharing}
-                icon={isMacLike() ? ArrowUpOnSquareIcon : ShareIcon}
+                onClick={sharePopup.open}
+                icon={ShareIcon}
                 blur
                 title={t('_Share Recipe')}
               />

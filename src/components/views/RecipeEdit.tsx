@@ -108,10 +108,22 @@ const RecipeEdit = () => {
                 recipeName={recipe?.name}
                 keywords={recipe?.keywords}
               >
-                {saving && <SavingIndicator className="ml-5" />}
+                {saving && (
+                  <>
+                    <SavingIndicator className="ml-5" />
+                    <div className="flex-1" />
+                  </>
+                )}
               </RecipeHeader>
             ) : (
-              <>{saving && <SavingIndicator className="ml-2" />}</>
+              <>
+                {saving && (
+                  <>
+                    <SavingIndicator className="ml-2" />{' '}
+                    <div className="flex-1" />
+                  </>
+                )}
+              </>
             )}
           </>
         )}
