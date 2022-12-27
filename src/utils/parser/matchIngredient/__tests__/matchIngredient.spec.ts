@@ -54,4 +54,12 @@ describe('matchingIngredient', () => {
 
     expect(matchIngredient(ingredient, description)).toEqual(7)
   })
+
+  it("should return true when ingredients starts with '", () => {
+    const ingredient = anIngredient("10 d'eau")
+
+    const description = "Un grand bol de l'eau"
+
+    expect(matchIngredient(ingredient, description)).toEqual(5)
+  })
 })
