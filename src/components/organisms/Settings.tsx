@@ -96,7 +96,7 @@ const Settings = () => {
           name="export"
           className="w-full mt-1 flex-1 flex justify-center !py-0 "
           onClick={async () => {
-            await downloadAllRecipes(recipes)
+            await downloadAllRecipes(recipes, t)
           }}
         >
           <span className="!py-2.5">

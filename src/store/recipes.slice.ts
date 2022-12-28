@@ -29,6 +29,11 @@ export const fetchRecipes = createAsyncThunk<Recipe[]>(
   async () => recipesApi.fetchAll()
 )
 
+export const fetchRecipeByLink = createAsyncThunk(
+  'recipes/fetchByLink',
+  async (link: string) => recipesApi.fetchOneByLink(link)
+)
+
 export const updateRecipe = createAsyncThunk(
   'recipes/update',
   async (recipe: Recipe) => recipesApi.updateOne(recipe)
@@ -130,6 +135,11 @@ export const recipesSlice = createSlice({
         {}
       )
       state.areFetched = true
+    })
+
+    builder.addCase(fetchRecipeByLink.fulfilled, (state, action) => {
+      const recipe = action.payload
+      state.byId[recipe.id] = recipe
     })
 
     builder.addCase(updateRecipe.fulfilled, (state, action) => {

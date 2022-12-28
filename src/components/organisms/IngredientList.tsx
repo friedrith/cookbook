@@ -10,26 +10,26 @@ import SectionTitle from 'components/atoms/SectionTitle'
 import renderMeasure from 'utils/render/renderMeasure'
 import Button from 'components/atoms/Button'
 import renderIngredients from 'utils/render/renderIngredients'
-import { canShare, share, isShared, isCopiedToClipboard } from 'utils/share'
+import { canShare, shareText, isShared, isCopiedToClipboard } from 'utils/share'
 import { useAppSelector } from 'hooks/redux'
-import { getRecipe, getIngredienTemplate } from 'store'
+import { getIngredienTemplate } from 'store'
 import waitFor from 'utils/waitFor'
 import SectionAction from 'components/atoms/SectionAction'
 
 type Props = {
-  recipe: FormattedRecipe
+  formattedRecipe: FormattedRecipe
 }
 
 const key = (ingredient: Ingredient, index: number) =>
   `${ingredient.name}${index}`
 
-const IngredientList = ({ recipe }: Props) => {
+const IngredientList = ({ formattedRecipe }: Props) => {
   const { t } = useTranslation()
 
   const shoppingBag = usePopup(false)
 
   const [checkedIngredients, setCheckedIngredients] = useState(
-    recipe.ingredients.map((_, index) => index)
+    formattedRecipe.ingredients.map((_, index) => index)
   )
 
   const [sharedIngredientsWithClipboard, setSharedIngredientsWithClipboard] =
@@ -53,13 +53,7 @@ const IngredientList = ({ recipe }: Props) => {
       event.stopPropagation()
     }
 
-  const rawRecipe = useAppSelector(state => getRecipe(state, recipe.id))
-
-  if (!rawRecipe) {
-    return null
-  }
-
-  const ingredientsToBeShared = recipe.ingredients.filter((_, index) =>
+  const ingredientsToBeShared = formattedRecipe.ingredients.filter((_, index) =>
     checkedIngredients.includes(index)
   )
 
@@ -68,7 +62,7 @@ const IngredientList = ({ recipe }: Props) => {
       ingredientsToBeShared,
       ingredientTemplate
     )
-    const result = await share(ingredients)
+    const result = await shareText(ingredients)
 
     if (isCopiedToClipboard(result)) {
       setSharedIngredientsWithClipboard(true)
@@ -116,7 +110,7 @@ const IngredientList = ({ recipe }: Props) => {
       </SectionTitle>
       <table className="min-w-full divide-y divide-gray-300">
         <tbody className="divide-y divide-gray-200 bg-white">
-          {recipe.ingredients.map((ingredient, index) => (
+          {formattedRecipe.ingredients.map((ingredient, index) => (
             <tr
               key={key(ingredient, index)}
               onClick={toggleCheckedIngredient(index)}

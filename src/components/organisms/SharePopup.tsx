@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import Recipe from 'models/Recipe'
 import Modal, { PopupType } from 'components/atoms/Modal'
-import { isCopiedToClipboard, share, isShared } from 'utils/share'
+import { isCopiedToClipboard, shareText, isShared } from 'utils/share'
 import waitFor from 'utils/waitFor'
 import renderRecipe from 'utils/render/renderRecipe'
 import Button from 'components/atoms/Button'
@@ -21,8 +21,8 @@ const SharePopup = ({ open, recipe, onClose }: Props) => {
   const [sharedRecipeWithClipboard, setSharedRecipeWithClipboard] =
     useState(false)
 
-  const startSharing = async () => {
-    const result = await share(renderRecipe(recipe))
+  const startSharingText = async () => {
+    const result = await shareText(await renderRecipe(recipe, t))
 
     if (isCopiedToClipboard(result)) {
       setSharedRecipeWithClipboard(true)
@@ -41,7 +41,7 @@ const SharePopup = ({ open, recipe, onClose }: Props) => {
       onClose={onClose}
       icon={ShareIcon}
     >
-      <Button.Black className="w-full" onClick={startSharing}>
+      <Button.Black className="w-full" onClick={startSharingText}>
         {sharedRecipeWithClipboard
           ? t('_Recipe copied to clipboard')
           : t('_Copy Recipe to clipboard')}

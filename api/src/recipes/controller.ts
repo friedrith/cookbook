@@ -6,18 +6,14 @@ import { v4 as uuidv4 } from 'uuid'
 import * as db from './database'
 import { parseRecipe } from '../utils/parser'
 import nodeFetch from '../utils/nodeFetch'
+import * as linksDb from '../links/database'
+import convert from './convert'
 
 const COLLECTION_PATH = 'server/saving-data/cookbook/recipes/byUsers'
 
 const handleError = (res: Response, err: any) => {
   return res.status(500).send({ message: `${err.code} - ${err.message}` })
 }
-
-const convert = (recipe: any) => ({
-  ...recipe,
-  createdAt: new Date(recipe.createdAt),
-  updatedAt: recipe.updatedAt ? new Date(recipe.updatedAt) : null,
-})
 
 const createRecipe = async (obj: any) => {
   const recipe = {
@@ -74,22 +70,34 @@ export async function importRecipe(req: Request, res: Response) {
   const { uid } = res.locals
 
   try {
-    const dom = await nodeFetch(url.toString())
+    let recipeData = {}
+    if (url.includes('/share')) {
+      const link = await linksDb.getOne(url.replace(/.*\/share\//, ''))
 
-    const { name, keywords, imageUrl, stats, ingredients, steps, author } =
-      await parseRecipe(url, dom)
+      recipeData = {
+        ...(await db.findOne(COLLECTION_PATH, link.ownerId, link.recipeId)),
+        userId: uid,
+      }
+    } else {
+      const dom = await nodeFetch(url.toString())
 
-    const recipe = await createRecipe({
-      name,
-      keywords,
-      imageUrl,
-      stats,
-      ingredients,
-      steps,
-      originUrl: url,
-      author,
-      userId: uid,
-    })
+      const { name, keywords, imageUrl, stats, ingredients, steps, author } =
+        await parseRecipe(url, dom)
+
+      recipeData = {
+        name,
+        keywords,
+        imageUrl,
+        stats,
+        ingredients,
+        steps,
+        originUrl: url,
+        author,
+        userId: uid,
+      }
+    }
+
+    const recipe = await createRecipe(recipeData)
 
     await addImportLog({ url, status: 'ok', userId: uid })
 
@@ -161,6 +169,31 @@ export async function all(req: Request, res: Response) {
         res.status(500).send({ error: errorObject.name })
       }
     )
+  } catch (err) {
+    handleError(res, err)
+  }
+}
+
+export async function getOneByLink(req: Request, res: Response) {
+  const { linkId } = req.params
+  let link = null
+  try {
+    link = await linksDb.getOne(linkId)
+  } catch {
+    res.status(404).send({ error: 'no link' })
+    return
+  }
+
+  try {
+    const recipe = await db.findOne(
+      COLLECTION_PATH,
+      link.ownerId,
+      link.recipeId
+    )
+
+    res.status(200).send({
+      recipe: { ...recipe, ingredients: '', steps: '' },
+    })
   } catch (err) {
     handleError(res, err)
   }

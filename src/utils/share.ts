@@ -4,6 +4,7 @@ enum SharingStatus {
   Shared,
   ShareCancelled,
   CopiedToClipboard,
+  Downloaded,
 }
 
 type SharingResult = {
@@ -12,7 +13,7 @@ type SharingResult = {
 
 export const canShare = () => typeof navigator.share === 'function'
 
-export const share = async (text: string): Promise<SharingResult> => {
+export const shareText = async (text: string): Promise<SharingResult> => {
   if (!canShare()) {
     await sendToClipboard(text)
     return { status: SharingStatus.CopiedToClipboard }

@@ -52,6 +52,8 @@
   "_Copy Recipe to clipboard": "Copy recipe to clipboard",
   "_Recipe copied to clipboard": "Recipe copied to clipboard",
   "_Ingredients copied to clipboard": "Ingredients copied to clipboard",
+  "_Share pdf": "Share pdf",
+  "_Download pdf": "Download as pdf",
   "_Logout": "Logout",
   "_Help": "Help",
   "_Install Desktop App": "Install Desktop App",
@@ -169,5 +171,9 @@
   "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
   "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
   "proposal": "proposal",
-  " or contact us at ": " or contact us at "
+  " or contact us at ": " or contact us at ",
+  "_To view this recipe, you need to import it in CookBook.": "To view this recipe, you need to import it in CookBook.",
+  "_Import in CookBook": "Import in CookBook",
+  "_Log in and import it": "Log in and import it",
+  "_Import this recipe in CookBook": "Import this recipe in CookBook with the following link: {{link}}"
 }

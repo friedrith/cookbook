@@ -22,7 +22,7 @@ export const convertUser = (user: any) => ({
 // https://firebase.google.com/docs/auth/web/email-link-auth?authuser=1&hl=fr
 export const signInWithMagicLink = async (email: string) => {
   const actionCodeSettings = {
-    url: process.env.REACT_APP_MAGIC_LINK_URL || '',
+    url: `${process.env.REACT_APP_URL}/verify-link` || '',
     // This must be true.
     handleCodeInApp: true,
   }

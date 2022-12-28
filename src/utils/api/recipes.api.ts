@@ -18,6 +18,11 @@ export const fetchAll = async () => {
   return response.data?.recipes.map(convertFromHttp)
 }
 
+export const fetchOneByLink = async (link: string) => {
+  const response = await api().get(`${baseURL}/${link}`)
+  return convertFromHttp(response.data?.recipe)
+}
+
 type HttpRecipe = {
   id: string
   name: string

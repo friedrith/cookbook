@@ -16,6 +16,7 @@ import ProtectedPage from 'components/templates/ProtectedPage'
 import RecipeEdit from 'components/views/RecipeEdit'
 import RecipeFocus from 'components/views/RecipeFocus'
 import NotFound404 from 'components/views/NotFound404'
+import RecipeShare from 'components/views/RecipeShare'
 
 import HistoryContext from 'contexts/History'
 
@@ -57,6 +58,7 @@ const App = () => {
             <Route path=":recipeId/focus" element={<RecipeFocus />} />
             <Route path=":recipeId/edit" element={<RecipeEdit />} />
           </Route>
+          <Route path="/share/:linkId" element={<RecipeShare />} />
           <Route
             path="/preferences"
             element={

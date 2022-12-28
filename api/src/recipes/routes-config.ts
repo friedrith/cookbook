@@ -6,6 +6,7 @@ import {
   remove,
   patch,
   removeAll,
+  getOneByLink,
 } from './controller'
 import { isAuthenticated } from '../auth/authenticated'
 
@@ -13,6 +14,8 @@ export function routesConfig(app: Application) {
   app.post('/recipes/import', [isAuthenticated, importRecipe])
 
   app.post('/recipes', [isAuthenticated, create])
+
+  app.get('/recipes/:linkId', [getOneByLink])
 
   app.get('/recipes', [isAuthenticated, all])
 

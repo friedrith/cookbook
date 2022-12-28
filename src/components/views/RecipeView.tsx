@@ -22,6 +22,8 @@ import { getRecipeProgress, setRecipeProgress, areRecipesFetched } from 'store'
 import Container from 'components/atoms/Container'
 import useCurrentRecipe from 'hooks/useCurrentRecipe'
 import ShareIcon from 'assets/ShareIcon'
+import { canShare, shareText } from 'utils/share'
+import renderRecipe from 'utils/render/renderRecipe'
 
 const RecipeView = () => {
   const [recipe, formattedRecipe] = useCurrentRecipe()
@@ -49,6 +51,13 @@ const RecipeView = () => {
     dispatch(setRecipeProgress({ recipeId: recipe.id, index }))
   }
 
+  const startSharing = async () => {
+    if (canShare()) {
+      await shareText(await renderRecipe(recipe, t))
+    } else {
+      sharePopup.open()
+    }
+  }
   return (
     <Page title={recipe.name}>
       <ImageBanner imageUrl={recipe.imageUrl} alt={recipe.name} />
@@ -73,7 +82,7 @@ const RecipeView = () => {
               </div>
               {/* <Stats recipe={formattedRecipe} /> */}
               <div className="pt-6">
-                <IngredientList recipe={formattedRecipe} />
+                <IngredientList formattedRecipe={formattedRecipe} />
               </div>
             </Box>
           </div>
@@ -102,7 +111,7 @@ const RecipeView = () => {
             <span data-tip={t('_Share Recipe')}>
               <Button.Icon
                 className="ltr:mr-3 rtl:ml-3"
-                onClick={sharePopup.open}
+                onClick={startSharing}
                 icon={ShareIcon}
                 blur
                 title={t('_Share Recipe')}

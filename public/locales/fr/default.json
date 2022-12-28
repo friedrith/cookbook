@@ -50,6 +50,8 @@
   "_Share Recipe": "Partager",
   "_Copy Recipe to clipboard": "Copier la recette dans le presse-papier",
   "_Recipe copied to clipboard": "Recette copiée dans le presse-papier.",
+  "_Share pdf": "Partage pdf",
+  "_Download pdf": "Télécharger le pdf",
   "_Ingredients copied to clipboard": "Ingredients copiées dans le presse-papier.",
   "_Logout": "Se déconnecter",
   "_Help": "Aide",
@@ -169,5 +171,9 @@
   "CookBook officially support recipe import from the following websites": "CookBook supporte officiellement l'import de recettes provenant des sites internet suivants:",
   "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "Cependant l'import depuis d'autres sites internet contenant des recettes peut fonctionner. Si votre recette n'a pas été importée avec succès, faites le nous savoir en écrivant une ",
   "proposal": "demande d'amélioration",
-  " or contact us at ": " ou en nous contactant à "
+  " or contact us at ": " ou en nous contactant à ",
+  "_To view this recipe, you need to import it in CookBook.": "Pour voir cette recette, vous devez l'importer dans CookBook.",
+  "_Import in CookBook": "Importer dans CookBook",
+  "_Log in and import it": "Se connecter et importer",
+  "_Import this recipe in CookBook": "Importer cette recette avec le lien suivant : {{link}}"
 }

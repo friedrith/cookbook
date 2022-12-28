@@ -25,7 +25,7 @@ type Props = {
 
 const colors = {
   [PopupType.Warning]: 'red',
-  [PopupType.Black]: 'black',
+  [PopupType.Black]: 'gray',
   [PopupType.Info]: 'primary',
   [PopupType.Success]: 'green',
 }

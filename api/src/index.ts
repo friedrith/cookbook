@@ -6,6 +6,7 @@ import * as bodyParser from 'body-parser'
 
 import * as recipes from './recipes/routes-config'
 import * as officialWebsites from './officialWebsites/routes-config'
+import * as links from './links/routes-config'
 
 admin.initializeApp()
 
@@ -15,6 +16,7 @@ app.use(cors({ origin: true }))
 
 recipes.routesConfig(app)
 officialWebsites.routesConfig(app)
+links.routesConfig(app)
 
 export const api = functions.https.onRequest(app)
 
