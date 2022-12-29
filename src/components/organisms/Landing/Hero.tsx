@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 import Button from 'components/atoms/Button'
 import { getCurrentUser } from 'store'
@@ -18,6 +19,23 @@ const Hero = () => {
 
   const user = useAppSelector(getCurrentUser)
 
+  const navigate = useNavigate()
+
+  const openApp = () => {
+    if (user) {
+      navigate('/recipes')
+      // window.open('/recipes', 'new-window')
+    } else {
+      navigate('/login')
+      // window.open(`intent:${process.env.REACT_APP_URL}/login#Intent;end`)
+      // window.open(`${process.env.REACT_APP_URL}/login`, '_system')
+
+      // window.location =
+      //   'googlechrome-x-callback://x-callback-url/open/?url=' +
+      //   encodeURIComponent(`${process.env.REACT_APP_URL}/login`)
+    }
+  }
+
   return (
     <div className="relative overflow-hidden py-20 sm:py-32 lg:pb-32 xl:pb-36">
       {/* <img className="absolute inset-0" src={wallpaper} alt="foo" /> */}
@@ -31,10 +49,7 @@ const Hero = () => {
               {t('gathering recipes')}
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
-              <Button.Primary
-                className="!py-3 !px-5"
-                to={user ? '/recipes' : '/login'}
-              >
+              <Button.Primary className="!py-3 !px-5" onClick={openApp}>
                 {user ? t('Open CookBook') : t('Create your CookBook')}
               </Button.Primary>
               {/* <Button.White className="!py-3 !px-5">Try the demo</Button.White> */}

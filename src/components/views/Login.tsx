@@ -18,7 +18,6 @@ const Login = () => {
 
   const login = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    window.localStorage.setItem('emailForSignIn', email)
 
     dispatch(loginWithMagicLink(email))
     // track('Login')
@@ -77,7 +76,7 @@ const Login = () => {
             <p className="mt-2 text-sm text-gray-600">
               <Link
                 to="/faq#why-magic-link"
-                className="font-medium text-black hover:underline"
+                className="font-medium hover:underline"
               >
                 {t('_Why a magic link')}
               </Link>

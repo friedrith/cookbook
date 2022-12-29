@@ -10,7 +10,7 @@ const CenterPage = ({ className = '', children, title }: Props) => {
   return (
     <Page title={title}>
       <div className="h-screen w-full flex items-center justify-center relative">
-        <div>{children}</div>
+        <div className={className}>{children}</div>
       </div>
     </Page>
   )

@@ -8,6 +8,7 @@ import { verifyLink, verifyLinkWithEmail } from 'store'
 import Loading from 'components/views/Loading'
 import { track } from 'utils/services/tracking'
 import Button from 'components/atoms/Button'
+import Logo from 'components/atoms/Logo'
 
 const LinkVerification = () => {
   const dispatch = useAppDispatch()
@@ -26,8 +27,8 @@ const LinkVerification = () => {
     ;(async () => {
       try {
         track('VerifyLink')
-        const result = await dispatch(verifyLink()).unwrap()
-        if (result) {
+        const user = await dispatch(verifyLink()).unwrap()
+        if (user) {
           navigate('/recipes')
           track('VerifyLinkSuccess')
         } else {
@@ -63,9 +64,9 @@ const LinkVerification = () => {
     return <Loading />
   }
 
-  return (
-    <CenterPage>
-      {errorMessage && (
+  if (errorMessage) {
+    return (
+      <CenterPage>
         <main className="flex-grow flex flex-col justify-center max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-16">
             <div className="text-center">
@@ -86,31 +87,34 @@ const LinkVerification = () => {
             </div>
           </div>
         </main>
-      )}
-      {!errorMessage && emailRequired && (
-        <div>
-          <form className="mt-4 sm:flex sm:max-w-md" onSubmit={login}>
-            <label htmlFor="email-address" className="sr-only">
-              {t('_Email address')}
-            </label>
-            <input
-              type="email"
-              name="email-address"
-              id="email-address"
-              autoComplete="email"
-              required
-              className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:placeholder-gray-400"
-              placeholder={t('_Enter your email')}
-              onChange={event => setEmail(event.target.value)}
-            />
-            <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <Button.Black type="submit" className="w-full">
-                {t('_Log in')}
-              </Button.Black>
-            </div>
-          </form>
-        </div>
-      )}
+      </CenterPage>
+    )
+  }
+
+  return (
+    <CenterPage className="flex flex-col items-center">
+      <Logo />
+      <form className="mt-6 flex items-stretch sm:max-w-md" onSubmit={login}>
+        <label htmlFor="email-address" className="sr-only">
+          {t('_Email address')}
+        </label>
+        <input
+          type="email"
+          name="email-address"
+          id="email-address"
+          autoComplete="email"
+          required
+          className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:placeholder-gray-400"
+          placeholder={t('_Enter your email')}
+          onChange={event => setEmail(event.target.value)}
+        />
+        <Button.Black
+          type="submit"
+          className="sm:mt-0 sm:ml-3 sm:flex-shrink-0"
+        >
+          {t('_Log in')}
+        </Button.Black>
+      </form>
     </CenterPage>
   )
 }

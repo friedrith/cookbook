@@ -64,7 +64,7 @@ export const authSlice = createSlice({
 
     builder.addCase(verifyLink.fulfilled, (state, action) => {
       state.user = action.payload || null
-      state.isUserFetched = true
+      state.isUserFetched = Boolean(action.payload)
     })
 
     builder.addCase(verifyLink.rejected, (state, action) => {

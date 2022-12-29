@@ -8,6 +8,6 @@ export const track = (eventName: string) => {
   try {
     mixpanel.track(eventName)
   } catch (error) {
-    console.error('error while tracking', error)
+    console.log('error while tracking', error)
   }
 }

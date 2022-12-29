@@ -19,6 +19,8 @@ export const convertUser = (user: any) => ({
   role: Roles.User,
 })
 
+const EMAIL_FOR_SIGN_IN = 'emailForSignIn'
+
 // https://firebase.google.com/docs/auth/web/email-link-auth?authuser=1&hl=fr
 export const signInWithMagicLink = async (email: string) => {
   const actionCodeSettings = {
@@ -26,6 +28,8 @@ export const signInWithMagicLink = async (email: string) => {
     // This must be true.
     handleCodeInApp: true,
   }
+
+  window.localStorage.setItem(EMAIL_FOR_SIGN_IN, email)
 
   const auth = getAuth()
   await sendSignInLinkToEmail(auth, email, actionCodeSettings)
@@ -39,13 +43,19 @@ export const verifyLink = async () => {
     // the sign-in operation.
     // Get the email if available. This should be available if the user completes
     // the flow on the same device where they started it.
-    let email = window.localStorage.getItem('emailForSignIn')
+    let email = window.localStorage.getItem(EMAIL_FOR_SIGN_IN)
     if (!email) {
-      return false
+      return null
     }
 
-    return await verifyLinkWithEmail(email || '')
+    const user = await verifyLinkWithEmail(email || '')
+
+    window.localStorage.removeItem(EMAIL_FOR_SIGN_IN)
+
+    return user
   }
+
+  return null
 }
 
 const retrieveToken = async () => {
