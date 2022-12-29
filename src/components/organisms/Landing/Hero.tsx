@@ -9,6 +9,8 @@ import BackgroundIllustration from 'components/organisms/Landing/BackgroundIllus
 import PhoneFrame from 'components/atoms/PhoneFrame'
 
 import appDemo from 'assets/app.png'
+import { isWebview } from 'utils/platforms/mobile'
+import { openBrowserWindow } from 'utils/platforms/windows'
 
 const AppDemo = () => (
   <img className="absolute inset-0" src={appDemo} alt="App demo" />
@@ -23,16 +25,17 @@ const Hero = () => {
 
   const openApp = () => {
     if (user) {
-      navigate('/recipes')
-      // window.open('/recipes', 'new-window')
+      if (isWebview()) {
+        openBrowserWindow(`/recipes`)
+      } else {
+        navigate('/recipes')
+      }
     } else {
-      navigate('/login')
-      // window.open(`intent:${process.env.REACT_APP_URL}/login#Intent;end`)
-      // window.open(`${process.env.REACT_APP_URL}/login`, '_system')
-
-      // window.location =
-      //   'googlechrome-x-callback://x-callback-url/open/?url=' +
-      //   encodeURIComponent(`${process.env.REACT_APP_URL}/login`)
+      if (isWebview()) {
+        openBrowserWindow(`/login`)
+      } else {
+        navigate('/login')
+      }
     }
   }
 

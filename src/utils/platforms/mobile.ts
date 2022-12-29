@@ -1,5 +1,17 @@
 // https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
 
+declare global {
+  interface Navigator {
+    standalone: any
+    vendor: any
+    platform: any
+  }
+
+  interface Window {
+    opera: any
+  }
+}
+
 export const isMobile = () => {
   const regex =
     /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i
@@ -18,3 +30,31 @@ export const isIpad = () =>
 
 export const isMacLike = () =>
   /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
+
+// https://stackoverflow.com/questions/4460205/detect-ipad-iphone-webview-via-javascript
+export const isWebview = () => {
+  const standalone = window.navigator.standalone,
+    userAgent = window.navigator.userAgent.toLowerCase(),
+    safari = /safari/.test(userAgent),
+    ios = /iphone|ipod|ipad/.test(userAgent)
+
+  if (ios) {
+    if (!standalone && safari) {
+      //browser
+    } else if (standalone && !safari) {
+      //standalone
+    } else if (!standalone && !safari) {
+      //uiwebview
+
+      return true
+    }
+  } else {
+    if (userAgent.includes('wv')) {
+      // Android webview
+      return true
+    } else {
+      // Chrome
+    }
+  }
+  return false
+}
