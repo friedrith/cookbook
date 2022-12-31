@@ -5,6 +5,7 @@ import LoginPage from 'components/templates/LoginPage'
 import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
 import { isIpad } from 'utils/platforms/mobile'
 import StandaloneLinkValidation from 'components/organisms/StandaloneLinkValidation'
+import { useOnLoggedInAnotherTab } from 'utils/broadcast'
 
 const LinkWaiting = () => {
   const { t } = useTranslation()
@@ -12,6 +13,10 @@ const LinkWaiting = () => {
   const email = window.localStorage.getItem('emailForSignIn')
 
   const isStandalone = useIsStandalonePWA()
+
+  useOnLoggedInAnotherTab(() => {
+    window.location.reload()
+  })
 
   return (
     <LoginPage title={t('_Waiting for link')}>

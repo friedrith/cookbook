@@ -9,6 +9,7 @@ import Loading from 'components/views/Loading'
 import { track } from 'utils/services/tracking'
 import Button from 'components/atoms/Button'
 import Logo from 'components/atoms/Logo'
+import { broadcastLogin } from 'utils/broadcast'
 
 const LinkVerification = () => {
   const dispatch = useAppDispatch()
@@ -30,6 +31,7 @@ const LinkVerification = () => {
         const user = await dispatch(verifyLink()).unwrap()
         if (user) {
           navigate('/recipes')
+          broadcastLogin()
           track('VerifyLinkSuccess')
         } else {
           setEmailRequired(true)
@@ -54,6 +56,7 @@ const LinkVerification = () => {
       await dispatch(verifyLinkWithEmail(email)).unwrap()
       navigate('/recipes')
       track('VerifyLinkSuccess')
+      broadcastLogin()
     } catch (error) {
       console.log('error', error)
       setErrorMessage(t('_Sorry that link is no longer valid') || '')

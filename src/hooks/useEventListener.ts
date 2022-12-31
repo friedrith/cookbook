@@ -3,7 +3,11 @@ import { useEffect } from 'react'
 const useEventListener = (
   eventName: string,
   handler: (event: any) => void,
-  element: HTMLElement | null | (Window & typeof globalThis) = window
+  element:
+    | HTMLElement
+    | BroadcastChannel
+    | null
+    | (Window & typeof globalThis) = window
 ) => {
   useEffect(() => {
     if (element) {

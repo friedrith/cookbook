@@ -61,6 +61,7 @@ export const verifyLink = async () => {
 const retrieveToken = async () => {
   const auth = getAuth()
   if (!auth.currentUser) {
+    console.error('auth', auth)
     throw new Error('Impossible to retrieve token')
   }
   const token = await auth.currentUser.getIdToken()
