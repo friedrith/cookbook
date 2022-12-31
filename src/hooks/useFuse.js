@@ -26,7 +26,7 @@ const useFuse = (list: Recipe[], query: string) => {
       return fuse.current
         .search(query)
         .sort(sortByScore)
-        .filter(item => item.score < 0.1)
+        .filter(item => item.score < 0.5)
         .map(i => i.item)
     }
     return [...list].sort(sortByName)
