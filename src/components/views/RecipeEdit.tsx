@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { TrashIcon } from '@heroicons/react/24/outline'
+import { TrashIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
@@ -20,7 +20,9 @@ import {
   updateRecipe,
   addRecipeToDeleteQueue,
   areRecipesFetched,
+  addRecipe,
 } from 'store'
+import duplicateName from 'utils/duplicateName'
 
 const RecipeEdit = () => {
   const { recipeId } = useParams()
@@ -36,6 +38,13 @@ const RecipeEdit = () => {
       setRecipe(savedRecipe)
     }
   }, [savedRecipe, recipe?.name])
+
+  useEffect(() => {
+    if (savedRecipe) {
+      setRecipe(savedRecipe)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recipeId])
 
   const dispatch = useAppDispatch()
 
@@ -77,6 +86,17 @@ const RecipeEdit = () => {
     navigate(`/recipes`)
   }
 
+  const duplicate = async () => {
+    try {
+      const newRecipe = await dispatch(
+        addRecipe({ ...recipe, name: duplicateName(recipe.name) })
+      ).unwrap()
+      navigate(`/recipes/${newRecipe.id}/edit`, { replace: true })
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+
   const saving = !saved
 
   return (
@@ -88,10 +108,19 @@ const RecipeEdit = () => {
         onChange={saveDebounced}
       >
         <div className="py-10 pt-20 flex justify-center">
-          <Button.Error onClick={requestDeleteRecipe}>
-            <TrashIcon className="h-5 w-5 mr-2" aria-hidden="true" />
-            {t('_delete recipe')}
-          </Button.Error>
+          <div className="flex flex-col items-stretch justify-center gap-y-4">
+            <Button.White onClick={duplicate}>
+              <DocumentDuplicateIcon
+                className="h-5 w-5 mr-2"
+                aria-hidden="true"
+              />
+              {t('_duplicate recipe')}
+            </Button.White>
+            <Button.Error onClick={requestDeleteRecipe}>
+              <TrashIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+              {t('_delete recipe')}
+            </Button.Error>
+          </div>
         </div>
       </RecipeEditor>
 

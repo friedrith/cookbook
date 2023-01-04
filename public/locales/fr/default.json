@@ -44,6 +44,7 @@
   "_Sorry, we couldn’t find the page you’re looking for.": "Désolé, nous n'avons pas trouve la page que vous recherchiez.",
   "_Go back home": "Retourner à la page d'accueil",
   "_delete recipe": "Supprimer Recette",
+  "_duplicate recipe": "Dupliquer Recette",
   "_Recipe deleted": "Recette \"{{recipeName}}\" supprimée",
   "_Undo": "Annuler",
   "_Saving": "Sauvegarde...",
