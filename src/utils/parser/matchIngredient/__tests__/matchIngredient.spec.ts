@@ -62,4 +62,12 @@ describe('matchingIngredient', () => {
 
     expect(matchIngredient(ingredient, description)).toEqual(5)
   })
+
+  it('should return true when ingredients finish with s', () => {
+    const ingredient = anIngredient('brown sugar')
+
+    const description = 'Mix sugars'
+
+    expect(matchIngredient(ingredient, description)).toEqual(1)
+  })
 })

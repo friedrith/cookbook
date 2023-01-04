@@ -6,7 +6,7 @@ const cleanWord = (word: string) =>
   word
     .trim()
     .replace(/^[.,']/, '')
-    .replace(/[.,']$/, '')
+    .replace(/[.,s']$/, '')
     .toLowerCase()
 
 const match = (wordA: string, wordB: string) => wordA === wordB
