@@ -1,4 +1,4 @@
-import { useState, useRef, KeyboardEvent } from 'react'
+import { useState, useRef, KeyboardEvent, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
   MagnifyingGlassIcon,
@@ -16,6 +16,7 @@ import NewRecipeForm from 'components/organisms/NewRecipeForm'
 import Modal from 'components/atoms/Modal'
 import usePopup from 'hooks/usePopup'
 import ImportHelpPopup from 'components/organisms/ImportHelpPopup'
+import { isMobile } from 'utils/platforms/mobile'
 
 type Props = {
   restRef: React.RefObject<HTMLDivElement>
@@ -46,6 +47,12 @@ const RecipeListHeader = ({
       inputRef.current.focus()
     }
   })
+
+  useEffect(() => {
+    if (searchValue && isMobile()) {
+      showSearchOnMobile(true)
+    }
+  }, [searchValue])
 
   const [lastQuery, setLastQuery] = useState('')
 
@@ -101,7 +108,7 @@ const RecipeListHeader = ({
                       ref={inputMobileRef}
                       onChange={event => onSearchChange(event.target.value)}
                       autoComplete="off"
-                      defaultValue={searchValue}
+                      value={searchValue}
                       aria-label={t('_Search in recipes')}
                     />
                   </div>
@@ -141,15 +148,27 @@ const RecipeListHeader = ({
                         ref={inputRef}
                         onChange={event => onSearchChange(event.target.value)}
                         autoComplete="off"
-                        defaultValue={searchValue}
+                        value={searchValue}
                         aria-label={t('_Search in recipes')}
                       />
-                      <div className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 hidden lg:block">
-                        {/* eslint-disable-next-line i18next/no-literal-string */}
-                        <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 bg-white">
-                          ⌘K
-                        </kbd>
-                      </div>
+                      {searchValue ? (
+                        <button
+                          className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 items-center cursor-pointer"
+                          onClick={() => onSearchChange('')}
+                        >
+                          <XMarkIcon
+                            className="h-6 w-6 stroke-1 text-gray-400 rounded-full hover:text-gray-300 block"
+                            aria-hidden="true"
+                          />
+                        </button>
+                      ) : (
+                        <div className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 hidden lg:block">
+                          {/* eslint-disable-next-line i18next/no-literal-string */}
+                          <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 bg-white">
+                            ⌘K
+                          </kbd>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}

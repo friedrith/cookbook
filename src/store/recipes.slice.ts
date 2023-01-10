@@ -230,6 +230,31 @@ export const getRecipesToDelete = createSelector(
   (byId, trashQueue) => trashQueue.map(id => byId[id])
 )
 
+const sortByCount = (a: [string, number], b: [string, number]) => b[1] - a[1]
+
+export const getAllKeywordSortedByFrequency = createSelector(
+  getRecipeList,
+  recipeList => {
+    const keywords = Object.entries(
+      recipeList
+        .flatMap(r => r.keywords)
+        .reduce(
+          (acc: Record<string, number>, keyword: string) => ({
+            ...acc,
+            [keyword]: (acc[keyword] || 0) + 1,
+          }),
+          {}
+        )
+    )
+
+    return keywords
+      .filter((k: [string, number]) => k[1] >= 3)
+      .sort(sortByCount)
+      .map(k => k[0])
+      .slice(0, 7)
+  }
+)
+
 // export const getIngredientList = createSelector(
 //   getRecipe,
 //   (state: RootState, id: string | undefined) =>

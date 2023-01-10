@@ -1,3 +1,4 @@
+import { uniq } from 'lodash'
 import Recipe, { FormattedRecipe } from 'models/Recipe'
 import Ingredient from 'models/Ingredient'
 import parseIngredient from './parseIngredient'
@@ -45,7 +46,7 @@ const parseRecipe = (recipe: Recipe): FormattedRecipe => {
     ...recipe,
     ingredients,
     steps: parseLines(recipe.steps).map(step => parseStep(step, ingredients)),
-    keywords: recipe.keywords.filter(Boolean),
+    keywords: uniq(recipe.keywords.filter(Boolean)),
   }
 }
 

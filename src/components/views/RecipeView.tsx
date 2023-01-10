@@ -1,11 +1,9 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { PencilIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Box from 'components/atoms/Box'
-import Badge from 'components/atoms/Badge'
 import IngredientList from 'components/organisms/IngredientList'
 import StepList from 'components/molecules/StepList'
 import FixedHeader from 'components/atoms/FixedHeader'
@@ -24,6 +22,7 @@ import useCurrentRecipe from 'hooks/useCurrentRecipe'
 import ShareIcon from 'assets/ShareIcon'
 import { canShare, shareText } from 'utils/share'
 import renderRecipe from 'utils/render/renderRecipe'
+import KeywordList from 'components/organisms/KeywordList'
 
 const RecipeView = () => {
   const [recipe, formattedRecipe] = useCurrentRecipe()
@@ -70,15 +69,7 @@ const RecipeView = () => {
                 {formattedRecipe.name}
               </h1>
               <div className="text-center lg:text-left">
-                {formattedRecipe.keywords.map(keyword => (
-                  <Link
-                    key={keyword}
-                    className="mr-1"
-                    to={`/recipes?q=${keyword}`}
-                  >
-                    <Badge>{keyword}</Badge>
-                  </Link>
-                ))}
+                <KeywordList keywords={formattedRecipe.keywords} />
               </div>
               {/* <Stats recipe={formattedRecipe} /> */}
               <div className="pt-6">

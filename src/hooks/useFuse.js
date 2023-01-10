@@ -21,15 +21,23 @@ const useFuse = (list: Recipe[], query: string) => {
     fuse.current.setCollection(list)
   }, [list])
 
+  const search = (query, list) =>
+    query
+      ? fuse.current
+          .search(query)
+          .sort(sortByScore)
+          .filter(item => item.score < 0.5)
+          .map(i => i.item)
+      : [...list].sort(sortByName)
+
   const searchedRecipes = useMemo(() => {
-    if (query) {
-      return fuse.current
-        .search(query)
-        .sort(sortByScore)
-        .filter(item => item.score < 0.5)
-        .map(i => i.item)
-    }
-    return [...list].sort(sortByName)
+    const keywords = (query.match(/#([a-zA-Z]*)/) || []).slice(1)
+
+    const queryWithoutKeywords = query.replace(/#[a-zA-Z]*/i, '').trim()
+
+    return search(queryWithoutKeywords, list).filter(r =>
+      keywords.every(keyword => r.keywords.find(k => k.includes(keyword)))
+    )
   }, [query, list])
 
   return searchedRecipes

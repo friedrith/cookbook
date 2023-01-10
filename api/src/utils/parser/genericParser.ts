@@ -1,6 +1,7 @@
 import { HTMLElement, parse } from 'node-html-parser'
 import { first, last } from 'lodash'
 import * as schemaOrgParser from './schemaOrgParser'
+import authorizedKeywords from './authorizedKeywords'
 
 export const getCleanText = (e: HTMLElement) => {
   return (
@@ -36,19 +37,7 @@ export const parseKeywords = (recipe: { keywords?: string | Array<string> }) =>
         .split(',')
         .map((k: string) => k.trim())
         .filter(Boolean)
-
-// const validURL = (str: string) => {
-//   const pattern = new RegExp(
-//     '^(https?:\\/\\/)?' + // protocol
-//       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-//       '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-//       '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-//       '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-//       '(\\#[-a-z\\d_]*)?$',
-//     'i'
-//   ) // fragment locator
-//   return !!pattern.test(str)
-// }
+        .filter(k => authorizedKeywords.includes(k))
 
 const findImageUrl = (recipe: any) => {
   return (

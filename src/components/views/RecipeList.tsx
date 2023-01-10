@@ -1,9 +1,13 @@
-import { useRef, useState, useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
 import { useAppSelector } from 'hooks/redux'
-import { getRecipeList, areRecipesFetched } from 'store'
+import {
+  getRecipeList,
+  areRecipesFetched,
+  getAllKeywordSortedByFrequency,
+} from 'store'
 import RecipeListHeader from 'components/organisms/RecipeListHeader'
 import Container from 'components/atoms/Container'
 import Page from 'components/templates/Page'
@@ -13,6 +17,7 @@ import useFuse from 'hooks/useFuse'
 import { sortByUpdatedAt } from 'models/Recipe'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import rememberScroll from 'utils/rememberScroll'
+import KeywordList from 'components/organisms/KeywordList'
 
 const scroll = rememberScroll()
 
@@ -23,12 +28,11 @@ const RecipeList = () => {
 
   const ref = useRef<HTMLDivElement | null>(null)
 
-  const [query, setQuery] = useState(searchParams.get('q') || '')
+  const query = searchParams.get('q') || ''
 
   const searchedRecipes = useFuse(recipes, query)
 
   const onQueryChange = (newQuery: string) => {
-    setQuery(newQuery)
     if (newQuery) {
       setSearchParams({ q: newQuery })
     } else {
@@ -43,6 +47,13 @@ const RecipeList = () => {
     [recipes]
   )
 
+  const keywords = useAppSelector(getAllKeywordSortedByFrequency)
+
+  const keywordsNotUsed = useMemo(
+    () => keywords.filter(k => !query.includes(k)),
+    [keywords, query]
+  )
+
   return (
     <Page
       title={'Recipes'}
@@ -50,8 +61,18 @@ const RecipeList = () => {
       onScroll={v => scroll.onScroll(v)}
     >
       <Container className="bg-white ">
-        <div className="flex-1 relative z-10 pt-32">
+        <div className="relative z-10 pt-24">
           <div ref={ref} />
+          {keywordsNotUsed.length > 0 && (
+            <>
+              <span className="bg-white ltr:pr-2 rtl:pl-2 text-sm text-gray-500">
+                {t('Categories')}
+              </span>
+              <KeywordList keywords={keywordsNotUsed} />
+            </>
+          )}
+        </div>
+        <div className="flex-1 relative z-10 pt-10">
           {searchedRecipes.length > 0 && query && (
             <RecipeListSection
               title={t('_Results')}
