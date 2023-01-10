@@ -176,5 +176,6 @@
   "_To view this recipe, you need to import it in CookBook.": "Pour voir cette recette, vous devez l'importer dans CookBook.",
   "_Import in CookBook": "Importer dans CookBook",
   "_Log in and import it": "Se connecter et importer",
-  "_Import this recipe in CookBook": "Importer cette recette avec le lien suivant : {{link}}"
+  "_Import this recipe in CookBook": "Importer cette recette avec le lien suivant : {{link}}",
+  "Categories": "Categories:"
 }
