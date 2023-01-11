@@ -16,7 +16,7 @@ const KeywordList = ({
   onChangeQuery = () => {},
 }: Props) => {
   return (
-    <div className={`text-left ${className}`}>
+    <div className={`text-left rtl:text-right ${className}`}>
       {keywords.map(keyword => (
         <Link
           key={keyword}
