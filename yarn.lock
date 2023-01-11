@@ -5883,6 +5883,7 @@ __metadata:
     jszip: ^3.10.1
     lodash: ^4.17.21
     mixpanel-browser: ^2.45.0
+    nosleep.js: ^0.12.0
     postcss: ^8.4.14
     prettier: ^2.6.2
     react: ^18.1.0
@@ -10765,6 +10766,13 @@ __metadata:
   version: 6.1.0
   resolution: "normalize-url@npm:6.1.0"
   checksum: 4a4944631173e7d521d6b80e4c85ccaeceb2870f315584fa30121f505a6dfd86439c5e3fdd8cd9e0e291290c41d0c3599f0cb12ab356722ed242584c30348e50
+  languageName: node
+  linkType: hard
+
+"nosleep.js@npm:^0.12.0":
+  version: 0.12.0
+  resolution: "nosleep.js@npm:0.12.0"
+  checksum: 1bf5f9aaaed80104285e63e440d1cdecfd8eb759e3e1f3b7d1b74a98cd895654b6e99e6947a2ef528099e077b68cd49d92d96d6ae8a3ea8d244bbac3be81e318
   languageName: node
   linkType: hard
 

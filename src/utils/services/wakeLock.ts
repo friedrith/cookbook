@@ -1,32 +1,17 @@
-export const isWakeLockSupported = () => 'wakeLock' in navigator
+import NoSleep from 'nosleep.js'
 
-let wakeLock: null | WakeLockSentinel = null
+const noSleep = new NoSleep()
 
-const forceRequestWakeLock = async () => {
-  try {
-    if (!isWakeLockSupported()) return
-    wakeLock = await navigator.wakeLock.request('screen')
-
-    // listen for our release event
-    wakeLock.onrelease = () => {
-      console.log('wakelock released')
-    }
-    wakeLock.addEventListener('release', () => {})
-    console.log('wakelocked')
-  } catch (error) {
-    console.error('error while wake lock', error)
-  }
-}
+let wakeLock: boolean = false
 
 export const requestWakeLock = async () => {
   if (!wakeLock) {
-    forceRequestWakeLock()
+    noSleep.enable()
   }
 }
 
 export const releaseWakeLock = async () => {
   if (wakeLock) {
-    await wakeLock.release()
-    wakeLock = null
+    noSleep.disable()
   }
 }
