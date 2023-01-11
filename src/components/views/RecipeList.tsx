@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react'
+import { useRef, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router-dom'
 
@@ -28,11 +28,13 @@ const RecipeList = () => {
 
   const ref = useRef<HTMLDivElement | null>(null)
 
-  const query = searchParams.get('q') || ''
+  const [query, setQuery] = useState(searchParams.get('q') || '')
 
   const searchedRecipes = useFuse(recipes, query)
 
   const onQueryChange = (newQuery: string) => {
+    setQuery(newQuery)
+
     if (newQuery) {
       setSearchParams({ q: newQuery })
     } else {
@@ -64,7 +66,11 @@ const RecipeList = () => {
         <div className="relative z-10 pt-16">
           <div ref={ref} />
           {keywordsNotUsed.length > 0 && (
-            <KeywordList className="text-center" keywords={keywordsNotUsed} />
+            <KeywordList
+              className="text-center"
+              keywords={keywordsNotUsed}
+              onChangeQuery={onQueryChange}
+            />
           )}
         </div>
         <div className="flex-1 relative z-10 pt-16">
