@@ -18,6 +18,7 @@ import { sortByUpdatedAt } from 'models/Recipe'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import rememberScroll from 'utils/rememberScroll'
 import KeywordList from 'components/organisms/KeywordList'
+import { BadgeSize } from 'components/atoms/Badge'
 
 const scroll = rememberScroll()
 
@@ -67,6 +68,7 @@ const RecipeList = () => {
           <div ref={ref} />
           {keywordsNotUsed.length > 0 && (
             <KeywordList
+              size={BadgeSize.large}
               className="text-center"
               keywords={keywordsNotUsed}
               onChangeQuery={onQueryChange}

@@ -23,6 +23,7 @@ import ShareIcon from 'assets/ShareIcon'
 import { canShare, shareText } from 'utils/share'
 import renderRecipe from 'utils/render/renderRecipe'
 import KeywordList from 'components/organisms/KeywordList'
+import { BadgeSize } from 'components/atoms/Badge'
 
 const RecipeView = () => {
   const [recipe, formattedRecipe] = useCurrentRecipe()
@@ -68,9 +69,12 @@ const RecipeView = () => {
               <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center ltr:lg:text-left rtl:lg:text-right pb-2 select-text">
                 {formattedRecipe.name}
               </h1>
-              <div className="text-center lg:text-left">
-                <KeywordList keywords={formattedRecipe.keywords} />
-              </div>
+
+              <KeywordList
+                className="text-center lg:text-left"
+                size={BadgeSize.large}
+                keywords={formattedRecipe.keywords}
+              />
               {/* <Stats recipe={formattedRecipe} /> */}
               <div className="pt-6">
                 <IngredientList formattedRecipe={formattedRecipe} />

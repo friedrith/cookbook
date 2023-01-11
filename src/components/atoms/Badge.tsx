@@ -1,7 +1,15 @@
+import classNames from 'classnames'
+
+export enum BadgeSize {
+  small,
+  large,
+}
+
 type Props = {
   className?: string
   children: string
   color?: string
+  size?: BadgeSize
 }
 
 const colors = [
@@ -26,12 +34,20 @@ const findColor = (children: string) => {
   return colors[colorIndex]
 }
 
-const Badge = ({ className = '', children, color }: Props) => {
+const Badge = ({
+  className = '',
+  children,
+  color,
+  size = BadgeSize.small,
+}: Props) => {
   const foundColor = color || findColor(children)
 
   return (
     <span
-      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-${foundColor}-100 text-${foundColor}-800 ${className} -events-auto`}
+      className={classNames(
+        `inline-flex items-center px-2 py-0.5 rounded font-medium bg-${foundColor}-100 text-${foundColor}-800 ${className} -events-auto`,
+        size === BadgeSize.small ? `text-xs` : `text-sm md:text-xs`
+      )}
     >
       {children}
     </span>
