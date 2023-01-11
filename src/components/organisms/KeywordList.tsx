@@ -22,7 +22,9 @@ const KeywordList = ({
       {keywords.map(keyword => (
         <Link
           key={keyword}
-          className="mr-1 inline-flex"
+          className={`${
+            size === BadgeSize.small ? 'mr-1' : 'mr-2'
+          } inline-flex`}
           to={`/recipes?q=${ENCODED_HASHTAG}${keyword}`}
           onClick={() => onChangeQuery(`#${keyword}`)}
         >
