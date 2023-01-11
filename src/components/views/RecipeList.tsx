@@ -61,18 +61,13 @@ const RecipeList = () => {
       onScroll={v => scroll.onScroll(v)}
     >
       <Container className="bg-white ">
-        <div className="relative z-10 pt-24">
+        <div className="relative z-10 pt-16">
           <div ref={ref} />
           {keywordsNotUsed.length > 0 && (
-            <>
-              <span className="bg-white ltr:pr-2 rtl:pl-2 text-sm text-gray-500">
-                {t('Categories')}
-              </span>
-              <KeywordList keywords={keywordsNotUsed} />
-            </>
+            <KeywordList className="text-center" keywords={keywordsNotUsed} />
           )}
         </div>
-        <div className="flex-1 relative z-10 pt-10">
+        <div className="flex-1 relative z-10 pt-16">
           {searchedRecipes.length > 0 && query && (
             <RecipeListSection
               title={t('_Results')}

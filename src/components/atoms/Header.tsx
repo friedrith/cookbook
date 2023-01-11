@@ -10,7 +10,7 @@ const Header = ({ children, className }: Props) => {
   return (
     <Container
       className={classNames(
-        'flex items-center h-16 lg:h-20 justify-between',
+        'flex items-center h-16 lg:h-16 justify-between',
         className
       )}
     >
