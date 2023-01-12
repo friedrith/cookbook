@@ -12,16 +12,7 @@ type Props = {
   size?: BadgeSize
 }
 
-const colors = [
-  'gray',
-  'red',
-  'yellow',
-  'green',
-  'blue',
-  'indigo',
-  'purple',
-  'pink',
-]
+const colors = ['gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'pink']
 
 const sum = (...args: number[]): number =>
   args.length > 0 ? args[0] + sum(...args.slice(1)) : 0

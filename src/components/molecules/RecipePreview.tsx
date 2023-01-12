@@ -32,7 +32,7 @@ const RecipePreview = ({ recipe }: Props) => {
           </div>
         </div>
       </div>
-      <div className="mt-1 md:mt-2 flex items-center justify-between text-base font-medium text-gray-900 space-x-8">
+      <div className="mt-1 md:mt-2 flex items-center justify-between text-sm md:text-base font-medium text-gray-900 space-x-8">
         <h3 className="break-words line-clamp-3 text-ellipsis">
           <span aria-hidden="true" className="absolute inset-0" />
           {recipe.name}

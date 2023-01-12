@@ -147,7 +147,6 @@ const RecipeListHeader = ({
                         type="text"
                         ref={inputRef}
                         onChange={event => onSearchChange(event.target.value)}
-                        autoComplete="off"
                         value={searchValue}
                         aria-label={t('_Search in recipes')}
                       />
