@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import SlidePage from 'components/templates/SlidePage'
 import Step from 'models/Step'
 import Ingredient from 'models/Ingredient'
-import IngredientBadge from 'components/organisms/IngredientBadge'
+import IngredientBadge from 'features/ingredients/components/IngredientBadge'
 
 type Props = {
   step: Step

@@ -5,43 +5,32 @@ export enum BadgeSize {
   large,
 }
 
-type Props = {
+export type Props = {
   className?: string
-  children: string
-  color?: string
+  children?: React.ReactNode | string
   size?: BadgeSize
-}
-
-const colors = ['gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'pink']
-
-const sum = (...args: number[]): number =>
-  args.length > 0 ? args[0] + sum(...args.slice(1)) : 0
-
-const findColor = (children: string) => {
-  const colorIndex =
-    sum(...children.split(' ').map(l => l.toUpperCase().charCodeAt(0))) %
-    colors.length
-
-  return colors[colorIndex]
+  onClick?: () => void
 }
 
 const Badge = ({
   className = '',
   children,
-  color,
   size = BadgeSize.small,
+  onClick = () => {},
 }: Props) => {
-  const foundColor = color || findColor(children)
-
   return (
-    <span
+    <div
+      role="link"
+      onKeyDown={() => {}}
+      onClick={onClick}
+      tabIndex={0}
       className={classNames(
-        `inline-flex items-center px-2 py-0.5 rounded font-medium bg-${foundColor}-100 text-${foundColor}-800 ${className} -events-auto`,
+        `flex flex-initial items-center px-2 py-0.5 rounded font-medium ${className} -events-auto`,
         size === BadgeSize.small ? `text-xs` : `text-sm md:text-xs`
       )}
     >
       {children}
-    </span>
+    </div>
   )
 }
 

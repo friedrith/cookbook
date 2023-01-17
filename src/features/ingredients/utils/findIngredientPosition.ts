@@ -1,6 +1,6 @@
 import Ingredient from 'models/Ingredient'
 
-import excludingWords from './excludingWords.en'
+const excludingWords = ['yours', 'your']
 
 const cleanWord = (word: string) =>
   word

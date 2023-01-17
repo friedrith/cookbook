@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next'
 
 import Button from 'components/atoms/Button'
 import Recipe from 'models/Recipe'
-import { findDurations } from 'utils/parser/parserStep'
+import findDurations from 'features/timers/utils/findDurations'
 import Step from 'models/Step'
-import renderDuration from 'utils/render/renderDuration'
+import { renderDuration } from 'features/timers/utils/renderDuration'
 
 type Props = {
   recipe: Recipe

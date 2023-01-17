@@ -7,6 +7,7 @@ import settings, { settingsInitialState } from './settings.slice'
 import officialWebsites, {
   officialWebsitesInitialState,
 } from './officialWebsites'
+import timersSlice from 'features/timers/timers.slice'
 import { persistState, loadState } from 'utils/services/localStorage'
 
 export const reducer = {
@@ -14,6 +15,7 @@ export const reducer = {
   auth,
   settings,
   officialWebsites,
+  timers: timersSlice.reducer,
 }
 
 const initialState = {
@@ -55,3 +57,4 @@ export default store
 export * from './recipes.slice'
 export * from './auth.slice'
 export * from './settings.slice'
+export * from 'features/timers/timers.slice'

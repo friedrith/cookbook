@@ -1,6 +1,6 @@
 import React from 'react'
 
-import KeywordList from 'components/organisms/KeywordList'
+import KeywordList from 'features/keywords/components/KeywordList'
 
 type Props = {
   recipeName: string

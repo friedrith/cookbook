@@ -17,7 +17,7 @@ import useFuse from 'hooks/useFuse'
 import { sortByUpdatedAt } from 'models/Recipe'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import rememberScroll from 'utils/rememberScroll'
-import KeywordList from 'components/organisms/KeywordList'
+import KeywordList from 'features/keywords/components/KeywordList'
 import { BadgeSize } from 'components/atoms/Badge'
 
 const scroll = rememberScroll()

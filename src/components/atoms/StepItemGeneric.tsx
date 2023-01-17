@@ -6,7 +6,10 @@ import { replaceUrlsByLinks } from 'utils/parser/parserStep'
 import { useAppSelector } from 'hooks/redux'
 import { getTemperature } from 'store'
 import { replaceTemperature } from 'utils/parser/temperatures'
-import IngredientBadge from 'components/organisms/IngredientBadge'
+import IngredientBadge from 'features/ingredients/components/IngredientBadge'
+import findDurations from 'features/timers/utils/findDurations'
+import DurationBadge from 'features/timers/components/DurationBadge'
+import { enabled } from 'utils/services/features'
 
 type PropsGeneric = {
   className?: string
@@ -44,6 +47,11 @@ const StepItemGeneric = ({
     [description, temperature]
   )
 
+  const durations = useMemo(
+    () => (typeof description === 'string' ? findDurations(description) : []),
+    [description]
+  )
+
   return (
     <li className={`relative ${className}`}>
       {!isLastOne ? (
@@ -76,7 +84,13 @@ const StepItemGeneric = ({
               {description}
             </div>
           )}
-          <div className="ltr:text-left rtl:text-right">
+          <div
+            className="flex flex-row flex-wrap"
+            onClick={event => event.stopPropagation()}
+            onKeyDown={() => {}}
+            role="link"
+            tabIndex={0}
+          >
             {ingredients.map((ingredient, index) => (
               <IngredientBadge
                 className="mr-1 mb-1"
@@ -84,6 +98,14 @@ const StepItemGeneric = ({
                 ingredient={ingredient}
               />
             ))}
+            {enabled('timer') &&
+              durations.map(duration => (
+                <DurationBadge
+                  key={duration}
+                  duration={duration}
+                  className="mr-1 mb-1"
+                />
+              ))}
           </div>
         </div>
       </button>

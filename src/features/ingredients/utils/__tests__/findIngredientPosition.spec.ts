@@ -1,4 +1,4 @@
-import matchIngredient from '../matchIngredient'
+import findIngredientPosition from '../findIngredientPosition'
 
 const anIngredient = (name: string) => ({
   name,
@@ -13,14 +13,14 @@ describe('matchingIngredient', () => {
     const ingredient = anIngredient('bar')
     const description = 'foo bar'
 
-    expect(matchIngredient(ingredient, description)).toEqual(4)
+    expect(findIngredientPosition(ingredient, description)).toEqual(4)
   })
 
   it('should return true when the description includes exactly the ingredient with case insensitivity', () => {
     const ingredient = anIngredient('Bar')
     const description = 'foo bar'
 
-    expect(matchIngredient(ingredient, description)).toEqual(4)
+    expect(findIngredientPosition(ingredient, description)).toEqual(4)
   })
 
   it('should return true when the description includes a word of the ingredient', () => {
@@ -28,14 +28,14 @@ describe('matchingIngredient', () => {
     const description =
       'Put the sweet potatoes into a large bowl and add the oil'
 
-    expect(matchIngredient(ingredient, description)).toEqual(11)
+    expect(findIngredientPosition(ingredient, description)).toEqual(11)
   })
 
   it('should return false when the description includes a too short word of the ingredient', () => {
     const ingredient = anIngredient('sugar of')
     const description = 'A spoon of water'
 
-    expect(matchIngredient(ingredient, description)).toEqual(-1)
+    expect(findIngredientPosition(ingredient, description)).toEqual(-1)
   })
 
   it('should return true when the description includes a word of the ingredient with case insensitivity', () => {
@@ -43,7 +43,7 @@ describe('matchingIngredient', () => {
     const description =
       'Put the sweet potatoes into a large bowl and add the oil'
 
-    expect(matchIngredient(ingredient, description)).toEqual(11)
+    expect(findIngredientPosition(ingredient, description)).toEqual(11)
   })
 
   it('should return true when ingredients finish with ,', () => {
@@ -52,7 +52,7 @@ describe('matchingIngredient', () => {
     const description =
       'In a large bowl mix water, milk, oil, sugar, salt and instant yeast.'
 
-    expect(matchIngredient(ingredient, description)).toEqual(7)
+    expect(findIngredientPosition(ingredient, description)).toEqual(7)
   })
 
   it("should return true when ingredients starts with '", () => {
@@ -60,7 +60,7 @@ describe('matchingIngredient', () => {
 
     const description = "Un grand bol de l'eau"
 
-    expect(matchIngredient(ingredient, description)).toEqual(5)
+    expect(findIngredientPosition(ingredient, description)).toEqual(5)
   })
 
   it('should return true when ingredients finish with s', () => {
@@ -68,6 +68,6 @@ describe('matchingIngredient', () => {
 
     const description = 'Mix sugars'
 
-    expect(matchIngredient(ingredient, description)).toEqual(1)
+    expect(findIngredientPosition(ingredient, description)).toEqual(1)
   })
 })

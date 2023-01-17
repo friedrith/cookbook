@@ -22,8 +22,9 @@ import useCurrentRecipe from 'hooks/useCurrentRecipe'
 import ShareIcon from 'assets/ShareIcon'
 import { canShare, shareText } from 'utils/share'
 import renderRecipe from 'utils/render/renderRecipe'
-import KeywordList from 'components/organisms/KeywordList'
+import KeywordList from 'features/keywords/components/KeywordList'
 import { BadgeSize } from 'components/atoms/Badge'
+import TimerCenter from 'features/timers/components/TimersCenter'
 
 const RecipeView = () => {
   const [recipe, formattedRecipe] = useCurrentRecipe()
@@ -128,6 +129,7 @@ const RecipeView = () => {
         open={sharePopup.isOpen}
         onClose={sharePopup.close}
       />
+      <TimerCenter />
     </Page>
   )
 }

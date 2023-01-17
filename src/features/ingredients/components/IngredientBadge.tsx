@@ -10,7 +10,7 @@ type Props = {
 }
 
 const IngredientBadge = ({ className, ingredient }: Props) => (
-  <Badge color="indigo" className={className}>
+  <Badge className={`bg-indigo-100 text-indigo-800 ${className}`}>
     {`${renderMeasure(ingredient.measure)} ${shortenIngredientName(
       ingredient
     )}`}

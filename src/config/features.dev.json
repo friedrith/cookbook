@@ -1,4 +1,5 @@
 {
   "farsi": true,
-  "focus": true
+  "focus": true,
+  "timer": false
 }

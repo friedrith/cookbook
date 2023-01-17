@@ -1,4 +1,4 @@
-import matchIngredient from 'utils/parser/matchIngredient'
+import findIngredientPosition from 'features/ingredients/utils/findIngredientPosition'
 import Ingredient, { areEqual } from 'models/Ingredient'
 import shortenIngredientName from 'utils/parser/shortenIngredientName'
 import { FormattedRecipe } from 'models/Recipe'
@@ -38,7 +38,7 @@ export const getStepsWithIngredients = (recipe: FormattedRecipe) =>
       const ingredients = recipe.ingredients
         .map(i => ({
           ingredient: i,
-          index: matchIngredient(i, step.description),
+          index: findIngredientPosition(i, step.description),
         }))
         .filter(({ index }) => index >= 0)
         .sort(byIndex)
@@ -53,5 +53,3 @@ export const getStepsWithIngredients = (recipe: FormattedRecipe) =>
 
     { steps: [], ingredientsAlreadyUsed: [] }
   )?.steps
-
-export * from './findDurations'

@@ -61,4 +61,18 @@ describe('replaceTemperature', () => {
       description
     )
   })
+
+  it('should replace thermostat to celsius', () => {
+    const description = 'Preheat the oven at th.7'
+    expect(replaceTemperature(description, Temperature.Celsius)).toEqual(
+      'Preheat the oven at 210°C'
+    )
+  })
+
+  it('should replace thermostat to farenheit', () => {
+    const description = 'Preheat the oven at th.7'
+    expect(replaceTemperature(description, Temperature.Farenheit)).toEqual(
+      'Preheat the oven at 410°F'
+    )
+  })
 })
