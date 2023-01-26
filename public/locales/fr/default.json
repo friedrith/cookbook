@@ -63,6 +63,7 @@
   "_Most Recents": "Les plus récents",
   "_All": "Toutes les recettes",
   "_Results": "Resultats",
+  "_Recent Searches": "Recherches Récentes",
   "_Lose my recipe": "Partir, je perdrai ma recette",
   "_I stay": "Je reste",
   "_If you leave": "Si vous partez, vous perdrerez votre recette actuelle.",
@@ -95,6 +96,7 @@
   "_Edit Recipe": "Éditer la recette",
   "_Open Menu": "Ouvrir menu",
   "_Search in recipes": "Rechercher dans les recettes",
+  "_Search": "Rechercher",
   "_Sign out": "Se déconnecter",
   "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "editor": {
@@ -177,5 +179,6 @@
   "_Import in CookBook": "Importer dans CookBook",
   "_Log in and import it": "Se connecter et importer",
   "_Import this recipe in CookBook": "Importer cette recette avec le lien suivant : {{link}}",
-  "Categories": "Categories:"
+  "Categories": "Categories:",
+  "_Save new recipe": "Sauvegarder"
 }

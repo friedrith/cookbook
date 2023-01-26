@@ -75,6 +75,8 @@ const RecipeNew = () => {
               blur={disabled}
               disabled={disabled}
               title="Save new recipe"
+              label={t('_Save new recipe')}
+              rightIcon
             />
           </>
         )}

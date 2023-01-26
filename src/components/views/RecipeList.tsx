@@ -12,13 +12,14 @@ import RecipeListHeader from 'components/organisms/RecipeListHeader'
 import Container from 'components/atoms/Container'
 import Page from 'components/templates/Page'
 import EmptyMessage from 'components/atoms/EmptyMessage'
-import RecipeListSection from 'components/organisms/RecipeListSection'
-import useFuse from 'hooks/useFuse'
-import { sortByUpdatedAt } from 'models/Recipe'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import rememberScroll from 'utils/rememberScroll'
 import KeywordList from 'features/keywords/components/KeywordList'
 import { BadgeSize } from 'components/atoms/Badge'
+import RecipeListAll from 'features/recipes/components/RecipeListAll'
+import RecipeListSearchResults from 'features/recipes/components/RecipeListSearchResults'
+import NoRecipeList from 'features/recipes/components/NoRecipeList'
+import RecipeListRecentSearches from 'features/recipes/components/RecipeListRecentSearches'
 
 const scroll = rememberScroll()
 
@@ -29,14 +30,14 @@ const RecipeList = () => {
 
   const ref = useRef<HTMLDivElement | null>(null)
 
-  const [query, setQuery] = useState(searchParams.get('q') || '')
+  const [query, setQuery] = useState(searchParams.get('q') || undefined)
 
-  const searchedRecipes = useFuse(recipes, query)
+  const isSearchActivated = searchParams.get('q') !== null
 
-  const onQueryChange = (newQuery: string) => {
+  const onQueryChange = (newQuery: string | undefined) => {
     setQuery(newQuery)
 
-    if (newQuery) {
+    if (newQuery !== undefined) {
       setSearchParams({ q: newQuery })
     } else {
       setSearchParams({})
@@ -45,15 +46,10 @@ const RecipeList = () => {
 
   const { t } = useTranslation()
 
-  const mostRecentRecipes = useMemo(
-    () => recipes.sort(sortByUpdatedAt).slice(0, 4),
-    [recipes]
-  )
-
   const keywords = useAppSelector(getAllKeywordSortedByFrequency)
 
   const keywordsNotUsed = useMemo(
-    () => keywords.filter(k => !query.includes(k)),
+    () => keywords.filter(k => !(query || '').includes(k)),
     [keywords, query]
   )
 
@@ -76,46 +72,28 @@ const RecipeList = () => {
           )}
         </div>
         <div className="flex-1 relative z-10 pt-16">
-          {searchedRecipes.length > 0 && query && (
-            <RecipeListSection
-              title={t('_Results')}
-              recipes={searchedRecipes}
-            />
+          {recipes.length > 0 && query && (
+            <RecipeListSearchResults recipes={recipes} query={query} />
           )}
-          {searchedRecipes.length > 0 && !query && (
-            <>
-              {searchedRecipes.length > 8 && (
-                <RecipeListSection
-                  title={t('_Most Recents')}
-                  recipes={mostRecentRecipes}
-                />
-              )}
-              <RecipeListSection
-                title={searchedRecipes.length > 8 ? t('_All') : ''}
-                recipes={searchedRecipes}
+          {recipes.length > 0 && !query && !isSearchActivated && (
+            <RecipeListAll recipes={recipes} />
+          )}
+          {recipes.length > 0 && !query && isSearchActivated && (
+            <RecipeListRecentSearches recipes={recipes} />
+          )}
+
+          {recipes.length === 0 && !areFetched && (
+            <NoRecipeList>
+              <LoadingSpinner />
+            </NoRecipeList>
+          )}
+          {recipes.length === 0 && areFetched && (
+            <NoRecipeList>
+              <EmptyMessage
+                title={t('_No Recipes created')}
+                message={t('_Get started by creating a new recipe')}
               />
-            </>
-          )}
-          {searchedRecipes.length === 0 && (
-            <div className="flex justify-center p-5">
-              <div className="text-base text-gray-500 text-center">
-                {areFetched &&
-                  searchedRecipes.length === 0 &&
-                  recipes.length > 0 && (
-                    <EmptyMessage
-                      title={t('_No Recipes found')}
-                      message={t('_Try a different search.')}
-                    />
-                  )}
-                {areFetched && recipes.length === 0 && (
-                  <EmptyMessage
-                    title={t('_No Recipes created')}
-                    message={t('_Get started by creating a new recipe')}
-                  />
-                )}
-                {!areFetched && <LoadingSpinner />}
-              </div>
-            </div>
+            </NoRecipeList>
           )}
         </div>
       </Container>
@@ -124,6 +102,8 @@ const RecipeList = () => {
         onSearchChange={onQueryChange}
         searchValue={query}
         hideSearch={recipes.length === 0}
+        searchActive={isSearchActivated}
+        onFocusChange={() => {}}
       />
     </Page>
   )

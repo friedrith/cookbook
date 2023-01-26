@@ -17,12 +17,16 @@ import Modal from 'components/atoms/Modal'
 import usePopup from 'hooks/usePopup'
 import ImportHelpPopup from 'components/organisms/ImportHelpPopup'
 import { isMobile } from 'utils/platforms/mobile'
+import classNames from 'classnames'
+import useTimeout from 'hooks/useTimeout'
 
 type Props = {
   restRef: React.RefObject<HTMLDivElement>
-  onSearchChange: (newQuery: string) => void
-  searchValue: string
+  onSearchChange: (newQuery: string | undefined) => void
+  searchValue: string | undefined
   hideSearch: boolean
+  searchActive: boolean
+  onFocusChange: (focus: boolean) => void
 }
 
 const RecipeListHeader = ({
@@ -30,12 +34,14 @@ const RecipeListHeader = ({
   restRef,
   searchValue,
   hideSearch,
+  searchActive,
+  onFocusChange,
 }: Props) => {
   const { t } = useTranslation()
 
   const [searchOnMobileIsVisible, showSearchOnMobile] = useState(false)
 
-  const inputRef = useRef<HTMLInputElement | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEventListener('keydown', (event: KeyboardEvent<HTMLImageElement>) => {
     if (
@@ -54,9 +60,9 @@ const RecipeListHeader = ({
     }
   }, [searchValue])
 
-  const [lastQuery, setLastQuery] = useState('')
+  const [lastQuery, setLastQuery] = useState<string | undefined>(undefined)
 
-  const inputMobileRef = useRef<HTMLInputElement | null>(null)
+  const inputMobileRef = useRef<HTMLInputElement>(null)
 
   const startSearchOnMobile = () => {
     showSearchOnMobile(true)
@@ -75,11 +81,13 @@ const RecipeListHeader = ({
     setLastQuery(searchValue)
 
     showSearchOnMobile(false)
-    onSearchChange('')
+    onSearchChange(undefined)
   }
 
   const newRecipePopup = usePopup()
   const importHelpPopup = usePopup()
+
+  const setTimeoutSafe = useTimeout()
 
   return (
     <>
@@ -108,8 +116,18 @@ const RecipeListHeader = ({
                       ref={inputMobileRef}
                       onChange={event => onSearchChange(event.target.value)}
                       autoComplete="off"
-                      value={searchValue}
+                      value={searchValue || ''}
                       aria-label={t('_Search in recipes')}
+                      onFocus={() => {
+                        onFocusChange(true)
+                        onSearchChange('')
+                      }}
+                      onBlur={() =>
+                        setTimeoutSafe(() => {
+                          onFocusChange(false)
+                          onSearchChange(undefined)
+                        }, 10)
+                      }
                     />
                   </div>
                 </div>
@@ -126,64 +144,89 @@ const RecipeListHeader = ({
             ) : (
               <>
                 <Logo />
-                <div className="flex-1 hidden lg:block items-center"></div>
-                {!hideSearch && (
-                  <div className="flex-1 hidden lg:block lg:max-w-xs">
-                    <label htmlFor="search" className="sr-only">
-                      {t('_Try banana bread')}
-                    </label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 ltr:left-0 ltr:pl-3 rtl:right-0 rtl:pr-3 flex items-center pointer-events-none">
-                        <MagnifyingGlassIcon
-                          className="h-5 w-5 text-gray-400"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <input
-                        id="search"
-                        name="search-recipes"
-                        className="block w-full ltr:pl-10 ltr:pr-3 rtl:pr-10 rtl:pl-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
-                        placeholder={t('_Try banana bread')}
-                        type="text"
-                        ref={inputRef}
-                        onChange={event => onSearchChange(event.target.value)}
-                        value={searchValue}
-                        aria-label={t('_Search in recipes')}
-                      />
-                      {searchValue ? (
-                        <button
-                          className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 items-center cursor-pointer"
-                          onClick={() => onSearchChange('')}
-                        >
-                          <XMarkIcon
-                            className="h-6 w-6 stroke-1 text-gray-400 rounded-full hover:text-gray-300 block"
-                            aria-hidden="true"
-                          />
-                        </button>
-                      ) : (
-                        <div className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 hidden lg:block">
-                          {/* eslint-disable-next-line i18next/no-literal-string */}
-                          <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 bg-white">
-                            ⌘K
-                          </kbd>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-
+                {/* <div className="flex-1 hidden lg:block items-center"></div> */}
                 <div className="flex-1" />
                 {!hideSearch && (
-                  <button
-                    className="mr-4 hidden md:block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                    onClick={startSearchOnMobile}
-                    aria-label={t('_Search in recipes')}
-                  >
-                    <MagnifyingGlassIcon
-                      className="h-8 w-8 stroke-1 "
-                      aria-hidden="true"
-                    />
-                  </button>
+                  <>
+                    <div
+                      className={classNames(
+                        'flex-1 hidden lg:block mr-4 transition-all',
+                        searchActive || searchValue
+                          ? 'lg:max-w-xs'
+                          : 'lg:max-w-[10rem]'
+                      )}
+                    >
+                      <label htmlFor="search" className="sr-only">
+                        {t('_Try banana bread')}
+                      </label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 ltr:left-0 ltr:pl-3 rtl:right-0 rtl:pr-3 flex items-center pointer-events-none">
+                          <MagnifyingGlassIcon
+                            className="h-5 w-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <input
+                          id="search"
+                          name="search-recipes"
+                          className="block w-full ltr:pl-10 ltr:pr-3 rtl:pr-10 rtl:pl-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                          placeholder={
+                            searchActive || searchValue
+                              ? t('_Search in recipes')
+                              : t('_Search')
+                          }
+                          type="text"
+                          ref={inputRef}
+                          onChange={event => onSearchChange(event.target.value)}
+                          value={searchValue || ''}
+                          aria-label={t('_Search in recipes')}
+                          onFocus={() => {
+                            onSearchChange('')
+                            onFocusChange(true)
+                          }}
+                          onBlur={() =>
+                            setTimeoutSafe(() => {
+                              onSearchChange(undefined)
+                              onFocusChange(false)
+                            }, 10)
+                          }
+                        />
+                        {searchActive || searchValue ? (
+                          <button
+                            className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 items-center cursor-pointer"
+                            onClick={() => {
+                              onSearchChange(undefined)
+                            }}
+                          >
+                            <XMarkIcon
+                              className="h-6 w-6 stroke-1 text-gray-400 rounded-full hover:text-gray-300 block"
+                              aria-hidden="true"
+                            />
+                          </button>
+                        ) : (
+                          <button
+                            className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 hidden lg:block"
+                            onClick={() => inputRef?.current?.focus()}
+                          >
+                            {/* eslint-disable-next-line i18next/no-literal-string */}
+                            <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 bg-white">
+                              ⌘K
+                            </kbd>
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                    <button
+                      className="mr-4 hidden md:block lg:hidden text-gray-400 rounded-full hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
+                      onClick={startSearchOnMobile}
+                      aria-label={t('_Search in recipes')}
+                    >
+                      <MagnifyingGlassIcon
+                        className="h-8 w-8 stroke-1 "
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </>
                 )}
                 <SelectMenu>
                   <NewRecipeForm onHelpRequest={importHelpPopup.open} />

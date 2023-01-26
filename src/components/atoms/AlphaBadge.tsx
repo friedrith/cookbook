@@ -8,7 +8,7 @@ type Props = {
   withoutTag?: boolean
 }
 
-const AlphaTag = ({ withoutIcon = false, withoutTag = true }: Props) => {
+const AlphaBadge = ({ withoutIcon = false, withoutTag = true }: Props) => {
   const { t } = useTranslation()
 
   const alphaPopup = usePopup()
@@ -32,4 +32,4 @@ const AlphaTag = ({ withoutIcon = false, withoutTag = true }: Props) => {
  * D70466
  */
 
-export default AlphaTag
+export default AlphaBadge

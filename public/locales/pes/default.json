@@ -67,6 +67,7 @@
   "_Most Recents": "Most Recents",
   "_All": "All",
   "_Results": "Results",
+  "_Recent Searches": "Recherches Récentes",
   "_Lose my recipe": "Leave, I am ok to lose my recipe",
   "_I stay": "I stay",
   "_If you leave": "If you leave, you will lose the current recipe.",
@@ -98,6 +99,7 @@
   "_Back to recipes": "Go back to recipes",
   "_Back to recipe": "Go back to recipe",
   "_Search in recipes": "Search in recipes",
+  "_Search": "Search",
   "faq": {
     "shortTitle": "FAQ",
     "title": "Frequently Asked Questions"
@@ -177,5 +179,6 @@
   "proposal": "proposal",
   " or contact us at ": " or contact us at ",
   "_To view this recipe, you need to import it in CookBook.": "To view this recipe, you need to import it in CookBook.",
-  "Categories": "Categories:"
+  "Categories": "Categories:",
+  "_Save new recipe": "Save"
 }

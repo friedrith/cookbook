@@ -15,6 +15,7 @@ export interface RecipesState {
   areFetched: boolean
   metadataById: Record<string, Metadata>
   trashQueue: string[]
+  recentSearches: string[]
 }
 
 export const recipesInitialState: RecipesState = {
@@ -22,6 +23,7 @@ export const recipesInitialState: RecipesState = {
   areFetched: false,
   metadataById: {},
   trashQueue: [],
+  recentSearches: [],
 }
 
 export const fetchRecipes = createAsyncThunk<Recipe[]>(
@@ -126,6 +128,13 @@ export const recipesSlice = createSlice({
         state.metadataById[recipeId].servingCount -= 1
       }
     },
+    addRecentSearch: (state, action) => {
+      const MAX_RECENT_SEARCHES = 10
+      state.recentSearches = [action.payload.id, ...state.recentSearches].slice(
+        0,
+        MAX_RECENT_SEARCHES
+      )
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchRecipes.fulfilled, (state, action) => {
@@ -194,6 +203,7 @@ export const {
   setRecipeProgress,
   incrementServingCount,
   decrementServingCount,
+  addRecentSearch,
 } = recipesSlice.actions
 
 export const areRecipesFetched = (state: RootState) => state.recipes.areFetched
@@ -253,6 +263,12 @@ export const getAllKeywordSortedByFrequency = createSelector(
       .map(k => k[0])
       .slice(0, 7)
   }
+)
+
+export const getRecentSearches = createSelector(
+  (state: RootState) => state.recipes.byId,
+  (state: RootState) => state.recipes.recentSearches,
+  (byId, recentSearches) => recentSearches.map(id => byId[id])
 )
 
 // export const getIngredientList = createSelector(

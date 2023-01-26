@@ -4,7 +4,7 @@ import { BoltIcon } from '@heroicons/react/24/solid'
 
 import { FormattedRecipe } from 'models/Recipe'
 import Step from 'models/Step'
-import StepItem from 'components/molecules/StepItem'
+import StepItem from 'features/steps/components/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'
 import { getStepsWithIngredients } from 'utils/parser/parserStep'
 import Toggle from 'components/atoms/Toggle'

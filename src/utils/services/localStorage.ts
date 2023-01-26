@@ -3,7 +3,7 @@ import { SettingsState } from 'store/settings.slice'
 
 export type PersistedState = {
   settings: SettingsState
-  recipes: { byId: { [id: string]: Recipe } }
+  recipes: { byId: { [id: string]: Recipe }; recentSearches: string[] }
 }
 
 export const loadState = () => {

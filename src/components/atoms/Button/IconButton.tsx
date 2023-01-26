@@ -19,6 +19,7 @@ type Props = {
   label?: string
   basic?: boolean
   title?: string
+  rightIcon?: boolean
 }
 
 const IconButton = ({
@@ -32,6 +33,7 @@ const IconButton = ({
   label = '',
   basic = false,
   title = '',
+  rightIcon = false,
 }: Props) => {
   const { isMaximized } = useContext(TopBarContext)
 
@@ -47,8 +49,11 @@ const IconButton = ({
     <>
       {url ? (
         <Link className={classes} to={url} onClick={onClick} aria-label={title}>
+          {label && rightIcon && (
+            <span className="mr-0.5 hidden sm:inline text-normal">{label}</span>
+          )}
           {Icon && <Icon className="h-7 w-7" aria-hidden="true" />}
-          {label && (
+          {label && !rightIcon && (
             <span className="ml-0.5 hidden sm:inline text-normal">{label}</span>
           )}
           {children}
@@ -60,8 +65,11 @@ const IconButton = ({
           disabled={disabled}
           aria-label={title}
         >
+          {label && rightIcon && (
+            <span className="mr-0.5 hidden sm:inline text-normal">{label}</span>
+          )}
           {Icon && <Icon className="h-7 w-7" aria-hidden="true" />}
-          {label && (
+          {label && !rightIcon && (
             <span className="ml-0.5 hidden sm:inline text-normal">{label}</span>
           )}
           {children}
