@@ -1,20 +1,17 @@
 import classNames from 'classnames'
 
-import useFullWidth from 'hooks/useFullWidth'
-
 type Props = {
   className?: string
   children?: React.ReactNode
+  fullWidth?: boolean
 }
 
-const Container = ({ className, ...props }: Props) => {
-  const isFullWidth = useFullWidth()
-
+const Container = ({ className, fullWidth, ...props }: Props) => {
   return (
     <div
       className={classNames(
-        'px-4 lg:px-10',
-        { 'max-w-screen-xl m-auto': !isFullWidth },
+        'px-4 lg:px-16',
+        { 'max-w-screen-xl m-auto': !fullWidth },
         className
       )}
       {...props}

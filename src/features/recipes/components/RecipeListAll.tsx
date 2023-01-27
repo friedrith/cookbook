@@ -15,7 +15,7 @@ const RecipeListAll = ({ recipes }: Props) => {
   const { t } = useTranslation()
 
   const mostRecentRecipes = useMemo(
-    () => recipes.sort(sortByUpdatedAt).slice(0, 4),
+    () => recipes.sort(sortByUpdatedAt),
     [recipes]
   )
 
@@ -27,6 +27,7 @@ const RecipeListAll = ({ recipes }: Props) => {
         <RecipeListSection
           title={t('_Most Recents')}
           recipes={mostRecentRecipes}
+          className="max-h-[16rem] overflow-hidden"
         />
       )}
       <RecipeListSection

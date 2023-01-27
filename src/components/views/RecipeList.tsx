@@ -59,7 +59,7 @@ const RecipeList = () => {
       scroll={scroll.scroll}
       onScroll={v => scroll.onScroll(v)}
     >
-      <Container className="bg-white ">
+      <Container className="bg-white" fullWidth>
         <div className="relative z-10 pt-16">
           <div ref={ref} />
           {keywordsNotUsed.length > 0 && (

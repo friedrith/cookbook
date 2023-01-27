@@ -13,6 +13,7 @@ type Props = {
   offset?: number
   className?: string
   disableMaximize?: boolean
+  fullWidth?: boolean
 }
 
 const FixedHeader = ({
@@ -22,6 +23,7 @@ const FixedHeader = ({
   offset = 90,
   className = '',
   disableMaximize = false,
+  fullWidth,
 }: Props) => {
   const [isMaximized, setMaximized] = useState(false)
 
@@ -50,7 +52,7 @@ const FixedHeader = ({
         isMaximized ? 'bg-white shadow' : ''
       )}
     >
-      <Header>
+      <Header fullWidth={fullWidth}>
         <>
           <TopBarContext.Provider value={{ isMaximized }}>
             {children ? children(isMaximized) : null}

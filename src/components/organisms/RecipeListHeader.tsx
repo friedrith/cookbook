@@ -91,7 +91,7 @@ const RecipeListHeader = ({
 
   return (
     <>
-      <FixedHeader restRef={restRef} offset={0} className="bg-white">
+      <FixedHeader restRef={restRef} offset={0} className="bg-white" fullWidth>
         {isMaximized => (
           <div className="flex-auto flex items-center pointer-events-auto">
             {searchOnMobileIsVisible ? (
