@@ -9,7 +9,7 @@ type Props = {
 const Box = forwardRef(
   (
     { className, children, style = {} }: Props,
-    ref: ForwardedRef<HTMLDivElement>
+    ref: ForwardedRef<HTMLDivElement>,
   ) => (
     <div
       className={`bg-white shadow rounded-md ${className}`}
@@ -18,7 +18,7 @@ const Box = forwardRef(
     >
       {children}
     </div>
-  )
+  ),
 )
 
 export default Box

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 type setTimeoutType = (
   callback: () => void,
-  timeout: number
+  timeout: number,
 ) => ReturnType<typeof setTimeout>
 
 const useTimeout = (): setTimeoutType => {

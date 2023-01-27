@@ -7,7 +7,7 @@ import renderSharingLink from 'utils/render/renderSharingLink'
 
 const renderRecipe = async (
   recipe: Recipe,
-  t: (k: string, options?: any) => string
+  t: (k: string, options?: any) => string,
 ) => {
   const linkId = await linksApi.create(recipe.id)
 

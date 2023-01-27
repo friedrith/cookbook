@@ -10,7 +10,7 @@ export const getCleanText = (e: HTMLElement) => {
 
       // Replace unicode codes with characters
       .replace(/\\u([\d\w]{4})/gi, (match, grp) =>
-        String.fromCharCode(parseInt(grp, 16))
+        String.fromCharCode(parseInt(grp, 16)),
       )
       // Remove all tabs, and linebreaks
       .replace(/[\n\r\t]/g, '')
@@ -69,13 +69,13 @@ export const findRecipe = (root: any) =>
     .flatMap((recipe: any) =>
       schemaOrgParser.hasType(recipe, 'Recipe')
         ? recipe
-        : schemaOrgParser.searchInGraph(recipe)
+        : schemaOrgParser.searchInGraph(recipe),
     )
     .find((recipe: any) => schemaOrgParser.hasType(recipe, 'Recipe'))
 
 export const parseRecipe = async (
   dom: string,
-  callback = (recipe: any) => ({})
+  callback = (recipe: any) => ({}),
 ) => {
   const root = parse(dom)
 

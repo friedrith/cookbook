@@ -28,7 +28,7 @@ const FocusActions = ({
 
   const durations = useMemo(
     () => (step ? findDurations(step.description) : []),
-    [step]
+    [step],
   )
 
   return (

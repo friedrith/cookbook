@@ -41,15 +41,15 @@ const StepItemGeneric = ({
       typeof description === 'string'
         ? replaceTemperature(
             replaceUrlsByLinks(unescape(description), 'underline'),
-            temperature
+            temperature,
           )
         : '',
-    [description, temperature]
+    [description, temperature],
   )
 
   const durations = useMemo(
     () => (typeof description === 'string' ? findDurations(description) : []),
-    [description]
+    [description],
   )
 
   return (

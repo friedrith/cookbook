@@ -10,7 +10,7 @@ export const parseStep = (step: string, ingredients: Ingredient[]) => ({
     i.name
       .split(' ')
       .filter(w => w.length > 3)
-      .some(w => step.includes(w))
+      .some(w => step.includes(w)),
   ),
 })
 

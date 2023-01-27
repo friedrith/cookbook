@@ -143,7 +143,7 @@ export async function patch(req: Request, res: Response) {
       },
       errorObject => {
         res.status(500).send({ error: errorObject.name })
-      }
+      },
     )
   } catch (err) {
     handleError(res, err)
@@ -167,7 +167,7 @@ export async function all(req: Request, res: Response) {
       },
       errorObject => {
         res.status(500).send({ error: errorObject.name })
-      }
+      },
     )
   } catch (err) {
     handleError(res, err)
@@ -188,7 +188,7 @@ export async function getOneByLink(req: Request, res: Response) {
     const recipe = await db.findOne(
       COLLECTION_PATH,
       link.ownerId,
-      link.recipeId
+      link.recipeId,
     )
 
     res.status(200).send({

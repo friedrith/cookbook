@@ -44,6 +44,6 @@ const generateFixture = async (url: string) => {
     'results',
     results
       .filter(r => r.status !== 'fulfilled')
-      .map(r => ('reason' in r ? r.reason : ''))
+      .map(r => ('reason' in r ? r.reason : '')),
   )
 })()

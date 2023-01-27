@@ -29,7 +29,7 @@ const TextArea = ({
         {
           'before:bg-primary-500': isFocused,
           'before:bg-gray-200': !isFocused,
-        }
+        },
       )}
     >
       <TextareaAutosize

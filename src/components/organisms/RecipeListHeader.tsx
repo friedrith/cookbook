@@ -12,7 +12,7 @@ import Logo from 'components/atoms/Logo'
 import FixedHeader from 'components/atoms/FixedHeader'
 import UserMenu from 'components/organisms/UserMenu'
 import SelectMenu from 'components/molecules/SelectMenu'
-import NewRecipeForm from 'components/organisms/NewRecipeForm'
+import NewRecipeForm from 'features/recipes/components/NewRecipeForm'
 import Modal from 'components/atoms/Modal'
 import usePopup from 'hooks/usePopup'
 import ImportHelpPopup from 'components/organisms/ImportHelpPopup'
@@ -153,7 +153,7 @@ const RecipeListHeader = ({
                         'flex-1 hidden lg:block mr-4 transition-all',
                         searchActive || searchValue
                           ? 'lg:max-w-xs'
-                          : 'lg:max-w-[10rem]'
+                          : 'lg:max-w-[10rem]',
                       )}
                     >
                       <label htmlFor="search" className="sr-only">

@@ -5,7 +5,7 @@ import { isRunningInStandalonePWA } from 'utils/platforms/pwa'
 
 const useIsStandalonePWA = () => {
   const [isStandalonePWA, setStandalonePWA] = useState(
-    isRunningInStandalonePWA()
+    isRunningInStandalonePWA(),
   )
 
   useEventListener('resize', () => {

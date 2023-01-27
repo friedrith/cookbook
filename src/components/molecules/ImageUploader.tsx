@@ -31,7 +31,7 @@ const ImageUploader = forwardRef(
       authorizedTypes = defaultAuthorizedTypes,
       children,
     }: Props,
-    ref: ForwardedRef<HTMLInputElement>
+    ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const [isDragging, setDragging] = useState(false)
     const [areFilesAuthorized, setFilesAuthorized] = useState(false)
@@ -43,7 +43,7 @@ const ImageUploader = forwardRef(
     }, [isUploading])
 
     const onUploadImage = async (
-      event: React.ChangeEvent<HTMLInputElement>
+      event: React.ChangeEvent<HTMLInputElement>,
     ) => {
       if (event.currentTarget.files && event.currentTarget.files?.length > 0) {
         onChange(event.currentTarget.files[0])
@@ -92,7 +92,7 @@ const ImageUploader = forwardRef(
         <div
           className={classNames(
             'absolute inset-0 text-white flex items-center justify-center transition-colors',
-            { 'bg-[#000000cc]': isUploading || isDragging }
+            { 'bg-[#000000cc]': isUploading || isDragging },
           )}
           onDrop={onDrop}
           onDragEnter={onDragEnter}
@@ -125,7 +125,7 @@ const ImageUploader = forwardRef(
         />
       </>
     )
-  }
+  },
 )
 
 export default ImageUploader

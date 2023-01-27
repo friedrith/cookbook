@@ -38,7 +38,7 @@ type Tag = {
 const RecipeEditor = forwardRef(
   (
     { recipe, onChange, children }: Props,
-    ref: ForwardedRef<HTMLDivElement>
+    ref: ForwardedRef<HTMLDivElement>,
   ) => {
     const [isUploading, setIsUploading] = useState(false)
 
@@ -74,7 +74,7 @@ const RecipeEditor = forwardRef(
     const handleDrag = (
       tag: Tag,
       currentPosition: number,
-      newPosition: number
+      newPosition: number,
     ) => {
       const newKeywords = [...keywords]
       newKeywords.splice(currentPosition, 1)
@@ -196,7 +196,7 @@ const RecipeEditor = forwardRef(
         </Container>
       </>
     )
-  }
+  },
 )
 
 export default RecipeEditor

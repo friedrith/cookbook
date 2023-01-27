@@ -10,7 +10,7 @@ export default Ingredient
 export const buildIngredient = (
   name: string,
   value: string | number,
-  unit: string
+  unit: string,
 ): Ingredient => ({
   name,
   measure: {

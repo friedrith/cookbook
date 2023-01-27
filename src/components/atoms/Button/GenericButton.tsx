@@ -28,11 +28,11 @@ const GenericButton = forwardRef(
       name,
       type = 'button',
     }: Props,
-    ref: ForwardedRef<any>
+    ref: ForwardedRef<any>,
   ) => {
     const allClassName = classNames(
       'inline-flex justify-center items-center px-3 py-2 border border-transparent text-base sm:text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2',
-      className
+      className,
     )
 
     if (to) {
@@ -57,7 +57,7 @@ const GenericButton = forwardRef(
         {children}
       </button>
     )
-  }
+  },
 )
 
 export default GenericButton

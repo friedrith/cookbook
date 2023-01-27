@@ -16,7 +16,7 @@ const RecipeListAll = ({ recipes }: Props) => {
 
   const mostRecentRecipes = useMemo(
     () => recipes.sort(sortByUpdatedAt),
-    [recipes]
+    [recipes],
   )
 
   const allRecipes = useMemo(() => recipes.sort(sortByName), [recipes])

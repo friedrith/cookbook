@@ -32,16 +32,16 @@ export const startTimer = createAsyncThunk<Timer, TimerCreatorPayload>(
         startedAt,
         duration,
         endAt: new Date(startedAt.getTime() + duration),
-      })
+      }),
     )
-  }
+  },
 )
 
 export const stopTimer = createAsyncThunk<null, string>(
   'timers/stop',
   async (timerId: string) => {
     return null
-  }
+  },
 )
 
 const timersSlice = createSlice({
@@ -77,10 +77,10 @@ export const getActiveTimer = createSelector(
     }
 
     return list[0]
-  }
+  },
 )
 
 export const getActiveTimers = createSelector(
   (state: RootState) => state.timers.list,
-  list => list
+  list => list,
 )

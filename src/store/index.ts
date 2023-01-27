@@ -52,7 +52,7 @@ store.subscribe(
         recentSearches: store.getState().recipes.recentSearches,
       },
     })
-  }, 1000)
+  }, 1000),
 )
 
 export type RootState = ReturnType<typeof store.getState>

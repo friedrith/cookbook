@@ -28,7 +28,7 @@ const SCORE_THRESHOLD = 9.8
 const isHandCloseEnough = (
   hand: Hand,
   width: number,
-  height: number
+  height: number,
 ): Boolean => {
   const handWidth =
     hand.boundingBox.bottomRight[0] - hand.boundingBox.topLeft[0]

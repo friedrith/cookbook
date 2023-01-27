@@ -45,7 +45,7 @@ const IngredientListFocus = ({ recipe }: Props) => {
                   15
                   ? 'whitespace-wrap'
                   : 'whitespace-nowrap',
-                smaller ? 'py-3' : 'py-4'
+                smaller ? 'py-3' : 'py-4',
               )}
             >
               {renderMeasure(ingredient.measure, { explicit: true })}
@@ -53,7 +53,7 @@ const IngredientListFocus = ({ recipe }: Props) => {
             <td
               className={classNames(
                 'px-3 pr-6 align-top text-md text-gray-500 w-60',
-                smaller ? 'py-3' : 'py-4'
+                smaller ? 'py-3' : 'py-4',
               )}
             >
               {ingredient.name}

@@ -5,7 +5,7 @@ const aRecipe = (
   name: string,
   keywords = [],
   ingredients = '',
-  steps = ''
+  steps = '',
 ) => ({
   id: 'foo',
   name,

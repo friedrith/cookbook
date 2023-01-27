@@ -31,7 +31,7 @@ const thermostatToC = (thermostat: number) => 30 * thermostat
 
 export const replaceTemperature = (
   description: string,
-  temperature: Temperature
+  temperature: Temperature,
 ) => {
   if (temperature === Temperature.Unknown) return description
 

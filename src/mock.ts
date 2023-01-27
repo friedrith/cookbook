@@ -97,5 +97,5 @@ export const recipes = () =>
         ...acc,
         [recipe.id]: recipe,
       }),
-      {}
+      {},
     )

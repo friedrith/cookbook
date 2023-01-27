@@ -36,7 +36,7 @@ const UserMenu = () => {
   const isStandalone = useIsStandalonePWA()
 
   const [appInstallationEnabled, setAppInstallationEnabled] = useState(
-    getPWAInstallationPrompt() && !isStandalone
+    getPWAInstallationPrompt() && !isStandalone,
   )
 
   useBeforeInstallPrompt(() => {

@@ -28,41 +28,41 @@ export const recipesInitialState: RecipesState = {
 
 export const fetchRecipes = createAsyncThunk<Recipe[]>(
   'recipes/fetch',
-  async () => recipesApi.fetchAll()
+  async () => recipesApi.fetchAll(),
 )
 
 export const fetchRecipeByLink = createAsyncThunk(
   'recipes/fetchByLink',
-  async (link: string) => recipesApi.fetchOneByLink(link)
+  async (link: string) => recipesApi.fetchOneByLink(link),
 )
 
 export const updateRecipe = createAsyncThunk(
   'recipes/update',
-  async (recipe: Recipe) => recipesApi.updateOne(recipe)
+  async (recipe: Recipe) => recipesApi.updateOne(recipe),
 )
 
 export const importRecipe = createAsyncThunk(
   'recipes/import',
-  async (url: string) => recipesApi.importOne(url)
+  async (url: string) => recipesApi.importOne(url),
 )
 
 export const addRecipe = createAsyncThunk(
   'recipes/add',
-  async (recipe: Recipe) => recipesApi.createOne(recipe)
+  async (recipe: Recipe) => recipesApi.createOne(recipe),
 )
 
 export const deleteRecipe = createAsyncThunk(
   'recipes/delete',
   async (recipe: Recipe) => {
     recipesApi.removeOne(recipe)
-  }
+  },
 )
 
 export const deleteAllRecipes = createAsyncThunk(
   'recipes/deleteAll',
   async () => {
     recipesApi.removeAll()
-  }
+  },
 )
 
 const timeouts: Record<string, NodeJS.Timeout> = {}
@@ -73,14 +73,14 @@ export const addRecipeToDeleteQueue = createAsyncThunk(
     timeouts[recipe.id] = setTimeout(() => {
       thunkApi.dispatch(deleteRecipe(recipe))
     }, 10000)
-  }
+  },
 )
 
 export const cancelDeletion = createAsyncThunk(
   'recipes/cancelDelete',
   async (recipe: Recipe) => {
     clearTimeout(timeouts[recipe.id])
-  }
+  },
 )
 
 export const confirmDeletion = createAsyncThunk(
@@ -88,7 +88,7 @@ export const confirmDeletion = createAsyncThunk(
   async (recipe: Recipe, thunkApi) => {
     clearTimeout(timeouts[recipe.id])
     await thunkApi.dispatch(deleteRecipe(recipe))
-  }
+  },
 )
 
 const initializeMetadata = (state: RecipesState, recipeId: string) => {
@@ -132,7 +132,7 @@ export const recipesSlice = createSlice({
       const MAX_RECENT_SEARCHES = 10
       state.recentSearches = [action.payload.id, ...state.recentSearches].slice(
         0,
-        MAX_RECENT_SEARCHES
+        MAX_RECENT_SEARCHES,
       )
     },
   },
@@ -141,7 +141,7 @@ export const recipesSlice = createSlice({
       const recipes = action.payload
       state.byId = recipes.reduce(
         (acc, recipe) => ({ ...acc, [recipe.id]: recipe }),
-        {}
+        {},
       )
       state.areFetched = true
     })
@@ -212,32 +212,32 @@ export const getRecipeList = createSelector(
   (state: RootState) => state.recipes.byId,
   (state: RootState) => state.recipes.trashQueue,
   (byId, trashQueue) =>
-    Object.values(byId).filter(recipe => !trashQueue.includes(recipe.id))
+    Object.values(byId).filter(recipe => !trashQueue.includes(recipe.id)),
 )
 
 const cleanId = (id: string | undefined) => (id === undefined ? '' : id)
 
 export const getRecipe = (
   state: RootState,
-  id: string | undefined
+  id: string | undefined,
 ): Recipe | undefined => state.recipes.byId[cleanId(id)]
 
 export const getRecipeProgress = (
   state: RootState,
-  id: string | undefined
+  id: string | undefined,
 ): number => state.recipes.metadataById[cleanId(id)]?.currentStepIndex || 0
 
 export const getServingCount = createSelector(
   getRecipe,
   (state: RootState, id: string | undefined) =>
     state.recipes.metadataById[cleanId(id)]?.servingCount,
-  (recipe, servingCount) => servingCount || recipe?.stats?.servings?.value || 0
+  (recipe, servingCount) => servingCount || recipe?.stats?.servings?.value || 0,
 )
 
 export const getRecipesToDelete = createSelector(
   (state: RootState) => state.recipes.byId,
   (state: RootState) => state.recipes.trashQueue,
-  (byId, trashQueue) => trashQueue.map(id => byId[id])
+  (byId, trashQueue) => trashQueue.map(id => byId[id]),
 )
 
 const sortByCount = (a: [string, number], b: [string, number]) => b[1] - a[1]
@@ -253,8 +253,8 @@ export const getAllKeywordSortedByFrequency = createSelector(
             ...acc,
             [keyword]: (acc[keyword] || 0) + 1,
           }),
-          {}
-        )
+          {},
+        ),
     )
 
     return keywords
@@ -262,13 +262,13 @@ export const getAllKeywordSortedByFrequency = createSelector(
       .sort(sortByCount)
       .map(k => k[0])
       .slice(0, 7)
-  }
+  },
 )
 
 export const getRecentSearches = createSelector(
   (state: RootState) => state.recipes.byId,
   (state: RootState) => state.recipes.recentSearches,
-  (byId, recentSearches) => recentSearches.map(id => byId[id])
+  (byId, recentSearches) => recentSearches.map(id => byId[id]),
 )
 
 // export const getIngredientList = createSelector(

@@ -33,7 +33,7 @@ export const getOne = async (url: string): Promise<Link> =>
         },
         errorObject => {
           reject(errorObject)
-        }
+        },
       )
     } catch (err: any) {
       reject(err)

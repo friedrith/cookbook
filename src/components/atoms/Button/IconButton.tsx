@@ -42,7 +42,7 @@ const IconButton = ({
     disabled ? 'cursor-no-drop opacity-50' : 'cursor-pointer',
     isMaximized || basic ? '' : 'shadow rounded-md',
     blur ? 'bg-opacity-50 backdrop-filter backdrop-blur' : '',
-    className
+    className,
   )
 
   return (

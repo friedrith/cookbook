@@ -7,8 +7,8 @@ import { useAppSelector, useAppDispatch } from 'hooks/redux'
 const useSetting = function <T>(
   selector: (state: RootState) => T,
   action: (
-    payload: T
-  ) => AnyAction | ThunkAction<unknown, RootState, undefined, AnyAction>
+    payload: T,
+  ) => AnyAction | ThunkAction<unknown, RootState, undefined, AnyAction>,
 ): [T, (d: T) => void] {
   const value = useAppSelector(selector)
 
@@ -16,7 +16,7 @@ const useSetting = function <T>(
 
   const setValue = useCallback(
     (v: T) => dispatch(action(v)),
-    [dispatch, action]
+    [dispatch, action],
   )
 
   return useMemo(() => [value, setValue], [value, setValue])

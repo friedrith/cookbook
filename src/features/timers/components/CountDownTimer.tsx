@@ -30,7 +30,7 @@ const CountDownTimer = ({ timer }: Props) => {
   const [status, setStatus] = useState(TimerStatus.NotFinished)
 
   const [countDown, setCountDown] = useState(
-    timer.duration - secondsToDuration(1)
+    timer.duration - secondsToDuration(1),
   )
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const CountDownTimer = ({ timer }: Props) => {
           'bg-white bg-opacity-50 backdrop-filter backdrop-blur':
             status === TimerStatus.NotFinished,
           'bg-primary-500 text-white': status !== TimerStatus.NotFinished,
-        }
+        },
       )}
     >
       <ClockIcon className="h-8 w-8 md:h-6 md:w-6 stroke-2" />

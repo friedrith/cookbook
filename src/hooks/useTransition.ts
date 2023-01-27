@@ -6,10 +6,10 @@ import { isMobile } from 'utils/platforms/mobile'
 const areLocationIncludes = (
   location1: Location,
   location2: Location,
-  routes: string[]
+  routes: string[],
 ) =>
   routes.some(
-    r => location1.pathname.includes(r) && location2.pathname.includes(r)
+    r => location1.pathname.includes(r) && location2.pathname.includes(r),
   )
 
 const areLocationDifferent = (location1: Location, location2: Location) =>
@@ -54,7 +54,7 @@ const useTransition = (): [string, string, Location, () => void] => {
 
   return useMemo(
     () => [transitionStage, previousLocation, displayLocation, onAnimationEnd],
-    [transitionStage, previousLocation, displayLocation, onAnimationEnd]
+    [transitionStage, previousLocation, displayLocation, onAnimationEnd],
   )
 }
 

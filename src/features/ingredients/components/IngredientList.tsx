@@ -29,7 +29,7 @@ const IngredientList = ({ formattedRecipe }: Props) => {
   const shoppingBag = usePopup(false)
 
   const [checkedIngredients, setCheckedIngredients] = useState(
-    formattedRecipe.ingredients.map((_, index) => index)
+    formattedRecipe.ingredients.map((_, index) => index),
   )
 
   const [sharedIngredientsWithClipboard, setSharedIngredientsWithClipboard] =
@@ -44,7 +44,7 @@ const IngredientList = ({ formattedRecipe }: Props) => {
       setCheckedIngredients([...checkedIngredients, ingredientIndex])
       if (checkedIngredients.includes(ingredientIndex)) {
         setCheckedIngredients(
-          checkedIngredients.filter(index => index !== ingredientIndex)
+          checkedIngredients.filter(index => index !== ingredientIndex),
         )
       } else {
         setCheckedIngredients([...checkedIngredients, ingredientIndex])
@@ -54,13 +54,13 @@ const IngredientList = ({ formattedRecipe }: Props) => {
     }
 
   const ingredientsToBeShared = formattedRecipe.ingredients.filter((_, index) =>
-    checkedIngredients.includes(index)
+    checkedIngredients.includes(index),
   )
 
   const shareIngredients = async () => {
     const ingredients = renderIngredients(
       ingredientsToBeShared,
-      ingredientTemplate
+      ingredientTemplate,
     )
     const result = await shareText(ingredients)
 
@@ -137,7 +137,7 @@ const IngredientList = ({ formattedRecipe }: Props) => {
                   renderMeasure(ingredient.measure, { explicit: true }).length >
                     15
                     ? 'whitespace-wrap'
-                    : 'whitespace-nowrap'
+                    : 'whitespace-nowrap',
                 )}
               >
                 {renderMeasure(ingredient.measure, { explicit: true })}

@@ -21,7 +21,7 @@ const ImportHelpPopup = ({ open, onClose }: Props) => {
       description={
         <>
           {t(
-            'CookBook officially support recipe import from the following websites'
+            'CookBook officially support recipe import from the following websites',
           )}
           <div className="overflow-auto h-96 p-1 my-3">
             <ul className="ml-10 my-1">
@@ -41,7 +41,7 @@ const ImportHelpPopup = ({ open, onClose }: Props) => {
           </div>
 
           {t(
-            'However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a '
+            'However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ',
           )}
           <a
             className="text-indigo-600 hover:text-primary-500"

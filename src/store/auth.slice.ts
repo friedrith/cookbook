@@ -22,28 +22,28 @@ export const authInitialState: AuthState = {
 
 export const loginWithMagicLink = createAsyncThunk(
   'auth/login',
-  async (email: string) => firebaseApi.signInWithMagicLink(email)
+  async (email: string) => firebaseApi.signInWithMagicLink(email),
 )
 
 export const verifyLink = createAsyncThunk('auth/verifyLink', async () =>
-  firebaseApi.verifyLink()
+  firebaseApi.verifyLink(),
 )
 
 export const verifyLinkWithEmail = createAsyncThunk(
   'auth/verifyLink',
-  async (email: string) => firebaseApi.verifyLinkWithEmail(email)
+  async (email: string) => firebaseApi.verifyLinkWithEmail(email),
 )
 
 export const logout = createAsyncThunk('auth/logout', async () =>
-  firebaseApi.logout()
+  firebaseApi.logout(),
 )
 
 export const deleteAccount = createAsyncThunk('auth/deleteAccount', async () =>
-  firebaseApi.deleteAccount()
+  firebaseApi.deleteAccount(),
 )
 
 export const initSession = createAsyncThunk('auth/init', async () =>
-  firebaseApi.initSession()
+  firebaseApi.initSession(),
 )
 
 export const authSlice = createSlice({

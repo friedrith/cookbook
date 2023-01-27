@@ -26,7 +26,7 @@ const Badge = ({
       tabIndex={0}
       className={classNames(
         `flex flex-initial items-center px-2 py-0.5 rounded font-medium ${className} -events-auto`,
-        size === BadgeSize.small ? `text-xs` : `text-sm md:text-xs`
+        size === BadgeSize.small ? `text-xs` : `text-sm md:text-xs`,
       )}
     >
       {children}

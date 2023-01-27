@@ -43,7 +43,7 @@ const Settings = () => {
 
   const [ingredientTemplate, changeIngredientTemplate] = useSetting(
     getIngredienTemplate,
-    setIngredientTemplate
+    setIngredientTemplate,
   )
 
   const deleteAccountConfirmed = async () => {
@@ -141,7 +141,7 @@ const Settings = () => {
                 <Form.Item id="import" label={t('_Automatic import')}>
                   <Form.Switch
                     description={t(
-                      '_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.'
+                      '_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.',
                     )}
                     checked={automaticImport}
                     onChange={async (v: boolean) => {

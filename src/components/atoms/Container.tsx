@@ -12,7 +12,7 @@ const Container = ({ className, fullWidth, ...props }: Props) => {
       className={classNames(
         'px-4 lg:px-16',
         { 'max-w-screen-xl m-auto': !fullWidth },
-        className
+        className,
       )}
       {...props}
     />

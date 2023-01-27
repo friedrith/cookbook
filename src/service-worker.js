@@ -43,7 +43,7 @@ registerRoute(
 
     return true
   },
-  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
+  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html'),
 )
 
 const cacheFileExtensions = ['.png', '.jpg', '.jpeg']
@@ -62,7 +62,7 @@ registerRoute(
       // least-recently used images are removed.
       new ExpirationPlugin({ maxEntries: 50 }),
     ],
-  })
+  }),
 )
 
 registerRoute(
@@ -76,7 +76,7 @@ registerRoute(
       // least-recently used images are removed.
       new ExpirationPlugin({ maxEntries: 1000 }),
     ],
-  })
+  }),
 )
 
 // This allows the web app to trigger skipWaiting via

@@ -12,6 +12,7 @@ type Props = {
   onMaximizedChanged?: (isMaximized: boolean) => void
   offset?: number
   className?: string
+  maximizedClassName?: string
   disableMaximize?: boolean
   fullWidth?: boolean
 }
@@ -22,6 +23,7 @@ const FixedHeader = ({
   onMaximizedChanged = () => {},
   offset = 90,
   className = '',
+  maximizedClassName = '',
   disableMaximize = false,
   fullWidth,
 }: Props) => {
@@ -37,7 +39,7 @@ const FixedHeader = ({
         onMaximizedChanged(isMaximized)
       }
     },
-    [restRef, onMaximizedChanged, offset, disableMaximize]
+    [restRef, onMaximizedChanged, offset, disableMaximize],
   )
 
   useEventListener('scroll', onScroll)
@@ -49,7 +51,7 @@ const FixedHeader = ({
       className={classNames(
         className,
         'fixed z-40 top-0 left-0 right-0',
-        isMaximized ? 'bg-white shadow' : ''
+        isMaximized ? `bg-white shadow ${maximizedClassName}` : '',
       )}
     >
       <Header fullWidth={fullWidth}>

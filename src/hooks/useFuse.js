@@ -36,7 +36,7 @@ const useFuse = (list: Recipe[], query: string) => {
     const queryWithoutKeywords = query.replace(/#[a-zA-Z]*/i, '').trim()
 
     return search(queryWithoutKeywords, list).filter(r =>
-      keywords.every(keyword => r.keywords.find(k => k.includes(keyword)))
+      keywords.every(keyword => r.keywords.find(k => k.includes(keyword))),
     )
   }, [query, list])
 

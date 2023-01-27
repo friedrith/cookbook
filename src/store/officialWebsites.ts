@@ -13,7 +13,7 @@ export const officialWebsitesInitialState: OfficialWebsitesState = {
 
 export const fetchOfficialWebsites = createAsyncThunk<string[]>(
   'officialWebsites/fetch',
-  async () => officialWebsitesApi.fetchAll()
+  async () => officialWebsitesApi.fetchAll(),
 )
 
 export const officialWebsitesSlice = createSlice({

@@ -14,6 +14,6 @@ export const useOnLoggedInAnotherTab = (callback: () => void) => {
         callback()
       }
     },
-    channel
+    channel,
   )
 }

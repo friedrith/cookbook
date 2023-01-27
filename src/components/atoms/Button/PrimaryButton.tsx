@@ -12,12 +12,12 @@ const PrimaryButton = forwardRef(
       disabled,
       ...props
     }: Props,
-    ref
+    ref,
   ) => {
     const allClassName = classNames(
       'transition-colors	bg-gradient-to-r from-primary-300 via-primary-400 to-primary-500 hover:from-primary-500 hover:via-primary-500 hover:to-primary-500 focus:ring-primary-500',
       className,
-      disabled ? 'opacity-70' : ''
+      disabled ? 'opacity-70' : '',
     )
 
     if (to) {
@@ -42,7 +42,7 @@ const PrimaryButton = forwardRef(
         {children}
       </GenericButton>
     )
-  }
+  },
 )
 
 export default PrimaryButton

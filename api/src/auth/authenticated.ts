@@ -4,7 +4,7 @@ import * as admin from 'firebase-admin'
 export async function isAuthenticated(
   req: Request,
   res: Response,
-  next: Function
+  next: Function,
 ) {
   const { authorization } = req.headers
 

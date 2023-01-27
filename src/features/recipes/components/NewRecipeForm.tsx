@@ -138,7 +138,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
                   t('import.Enter a valid url')}
                 {status === ImportUrlStatus.Error &&
                   t(
-                    'import.Oups an error happened. We suggest you to enter the recipe manually this time.'
+                    'import.Oups an error happened. We suggest you to enter the recipe manually this time.',
                   )}
                 {status === ImportUrlStatus.NotAManagedWebsite && (
                   <>

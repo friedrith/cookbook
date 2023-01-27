@@ -120,7 +120,7 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
           <>
             <p>
               {t(
-                'focusMode.While the focus mode is activated, your device still stay awake'
+                'focusMode.While the focus mode is activated, your device still stay awake',
               )}
             </p>
           </>

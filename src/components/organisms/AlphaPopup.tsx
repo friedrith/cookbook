@@ -21,7 +21,7 @@ const AlphaPopup = ({ open, onClose }: Props) => {
           <p>{t('_CookBook is in alpha')}</p>
           <p className="pt-3 font-bold">
             {t(
-              '_Please do not sent it to anyone else without the authorization of the author of CookBook'
+              '_Please do not sent it to anyone else without the authorization of the author of CookBook',
             )}
           </p>
         </>

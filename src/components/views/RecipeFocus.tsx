@@ -102,7 +102,7 @@ const RecipeFocus = () => {
         setStep(newIndex)
       }
     },
-    [setStep, navigate, recipe]
+    [setStep, navigate, recipe],
   )
 
   const maxStepIndex = (formattedRecipe?.steps?.length || 0) + 1
@@ -118,12 +118,12 @@ const RecipeFocus = () => {
 
   const [voiceControlEnabled, setVoiceControlEnable] = useSetting(
     getVoiceControlEnabled,
-    enableVoiceControl
+    enableVoiceControl,
   )
 
   const [gestureControlEnabled, setGestureControlEnable] = useSetting(
     getGestureControlEnabled,
-    enableGestureControl
+    enableGestureControl,
   )
 
   useEffect(() => {

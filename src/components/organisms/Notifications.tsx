@@ -39,7 +39,7 @@ const Notifications = () => {
         ))}
       </div>
     </div>,
-    container
+    container,
   )
 }
 

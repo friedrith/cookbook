@@ -24,7 +24,7 @@ const FeaturesMobile = () => {
       {
         root: slideContainerRef.current,
         threshold: 0.6,
-      }
+      },
     )
 
     for (let slide of slideRefs.current) {
@@ -80,7 +80,7 @@ const FeaturesMobile = () => {
             key={featureIndex}
             className={classNames(
               'relative h-0.5 w-4 rounded-full',
-              featureIndex === activeIndex ? 'bg-gray-300' : 'bg-gray-500'
+              featureIndex === activeIndex ? 'bg-gray-300' : 'bg-gray-500',
             )}
             aria-label={`Go to slide ${featureIndex + 1}`}
             onClick={() => {

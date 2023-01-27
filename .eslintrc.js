@@ -19,12 +19,12 @@ module.exports = {
         filePath: {
           'default.json': path.join(
             __dirname,
-            './public/locales/en/default.json'
+            './public/locales/en/default.json',
           ),
           'faq.json': path.join(__dirname, './public/locales/en/faq.json'),
           'marketing.json': path.join(
             __dirname,
-            './public/locales/en/marketing.json'
+            './public/locales/en/marketing.json',
           ),
           'help.json': path.join(__dirname, './public/locales/en/help.json'),
         },

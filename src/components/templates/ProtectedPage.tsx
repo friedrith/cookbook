@@ -48,7 +48,7 @@ const ProtectedPage = ({ onlyRoles, children }: Props) => {
     await Promise.all(
       linkIds
         .map(renderSharingLink)
-        .map(url => dispatch(importRecipe(url)).unwrap())
+        .map(url => dispatch(importRecipe(url)).unwrap()),
     )
   }, [dispatch])
 

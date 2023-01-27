@@ -9,11 +9,11 @@ const expression =
 
 export const replaceUrlsByLinks = (
   description: string,
-  className: string = ''
+  className: string = '',
 ) =>
   description.replace(
     expression,
-    `<a href="$1" target="_blank" class="${className}">$1</a>`
+    `<a href="$1" target="_blank" class="${className}">$1</a>`,
   )
 
 const notInIfLongerThan =
@@ -24,14 +24,14 @@ const notInIfLongerThan =
 
 const byIndex = (
   { index: indexA }: { index: number },
-  { index: indexB }: { index: number }
+  { index: indexB }: { index: number },
 ) => indexA - indexB
 
 export const getStepsWithIngredients = (recipe: FormattedRecipe) =>
   recipe.steps.reduce(
     (
       acc: { steps: Ingredient[][]; ingredientsAlreadyUsed: Ingredient[] },
-      step: Step
+      step: Step,
     ): { steps: Ingredient[][]; ingredientsAlreadyUsed: Ingredient[] } => {
       const { steps, ingredientsAlreadyUsed } = acc
 
@@ -51,5 +51,5 @@ export const getStepsWithIngredients = (recipe: FormattedRecipe) =>
       }
     },
 
-    { steps: [], ingredientsAlreadyUsed: [] }
+    { steps: [], ingredientsAlreadyUsed: [] },
   )?.steps

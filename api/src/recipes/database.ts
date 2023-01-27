@@ -15,7 +15,7 @@ export const insert = async (collection: string, recipe: any) => {
 export const findOne = async (
   collection: string,
   ownerId: string,
-  recipeId: string
+  recipeId: string,
 ): Promise<Recipe> =>
   new Promise((resolve, reject) => {
     try {
@@ -32,7 +32,7 @@ export const findOne = async (
         },
         errorObject => {
           reject(errorObject)
-        }
+        },
       )
     } catch (err) {
       reject(err)

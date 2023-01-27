@@ -89,7 +89,7 @@ const RecipeEdit = () => {
   const duplicate = async () => {
     try {
       const newRecipe = await dispatch(
-        addRecipe({ ...recipe, name: duplicateName(recipe.name) })
+        addRecipe({ ...recipe, name: duplicateName(recipe.name) }),
       ).unwrap()
       navigate(`/recipes/${newRecipe.id}/edit`, { replace: true })
     } catch (error) {

@@ -13,7 +13,7 @@ const Header = ({ children, className, fullWidth }: Props) => {
       fullWidth={fullWidth}
       className={classNames(
         'flex items-center h-16 lg:h-16 justify-between',
-        className
+        className,
       )}
     >
       {children}

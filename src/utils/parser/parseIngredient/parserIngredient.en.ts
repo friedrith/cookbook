@@ -14,7 +14,7 @@ const parseAsExplicitSome = (line: string): Ingredient | null => {
 
 const parseAsWithOfAndUnit = (line: string): Ingredient | null => {
   const match = line.match(
-    /^(([0-9]|\.|\s|\/)*[0-9])\s*([a-zA-Z]*)\s*of\s*(.+)/i
+    /^(([0-9]|\.|\s|\/)*[0-9])\s*([a-zA-Z]*)\s*of\s*(.+)/i,
   )
 
   if (match) {

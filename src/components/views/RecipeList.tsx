@@ -50,7 +50,7 @@ const RecipeList = () => {
 
   const keywordsNotUsed = useMemo(
     () => keywords.filter(k => !(query || '').includes(k)),
-    [keywords, query]
+    [keywords, query],
   )
 
   return (

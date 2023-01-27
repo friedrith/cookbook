@@ -48,7 +48,7 @@ const RecipeShare = () => {
   })
 
   const alreadyExistingRecipe = useAppSelector(state =>
-    getRecipe(state, recipe?.id)
+    getRecipe(state, recipe?.id),
   )
 
   const navigate = useNavigate()
@@ -209,7 +209,7 @@ const RecipeShare = () => {
         icon={ArrowDownOnSquareIcon}
         onClose={() => {}}
         description={t(
-          '_To view this recipe, you need to import it in CookBook.'
+          '_To view this recipe, you need to import it in CookBook.',
         )}
       >
         <div className="text-center">

@@ -13,7 +13,7 @@ const BlackButton = ({
   const allClassName = classNames(
     'bg-black text-white hover:bg-gray-800 focus:ring-gray-900',
     className,
-    disabled ? 'opacity-70' : ''
+    disabled ? 'opacity-70' : '',
   )
 
   if (to) {

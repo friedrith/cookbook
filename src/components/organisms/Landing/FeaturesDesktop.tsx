@@ -22,7 +22,7 @@ const FeaturesDesktop = () => {
       setChangeCount(changeCount => changeCount + 1)
     },
     100,
-    { leading: true }
+    { leading: true },
   )
 
   const { t } = useTranslation('marketing')
@@ -85,7 +85,7 @@ const FeaturesDesktop = () => {
                     // custom={{ isForwards, changeCount }}
                     />
                   </Tab.Panel>
-                ) : null
+                ) : null,
               )}
             </AnimatePresence>
           </Tab.Panels>
