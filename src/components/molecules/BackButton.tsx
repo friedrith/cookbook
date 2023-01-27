@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
@@ -22,7 +22,13 @@ const BackButton = ({ url, className, basic, disabled, title }: Props) => {
 
   const icon = isRightToLeft() ? ArrowRightIcon : ArrowLeftIcon
 
-  if (previousLocation && previousLocation === url) {
+  const shouldForgetPreviousLocation = useForgetPreviousLocationAfter(30000)
+
+  if (
+    previousLocation &&
+    previousLocation === url &&
+    !shouldForgetPreviousLocation
+  ) {
     return (
       <span data-tip={title}>
         <Button.Icon
@@ -52,3 +58,17 @@ const BackButton = ({ url, className, basic, disabled, title }: Props) => {
 }
 
 export default BackButton
+
+function useForgetPreviousLocationAfter(timeout: number) {
+  const [shouldForgetPreviousLocation, forgetPreviousLocation] = useState(false)
+
+  useEffect(() => {
+    let t = setTimeout(() => {
+      forgetPreviousLocation(true)
+    }, timeout)
+
+    return () => clearTimeout(t)
+  }, [timeout])
+
+  return shouldForgetPreviousLocation
+}

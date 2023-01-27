@@ -126,7 +126,7 @@ const RecipeListHeader = ({
                         setTimeoutSafe(() => {
                           onFocusChange(false)
                           onSearchChange(undefined)
-                        }, 10)
+                        }, 100)
                       }
                     />
                   </div>
@@ -169,7 +169,7 @@ const RecipeListHeader = ({
                         <input
                           id="search"
                           name="search-recipes"
-                          className="block w-full ltr:pl-10 ltr:pr-3 rtl:pr-10 rtl:pl-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+                          className="block w-full ltr:pl-10 ltr:pr-3 rtl:pr-10 rtl:pl-3 py-2 border border-gray-300 rounded-full leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
                           placeholder={
                             searchActive || searchValue
                               ? t('_Search in recipes')
@@ -188,12 +188,12 @@ const RecipeListHeader = ({
                             setTimeoutSafe(() => {
                               onSearchChange(undefined)
                               onFocusChange(false)
-                            }, 10)
+                            }, 100)
                           }
                         />
                         {searchActive || searchValue ? (
                           <button
-                            className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 items-center cursor-pointer"
+                            className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 items-center cursor-pointer "
                             onClick={() => {
                               onSearchChange(undefined)
                             }}
@@ -204,15 +204,12 @@ const RecipeListHeader = ({
                             />
                           </button>
                         ) : (
-                          <button
-                            className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 hidden lg:block"
-                            onClick={() => inputRef?.current?.focus()}
-                          >
+                          <div className="absolute inset-y-0 ltr:right-0 ltr:pr-1.5 rtl:left-0 rtl:pl-1.5 flex py-1.5 hidden lg:block pointer-events-none">
                             {/* eslint-disable-next-line i18next/no-literal-string */}
-                            <kbd className="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 bg-white">
+                            <kbd className="inline-flex items-center rounded-full px-2 text-sm font-sans font-medium text-gray-400 bg-white">
                               ⌘K
                             </kbd>
-                          </button>
+                          </div>
                         )}
                       </div>
                     </div>
