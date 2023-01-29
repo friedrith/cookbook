@@ -64,6 +64,7 @@
   "_Most Recents": "Most Recents",
   "_All": "All",
   "_Results": "Results",
+  "_Recent Searches": "Recent Searches",
   "_Lose my recipe": "Leave, I am ok to lose my recipe",
   "_I stay": "I stay",
   "_If you leave": "If you leave, you will lose the current recipe.",
@@ -95,6 +96,7 @@
   "_Back to recipes": "Go back to recipes",
   "_Back to recipe": "Go back to recipe",
   "_Search in recipes": "Search in recipes",
+  "_Search": "Search",
   "faq": {
     "shortTitle": "FAQ",
     "title": "Frequently Asked Questions"
@@ -177,5 +179,13 @@
   "_Import in CookBook": "Import in CookBook",
   "_Log in and import it": "Log in and import it",
   "_Import this recipe in CookBook": "Import this recipe in CookBook with the following link: {{link}}",
-  "Categories": "Categories:"
+  "Categories": "Categories:",
+  "_Save new recipe": "Save New Recipe",
+  "_Category's Recipes": "{{category}}'s Recipes",
+  "_How to add categories?": "How to add categories?",
+  "_Some categories are not used": "CookBook includes {{categoriesCount}} more categories you are not using:",
+  "_They could help you to find your recipes even easier": "They could help you to find your recipes even easier.",
+  "_Show the recipes without categories": "Show the {{recipesCount}} recipes without categories",
+  "_Recipes without categories": "Recipes without categories",
+  "_Show all recipes": "Show all recipes"
 }
