@@ -27,6 +27,7 @@ const categories: Category[] = [
   { name: 'juice', image: 'yckxmpcm' },
   { name: 'pasta', image: 'abwavtyg' },
   { name: 'candy', image: 'nykjppwl' },
+  { name: 'egg', image: 'ytmpyxlk' },
   { name: 'pastry', image: 'zzfixgfx' },
   { name: 'breakfast', image: 'uajaxvaw' },
   { name: 'bread', image: 'vjmyhetd' },
