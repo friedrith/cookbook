@@ -26,6 +26,7 @@ const categories: Category[] = [
   { name: 'gluten-free', image: 'zfzqcqru' },
   { name: 'juice', image: 'yckxmpcm' },
   { name: 'pasta', image: 'abwavtyg' },
+  { name: 'cheese', image: 'zcjsewlp' },
   { name: 'candy', image: 'nykjppwl' },
   { name: 'egg', image: 'ytmpyxlk' },
   { name: 'pastry', image: 'zzfixgfx' },
