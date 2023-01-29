@@ -15,13 +15,19 @@ const useSearch = () => {
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams()
 
+  console.log('searchParams', searchParams)
+
   const query =
     typeof searchParams.get('q') === 'string'
       ? searchParams.get('q')
       : undefined
 
+  console.log('query', query)
+
   return useMemo(() => {
     const searchStatus = estimateSearchStatus(query)
+
+    console.log('useMemo.query', query, cleanQuery(query))
 
     return {
       query: cleanQuery(query),
