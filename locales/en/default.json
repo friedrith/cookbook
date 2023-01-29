@@ -111,7 +111,6 @@
   "_Ok Got it": "Ok Got it!",
   "_CookBook is in alpha": "CookBook is currently in Alpha version. It means it may contain few bugs and it is not ready to be used by everybody. You were sent an access to this version to help finalizing CookBook.",
   "_Please do not sent it to anyone else without the authorization of the author of CookBook": "Please do not sent it to anyone else without the authorization of the author of CookBook",
-  "_Version": "Version {{version}}",
   "_Settings": "Settings",
   "languages": {
     "Language": "Language"
