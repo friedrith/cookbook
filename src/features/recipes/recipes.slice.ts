@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
+import { uniq } from 'lodash'
+
 import type { RootState } from 'store'
 import Recipe from 'models/Recipe'
-
 import * as recipesApi from 'utils/api/recipes.api'
 
 type Metadata = {
@@ -130,10 +131,10 @@ export const recipesSlice = createSlice({
     },
     addRecentSearch: (state, action) => {
       const MAX_RECENT_SEARCHES = 10
-      state.recentSearches = [action.payload.id, ...state.recentSearches].slice(
-        0,
-        MAX_RECENT_SEARCHES,
-      )
+      state.recentSearches = uniq([
+        action.payload.id,
+        ...state.recentSearches,
+      ]).slice(0, MAX_RECENT_SEARCHES)
     },
   },
   extraReducers: builder => {
@@ -258,10 +259,10 @@ export const getAllKeywordSortedByFrequency = createSelector(
     )
 
     return keywords
-      .filter((k: [string, number]) => k[1] >= 3)
+      .filter((k: [string, number]) => k[1] >= 1)
       .sort(sortByCount)
       .map(k => k[0])
-      .slice(0, 7)
+    // .slice(0, 7)
   },
 )
 

@@ -180,5 +180,12 @@
   "_Log in and import it": "Log in and import it",
   "_Import this recipe in CookBook": "Import this recipe in CookBook with the following link: {{link}}",
   "Categories": "Categories:",
-  "_Save new recipe": "Save New Recipe"
+  "_Save new recipe": "Save New Recipe",
+  "_Category's Recipes": "{{category}}'s Recipes",
+  "_How to add categories?": "How to add categories?",
+  "_Some categories are not used": "CookBook includes {{categoriesCount}} more categories you are not using:",
+  "_They could help you to find your recipes even easier": "They could help you to find your recipes even easier.",
+  "_Show the recipes without categories": "Show the {{recipesCount}} recipes without categories",
+  "_Recipes without categories": "Recipes without categories",
+  "_Show all recipes": "Show all recipes"
 }

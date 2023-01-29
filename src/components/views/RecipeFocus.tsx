@@ -51,6 +51,7 @@ import SpeechRecognition, {
 // import HandPoseDetector from 'components/molecules/HandPoseDetector'
 import Form from 'components/atoms/Form'
 import useSetting from 'hooks/useSetting'
+import Header from 'components/atoms/Header'
 
 const RecipeFocus = () => {
   const [recipe, formattedRecipe] = useCurrentRecipe()
@@ -255,7 +256,7 @@ const RecipeFocus = () => {
         disableMaximize
       >
         {isMaximized => (
-          <>
+          <Header>
             <BackButton
               url={`/recipes/${recipe.id}`}
               title={t('_Back to recipe')}
@@ -267,7 +268,7 @@ const RecipeFocus = () => {
               onClick={settingsPopup.open}
               blur
             />
-          </>
+          </Header>
         )}
       </FixedHeader>
     </Page>

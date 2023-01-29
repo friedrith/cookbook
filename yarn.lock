@@ -5882,6 +5882,8 @@ __metadata:
     i18next-http-backend: ^1.4.0
     jszip: ^3.10.1
     lodash: ^4.17.21
+    lord-icon-element: ^4.0.3
+    lottie-web: ^5.10.2
     mixpanel-browser: ^2.45.0
     nosleep.js: ^0.12.0
     postcss: ^8.4.14
@@ -10224,6 +10226,20 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
+  languageName: node
+  linkType: hard
+
+"lord-icon-element@npm:^4.0.3":
+  version: 4.0.3
+  resolution: "lord-icon-element@npm:4.0.3"
+  checksum: 0a656f78149e07516cf52d7921efb822431cff297e8a107f81e88c7b9effbea7547fd53d7362a10cc6ab725dee034c97ca299c9b2c1608d24e5bc22bf8071322
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.10.2":
+  version: 5.10.2
+  resolution: "lottie-web@npm:5.10.2"
+  checksum: 9ec80b479d8d03c079bd4f246d301f0c4aac2c4d6f8daaa79f6f3fc285aaba377c64879f6748d49c1db52b9854aea81c3203d858e9c686f7a47cd8b771d112d0
   languageName: node
   linkType: hard
 

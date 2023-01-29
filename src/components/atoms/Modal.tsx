@@ -89,7 +89,7 @@ const Modal = ({
                     {title && (
                       <Dialog.Title
                         as="h3"
-                        className="text-lg font-medium leading-6 text-gray-900"
+                        className="text-lg md:text-xl font-medium md:font-semibold leading-6 text-gray-900"
                       >
                         {title}
                       </Dialog.Title>

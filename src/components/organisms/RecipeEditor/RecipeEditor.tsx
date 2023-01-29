@@ -1,5 +1,4 @@
 import { useState, useRef, forwardRef, ForwardedRef } from 'react'
-
 import { useTranslation } from 'react-i18next'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import { WithContext as ReactTags } from 'react-tag-input'
@@ -11,9 +10,11 @@ import Container from 'components/atoms/Container'
 import Box from 'components/atoms/Box'
 import SectionTitle from 'components/atoms/SectionTitle'
 import ImageUploader from 'components/molecules/ImageUploader'
-// import StatInput from './StatInput'
 import Recipe from 'models/Recipe'
 import Button from 'components/atoms/Button'
+import cleanKeywords from 'features/categories/utils/cleanKeywords'
+
+import categories from 'features/categories/categories'
 
 type Props = {
   recipe: Recipe
@@ -64,11 +65,13 @@ const RecipeEditor = forwardRef(
     // const ServingsIcon = findUnitIcon('servings')
 
     const handleDelete = (i: number) => {
-      change({ keywords: keywords.filter((k, index) => index !== i) })
+      change({
+        keywords: cleanKeywords(keywords.filter((k, index) => index !== i)),
+      })
     }
 
     const handleAddition = (tag: Tag) => {
-      change({ keywords: [...keywords, tag.text] })
+      change({ keywords: cleanKeywords([...keywords, tag.text]) })
     }
 
     const handleDrag = (
@@ -153,16 +156,23 @@ const RecipeEditor = forwardRef(
                   inline
                   id="keywords"
                   classNames={{
-                    selected: 'flex flex-row items-center flex-wrap',
-                    tag: 'p-0.25 px-1 my-1 mx-1 rounded font-medium bg-indigo-100 text-indigo-800',
+                    selected: 'flex flex-row items-start flex-wrap',
+                    tag: 'p-0.25 px-1 my-1.5 mx-1 rounded font-medium bg-indigo-100 text-indigo-800',
                     tagInput: 'border-0 overflow-none flex-1 min-w-[100px]',
                     tagInputField:
                       'border border-gray-300  overflow-none focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-black focus:border-black shadow-sm rounded-md w-full p-1.5',
                     remove: 'ml-0.5',
+                    suggestions:
+                      'absolute rounded mt-2 p-1 font-medium bg-red-100 text-red-800',
+                    activeSuggestion: 'bg-red-200 cursor-pointer',
                   }}
                   allowDragDrop={true}
                   placeholder={t('_Press enter to add a keyword')}
                   autofocus={false}
+                  suggestions={categories.map(c => ({
+                    id: c.name,
+                    text: c.name,
+                  }))}
                 />
               </div>
               {/* <div>

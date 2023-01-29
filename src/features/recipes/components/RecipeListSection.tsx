@@ -21,7 +21,7 @@ const RecipeListSection = ({
       {title && <SectionTitle>{title}</SectionTitle>}
       <div
         className={classNames(
-          'grid gap-x-4 md:gap-x-6 gap-y-8 sm:gap-y-10 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 5xl:grid-cols-7',
+          'grid gap-x-4 md:gap-x-6 gap-y-8 sm:gap-y-10 grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 5xl:grid-cols-7',
           className,
         )}
       >

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import thumbnailUrl from 'utils/thumbnailUrl'
 import Recipe from 'models/Recipe'
-import KeywordList from 'features/keywords/components/KeywordList'
+import KeywordList from 'features/categories/components/KeywordList'
 import { BadgeSize } from 'components/atoms/Badge'
 
 type Props = {
@@ -32,7 +32,7 @@ const RecipePreview = ({ recipe, onClick = () => {} }: Props) => {
       }}
       onKeyDown={() => {}}
     >
-      <div className="aspect-w-3 aspect-h-2 rounded-xl overflow-hidden bg-gray-200">
+      <div className="aspect-w-3 aspect-h-3 rounded-xl overflow-hidden bg-gray-200">
         <img
           src={previewUrl}
           alt={recipe.name}

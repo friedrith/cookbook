@@ -21,12 +21,12 @@ const DeleteConfirmation = ({ open, onClose, onSubmit }: Props) => {
       type={PopupType.Warning}
       description={t('_If you leave')}
     >
-      <Button.Primary className="mb-3 w-full" onClick={onClose}>
+      <Button.White className="mb-3 w-full" onClick={onClose}>
         {t('_Cancel')}
-      </Button.Primary>
-      <Button.Error className="mb-3 w-full" onClick={onSubmit}>
+      </Button.White>
+      <Button.Black className="mb-3 w-full" onClick={onSubmit}>
         {t('_Lose my recipe')}
-      </Button.Error>
+      </Button.Black>
     </Modal>
   )
 }

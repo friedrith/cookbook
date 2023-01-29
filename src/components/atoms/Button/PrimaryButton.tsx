@@ -1,5 +1,5 @@
 import GenericButton, { Props } from './GenericButton'
-import classNames from 'utils/classNames'
+import classNames from 'classnames'
 import { forwardRef } from 'react'
 
 const PrimaryButton = forwardRef(

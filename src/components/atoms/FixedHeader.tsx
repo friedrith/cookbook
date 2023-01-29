@@ -1,8 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react'
 
-import classNames from 'utils/classNames'
+import classNames from 'classnames'
 import useEventListener from 'hooks/useEventListener'
-import Header from 'components/atoms/Header'
 
 export const TopBarContext = React.createContext({ isMaximized: false })
 
@@ -14,7 +13,6 @@ type Props = {
   className?: string
   maximizedClassName?: string
   disableMaximize?: boolean
-  fullWidth?: boolean
 }
 
 const FixedHeader = ({
@@ -23,9 +21,7 @@ const FixedHeader = ({
   onMaximizedChanged = () => {},
   offset = 90,
   className = '',
-  maximizedClassName = '',
   disableMaximize = false,
-  fullWidth,
 }: Props) => {
   const [isMaximized, setMaximized] = useState(false)
 
@@ -47,20 +43,10 @@ const FixedHeader = ({
   const ref = useRef<HTMLInputElement>(null)
 
   return (
-    <div
-      className={classNames(
-        className,
-        'fixed z-40 top-0 left-0 right-0',
-        isMaximized ? `bg-white shadow ${maximizedClassName}` : '',
-      )}
-    >
-      <Header fullWidth={fullWidth}>
-        <>
-          <TopBarContext.Provider value={{ isMaximized }}>
-            {children ? children(isMaximized) : null}
-          </TopBarContext.Provider>
-        </>
-      </Header>
+    <div className={classNames(className, 'fixed z-40 top-0 left-0 right-0')}>
+      <TopBarContext.Provider value={{ isMaximized }}>
+        {children ? children(isMaximized) : null}
+      </TopBarContext.Provider>
       <div className="fixed" ref={ref} />
     </div>
   )

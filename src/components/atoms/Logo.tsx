@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import { useSearchParams } from 'react-router-dom'
 
 import { ReactComponent as LogoIcon } from 'assets/logo.svg'
 
@@ -7,7 +8,17 @@ type Props = {
 }
 
 const Logo = ({ className }: Props) => {
-  return <LogoIcon className={classNames('h-9', className)} />
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setSearchParams] = useSearchParams()
+
+  return (
+    <LogoIcon
+      className={classNames('h-9 cursor-pointer', className)}
+      onClick={() => {
+        setSearchParams({})
+      }}
+    />
+  )
 }
 
 /**

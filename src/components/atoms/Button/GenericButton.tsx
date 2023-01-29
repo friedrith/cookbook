@@ -1,7 +1,7 @@
 import { forwardRef, ForwardedRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import classNames from 'utils/classNames'
+import classNames from 'classnames'
 
 export type Props = {
   className?: string

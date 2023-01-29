@@ -2,7 +2,7 @@ import Recipe, { FormattedRecipe } from 'models/Recipe'
 import Ingredient from 'models/Ingredient'
 import parseIngredient from './parseIngredient'
 import parseLines from './parseLines'
-import cleanKeywords from 'features/keywords/utils/cleanKeywords'
+import cleanKeywords from 'features/categories/utils/cleanKeywords'
 
 export const parseStep = (step: string, ingredients: Ingredient[]) => ({
   description: step,

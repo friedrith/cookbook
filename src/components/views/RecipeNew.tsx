@@ -15,6 +15,7 @@ import Button from 'components/atoms/Button'
 import DeleteConfirmationPopup from 'components/organisms/DeleteConfirmationPopup'
 import usePopup from 'hooks/usePopup'
 import useEventListener from 'hooks/useEventListener'
+import Header from 'components/atoms/Header'
 
 const RecipeNew = () => {
   const [recipe, setRecipe] = useState(createRecipe())
@@ -58,7 +59,7 @@ const RecipeNew = () => {
       <RecipeEditor recipe={recipe} onChange={setRecipe} ref={ref} />
       <FixedHeader restRef={ref}>
         {isMaximized => (
-          <>
+          <Header white={isMaximized}>
             {disabled ? (
               <BackButton url="/recipes" title={t('_Back to recipes')} />
             ) : (
@@ -78,7 +79,7 @@ const RecipeNew = () => {
               label={t('_Save new recipe')}
               rightIcon
             />
-          </>
+          </Header>
         )}
       </FixedHeader>
       <DeleteConfirmationPopup

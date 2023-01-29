@@ -1,5 +1,5 @@
 import { BadgeSize } from 'components/atoms/Badge'
-import KeywordBadge from 'features/keywords/components/KeywordBadge'
+import KeywordBadge from 'features/categories/components/KeywordBadge'
 
 type Props = {
   keywords: string[]

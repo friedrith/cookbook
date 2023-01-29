@@ -180,5 +180,12 @@
   " or contact us at ": " or contact us at ",
   "_To view this recipe, you need to import it in CookBook.": "To view this recipe, you need to import it in CookBook.",
   "Categories": "Categories:",
-  "_Save new recipe": "Save"
+  "_Save new recipe": "Save",
+  "_Category's Recipes": "Les recettes \"{{category}}\"",
+  "_How to add categories?": "Comment ajouter des catégories ?",
+  "_Some categories are not used": "CookBook includes {{categoriesCount}} more categories you are not using:",
+  "_They could help you to find your recipes even easier": "They could help you to find your recipes even easier.",
+  "_Show the recipes without categories": "Show the {{recipesCount}} recipes without categories",
+  "_Recipes without categories": "Recipes without categories",
+  "_Show all recipes": "Show all recipes"
 }

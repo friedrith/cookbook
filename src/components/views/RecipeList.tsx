@@ -1,57 +1,38 @@
-import { useRef, useState, useMemo } from 'react'
+import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSearchParams } from 'react-router-dom'
+import classNames from 'classnames'
 
 import { useAppSelector } from 'hooks/redux'
-import {
-  getRecipeList,
-  areRecipesFetched,
-  getAllKeywordSortedByFrequency,
-} from 'store'
+import { getRecipeList, areRecipesFetched } from 'store'
 import RecipeListHeader from 'components/organisms/RecipeListHeader'
 import Container from 'components/atoms/Container'
 import Page from 'components/templates/Page'
 import EmptyMessage from 'components/atoms/EmptyMessage'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
 import rememberScroll from 'utils/rememberScroll'
-import KeywordList from 'features/keywords/components/KeywordList'
-import { BadgeSize } from 'components/atoms/Badge'
 import RecipeListAll from 'features/recipes/components/RecipeListAll'
 import RecipeListSearchResults from 'features/recipes/components/RecipeListSearchResults'
 import NoRecipeList from 'features/recipes/components/NoRecipeList'
 import RecipeListRecentSearches from 'features/recipes/components/RecipeListRecentSearches'
+import { getAvailableCategories } from 'features/categories/categories.slice'
+import shouldShowCategories from 'features/categories/utils/shouldShowCategories'
+import useSearch from 'features/search/useSearch'
+import RecipeListNoCategories from 'features/recipes/components/RecipeListNoCategories'
+import SearchStatus from 'features/search/types/SearchStatus'
 
 const scroll = rememberScroll()
 
 const RecipeList = () => {
   const areFetched = useAppSelector(areRecipesFetched)
   const recipes = useAppSelector(getRecipeList)
-  let [searchParams, setSearchParams] = useSearchParams()
 
   const ref = useRef<HTMLDivElement | null>(null)
 
-  const [query, setQuery] = useState(searchParams.get('q') || undefined)
-
-  const isSearchActivated = searchParams.get('q') !== null
-
-  const onQueryChange = (newQuery: string | undefined) => {
-    setQuery(newQuery)
-
-    if (newQuery !== undefined) {
-      setSearchParams({ q: newQuery })
-    } else {
-      setSearchParams({})
-    }
-  }
+  const { searchStatus } = useSearch()
 
   const { t } = useTranslation()
 
-  const keywords = useAppSelector(getAllKeywordSortedByFrequency)
-
-  const keywordsNotUsed = useMemo(
-    () => keywords.filter(k => !(query || '').includes(k)),
-    [keywords, query],
-  )
+  const availableCategories = useAppSelector(getAvailableCategories)
 
   return (
     <Page
@@ -59,26 +40,34 @@ const RecipeList = () => {
       scroll={scroll.scroll}
       onScroll={v => scroll.onScroll(v)}
     >
-      <Container className="bg-white" fullWidth>
-        <div className="relative z-10 pt-16">
-          <div ref={ref} />
-          {keywordsNotUsed.length > 0 && (
+      <Container
+        className={classNames(
+          'bg-white',
+          shouldShowCategories(availableCategories) ? 'pt-32' : 'p-10',
+        )}
+        fullWidth
+      >
+        {/* {keywordsNotUsed.length > 0 && (
             <KeywordList
               size={BadgeSize.large}
               className="text-center"
               keywords={keywordsNotUsed}
               onChangeQuery={onQueryChange}
             />
+          )} */}
+        <div className="flex-1 relative z-10 pt-10 md:pt-24">
+          <div className="relative z-10 " ref={ref} />
+          {searchStatus === SearchStatus.NoCategory && (
+            <RecipeListNoCategories recipes={recipes} />
           )}
-        </div>
-        <div className="flex-1 relative z-10 pt-16">
-          {recipes.length > 0 && query && (
-            <RecipeListSearchResults recipes={recipes} query={query} />
+          {(searchStatus === SearchStatus.Category ||
+            searchStatus === SearchStatus.Generic) && (
+            <RecipeListSearchResults recipes={recipes} />
           )}
-          {recipes.length > 0 && !query && !isSearchActivated && (
+          {recipes.length > 0 && searchStatus === SearchStatus.Unactive && (
             <RecipeListAll recipes={recipes} />
           )}
-          {recipes.length > 0 && !query && isSearchActivated && (
+          {searchStatus === SearchStatus.ReadyForSearch && (
             <RecipeListRecentSearches recipes={recipes} />
           )}
 
@@ -97,14 +86,7 @@ const RecipeList = () => {
           )}
         </div>
       </Container>
-      <RecipeListHeader
-        restRef={ref}
-        onSearchChange={onQueryChange}
-        searchValue={query}
-        hideSearch={recipes.length === 0}
-        searchActive={isSearchActivated}
-        onFocusChange={() => {}}
-      />
+      <RecipeListHeader restRef={ref} hideSearch={recipes.length === 0} />
     </Page>
   )
 }

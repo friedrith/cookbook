@@ -7,7 +7,8 @@ import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Page from 'components/templates/Page'
 import RecipeEditor from 'components/organisms/RecipeEditor'
 import SavingIndicator from 'components/molecules/SavingIndicator'
-import Header from 'components/atoms/FixedHeader'
+import FixedHeader from 'components/atoms/FixedHeader'
+import Header from 'components/atoms/Header'
 import RecipeHeader from 'components/molecules/RecipeHeader'
 import Recipe from 'models/Recipe'
 import NotFound404 from 'components/views/NotFound404'
@@ -124,9 +125,9 @@ const RecipeEdit = () => {
         </div>
       </RecipeEditor>
 
-      <Header restRef={ref} className="pointer-events-none">
+      <FixedHeader restRef={ref} className="pointer-events-none">
         {isMaximized => (
-          <>
+          <Header white={isMaximized}>
             <BackButton
               url={`/recipes/${recipe.id}`}
               disabled={saving}
@@ -154,9 +155,9 @@ const RecipeEdit = () => {
                 )}
               </>
             )}
-          </>
+          </Header>
         )}
-      </Header>
+      </FixedHeader>
     </Page>
   )
 }

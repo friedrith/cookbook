@@ -22,9 +22,10 @@ import useCurrentRecipe from 'hooks/useCurrentRecipe'
 import ShareIcon from 'assets/ShareIcon'
 import { canShare, shareText } from 'utils/share'
 import renderRecipe from 'utils/render/renderRecipe'
-import KeywordList from 'features/keywords/components/KeywordList'
+import KeywordList from 'features/categories/components/KeywordList'
 import { BadgeSize } from 'components/atoms/Badge'
 import TimerCenter from 'features/timers/components/TimersCenter'
+import Header from 'components/atoms/Header'
 
 const RecipeView = () => {
   const [recipe, formattedRecipe] = useCurrentRecipe()
@@ -94,7 +95,7 @@ const RecipeView = () => {
       </Container>
       <FixedHeader restRef={ref} className="pointer-events-none">
         {isMaximized => (
-          <>
+          <Header white={isMaximized}>
             <BackButton url="/recipes" title={t('_Back to recipes')} />
             {isMaximized ? (
               <RecipeHeader
@@ -121,7 +122,7 @@ const RecipeView = () => {
                 blur
               />
             </span>
-          </>
+          </Header>
         )}
       </FixedHeader>
       <SharePopup

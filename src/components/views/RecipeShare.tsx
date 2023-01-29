@@ -28,6 +28,7 @@ import StepItemGeneric from 'components/atoms/StepItemGeneric'
 import Modal, { PopupType } from 'components/atoms/Modal'
 import renderSharingLink from 'utils/render/renderSharingLink'
 import { getSharingLinks, saveSharingLinks } from 'utils/sharingLinks'
+import Header from 'components/atoms/Header'
 
 const LineSkeleton = ({ className }: { className?: string }) => (
   <div className={cx('bg-gray-200 rounded-full', className)} />
@@ -226,7 +227,7 @@ const RecipeShare = () => {
       </Modal>
       <FixedHeader restRef={ref} className="pointer-events-none">
         {isMaximized => (
-          <>
+          <Header>
             {user ? (
               <BackButton url="/recipes" title={t('_Back to recipes')} />
             ) : (
@@ -240,7 +241,7 @@ const RecipeShare = () => {
             ) : (
               <div className="flex-1" />
             )}
-          </>
+          </Header>
         )}
       </FixedHeader>
     </Page>
