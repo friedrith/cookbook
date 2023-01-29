@@ -51,6 +51,7 @@ const categories: Category[] = [
   { name: 'snack', image: 'tccuvaym' },
   { name: 'baking', image: 'ivgocdgj' },
   { name: 'avocado', image: 'cjjuuldp' },
+  { name: 'alcohol', image: 'ymuicmbe' },
   // { name: 'cookie', image: 'jwdvjivv' }, // not common
   // { name: 'nuts', image: 'hyzwknzx' }, // not found
 ]
