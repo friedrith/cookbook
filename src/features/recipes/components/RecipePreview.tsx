@@ -32,7 +32,7 @@ const RecipePreview = ({ recipe, onClick = () => {} }: Props) => {
       }}
       onKeyDown={() => {}}
     >
-      <div className="aspect-w-3 aspect-h-3 rounded-xl overflow-hidden bg-gray-200">
+      <div className="aspect-w-3 aspect-h-2 rounded-xl overflow-hidden bg-gray-200">
         <img
           src={previewUrl}
           alt={recipe.name}
