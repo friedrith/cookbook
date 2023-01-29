@@ -13,7 +13,10 @@ const cleanQuery = (query: SearchQuery) =>
 const useSearch = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  let [searchParams, setSearchParams] = useSearchParams()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let [_, setSearchParams] = useSearchParams()
+
+  const searchParams = new URLSearchParams(window.location.search)
 
   console.log('searchParams', searchParams)
 
