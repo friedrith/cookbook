@@ -27,6 +27,7 @@ const categories: Category[] = [
   { name: 'juice', image: 'yckxmpcm' },
   { name: 'pasta', image: 'abwavtyg' },
   { name: 'cheese', image: 'zcjsewlp' },
+  { name: 'taco', image: 'pgbfuhsp' },
   { name: 'candy', image: 'nykjppwl' },
   { name: 'egg', image: 'ytmpyxlk' },
   { name: 'pastry', image: 'zzfixgfx' },
@@ -49,6 +50,7 @@ const categories: Category[] = [
   { name: 'appetizer', image: 'vnzzfamd' },
   { name: 'snack', image: 'tccuvaym' },
   { name: 'baking', image: 'ivgocdgj' },
+  { name: 'avocado', image: 'cjjuuldp' },
   // { name: 'cookie', image: 'jwdvjivv' }, // not common
   // { name: 'nuts', image: 'hyzwknzx' }, // not found
 ]
