@@ -9,8 +9,9 @@
  * 7 meals of the day https://www.englishclub.com/ref/esl/Power_of_7/7_Meals_of_the_Day_2946.php
  */
 
-const categories = [
-  // { name: 'foo', image: 'foo' },
+import Category from './Category'
+
+const categories: Category[] = [
   { name: 'vegan', image: 'arefmxfu' },
   { name: 'fish', image: 'cshaldlf' },
   { name: 'cocktail', image: 'kplycyjp' },

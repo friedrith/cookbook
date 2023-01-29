@@ -185,6 +185,7 @@
   "_Some categories are not used": "CookBook includes {{categoriesCount}} more categories you are not using:",
   "_They could help you to find your recipes even easier": "They could help you to find your recipes even easier.",
   "_Show the recipes without categories": "Show the {{recipesCount}} recipes without categories",
+  "_Add some suggested keywords to your recipes": "Add some suggested keywords to your recipes.",
   "_Recipes without categories": "Recipes without categories",
   "_Show all recipes": "Show all recipes"
 }

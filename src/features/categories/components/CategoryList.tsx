@@ -1,4 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
@@ -23,6 +22,7 @@ import {
 } from '../categories.slice'
 import SearchStatus from 'features/search/types/SearchStatus'
 import useEventListener from 'hooks/useEventListener'
+import classNames from 'classnames'
 
 const CategoriesList = () => {
   const { query, searchStatus, setCategory, setSearch } = useSearch()
@@ -177,18 +177,27 @@ const CategoriesList = () => {
               })}
             </p>
             <div className="relative py-5">
-              <div className="grid grid-cols-3 h-[145px] overflow-hidden relative">
-                {unusedCategories.map(c => (
+              <div
+                className={classNames(
+                  'grid grid-cols-3  overflow-hidden relative',
+                  { 'h-[145px]': unusedCategories.length > 6 },
+                )}
+              >
+                {unusedCategories.slice(0, 6).map(c => (
                   <CategoryPreview key={c.name} category={c} className="!m-0" />
                 ))}
-                <div className="absolute h-28 bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-white" />
+                {unusedCategories.length > 6 && (
+                  <div className="absolute h-28 bottom-0 left-0 right-0 bg-gradient-to-b from-transparent to-white" />
+                )}
               </div>
-              <div className="text-xs font-semibold text-gray-900">
-                {t('And many more...')}
-              </div>
+              {unusedCategories.length > 6 && (
+                <div className="text-xs font-semibold text-gray-900">
+                  {t('And many more...')}
+                </div>
+              )}
             </div>
-
             <p className="pt-2">
+              {t('_Add some suggested keywords to your recipes')}
               {t('_They could help you to find your recipes even easier')}
             </p>
           </>
