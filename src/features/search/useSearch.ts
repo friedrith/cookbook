@@ -23,8 +23,6 @@ const useSearch = () => {
   return useMemo(() => {
     const searchStatus = estimateSearchStatus(query)
 
-    console.log('searchStatus', searchStatus, query)
-
     return {
       query: cleanQuery(query),
       searchStatus,

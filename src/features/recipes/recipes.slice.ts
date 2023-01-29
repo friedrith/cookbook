@@ -133,7 +133,7 @@ export const recipesSlice = createSlice({
       const MAX_RECENT_SEARCHES = 10
       state.recentSearches = uniq([
         action.payload.id,
-        ...state.recentSearches,
+        ...(state.recentSearches || []),
       ]).slice(0, MAX_RECENT_SEARCHES)
     },
   },
@@ -266,9 +266,11 @@ export const getAllKeywordSortedByFrequency = createSelector(
   },
 )
 
+const EMPTY_STRING_ARRAY: string[] = []
+
 export const getRecentSearches = createSelector(
   (state: RootState) => state.recipes.byId,
-  (state: RootState) => state.recipes.recentSearches,
+  (state: RootState) => state.recipes.recentSearches || EMPTY_STRING_ARRAY,
   (byId, recentSearches) => recentSearches.map(id => byId[id]),
 )
 

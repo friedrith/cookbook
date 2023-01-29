@@ -74,7 +74,7 @@ const CategoriesList = () => {
   return (
     <>
       <div>
-        <Container fullWidth className="relative h-22">
+        <Container fullWidth className="relative h-22 !p-0 md:!px-4 lg:!px-16">
           <div className="w-full h-24 overflow-hidden relative">
             <div className="overflow-x-scroll scroll-smooth	" ref={listRef}>
               <div
@@ -134,6 +134,7 @@ const CategoriesList = () => {
                         <ChevronLeftIcon className="h-6 w-6 stroke-2" />
                       </Button.Circle>
                     </div>
+                    {/* <div className="absolute block md:hidden top-0 bottom-0 left-0 bg-white w-4" /> */}
                     <div className="absolute block md:hidden top-0 bottom-0 left-0 bg-gradient-to-r from-white to-transparent w-10" />
                   </>
                 )}
@@ -155,6 +156,7 @@ const CategoriesList = () => {
                         <ChevronRightIcon className="h-6 w-6 stroke-2" />
                       </Button.Circle>
                     </div>
+                    {/* <div className="absolute block md:hidden top-0 bottom-0 right-0 bg-white w-4" /> */}
                     <div className="absolute block md:hidden top-0 bottom-0 right-0 bg-gradient-to-l from-white to-transparent w-10" />
                   </>
                 )}
