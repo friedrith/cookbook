@@ -8,7 +8,6 @@ import {
 
 import Modal from 'components/atoms/Modal'
 import Logo from 'components/atoms/Logo'
-import AlphaBadge from 'components/atoms/AlphaBadge'
 import p from '../../../package.json'
 
 type Props = {
@@ -53,7 +52,6 @@ const HelpPopup = ({ open, onClose }: Props) => {
       iconNode={<Logo className="inline-flex" />}
       open={open}
       onClose={onClose}
-      title={<AlphaBadge />}
       description={t('Version', { version: p.version })}
     >
       <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
