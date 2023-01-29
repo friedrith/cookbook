@@ -14,7 +14,7 @@ import Category from './Category'
 const categories: Category[] = [
   { name: 'vegan', image: 'arefmxfu' },
   { name: 'fish', image: 'cshaldlf' },
-  { name: 'cocktail', image: 'kplycyjp' },
+  // { name: 'cocktail', image: 'kplycyjp' },
   { name: 'sushi', image: 'rnscgeoq' },
   { name: 'pie', image: 'fdrddzxd' },
   { name: 'ice cream', image: 'jxdajdjf' },
@@ -42,11 +42,11 @@ const categories: Category[] = [
   { name: 'baby', image: 'cuvapfqt' },
   { name: 'pregnancy diet', image: 'rxtmmwvl' },
   { name: 'pineapple', image: 'junkfabe' },
-  { name: 'drink', image: 'vjavixmv' },
+  { name: 'drink', image: 'yckxmpcm' },
   { name: 'spicy', image: 'tvkxkrjs' },
-  { name: 'appetizer', image: 'efcxuzbx' },
+  { name: 'appetizer', image: 'vnzzfamd' },
   { name: 'snack', image: 'tccuvaym' },
-  { name: 'baking', image: 'pjdwbjhy' },
+  { name: 'baking', image: 'ivgocdgj' },
   // { name: 'cookie', image: 'jwdvjivv' }, // not common
   // { name: 'nuts', image: 'hyzwknzx' }, // not found
 ]
