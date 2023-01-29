@@ -13,24 +13,20 @@ const cleanQuery = (query: SearchQuery) =>
 const useSearch = () => {
   const location = useLocation()
   const navigate = useNavigate()
+
+  // bug with useSearchParams in production, the searchParams doesn't seem to work
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   let [_, setSearchParams] = useSearchParams()
 
   const searchParams = new URLSearchParams(window.location.search)
-
-  console.log('searchParams', searchParams)
 
   const query =
     typeof searchParams.get('q') === 'string'
       ? searchParams.get('q')
       : undefined
 
-  console.log('query', query)
-
   return useMemo(() => {
     const searchStatus = estimateSearchStatus(query)
-
-    console.log('useMemo.query', query, cleanQuery(query))
 
     return {
       query: cleanQuery(query),
