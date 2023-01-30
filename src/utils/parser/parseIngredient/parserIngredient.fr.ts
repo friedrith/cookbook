@@ -29,6 +29,7 @@ const units = [
   'c. à soupe',
   'cl',
   'l',
+  'L',
   'g',
 ]
 
@@ -36,7 +37,7 @@ const parseKnownUnit = (line: string): Ingredient | null => {
   const result = units
     .map(u => {
       const match = line.match(
-        new RegExp(`([0-9\\s½]+)[ ]*(${u})[ ]+(de|d'|d’|)*(.*)`, 'i'),
+        new RegExp(`([0-9\\s/½]+)[ ]*(${u})[ ]+(de|d'|d’|)*(.*)`, 'i'),
       )
       return match ? { value: match[1], unit: match[2], name: match[4] } : null
     })

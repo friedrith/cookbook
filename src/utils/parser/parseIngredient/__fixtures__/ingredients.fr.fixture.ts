@@ -52,6 +52,10 @@ const fixtures = {
     name: 'sel',
     measure: { unit: 'c.à.c', value: 3 },
   },
+  '1/2L de lait': {
+    name: 'lait',
+    measure: { unit: 'L', value: '1/2' },
+  },
 }
 
 export default fixtures

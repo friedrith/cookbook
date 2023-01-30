@@ -73,6 +73,10 @@ const fixtures = {
       name: 'turkey, neck reserved for gravy, giblets discarded, patted dry',
       measure: { unit: 'lb.', value: '1 12–14' },
     },
+  '1/2L of milk': {
+    name: 'milk',
+    measure: { unit: 'L', value: '1/2' },
+  },
 }
 
 export default fixtures
