@@ -6,10 +6,13 @@
   "_No Recipes created": "Aucune recette créée.",
   "_Get started by creating a new recipe": "Il faut commencer par créer une nouvelle recette.",
   "_settings": "Réglages",
-  "_Log in": "S'authentifier",
   "_Send magic link": "Envoyer un lien magique",
   "_Email address": "Adresse email",
-  "_An email on its way": "Un lien magique est en route",
+  "login": {
+    "_Log in": "Lier votre email",
+    "_Get a magic link sent to your email": "Recevez un lien magique pour instantanément lier votre adresse email à votre livre de recette.",
+    "_An email on its way": "Vérifiez vos emails"
+  },
   "_Invalid link": "Lien Invalide",
   "_Sorry that link is no longer valid": "Désolé, ce lien n'est plus valide.",
   "_Send a new magic link": "Envoyer un nouveau lien magique",
@@ -71,7 +74,6 @@
   "_made simple": "rendu simple",
   "_for everybody": "pour tout le monde",
   "_Cooking your best recipes will be never easier": "Cuisiner votre meilleures recettes ne sera jamais aussi simple.",
-  "_Get a magic link sent to your email": "Recevoir un lien magique par email pour s'authentifier automatiquement.",
   "_Why a magic link": "Pourquoi un lien magique ?",
   "_We sent an email": "Un email a été envoyé à <strong>{{email}}</strong>. Vous allez y trouver un lien magique pour s'authentifier instantanément.",
   "_We sent an email.pwa": "Un email a été envoyé à <strong>{{email}}</strong>. Copiez le lien magique dans le formulaire ci-dessous.",

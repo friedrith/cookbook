@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import { useAppDispatch } from 'hooks/redux'
@@ -26,7 +26,7 @@ const Login = () => {
   }
 
   return (
-    <LoginPage title={t('_Log in')}>
+    <LoginPage title={t('login._Log in')}>
       <BackButton
         url="/"
         className="fixed top-5 left-5 lg:top-10 lg:left-10"
@@ -34,17 +34,17 @@ const Login = () => {
       />
       <div>
         <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-          {t('_Log in')}
+          {t('login._Log in')}
         </h2>
         {
           <p className="mt-2 text-sm text-gray-600">
-            {t('_Get a magic link sent to your email')}
+            {t('login._Get a magic link sent to your email')}
           </p>
         }
       </div>
       <div className="mt-8">
         <div className="mt-6">
-          <form action="#" method="POST" className="space-y-6" onSubmit={login}>
+          <form action="#" method="POST" className="space-y-4" onSubmit={login}>
             <div>
               <label
                 htmlFor="email"
@@ -72,7 +72,7 @@ const Login = () => {
               </Button.Primary>
             </div>
           </form>
-          <div>
+          {/* <div>
             <p className="mt-2 text-sm text-gray-600">
               <Link
                 to="/faq#why-magic-link"
@@ -81,7 +81,7 @@ const Login = () => {
                 {t('_Why a magic link')}
               </Link>
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </LoginPage>

@@ -28,7 +28,7 @@ const LinkWaiting = () => {
 
       <div>
         <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-          {t('_An email on its way')}
+          {t('login._An email on its way')}
         </h2>
 
         <p className="mt-2 text-sm text-gray-600">
