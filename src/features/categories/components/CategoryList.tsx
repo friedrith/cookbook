@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
@@ -46,28 +46,42 @@ const CategoriesList = () => {
 
   const [isRightArrowVisible, showRightArrow] = useState(false)
 
+  useEffect(() => {
+    showLeftArrow(listRef.current?.scrollLeft !== 0)
+
+    if (listContainerRef.current && listRef.current) {
+      showRightArrow(
+        listRef.current?.scrollWidth !==
+          listRef.current?.offsetWidth + listRef.current?.scrollLeft,
+      )
+    }
+  }, [recipes])
+
   useEventListener(
     'scroll',
     () => {
       showLeftArrow(listRef.current?.scrollLeft !== 0)
 
       if (listContainerRef.current && listRef.current) {
-        console.log(
-          'scroll',
-          listRef.current?.scrollWidth !==
-            listRef.current?.offsetWidth + listRef.current?.scrollLeft,
-        )
         showRightArrow(
           listRef.current?.scrollWidth !==
             listRef.current?.offsetWidth + listRef.current?.scrollLeft,
         )
       }
-
-      // if (listRef.current?.scrollLeft !== 0) {
-      // }
     },
     listRef.current,
   )
+
+  useEventListener('resize', () => {
+    showLeftArrow(listRef.current?.scrollLeft !== 0)
+
+    if (listContainerRef.current && listRef.current) {
+      showRightArrow(
+        listRef.current?.scrollWidth !==
+          listRef.current?.offsetWidth + listRef.current?.scrollLeft,
+      )
+    }
+  })
 
   if (!shouldShowCategories(availableCategories)) return <></>
 

@@ -34,6 +34,8 @@ const categories: Category[] = [
   { name: 'breakfast', image: 'uajaxvaw' },
   { name: 'bread', image: 'vjmyhetd' },
   { name: 'chocolate', image: 'tntzqaho' },
+  { name: 'fritters', image: 'ggiecnoi' },
+  { name: 'coffee', image: 'vjavixmv' },
   { name: 'biscuit', image: 'uvncnegv' },
   { name: 'donut', image: 'zjvoeqed' },
   { name: 'fries', image: 'fkytfmrm' },
@@ -47,11 +49,14 @@ const categories: Category[] = [
   { name: 'pineapple', image: 'junkfabe' },
   { name: 'drink', image: 'yckxmpcm' },
   { name: 'spicy', image: 'tvkxkrjs' },
+  { name: 'honey', image: 'dlihqvsu' },
   { name: 'appetizer', image: 'vnzzfamd' },
   { name: 'snack', image: 'tccuvaym' },
   { name: 'baking', image: 'ivgocdgj' },
   { name: 'avocado', image: 'cjjuuldp' },
   { name: 'alcohol', image: 'ymuicmbe' },
+  { name: 'waffle', image: 'zznenyyh' },
+  { name: 'sausage', image: 'coqbeapw' },
   // { name: 'cookie', image: 'jwdvjivv' }, // not common
   // { name: 'nuts', image: 'hyzwknzx' }, // not found
 ]
