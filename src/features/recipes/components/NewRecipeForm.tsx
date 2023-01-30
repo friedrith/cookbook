@@ -123,9 +123,9 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
             }
             enter="transition-all duration-75"
             enterFrom="h-0"
-            enterTo="h-4"
+            enterTo="h-7"
             leave="transition-all duration-150"
-            leaveFrom="h-4"
+            leaveFrom="h-7"
             leaveTo="h-0"
           >
             <span className="flex items-center mt-2 text-xs text-red-600 ">
