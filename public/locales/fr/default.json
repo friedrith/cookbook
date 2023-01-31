@@ -9,7 +9,8 @@
   "_Send magic link": "Envoyer un lien magique",
   "_Email address": "Adresse email",
   "login": {
-    "_Log in": "Lier votre email",
+    "_Log in": "S'authentifier",
+    "_Link your email": "Lier votre email",
     "_Get a magic link sent to your email": "Recevez un lien magique pour instantanément lier votre adresse email à votre livre de recette.",
     "_An email on its way": "Vérifiez vos emails"
   },

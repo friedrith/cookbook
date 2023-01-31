@@ -97,7 +97,10 @@ const LinkVerification = () => {
   return (
     <CenterPage className="flex flex-col items-center">
       <Logo />
-      <form className="mt-6 flex items-stretch sm:max-w-md" onSubmit={login}>
+      <form
+        className="mt-6 flex flex-col md:flex-row items-stretch sm:max-w-md"
+        onSubmit={login}
+      >
         <label htmlFor="email-address" className="sr-only">
           {t('_Email address')}
         </label>
@@ -113,9 +116,9 @@ const LinkVerification = () => {
         />
         <Button.Black
           type="submit"
-          className="sm:mt-0 sm:ml-3 sm:flex-shrink-0"
+          className="mt-3 sm:mt-0 sm:ml-3 sm:flex-shrink-0"
         >
-          {t('_Log in')}
+          {t('login._Log in')}
         </Button.Black>
       </form>
     </CenterPage>

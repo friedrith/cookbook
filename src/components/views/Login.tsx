@@ -34,7 +34,7 @@ const Login = () => {
       />
       <div>
         <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-          {t('login._Log in')}
+          {t('login._Link your email')}
         </h2>
         {
           <p className="mt-2 text-sm text-gray-600">
