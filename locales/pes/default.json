@@ -7,7 +7,8 @@
   "_Get started by creating a new recipe": "Get started by creating a new recipe.",
   "_settings": "Settings",
   "login": {
-    "_Log in": "Link your email",
+    "_Log in": "Log in",
+    "_Link your email": "Lier votre email",
     "_Get a magic link sent to your email": "Get a magic link to instantly link your email address to your cook book.",
     "_An email on its way": "Check your emails"
   },
