@@ -144,7 +144,7 @@ const RecipeEditor = forwardRef(
               </div>
               <div>
                 <SectionTitle className="pb-3">
-                  <label htmlFor="keywords">{t('_Keywords')}</label>
+                  <label htmlFor="keywords">{t('_Categories')}</label>
                 </SectionTitle>
                 <ReactTags
                   tags={tags}

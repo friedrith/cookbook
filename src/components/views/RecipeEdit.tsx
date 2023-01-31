@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { TrashIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
@@ -33,6 +34,7 @@ const RecipeEdit = () => {
   const [recipe, setRecipe] = useState(savedRecipe)
 
   const [saved, setSaved] = useState(true)
+  const [savedAtLeastOnce, setSavedAtLeastOnce] = useState(false)
 
   useEffect(() => {
     if (!recipe?.name) {
@@ -75,11 +77,12 @@ const RecipeEdit = () => {
           dispatch(updateRecipe(newRecipe)).unwrap()
 
           setSaved(true)
+          setSavedAtLeastOnce(true)
         } catch (error) {
           console.log('error', error)
         }
       }
-    }, 500)
+    }, 2000)
   }
 
   const requestDeleteRecipe = async () => {
@@ -108,20 +111,38 @@ const RecipeEdit = () => {
         recipe={recipe}
         onChange={saveDebounced}
       >
-        <div className="py-10 pt-20 flex justify-center">
-          <div className="flex flex-col items-stretch justify-center gap-y-4">
-            <Button.White onClick={duplicate}>
-              <DocumentDuplicateIcon
-                className="h-5 w-5 mr-2"
-                aria-hidden="true"
-              />
-              {t('_duplicate recipe')}
-            </Button.White>
-            <Button.Error onClick={requestDeleteRecipe}>
-              <TrashIcon className="h-5 w-5 mr-2" aria-hidden="true" />
-              {t('_delete recipe')}
-            </Button.Error>
+        {savedAtLeastOnce && saved && (
+          <div className="py-10 pt-10 flex flex-col items-center justify-center">
+            <div className="px-2 py-1 rounded font-semibold text-lg bg-teal-100 text-teal-800 flex items-center">
+              {t('editor._Saved')}
+              <CheckCircleIcon className="h-6 w-6 ml-2" />
+            </div>
+            <div className="pt-2 text-sm font-medium text-gray-500">
+              {t(
+                'editor._No need to save manually. Everything is saved in really time.',
+              )}
+            </div>
           </div>
+        )}
+        {saving && (
+          <div className="py-10 pt-10 flex flex-col items-center justify-center">
+            <div className="px-2 py-1 rounded font-semibold text-lg bg-orange-100 text-orange-800 flex items-center">
+              {t('editor._Saving in progress...')}
+            </div>
+          </div>
+        )}
+        <div className="py-10 pt-20 flex items-center justify-end gap-x-2">
+          <Button.White onClick={duplicate}>
+            <DocumentDuplicateIcon
+              className="h-5 w-5 mr-2"
+              aria-hidden="true"
+            />
+            {t('_duplicate recipe')}
+          </Button.White>
+          <Button.Black onClick={requestDeleteRecipe}>
+            <TrashIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+            {t('_delete recipe')}
+          </Button.Black>
         </div>
       </RecipeEditor>
 

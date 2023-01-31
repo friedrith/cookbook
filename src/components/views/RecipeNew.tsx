@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { CheckIcon, ArrowLeftIcon } from '@heroicons/react/24/outline'
+import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import { useAppDispatch } from 'hooks/redux'
@@ -56,7 +56,13 @@ const RecipeNew = () => {
 
   return (
     <Page title={t('_Create Recipe')}>
-      <RecipeEditor recipe={recipe} onChange={setRecipe} ref={ref} />
+      <RecipeEditor recipe={recipe} onChange={setRecipe} ref={ref}>
+        <div className="flex justify-center">
+          <Button.Primary onClick={save} disabled={disabled}>
+            {t('_Save new recipe')}
+          </Button.Primary>
+        </div>
+      </RecipeEditor>
       <FixedHeader restRef={ref}>
         {isMaximized => (
           <Header white={isMaximized}>
@@ -70,15 +76,6 @@ const RecipeNew = () => {
               />
             )}
             <div className="flex-1" />
-            <Button.Icon
-              onClick={save}
-              icon={CheckIcon}
-              blur={disabled}
-              disabled={disabled}
-              title="Save new recipe"
-              label={t('_Save new recipe')}
-              rightIcon
-            />
           </Header>
         )}
       </FixedHeader>

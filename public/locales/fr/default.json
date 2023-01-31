@@ -28,7 +28,7 @@
   "_Save": "Enregistrer",
   "_Recipe Name": "Recipe Name",
   "_Markdown format accepted": "Markdown format accepted",
-  "_Keywords": "Mot-clé",
+  "_Categories": "Catégories",
   "_Steps": "Étapes",
   "_Duration": "Durée",
   "_Servings": "Assiettes",
@@ -95,7 +95,7 @@
   "_Back to landing page": "Retourner à la page d'accueil",
   "_Back to recipes": "Retourner aux recettes",
   "_Back to recipe": "Retourner à la recette",
-  "_Edit Recipe": "Éditer la recette",
+  "_Edit Recipe": "Modifier la recette",
   "_Open Menu": "Ouvrir menu",
   "_Search in recipes": "Rechercher dans les recettes",
   "_Search": "Rechercher",
@@ -103,7 +103,10 @@
   "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "editor": {
     "Add ingredients there": "Ajouter les ingrédients ici, une ligne par ingrédient",
-    "Add steps there": "Ajouter les étapes ici, une ligne par étapes"
+    "Add steps there": "Ajouter les étapes ici, une ligne par étapes",
+    "_Saved": "Sauvegardé",
+    "_Saving in progress...": "Sauvegarde en cours...",
+    "_No need to save manually. Everything is saved in really time.": "Pas besoin de sauvarder manuellement. Tout est déjà sauvegardé en temps réel."
   },
   "notifications": {
     "Close": "Fermer"
