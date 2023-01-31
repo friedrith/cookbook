@@ -14,7 +14,7 @@ const renderRecipe = async (
   return `${t('_Import this recipe in CookBook', {
     link: renderSharingLink(linkId),
   })}
-  
+
 ${recipe.name}
 
 ${recipe.keywords.map(k => `#${k}`).join(', ')}
@@ -26,7 +26,7 @@ ${parseLines(recipe.ingredients)
 ${t('_Steps')} 
 ${parseLines(recipe.steps)
   .map(s => `- ${s}\n`)
-  .join('')}`
+  .join('')}`.trim()
 }
 
 export default renderRecipe
