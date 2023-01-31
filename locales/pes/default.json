@@ -29,7 +29,7 @@
   "_Save": "Save",
   "_Recipe Name": "Recipe Name",
   "_Markdown format accepted": "Markdown format accepted",
-  "_Keywords": "Keywords",
+  "_Categories": "Categories",
   "_Steps": "Steps",
   "_Duration": "Duration",
   "_Servings": "Servings",
@@ -92,7 +92,10 @@
   },
   "editor": {
     "Add ingredients there": "Add ingredients there, one ingredient by line",
-    "Add steps there": "Add step there, one step by line"
+    "Add steps there": "Add step there, one step by line",
+    "_Saved": "Saved",
+    "_Saving in progress...": "Saving in progress",
+    "_No need to save manually. Everything is saved in really time.": "_No need to save manually. Everything is saved in really time."
   },
   "_Beta": "Beta",
   "_Alpha": "Alpha",
