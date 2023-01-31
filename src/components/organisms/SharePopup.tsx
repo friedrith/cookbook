@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import Recipe from 'models/Recipe'
@@ -7,7 +7,7 @@ import { isCopiedToClipboard, shareText, isShared } from 'utils/share'
 import waitFor from 'utils/waitFor'
 import renderRecipe from 'utils/render/renderRecipe'
 import Button from 'components/atoms/Button'
-import ShareIcon from 'assets/ShareIcon'
+import TextArea from 'components/atoms/TextArea'
 
 type Props = {
   open: boolean
@@ -21,8 +21,17 @@ const SharePopup = ({ open, recipe, onClose }: Props) => {
   const [sharedRecipeWithClipboard, setSharedRecipeWithClipboard] =
     useState(false)
 
+  const [shareableRecipe, setShareableRecipe] = useState('')
+
+  useEffect(() => {
+    const createShareable = async () => {
+      setShareableRecipe(await renderRecipe(recipe, t))
+    }
+    createShareable().catch(console.error)
+  }, [recipe, t])
+
   const startSharingText = async () => {
-    const result = await shareText(await renderRecipe(recipe, t))
+    const result = await shareText(shareableRecipe)
 
     if (isCopiedToClipboard(result)) {
       setSharedRecipeWithClipboard(true)
@@ -39,9 +48,15 @@ const SharePopup = ({ open, recipe, onClose }: Props) => {
       type={PopupType.Black}
       open={open}
       onClose={onClose}
-      icon={ShareIcon}
+      title={t('_Share Recipe')}
     >
-      <Button.Black className="w-full" onClick={startSharingText}>
+      <TextArea.Normal
+        value={shareableRecipe}
+        className="h-32 resize-none"
+        id="recipe"
+        onChange={() => {}}
+      />
+      <Button.Black className="w-full mt-4" onClick={startSharingText}>
         {sharedRecipeWithClipboard
           ? t('_Recipe copied to clipboard')
           : t('_Copy Recipe to clipboard')}

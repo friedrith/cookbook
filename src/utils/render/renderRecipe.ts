@@ -11,7 +11,11 @@ const renderRecipe = async (
 ) => {
   const linkId = await linksApi.create(recipe.id)
 
-  return `${recipe.name}
+  return `${t('_Import this recipe in CookBook', {
+    link: renderSharingLink(linkId),
+  })}
+  
+${recipe.name}
 
 ${recipe.keywords.map(k => `#${k}`).join(', ')}
 
@@ -22,9 +26,7 @@ ${parseLines(recipe.ingredients)
 ${t('_Steps')} 
 ${parseLines(recipe.steps)
   .map(s => `- ${s}\n`)
-  .join('')}
-${t('_Import this recipe in CookBook', { link: renderSharingLink(linkId) })}
-`
+  .join('')}`
 }
 
 export default renderRecipe
