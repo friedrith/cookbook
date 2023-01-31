@@ -8,6 +8,7 @@ import waitFor from 'utils/waitFor'
 import renderRecipe from 'utils/render/renderRecipe'
 import Button from 'components/atoms/Button'
 import TextArea from 'components/atoms/TextArea'
+import ShareIcon from 'assets/ShareIcon'
 
 type Props = {
   open: boolean
@@ -45,6 +46,7 @@ const SharePopup = ({ open, recipe, onClose }: Props) => {
 
   return (
     <Modal
+      icon={ShareIcon}
       type={PopupType.Black}
       open={open}
       onClose={onClose}

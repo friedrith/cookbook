@@ -88,7 +88,7 @@ const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
                     <>
                       <div
                         className={classNames(
-                          'flex-1 hidden lg:block mr-4 transition-all',
+                          'flex-1 hidden lg:block mr-4 rtl:mr-0 ml-0 rtl:ml-4 transition-all',
                           isSearchActive ? 'lg:max-w-xs' : 'lg:max-w-[10rem]',
                         )}
                       >

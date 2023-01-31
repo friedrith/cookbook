@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
@@ -8,6 +8,7 @@ import useSearch from 'features/search/useSearch'
 import Button from 'components/atoms/Button'
 import Modal from 'components/atoms/Modal'
 import usePopup from 'hooks/usePopup'
+import isRightToLeft from 'utils/platforms/isRightToLeft'
 
 import CategoryPreview from './CategoryPreview'
 import matchCategory from '../utils/matchCategory'
@@ -46,20 +47,17 @@ const CategoriesList = () => {
 
   const [isRightArrowVisible, showRightArrow] = useState(false)
 
-  useEffect(() => {
-    showLeftArrow(listRef.current?.scrollLeft !== 0)
+  const updateArrows = useCallback(() => {
+    if (isRightToLeft()) {
+      showRightArrow(listRef.current?.scrollLeft !== 0)
 
-    if (listContainerRef.current && listRef.current) {
-      showRightArrow(
-        listRef.current?.scrollWidth !==
-          listRef.current?.offsetWidth + listRef.current?.scrollLeft,
-      )
-    }
-  }, [recipes])
-
-  useEventListener(
-    'scroll',
-    () => {
+      if (listContainerRef.current && listRef.current) {
+        showLeftArrow(
+          listRef.current?.scrollWidth !==
+            listRef.current?.offsetWidth + listRef.current?.scrollLeft,
+        )
+      }
+    } else {
       showLeftArrow(listRef.current?.scrollLeft !== 0)
 
       if (listContainerRef.current && listRef.current) {
@@ -68,19 +66,24 @@ const CategoriesList = () => {
             listRef.current?.offsetWidth + listRef.current?.scrollLeft,
         )
       }
+    }
+  }, [])
+
+  useEffect(() => {
+    updateArrows()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recipes])
+
+  useEventListener(
+    'scroll',
+    () => {
+      updateArrows()
     },
     listRef.current,
   )
 
   useEventListener('resize', () => {
-    showLeftArrow(listRef.current?.scrollLeft !== 0)
-
-    if (listContainerRef.current && listRef.current) {
-      showRightArrow(
-        listRef.current?.scrollWidth !==
-          listRef.current?.offsetWidth + listRef.current?.scrollLeft,
-      )
-    }
+    updateArrows()
   })
 
   if (!shouldShowCategories(availableCategories)) return <></>
