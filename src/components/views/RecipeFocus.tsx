@@ -37,7 +37,7 @@ import {
 import useCurrentRecipe from 'hooks/useCurrentRecipe'
 import IngredientListFocus from 'components/organisms/IngredientListFocus'
 import SlidePage from 'components/templates/SlidePage'
-import { getStepsWithIngredients } from 'utils/parser/parserStep'
+import { getStepsWithIngredients } from 'features/steps/utils/parseStep'
 import StepFocus from 'components/organisms/StepFocus'
 import FocusActions from 'components/organisms/FocusActions'
 import { releaseWakeLock, requestWakeLock } from 'utils/services/wakeLock'

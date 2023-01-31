@@ -1,22 +1,4 @@
-import Temperature from 'models/Temperature'
-
-export const choices = [
-  {
-    label: 'settings.temperatures.keepUnchanged',
-    symbol: '',
-    value: Temperature.Unknown,
-  },
-  {
-    label: 'settings.temperatures.Farenheit',
-    symbol: '°F',
-    value: Temperature.Farenheit,
-  },
-  {
-    label: 'settings.temperatures.Celsius',
-    symbol: '°C',
-    value: Temperature.Celsius,
-  },
-]
+import Temperature from 'features/units/types/Temperature'
 
 const round = (x: number) => Math.ceil(x / 5) * 5
 
@@ -29,10 +11,7 @@ const thermostatRegex = /(th\.|thermostat)\s*([0-9]+)/i
 // http://www.recettes-bretonnes.fr/cuisine-arts-de-la-table/degres-thermostats.html
 const thermostatToC = (thermostat: number) => 30 * thermostat
 
-export const replaceTemperature = (
-  description: string,
-  temperature: Temperature,
-) => {
+const convertTemperature = (description: string, temperature: Temperature) => {
   if (temperature === Temperature.Unknown) return description
 
   if (temperature === Temperature.Farenheit) {
@@ -57,3 +36,5 @@ export const replaceTemperature = (
 
   return description
 }
+
+export default convertTemperature

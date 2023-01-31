@@ -13,3 +13,8 @@ export const getSharingLinks = () =>
 export const saveSharingLinks = (linkIds: string[]) => {
   localStorage.setItem(SHARED_LINKS_KEY, uniq([linkIds]).join(SEPARATOR))
 }
+
+export const cleanSharingLinks = () => localStorage.removeItem(SHARED_LINKS_KEY)
+
+export const renderSharingLink = (linkId: string) =>
+  `${process.env.REACT_APP_URL}/share/${linkId}`

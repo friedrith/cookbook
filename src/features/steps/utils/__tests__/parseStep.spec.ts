@@ -1,4 +1,4 @@
-import { replaceUrlsByLinks } from '../'
+import { replaceUrlsByLinks } from '../parseStep'
 
 describe('replaceUrlsByLinks', () => {
   it('should return when no url', () => {

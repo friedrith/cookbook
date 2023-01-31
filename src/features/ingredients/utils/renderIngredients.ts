@@ -1,6 +1,6 @@
 import Ingredient from 'models/Ingredient'
-import renderMeasure from './renderMeasure'
-import { endOfLine } from 'utils/platform'
+import renderMeasure from '../../../utils/renderMeasure'
+import { endOfLine } from 'utils/platforms/platform'
 
 const renderIngredient = (ingredient: string, template: string) => {
   if (template.length === 0) return ingredient

@@ -1,11 +1,11 @@
-import Temperature from 'models/Temperature'
-import { replaceTemperature } from '../temperatures'
+import Temperature from 'features/units/types/Temperature'
+import convertTemperature from '../convertTemperature'
 
-describe('replaceTemperature', () => {
+describe('convertTemperature', () => {
   it('should replace celsius by fahrenheit', () => {
     const description = 'Preheat the oven at 190°C'
     const expectedDescription = 'Preheat the oven at 375°F'
-    expect(replaceTemperature(description, Temperature.Farenheit)).toEqual(
+    expect(convertTemperature(description, Temperature.Farenheit)).toEqual(
       expectedDescription,
     )
   })
@@ -13,21 +13,21 @@ describe('replaceTemperature', () => {
   it('should replace fahrenheit by celsius', () => {
     const description = 'Preheat the oven at 190°F'
     const expectedDescription = 'Preheat the oven at 90°C'
-    expect(replaceTemperature(description, Temperature.Celsius)).toEqual(
+    expect(convertTemperature(description, Temperature.Celsius)).toEqual(
       expectedDescription,
     )
   })
 
   it('should not replace fahrenheit when no temperature forced', () => {
     const description = 'Preheat the oven at 190°F'
-    expect(replaceTemperature(description, Temperature.Unknown)).toEqual(
+    expect(convertTemperature(description, Temperature.Unknown)).toEqual(
       description,
     )
   })
 
   it('should not replace celsius when no temperature forced', () => {
     const description = 'Preheat the oven at 190°C'
-    expect(replaceTemperature(description, Temperature.Unknown)).toEqual(
+    expect(convertTemperature(description, Temperature.Unknown)).toEqual(
       description,
     )
   })
@@ -35,7 +35,7 @@ describe('replaceTemperature', () => {
   it('should not replace fahrenheit by fahrenheit', () => {
     const description = 'Preheat the oven at 190°F'
     const expectedDescription = 'Preheat the oven at 190°F'
-    expect(replaceTemperature(description, Temperature.Farenheit)).toEqual(
+    expect(convertTemperature(description, Temperature.Farenheit)).toEqual(
       expectedDescription,
     )
   })
@@ -43,35 +43,35 @@ describe('replaceTemperature', () => {
   it('should not replace celsius by celsius', () => {
     const description = 'Preheat the oven at 190°C'
     const expectedDescription = 'Preheat the oven at 190°C'
-    expect(replaceTemperature(description, Temperature.Celsius)).toEqual(
+    expect(convertTemperature(description, Temperature.Celsius)).toEqual(
       expectedDescription,
     )
   })
 
   it('should not replace celsius by fahrenheit when fahrenheit already in the description', () => {
     const description = 'Preheat the oven at 190°C (375°F)'
-    expect(replaceTemperature(description, Temperature.Farenheit)).toEqual(
+    expect(convertTemperature(description, Temperature.Farenheit)).toEqual(
       description,
     )
   })
 
   it('should not replace fahrenheit by celsius when celsius already in the description', () => {
     const description = 'Preheat the oven at 190°F (90°C)'
-    expect(replaceTemperature(description, Temperature.Celsius)).toEqual(
+    expect(convertTemperature(description, Temperature.Celsius)).toEqual(
       description,
     )
   })
 
   it('should replace thermostat to celsius', () => {
     const description = 'Preheat the oven at th.7'
-    expect(replaceTemperature(description, Temperature.Celsius)).toEqual(
+    expect(convertTemperature(description, Temperature.Celsius)).toEqual(
       'Preheat the oven at 210°C',
     )
   })
 
   it('should replace thermostat to farenheit', () => {
     const description = 'Preheat the oven at th.7'
-    expect(replaceTemperature(description, Temperature.Farenheit)).toEqual(
+    expect(convertTemperature(description, Temperature.Farenheit)).toEqual(
       'Preheat the oven at 410°F',
     )
   })

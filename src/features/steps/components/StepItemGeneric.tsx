@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 import { unescape } from 'lodash'
 
 import Ingredient from 'models/Ingredient'
-import { replaceUrlsByLinks } from 'utils/parser/parserStep'
+import { replaceUrlsByLinks } from 'features/steps/utils/parseStep'
 import { useAppSelector } from 'hooks/redux'
 import { getTemperature } from 'store'
-import { replaceTemperature } from 'utils/parser/temperatures'
+import convertTemperature from 'features/units/utils/convertTemperature'
 import IngredientBadge from 'features/ingredients/components/IngredientBadge'
 import findDurations from 'features/timers/utils/findDurations'
 import DurationBadge from 'features/timers/components/DurationBadge'
@@ -39,7 +39,7 @@ const StepItemGeneric = ({
   const descriptionParsed = useMemo(
     () =>
       typeof description === 'string'
-        ? replaceTemperature(
+        ? convertTemperature(
             replaceUrlsByLinks(unescape(description), 'underline'),
             temperature,
           )

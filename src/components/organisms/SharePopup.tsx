@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next'
 
 import Recipe from 'models/Recipe'
 import Modal, { PopupType } from 'components/atoms/Modal'
-import { isCopiedToClipboard, shareText, isShared } from 'utils/share'
+import { isCopiedToClipboard, shareText, isShared } from 'utils/services/share'
 import waitFor from 'utils/waitFor'
-import renderRecipe from 'utils/render/renderRecipe'
+import renderTextRecipe from 'features/recipes/utils/renderTextRecipe'
 import Button from 'components/atoms/Button'
 import TextArea from 'components/atoms/TextArea'
 import ShareIcon from 'assets/ShareIcon'
@@ -26,7 +26,7 @@ const SharePopup = ({ open, recipe, onClose }: Props) => {
 
   useEffect(() => {
     const createShareable = async () => {
-      setShareableRecipe(await renderRecipe(recipe, t))
+      setShareableRecipe(await renderTextRecipe(recipe, t))
     }
     createShareable().catch(console.error)
   }, [recipe, t])

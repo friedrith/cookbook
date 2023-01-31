@@ -24,7 +24,7 @@ import {
   areRecipesFetched,
   addRecipe,
 } from 'store'
-import duplicateName from 'utils/duplicateName'
+import duplicateName from 'features/recipes/utils/duplicateName'
 
 const RecipeEdit = () => {
   const { recipeId } = useParams()

@@ -2,10 +2,10 @@ import * as linksApi from 'utils/api/links.api'
 
 import Recipe from 'models/Recipe'
 
-import parseLines from 'utils/parser/parseLines'
-import renderSharingLink from 'utils/render/renderSharingLink'
+import parseLines from 'utils/parseLines'
+import { renderSharingLink } from 'utils/urls/sharingLinks'
 
-const renderRecipe = async (
+const renderTextRecipe = async (
   recipe: Recipe,
   t: (k: string, options?: any) => string,
 ) => {
@@ -29,4 +29,4 @@ ${parseLines(recipe.steps)
   .join('')}`.trim()
 }
 
-export default renderRecipe
+export default renderTextRecipe

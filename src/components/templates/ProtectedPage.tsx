@@ -8,8 +8,8 @@ import useWhenLoggedOut from 'hooks/useWhenLoggedOut'
 import { areRecipesFetched, fetchRecipes, importRecipe } from 'store'
 import Notifications from 'components/organisms/Notifications'
 import useEventListener from 'hooks/useEventListener'
-import renderSharingLink from 'utils/render/renderSharingLink'
-import { getSharingLinks } from 'utils/sharingLinks'
+import { renderSharingLink, cleanSharingLinks } from 'utils/urls/sharingLinks'
+import { getSharingLinks } from 'utils/urls/sharingLinks'
 
 type Props = {
   children?: React.ReactNode
@@ -43,7 +43,7 @@ const ProtectedPage = ({ onlyRoles, children }: Props) => {
   const importSaved = useCallback(async () => {
     const linkIds = getSharingLinks()
 
-    localStorage.removeItem('sharedLinks')
+    cleanSharingLinks()
 
     await Promise.all(
       linkIds

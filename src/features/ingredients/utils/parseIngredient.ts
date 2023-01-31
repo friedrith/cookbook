@@ -1,9 +1,9 @@
 import Ingredient from 'models/Ingredient'
 import ParsingError from 'models/ParsingError'
 
-import parseIngredientCommon from './parserIngredient.common'
-import parseIngredientEn from './parserIngredient.en'
-import parseIngredientFr from './parserIngredient.fr'
+import parseIngredientCommon from './parsers/parserIngredient.common'
+import parseIngredientEn from './parsers/parserIngredient.en'
+import parseIngredientFr from './parsers/parserIngredient.fr'
 
 const parsers = [
   ...parseIngredientEn,
@@ -11,7 +11,7 @@ const parsers = [
   ...parseIngredientCommon,
 ]
 
-export const parseValue = (value: string | number) => {
+export const cleanValue = (value: string | number) => {
   if (typeof value === 'number') return value
 
   const cleanedValue = value.trim().replace(/-$/, '')
@@ -26,7 +26,7 @@ const cleanIngredient = (ingredient: Ingredient) => ({
   name: ingredient.name.trim(),
   measure: {
     unit: ingredient.measure.unit.trim(),
-    value: parseValue(ingredient.measure.value),
+    value: cleanValue(ingredient.measure.value),
   },
 })
 

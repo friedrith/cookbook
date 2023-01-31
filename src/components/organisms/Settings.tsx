@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 
 import { languages } from 'utils/services/i18n'
-import * as temperatures from 'utils/parser/temperatures'
+import * as temperatures from 'features/units/temperatures'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import {
   getTemperature,

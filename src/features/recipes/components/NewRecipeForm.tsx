@@ -8,7 +8,10 @@ import {
   QuestionMarkCircleIcon,
 } from '@heroicons/react/20/solid'
 
-import { parseRecipeImportUrl, ImportUrlStatus } from 'utils/importRecipe'
+import {
+  findRecipeImportUrlStatus,
+  ImportUrlStatus,
+} from 'features/recipes/utils/findRecipeImportUrlStatus'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { getAutomaticImport, importRecipe } from 'store'
 import LoadingSpinner from 'components/atoms/LoadingSpinner'
@@ -33,7 +36,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
 
   const onUrlChange = (newUrl: string) => {
     setUrl(newUrl)
-    setStatus(parseRecipeImportUrl(newUrl))
+    setStatus(findRecipeImportUrlStatus(newUrl))
   }
 
   const dispatch = useAppDispatch()
@@ -63,7 +66,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
 
   const init = useCallback(async () => {
     const newUrl = await navigator.clipboard.readText()
-    if (parseRecipeImportUrl(newUrl) === ImportUrlStatus.NotUrl) return
+    if (findRecipeImportUrlStatus(newUrl) === ImportUrlStatus.NotUrl) return
     setUrl(newUrl)
 
     onUrlChange(newUrl)

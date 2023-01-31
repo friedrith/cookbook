@@ -9,7 +9,7 @@ import SecondaryFeatures from 'components/organisms/Landing/SecondaryFeatures'
 import CallToAction from 'components/organisms/Landing/CallToAction'
 import Footer from 'components/organisms/Landing/Footer'
 import Faqs from 'components/organisms/Landing/Faqs'
-import rememberScroll from 'utils/rememberScroll'
+import rememberScroll from 'utils/services/rememberScroll'
 
 const scroll = rememberScroll()
 

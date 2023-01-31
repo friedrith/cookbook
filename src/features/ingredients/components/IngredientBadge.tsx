@@ -1,8 +1,8 @@
 import Badge from 'components/atoms/Badge'
 import Ingredient from 'models/Ingredient'
 
-import shortenIngredientName from 'utils/parser/shortenIngredientName'
-import renderMeasure from 'utils/render/renderMeasure'
+import shortenIngredientName from 'features/ingredients/utils/shortenIngredientName'
+import renderMeasure from 'utils/renderMeasure'
 
 type Props = {
   className?: string

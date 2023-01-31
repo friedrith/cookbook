@@ -2,7 +2,7 @@ import JSZip from 'jszip'
 import FileSaver from 'file-saver'
 import Recipe from 'models/Recipe'
 
-import renderRecipe from './render/renderRecipe'
+import renderRecipe from '../features/recipes/utils/renderTextRecipe'
 
 const zip = new JSZip()
 

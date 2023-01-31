@@ -7,10 +7,15 @@ import { FormattedRecipe } from 'models/Recipe'
 import usePopup from 'hooks/usePopup'
 import Ingredient from 'models/Ingredient'
 import SectionTitle from 'components/atoms/SectionTitle'
-import renderMeasure from 'utils/render/renderMeasure'
+import renderMeasure from 'utils/renderMeasure'
 import Button from 'components/atoms/Button'
-import renderIngredients from 'utils/render/renderIngredients'
-import { canShare, shareText, isShared, isCopiedToClipboard } from 'utils/share'
+import renderIngredients from 'features/ingredients/utils/renderIngredients'
+import {
+  canShare,
+  shareText,
+  isShared,
+  isCopiedToClipboard,
+} from 'utils/services/share'
 import { useAppSelector } from 'hooks/redux'
 import { getIngredienTemplate } from 'store'
 import waitFor from 'utils/waitFor'

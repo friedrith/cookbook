@@ -9,7 +9,7 @@ import Loading from 'components/views/Loading'
 import { track } from 'utils/services/tracking'
 import Button from 'components/atoms/Button'
 import Logo from 'components/atoms/Logo'
-import { broadcastLogin } from 'utils/broadcast'
+import { broadcastLogin } from 'features/recipes/utils/broadcast'
 
 const LinkVerification = () => {
   const dispatch = useAppDispatch()

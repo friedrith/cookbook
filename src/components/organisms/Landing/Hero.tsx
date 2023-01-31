@@ -10,7 +10,7 @@ import PhoneFrame from 'components/atoms/PhoneFrame'
 
 import appDemo from 'assets/app.png'
 import { isWebview } from 'utils/platforms/mobile'
-import { openBrowserWindow } from 'utils/platforms/windows'
+import { openBrowserWindow } from 'utils/platforms/window'
 
 const AppDemo = () => (
   <img className="absolute inset-0" src={appDemo} alt="App demo" />
