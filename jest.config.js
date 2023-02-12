@@ -10,11 +10,7 @@ const config = {
   rootDir: './',
   setupFilesAfterEnv: ['<rootDir>/.jest/jest.setup.js'],
   moduleNameMapper: {
-    '^@/utils/(.*)$': '<rootDir>/src/utils/$1',
-    '^@/components/(.*)$': '<rootDir>/src/components/$1',
-    '^@/models/(.*)$': '<rootDir>/src/models/$1',
-    '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
-    '^@/features/(.*)$': '<rootDir>/src/features/$1',
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/api/lib',
