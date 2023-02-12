@@ -62,9 +62,12 @@
     "lint": "next lint",
     "test": "react-scripts test",
     "serve": "npx serve -s build",
-    "format": "prettier --check ."
+    "format": "prettier --check .",
+    "precommit": "yarn lint && yarn format && yarn lint:translation && yarn test --watchAll=false && yarn build"
   },
-  "simple-git-hooks": {},
+  "simple-git-hooks": {
+    "pre-commit": "yarn precommit"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
