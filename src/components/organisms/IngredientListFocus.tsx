@@ -1,19 +1,20 @@
 // import React, { useState } from 'react'
 // import { useTranslation } from 'react-i18next'
+
 // import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
 
-import { FormattedRecipe } from 'models/Recipe'
-// import usePopup from 'hooks/usePopup'
-import Ingredient from 'models/Ingredient'
-// import SectionTitle from 'components/atoms/SectionTitle'
-import renderMeasure from 'utils/renderMeasure'
-// import Button from 'components/atoms/Button'
-// import renderIngredients from 'utils/render/renderIngredients'
-// import { canShare, share, isShared, isCopiedToClipboard } from 'utils/share'
-import { useAppSelector } from 'hooks/redux'
-import { getRecipe } from 'store'
-// import waitFor from 'utils/waitFor'
+import { FormattedRecipe } from '@/models/Recipe'
+// import usePopup from '@/hooks/usePopup'
+import Ingredient from '@/models/Ingredient'
+// import SectionTitle from '@/components/atoms/SectionTitle'
+import renderMeasure from '@/utils/renderMeasure'
+// import Button from '@/components/atoms/Button'
+// import renderIngredients from '@/utils/render/renderIngredients'
+// import { canShare, share, isShared, isCopiedToClipboard } from '@/utils/share'
+import { useAppSelector } from '@/hooks/redux'
+import { getRecipe } from '@/store'
+// import waitFor from '@/utils/waitFor'
 
 type Props = {
   recipe: FormattedRecipe

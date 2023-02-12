@@ -2,8 +2,8 @@ import { useState, forwardRef, ForwardedRef, useEffect } from 'react'
 import { CloudArrowUpIcon, NoSymbolIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
-import useEventListener from 'hooks/useEventListener'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import useEventListener from '@/hooks/useEventListener'
+import LoadingSpinner from '@/components/atoms/LoadingSpinner'
 import classNames from 'classnames'
 
 type Props = {

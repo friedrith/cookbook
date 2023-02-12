@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { RootState } from 'store'
+import { RootState } from '@/store'
 
-import * as firebaseApi from 'utils/api/firebase'
-import User from 'models/User'
+import * as firebaseApi from '@/utils/api/firebase'
+import User from '@/models/User'
 
 export interface AuthState {
   magicLinkSent: boolean

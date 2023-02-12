@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from 'react'
-import { RootState } from 'store'
+import { RootState } from '@/store'
 import { AnyAction, ThunkAction } from '@reduxjs/toolkit'
 
-import { useAppSelector, useAppDispatch } from 'hooks/redux'
+import { useAppSelector, useAppDispatch } from '@/hooks/redux'
 
 const useSetting = function <T>(
   selector: (state: RootState) => T,

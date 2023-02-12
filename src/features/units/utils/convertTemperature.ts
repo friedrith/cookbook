@@ -1,4 +1,4 @@
-import Temperature from 'features/units/types/Temperature'
+import Temperature from '@/features/units/types/Temperature'
 
 const round = (x: number) => Math.ceil(x / 5) * 5
 

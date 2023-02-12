@@ -1,4 +1,4 @@
-import Ingredient from 'models/Ingredient'
+import Ingredient from '@/models/Ingredient'
 
 const shortedIngredientName = (ingredient: Ingredient) => {
   if (ingredient.name.length > 15) {

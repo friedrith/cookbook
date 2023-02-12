@@ -1,32 +1,33 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
-import Container from 'components/atoms/Container'
-import useSearch from 'features/search/useSearch'
-import Button from 'components/atoms/Button'
-import Modal from 'components/atoms/Modal'
-import usePopup from 'hooks/usePopup'
-import isRightToLeft from 'utils/platforms/isRightToLeft'
+import Container from '@/components/atoms/Container'
+import useSearch from '@/features/search/hooks/useSearch'
+import Button from '@/components/atoms/Button'
+import Modal from '@/components/atoms/Modal'
+import usePopup from '@/hooks/usePopup'
+import isRightToLeft from '@/utils/platforms/isRightToLeft'
 
 import CategoryPreview from './CategoryPreview'
 import matchCategory from '../utils/matchCategory'
 import shouldHelpUserAboutCategories from '../utils/shouldHelpUserAboutCategories'
 import shouldShowCategories from '../utils/shouldShowCategories'
 
-import { getRecipeList } from 'store'
-import { useAppSelector } from 'hooks/redux'
+import { getRecipeList } from '@/store'
+import { useAppSelector } from '@/hooks/redux'
 import {
   getAvailableCategories,
   getUnusedCategories,
 } from '../categories.slice'
-import SearchStatus from 'features/search/types/SearchStatus'
-import useEventListener from 'hooks/useEventListener'
+import SearchStatus from '@/features/search/types/SearchStatus'
+import useEventListener from '@/hooks/useEventListener'
 import classNames from 'classnames'
 
 const CategoriesList = () => {
-  const { query, searchStatus, setCategory, setSearch } = useSearch()
+  const { query, searchStatus, buildCategory, setSearch } = useSearch()
 
   const availableCategories = useAppSelector(getAvailableCategories)
 
@@ -107,7 +108,7 @@ const CategoriesList = () => {
                       const newCategory = matchCategory(query, c)
                         ? undefined
                         : c.name
-                      setCategory(newCategory)
+                      setSearch(buildCategory(newCategory))
                     }}
                   />
                 ))}

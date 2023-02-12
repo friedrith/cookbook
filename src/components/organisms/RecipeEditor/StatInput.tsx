@@ -1,5 +1,5 @@
-import SectionTitle from 'components/atoms/SectionTitle'
-import Input from 'components/atoms/Input'
+import SectionTitle from '@/components/atoms/SectionTitle'
+import Input from '@/components/atoms/Input'
 
 type Props = {
   id: string

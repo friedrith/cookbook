@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from 'store'
-import Temperature from 'features/units/types/Temperature'
+import type { RootState } from '@/store'
+import Temperature from '@/features/units/types/Temperature'
 
 export interface SettingsState {
   temperature: Temperature

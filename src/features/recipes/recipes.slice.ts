@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
 import { uniq } from 'lodash'
 
-import type { RootState } from 'store'
-import Recipe from 'models/Recipe'
-import * as recipesApi from 'utils/api/recipes.api'
+import type { RootState } from '@/store'
+import Recipe from '@/models/Recipe'
+import * as recipesApi from '@/utils/api/recipes.api'
 
 type Metadata = {
   recipeId: string

@@ -1,23 +1,28 @@
 import classNames from 'classnames'
-import { useSearchParams } from 'react-router-dom'
-
-import { ReactComponent as LogoIcon } from 'assets/logo.svg'
+import { useRouter } from 'next/navigation'
 
 type Props = {
   className?: string
 }
 
 const Logo = ({ className }: Props) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setSearchParams] = useSearchParams()
+  const router = useRouter()
 
   return (
-    <LogoIcon
+    <img
+      src="/images/logo.svg"
       className={classNames('h-9 cursor-pointer', className)}
       onClick={() => {
-        setSearchParams({})
+        router.push('/recipes')
       }}
+      alt="logo"
     />
+    // <LogoIcon
+    //   className={classNames('h-9 cursor-pointer', className)}
+    //   onClick={() => {
+    //     setSearchParams({})
+    //   }}
+    // />
   )
 }
 

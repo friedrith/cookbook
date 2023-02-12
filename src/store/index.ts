@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { throttle } from 'lodash'
+import { createWrapper } from 'next-redux-wrapper'
 
 import recipes, { recipesInitialState } from '../features/recipes/recipes.slice'
 import auth, { authInitialState } from './auth.slice'
@@ -7,8 +8,8 @@ import settings, { settingsInitialState } from './settings.slice'
 import officialWebsites, {
   officialWebsitesInitialState,
 } from './officialWebsites'
-import timersSlice from 'features/timers/timers.slice'
-import { persistState, loadState } from 'utils/services/localStorage'
+import timersSlice from '@/features/timers/timers.slice'
+import { persistState, loadState } from '@/utils/services/localStorage'
 
 export const reducer = {
   recipes,
@@ -55,13 +56,14 @@ store.subscribe(
   }, 1000),
 )
 
-export type RootState = ReturnType<typeof store.getState>
+export type AppStore = typeof store
 
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<AppStore['getState']>
+export type AppDispatch = AppStore['dispatch']
 
-export default store
-
-export * from 'features/recipes/recipes.slice'
+export * from '@/features/recipes/recipes.slice'
 export * from './auth.slice'
 export * from './settings.slice'
-export * from 'features/timers/timers.slice'
+export * from '@/features/timers/timers.slice'
+
+export default store

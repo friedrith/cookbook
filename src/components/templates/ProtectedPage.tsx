@@ -1,27 +1,29 @@
 import { useCallback } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import { useAppSelector, useAppDispatch } from 'hooks/redux'
-import Roles from 'models/Roles'
-import useWhenLoggedIn from 'hooks/useWhenLoggedIn'
-import useWhenLoggedOut from 'hooks/useWhenLoggedOut'
-import { areRecipesFetched, fetchRecipes, importRecipe } from 'store'
-import Notifications from 'components/organisms/Notifications'
-import useEventListener from 'hooks/useEventListener'
-import { renderSharingLink, cleanSharingLinks } from 'utils/urls/sharingLinks'
-import { getSharingLinks } from 'utils/urls/sharingLinks'
+import { useAppSelector, useAppDispatch } from '@/hooks/redux'
+import Roles from '@/models/Roles'
+import useWhenLoggedIn from '@/hooks/useWhenLoggedIn'
+import useWhenLoggedOut from '@/hooks/useWhenLoggedOut'
+import { areRecipesFetched, fetchRecipes, importRecipe } from '@/store'
+import Notifications from '@/components/organisms/Notifications'
+import useEventListener from '@/hooks/useEventListener'
+import { renderSharingLink, cleanSharingLinks } from '@/utils/urls/sharingLinks'
+import { getSharingLinks } from '@/utils/urls/sharingLinks'
+import { useRouter } from 'next/router'
+import Loading from './Loading'
 
 type Props = {
   children?: React.ReactNode
-  onlyRoles: Roles[]
+  onlyRoles?: Roles[]
 }
 
-const ProtectedPage = ({ onlyRoles, children }: Props) => {
-  const navigate = useNavigate()
+const ProtectedPage = ({ onlyRoles = [Roles.User], children }: Props) => {
+  const router = useRouter()
 
   const redirectToHome = useCallback(() => {
-    navigate('/login')
-  }, [navigate])
+    router.push('/login')
+  }, [router])
 
   useWhenLoggedOut(redirectToHome, onlyRoles)
 
@@ -54,9 +56,11 @@ const ProtectedPage = ({ onlyRoles, children }: Props) => {
 
   useWhenLoggedIn(importSaved)
 
+  // return <Loading />
+
   return (
     <>
-      {children ? children : <Outlet />}
+      {children}
       <Notifications />
     </>
   )

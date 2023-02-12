@@ -3,13 +3,13 @@ import { StopIcon, CheckCircleIcon } from '@heroicons/react/20/solid'
 import { ClockIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
 
-import Timer, { durationLeft } from 'features/timers/models/Timer'
+import Timer, { durationLeft } from '@/features/timers/models/Timer'
 import {
   secondsToDuration,
   durationLessThan,
-} from 'features/timers/models/Duration'
+} from '@/features/timers/models/Duration'
 import { renderDuration } from '../utils/renderDuration'
-import { useAppDispatch } from 'hooks/redux'
+import { useAppDispatch } from '@/hooks/redux'
 import { stopTimer } from '../timers.slice'
 import { useEffect } from 'react'
 

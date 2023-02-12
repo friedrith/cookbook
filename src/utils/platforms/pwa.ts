@@ -1,3 +1,5 @@
+import { isWindowDefined, isNavigatorDefined } from './window'
+
 interface BeforeInstallPromptEvent extends Event {
   /**
    * Returns an array of DOMString items containing the platforms on which the event was dispatched.
@@ -24,14 +26,16 @@ interface BeforeInstallPromptEvent extends Event {
 
 let deferredPrompt: null | BeforeInstallPromptEvent = null
 
-// https://web.dev/customize-install/
-window.addEventListener('beforeinstallprompt', event => {
-  // Prevent the mini-infobar from appearing on mobile
-  event.preventDefault()
-  // Stash the event so it can be triggered later.
-  deferredPrompt = event as BeforeInstallPromptEvent
-  // Update UI notify the user they can install the PWA
-})
+if (isWindowDefined()) {
+  // https://web.dev/customize-install/
+  window.addEventListener('beforeinstallprompt', event => {
+    // Prevent the mini-infobar from appearing on mobile
+    event.preventDefault()
+    // Stash the event so it can be triggered later.
+    deferredPrompt = event as BeforeInstallPromptEvent
+    // Update UI notify the user they can install the PWA
+  })
+}
 
 export const getPWAInstallationPrompt = () => deferredPrompt
 
@@ -41,6 +45,9 @@ export const resetPWAInstallationPrompt = () => {
 
 export const isRunningInStandalonePWA = () => {
   const mqStandAlone = '(display-mode: standalone)'
+
+  if (!isNavigatorDefined() || !isWindowDefined()) return false
+
   if (navigator.standalone || window.matchMedia(mqStandAlone).matches) {
     return true
   }

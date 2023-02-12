@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import CenterPage from 'components/templates/CenterPage'
-import Logo from 'components/atoms/Logo'
+
+import CenterPage from '@/components/templates/CenterPage'
+import Logo from '@/components/atoms/Logo'
 
 type Props = {
   title: string

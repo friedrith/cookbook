@@ -9,7 +9,7 @@ import {
   browserLocalPersistence,
 } from 'firebase/auth'
 
-import Roles from 'models/Roles'
+import Roles from '@/models/Roles'
 
 import { setToken } from '../api'
 

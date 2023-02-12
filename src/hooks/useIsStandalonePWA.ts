@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import useEventListener from 'hooks/useEventListener'
-import { isRunningInStandalonePWA } from 'utils/platforms/pwa'
+import useEventListener from '@/hooks/useEventListener'
+import { isRunningInStandalonePWA } from '@/utils/platforms/pwa'
 
 const useIsStandalonePWA = () => {
   const [isStandalonePWA, setStandalonePWA] = useState(

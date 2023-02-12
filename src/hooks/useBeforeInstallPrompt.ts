@@ -1,4 +1,4 @@
-import useEventListener from 'hooks/useEventListener'
+import useEventListener from '@/hooks/useEventListener'
 
 const useBeforeInstallPrompt = (callback: (e: Event) => void) => {
   useEventListener('beforeinstallprompt', event => {

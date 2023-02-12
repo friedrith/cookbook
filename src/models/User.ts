@@ -1,4 +1,4 @@
-import Roles from 'models/Roles'
+import Roles from '@/models/Roles'
 
 type User = {
   id: string

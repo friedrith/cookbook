@@ -1,23 +1,23 @@
 /* eslint-disable i18next/no-literal-string */
 import { useTranslation } from 'react-i18next'
 import { useState, useEffect, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Transition } from '@headlessui/react'
 import {
   ExclamationCircleIcon,
   QuestionMarkCircleIcon,
 } from '@heroicons/react/20/solid'
+import { useRouter } from 'next/router'
 
 import {
   findRecipeImportUrlStatus,
   ImportUrlStatus,
-} from 'features/recipes/utils/findRecipeImportUrlStatus'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { getAutomaticImport, importRecipe } from 'store'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
-import { getOfficialWebsites } from 'store/officialWebsites'
-import Button from 'components/atoms/Button'
-import { track } from 'utils/services/tracking'
+} from '@/features/recipes/utils/findRecipeImportUrlStatus'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import { getAutomaticImport, importRecipe } from '@/store'
+import LoadingSpinner from '@/components/atoms/LoadingSpinner'
+import { getOfficialWebsites } from '@/store/officialWebsites'
+import Button from '@/components/atoms/Button'
+import { track } from '@/utils/services/tracking'
 
 type Props = {
   onHelpRequest?: () => void
@@ -41,7 +41,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
 
   const dispatch = useAppDispatch()
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const startImportingRecipe = useCallback(async () => {
     if (isLoading) return
@@ -49,7 +49,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
       track('ImportRecipe')
       setLoading(true)
       const recipe = await dispatch(importRecipe(url)).unwrap()
-      navigate(`/recipes/${recipe.id}`)
+      router.push(`/recipes/${recipe.id}`)
       track('ImportRecipeSuccess')
     } catch (error) {
       const { hostname } = new URL(url)
@@ -62,7 +62,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
     } finally {
       setLoading(false)
     }
-  }, [url, dispatch, setLoading, navigate, isLoading, officialWebsites])
+  }, [url, dispatch, setLoading, router, isLoading, officialWebsites])
 
   const init = useCallback(async () => {
     const newUrl = await navigator.clipboard.readText()

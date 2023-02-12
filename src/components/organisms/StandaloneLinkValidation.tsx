@@ -1,4 +1,4 @@
-import Button from 'components/atoms/Button'
+import Button from '@/components/atoms/Button'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 

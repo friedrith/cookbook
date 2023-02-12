@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import Badge, { BadgeSize } from 'components/atoms/Badge'
+import Badge, { BadgeSize } from '@/components/atoms/Badge'
 
 type Props = {
   className?: string

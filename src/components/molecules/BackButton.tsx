@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
+import { useRouter } from 'next/router'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 
-import Button from 'components/atoms/Button'
-import HistoryContext from 'contexts/History'
+import Button from '@/components/atoms/Button'
+import HistoryContext from '@/contexts/History'
 
-import isRightToLeft from 'utils/platforms/isRightToLeft'
+import isRightToLeft from '@/utils/platforms/isRightToLeft'
 
 type Props = {
   url: string
@@ -16,9 +15,23 @@ type Props = {
   title?: string
 }
 
+const useForgetPreviousLocationAfter = (timeout: number) => {
+  const [shouldForgetPreviousLocation, forgetPreviousLocation] = useState(false)
+
+  useEffect(() => {
+    let t = setTimeout(() => {
+      forgetPreviousLocation(true)
+    }, timeout)
+
+    return () => clearTimeout(t)
+  }, [timeout])
+
+  return shouldForgetPreviousLocation
+}
+
 const BackButton = ({ url, className, basic, disabled, title }: Props) => {
   const { previousLocation } = useContext(HistoryContext)
-  const navigate = useNavigate()
+  const rooter = useRouter()
 
   const icon = isRightToLeft() ? ArrowRightIcon : ArrowLeftIcon
 
@@ -32,7 +45,7 @@ const BackButton = ({ url, className, basic, disabled, title }: Props) => {
     return (
       <span data-tip={title}>
         <Button.Icon
-          onClick={() => navigate(-1)}
+          onClick={() => rooter.back()}
           icon={icon}
           basic={basic}
           className={className}
@@ -58,17 +71,3 @@ const BackButton = ({ url, className, basic, disabled, title }: Props) => {
 }
 
 export default BackButton
-
-function useForgetPreviousLocationAfter(timeout: number) {
-  const [shouldForgetPreviousLocation, forgetPreviousLocation] = useState(false)
-
-  useEffect(() => {
-    let t = setTimeout(() => {
-      forgetPreviousLocation(true)
-    }, timeout)
-
-    return () => clearTimeout(t)
-  }, [timeout])
-
-  return shouldForgetPreviousLocation
-}

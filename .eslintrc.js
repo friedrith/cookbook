@@ -2,9 +2,8 @@ const path = require('path')
 
 module.exports = {
   extends: [
+    'next/core-web-vitals',
     'prettier',
-    'react-app',
-    'react-app/jest',
     'plugin:jsx-a11y/recommended',
     'plugin:i18next/recommended',
     'plugin:i18n-json/recommended',

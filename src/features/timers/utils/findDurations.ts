@@ -2,7 +2,7 @@ import Duration, {
   minutesToDuration,
   hoursToDuration,
   ascendingOrder,
-} from 'features/timers/models/Duration'
+} from '@/features/timers/models/Duration'
 
 const regexes = [
   {

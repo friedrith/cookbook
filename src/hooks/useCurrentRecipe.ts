@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { useAppSelector } from 'hooks/redux'
-import { getRecipe } from 'store'
-import parseRecipe from 'features/recipes/utils/parseRecipe'
-import Recipe, { FormattedRecipe } from 'models/Recipe'
+import { useAppSelector } from '@/hooks/redux'
+import { getRecipe } from '@/store'
+import parseRecipe from '@/features/recipes/utils/parseRecipe'
+import Recipe, { FormattedRecipe } from '@/models/Recipe'
 
 const useCurrentRecipe = (): [Recipe | undefined, FormattedRecipe | null] => {
   const { recipeId } = useParams()

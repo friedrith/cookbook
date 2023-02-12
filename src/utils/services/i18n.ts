@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next'
 import Backend from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
-import { enabled } from 'utils/services/features'
+import { enabled } from '@/utils/services/features'
 
 export const languages = [
   { value: 'fr', label: 'Français' },
@@ -20,12 +20,12 @@ i18n
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
   .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
-  .use(initReactI18next)
+  // .use(initReactI18next)
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    ns: ['default'],
-    fallbackLng: 'pes',
+    ns: ['common'],
+    fallbackLng: 'en',
     debug: process.env.NODE_ENV !== 'production',
 
     load: 'all',

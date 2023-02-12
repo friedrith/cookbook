@@ -8,6 +8,10 @@
 # testing
 /coverage
 
+# next.js
+/.next/
+/out/
+
 # production
 /build
 
@@ -37,3 +41,13 @@ firebase-debug.log
 !.yarn/sdks
 !.yarn/versions
 .yarnrc.yml
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+.vscode
+src_old

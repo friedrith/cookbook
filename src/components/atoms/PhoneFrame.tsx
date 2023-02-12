@@ -1,8 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import frame from 'assets/phone-frame.svg'
-
 const PlaceholderFrame = (props: any) => {
   return (
     <svg viewBox="0 0 366 729" aria-hidden="true" {...props}>
@@ -34,7 +32,7 @@ const PhoneFrame = ({ className, children, ...props }: Props) => {
       </div>
       <PlaceholderFrame className="pointer-events-none absolute inset-0 h-full w-full fill-gray-100" />
       <img
-        src={frame}
+        src="/images/phone-frame.svg"
         alt=""
         className="pointer-events-none absolute inset-0 h-full w-full"
       />

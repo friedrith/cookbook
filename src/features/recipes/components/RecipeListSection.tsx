@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import Recipe from 'models/Recipe'
-import RecipePreview from 'features/recipes/components/RecipePreview'
-import SectionTitle from 'components/atoms/SectionTitle'
+import Recipe from '@/models/Recipe'
+import RecipePreview from '@/features/recipes/components/RecipePreview'
+import SectionTitle from '@/components/atoms/SectionTitle'
 
 type Props = {
   title?: string

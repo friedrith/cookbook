@@ -1,9 +1,9 @@
 import { CheckIcon } from '@heroicons/react/24/solid'
 
-import Step from 'models/Step'
-import Ingredient from 'models/Ingredient'
-import StepStatus from 'models/StepStatus'
-import StepItemGeneric from 'features/steps/components/StepItemGeneric'
+import Step from '@/models/Step'
+import Ingredient from '@/models/Ingredient'
+import StepStatus from '@/models/StepStatus'
+import StepItemGeneric from '@/features/steps/components/StepItemGeneric'
 
 type Props = {
   step: Step

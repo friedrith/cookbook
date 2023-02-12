@@ -1,22 +1,23 @@
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/20/solid'
 
-import Button from 'components/atoms/Button'
-import Logo from 'components/atoms/Logo'
-import FixedHeader from 'components/atoms/FixedHeader'
-import UserMenu from 'components/organisms/UserMenu'
-import SelectMenu from 'components/molecules/SelectMenu'
-import NewRecipeForm from 'features/recipes/components/NewRecipeForm'
-import Modal from 'components/atoms/Modal'
-import usePopup from 'hooks/usePopup'
-import ImportHelpPopup from 'components/organisms/ImportHelpPopup'
+import Button from '@/components/atoms/Button'
+import Logo from '@/components/atoms/Logo'
+import FixedHeader from '@/components/atoms/FixedHeader'
+import UserMenu from '@/components/organisms/UserMenu'
+import SelectMenu from '@/components/molecules/SelectMenu'
+import NewRecipeForm from '@/features/recipes/components/NewRecipeForm'
+import Modal from '@/components/atoms/Modal'
+import usePopup from '@/hooks/usePopup'
+import ImportHelpPopup from '@/components/organisms/ImportHelpPopup'
 import classNames from 'classnames'
-import CategoriesList from 'features/categories/components/CategoryList'
-import Header from 'components/atoms/Header'
-import SearchInput from 'features/search/components/SearchInput'
-import useSearch from 'features/search/useSearch'
-import useEventListener from 'hooks/useEventListener'
+// import CategoriesList from '@/features/categories/components/CategoryList'
+import Header from '@/components/atoms/Header'
+import SearchInput from '@/features/search/components/SearchInput'
+import useSearch from '@/features/search/hooks/useSearch'
+import useEventListener from '@/hooks/useEventListener'
 
 type Props = {
   restRef: React.RefObject<HTMLDivElement>
@@ -134,7 +135,7 @@ const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
                 </div>
               </div>
             </Header>
-            <CategoriesList />
+            {/* <CategoriesList /> */}
           </div>
         )}
       </FixedHeader>

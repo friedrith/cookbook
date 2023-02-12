@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import classNames from 'classnames'
 
-import LordIcon from 'components/atoms/LordIcon'
-import { firstLetterUppercase } from 'utils/string'
+import LordIcon from '@/components/atoms/LordIcon'
+import { firstLetterUppercase } from '@/utils/string'
 import Category from '../Category'
 
 interface CategoryPreviewProps {

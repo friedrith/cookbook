@@ -1,4 +1,4 @@
-import thumbnailUrl from 'utils/urls/thumbnailUrl'
+import thumbnailUrl from '@/utils/urls/thumbnailUrl'
 
 describe('thumbnailUrl', () => {
   it('should url with prefix thumb_', () => {

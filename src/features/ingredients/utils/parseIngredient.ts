@@ -1,5 +1,5 @@
-import Ingredient from 'models/Ingredient'
-import ParsingError from 'models/ParsingError'
+import Ingredient from '@/models/Ingredient'
+import ParsingError from '@/models/ParsingError'
 
 import parseIngredientCommon from './parsers/parserIngredient.common'
 import parseIngredientEn from './parsers/parserIngredient.en'

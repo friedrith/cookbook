@@ -1,22 +1,24 @@
 import { useEffect } from 'react'
+import { isWindowDefined } from '@/utils/platforms/window'
 
 const useEventListener = (
   eventName: string,
   handler: (event: any) => void,
-  element:
+  target:
     | HTMLElement
     | BroadcastChannel
     | null
-    | (Window & typeof globalThis) = window,
+    | (Window & typeof globalThis) = null,
 ) => {
   useEffect(() => {
+    const element = target ?? window
     if (element) {
       // clean up code
       element.removeEventListener(eventName, handler)
       element.addEventListener(eventName, handler)
       return () => element.removeEventListener(eventName, handler)
     }
-  }, [element, eventName, handler])
+  }, [target, eventName, handler])
 }
 
 export default useEventListener

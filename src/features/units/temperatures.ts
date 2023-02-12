@@ -1,4 +1,4 @@
-import Temperature from 'features/units/types/Temperature'
+import Temperature from '@/features/units/types/Temperature'
 
 export const choices = [
   {

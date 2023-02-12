@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useLocation, Location } from 'react-router-dom'
 
-import { isMobile } from 'utils/platforms/mobile'
+import { isMobile } from '@/utils/platforms/mobile'
 
 const areLocationIncludes = (
   location1: Location,

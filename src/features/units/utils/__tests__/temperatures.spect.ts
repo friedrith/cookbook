@@ -1,4 +1,4 @@
-import Temperature from 'features/units/types/Temperature'
+import Temperature from '@/features/units/types/Temperature'
 import convertTemperature from '../convertTemperature'
 
 describe('convertTemperature', () => {

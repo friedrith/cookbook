@@ -1,9 +1,9 @@
-import Badge from 'components/atoms/Badge'
+import Badge from '@/components/atoms/Badge'
 import { PlayIcon } from '@heroicons/react/20/solid'
 
 import { renderDurationPretty } from '../utils/renderDuration'
-import { useAppDispatch } from 'hooks/redux'
-import useCurrentRecipe from 'hooks/useCurrentRecipe'
+import { useAppDispatch } from '@/hooks/redux'
+import useCurrentRecipe from '@/hooks/useCurrentRecipe'
 import { startTimer } from '../timers.slice'
 
 type Props = {

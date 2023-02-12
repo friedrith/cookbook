@@ -1,4 +1,4 @@
-import Measure from 'models/Measure'
+import Measure from '@/models/Measure'
 
 type Options = {
   explicit?: boolean

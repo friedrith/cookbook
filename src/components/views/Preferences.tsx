@@ -2,18 +2,18 @@ import { useRef } from 'react'
 // import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import Page from 'components/templates/Page'
-import MainPage from 'components/templates/MainPage'
-import Header from 'components/atoms/FixedHeader'
-// import RecipePreview from 'components/molecules/RecipePreview'
-// import LargeMainPage from 'components/templates/LargeMainPage'
-import BackButton from 'components/molecules/BackButton'
+import Page from '@/components/templates/Page'
+import MainPage from '@/components/templates/MainPage'
+import Header from '@/components/atoms/FixedHeader'
+// import RecipePreview from '@/components/molecules/RecipePreview'
+// import LargeMainPage from '@/components/templates/LargeMainPage'
+import BackButton from '@/components/molecules/BackButton'
 
-import PreferencesEntry from 'components/organisms/PreferencesEntry'
-import PreferencesSection from 'components/organisms/PreferencesSection'
+import PreferencesEntry from '@/components/organisms/PreferencesEntry'
+import PreferencesSection from '@/components/organisms/PreferencesSection'
 
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { logout, getCurrentUser } from 'store'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import { logout, getCurrentUser } from '@/store'
 
 const Preferences = () => {
   const dispatch = useAppDispatch()

@@ -1,11 +1,12 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 
-import { languages } from 'utils/services/i18n'
-import * as temperatures from 'features/units/temperatures'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { languages } from '@/utils/services/locales'
+import * as temperatures from '@/features/units/temperatures'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import {
   getTemperature,
   setTemperature,
@@ -17,16 +18,16 @@ import {
   setAutomaticimport,
   logout,
   getRecipeList,
-} from 'store'
-import Button from 'components/atoms/Button'
-import usePopup from 'hooks/usePopup'
-import HttpError from 'models/HttpError'
-import downloadAllRecipes from 'utils/export'
-import { track } from 'utils/services/tracking'
-import Form from 'components/atoms/Form'
-import Input from 'components/atoms/Input'
-import useSetting from 'hooks/useSetting'
-import Select from 'components/atoms/Select'
+} from '@/store'
+import Button from '@/components/atoms/Button'
+import usePopup from '@/hooks/usePopup'
+import HttpError from '@/models/HttpError'
+import downloadAllRecipes from '@/utils/export'
+import { track } from '@/utils/services/tracking'
+import Form from '@/components/atoms/Form'
+import Input from '@/components/atoms/Input'
+import useSetting from '@/hooks/useSetting'
+import Select from '@/components/atoms/Select'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()

@@ -3,11 +3,11 @@ import { CheckIcon, ClockIcon } from '@heroicons/react/24/outline'
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Button from 'components/atoms/Button'
-import Recipe from 'models/Recipe'
-import findDurations from 'features/timers/utils/findDurations'
-import Step from 'models/Step'
-import { renderDuration } from 'features/timers/utils/renderDuration'
+import Button from '@/components/atoms/Button'
+import Recipe from '@/models/Recipe'
+import findDurations from '@/features/timers/utils/findDurations'
+import Step from '@/models/Step'
+import { renderDuration } from '@/features/timers/utils/renderDuration'
 
 type Props = {
   recipe: Recipe

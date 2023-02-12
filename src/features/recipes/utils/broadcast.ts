@@ -1,4 +1,4 @@
-import useEventListener from 'hooks/useEventListener'
+import useEventListener from '@/hooks/useEventListener'
 
 const CHANNEL_ID = 'app-data'
 

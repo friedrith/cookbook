@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import CenterPage from 'components/templates/CenterPage'
-import { useAppDispatch } from 'hooks/redux'
-import { verifyLink, verifyLinkWithEmail } from 'store'
-import Loading from 'components/views/Loading'
-import { track } from 'utils/services/tracking'
-import Button from 'components/atoms/Button'
-import Logo from 'components/atoms/Logo'
-import { broadcastLogin } from 'features/recipes/utils/broadcast'
+import CenterPage from '@/components/templates/CenterPage'
+import { useAppDispatch } from '@/hooks/redux'
+import { verifyLink, verifyLinkWithEmail } from '@/store'
+import Loading from '@/components/templates/Loading'
+import { track } from '@/utils/services/tracking'
+import Button from '@/components/atoms/Button'
+import Logo from '@/components/atoms/Logo'
+import { broadcastLogin } from '@/features/recipes/utils/broadcast'
 
 const LinkVerification = () => {
   const dispatch = useAppDispatch()

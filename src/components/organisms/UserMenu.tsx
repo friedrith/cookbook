@@ -1,7 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/router'
+
 import {
   EllipsisVerticalIcon,
   ArrowRightOnRectangleIcon,
@@ -10,20 +11,20 @@ import {
   CogIcon,
 } from '@heroicons/react/24/outline'
 
-import { useAppDispatch } from 'hooks/redux'
-import { logout } from 'store'
-import { isMobile } from 'utils/platforms/mobile'
+import { useAppDispatch } from '@/hooks/redux'
+import { logout } from '@/store'
 import {
   getPWAInstallationPrompt,
   resetPWAInstallationPrompt,
-} from 'utils/platforms/pwa'
-import MenuItem from 'components/atoms/MenuItem'
-import Menu from 'components/atoms/Menu'
+} from '@/utils/platforms/pwa'
+import MenuItem from '@/components/atoms/MenuItem'
+import Menu from '@/components/atoms/Menu'
+import useIsMobile from '@/hooks/useIsMobile'
 
-import useBeforeInstallPrompt from 'hooks/useBeforeInstallPrompt'
-import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
-import HelpPopup from 'components/organisms/HelpPopup'
-import usePopup from 'hooks/usePopup'
+import useBeforeInstallPrompt from '@/hooks/useBeforeInstallPrompt'
+import useIsStandalonePWA from '@/hooks/useIsStandalonePWA'
+import HelpPopup from '@/components/organisms/HelpPopup'
+import usePopup from '@/hooks/usePopup'
 import SettingsPopup from './SettingsPopup'
 
 const UserMenu = () => {
@@ -31,7 +32,7 @@ const UserMenu = () => {
 
   const { t } = useTranslation()
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   const isStandalone = useIsStandalonePWA()
 
@@ -65,6 +66,8 @@ const UserMenu = () => {
 
   const settingsPopup = usePopup(false)
 
+  const isMobile = useIsMobile()
+
   const menuOptions = [
     {
       icon: CogIcon,
@@ -73,7 +76,7 @@ const UserMenu = () => {
     },
     {
       icon: ArrowTopRightOnSquareIcon,
-      label: isMobile() ? '_Install Mobile App' : '_Install Desktop App',
+      label: isMobile ? '_Install Mobile App' : '_Install Desktop App',
       disabled: !appInstallationEnabled,
       onClick: installApp,
     },
@@ -87,14 +90,13 @@ const UserMenu = () => {
       label: '_Logout',
       onClick: () => {
         dispatch(logout())
-        navigate('/')
+        router.push('/')
       },
     },
   ]
 
   return (
     <div className="flex sm:items-center ltr:pl-2 rtl:pr-2">
-      {/* Profile dropdown */}
       <Menu
         as="button"
         menuButtonClassName="flex max-w-xs items-center rounded-full bg-white hover:text-primary-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"

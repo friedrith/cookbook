@@ -1,8 +1,8 @@
 import CountDownTimer from './CountDownTimer'
 
-import { useAppSelector } from 'hooks/redux'
-import { getActiveTimer } from 'features/timers/timers.slice'
-import { enabled } from 'utils/services/features'
+import { useAppSelector } from '@/hooks/redux'
+import { getActiveTimer } from '@/features/timers/timers.slice'
+import { enabled } from '@/utils/services/features'
 
 const TimerCenter = () => {
   const activeTimer = useAppSelector(getActiveTimer)

@@ -1,20 +1,21 @@
 import { useState, useRef, forwardRef, ForwardedRef } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import { WithContext as ReactTags } from 'react-tag-input'
 
-import { storeFile } from 'utils/api/firebase'
-import TextArea from 'components/atoms/TextArea'
-import ImageBanner from 'components/molecules/ImageBanner'
-import Container from 'components/atoms/Container'
-import Box from 'components/atoms/Box'
-import SectionTitle from 'components/atoms/SectionTitle'
-import ImageUploader from 'components/molecules/ImageUploader'
-import Recipe from 'models/Recipe'
-import Button from 'components/atoms/Button'
-import cleanKeywords from 'features/categories/utils/cleanKeywords'
+import { storeFile } from '@/utils/api/firebase'
+import TextArea from '@/components/atoms/TextArea'
+import ImageBanner from '@/components/molecules/ImageBanner'
+import Container from '@/components/atoms/Container'
+import Box from '@/components/atoms/Box'
+import SectionTitle from '@/components/atoms/SectionTitle'
+import ImageUploader from '@/components/molecules/ImageUploader'
+import Recipe from '@/models/Recipe'
+import Button from '@/components/atoms/Button'
+import cleanKeywords from '@/features/categories/utils/cleanKeywords'
 
-import categories from 'features/categories/categories'
+import categories from '@/features/categories/categories'
 
 type Props = {
   recipe: Recipe

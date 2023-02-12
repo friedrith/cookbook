@@ -1,13 +1,13 @@
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 
-// import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { FormattedRecipe } from 'models/Recipe'
-import Stat from 'components/atoms/Stat'
+// import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import { FormattedRecipe } from '@/models/Recipe'
+import Stat from '@/components/atoms/Stat'
 // import {
 //   incrementServingCount,
 //   decrementServingCount,
 //   getServingCount,
-// } from 'store'
+// } from '@/store'
 
 type Props = {
   recipe: FormattedRecipe

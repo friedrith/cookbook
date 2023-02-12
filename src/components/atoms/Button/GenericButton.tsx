@@ -1,5 +1,5 @@
 import { forwardRef, ForwardedRef } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 import classNames from 'classnames'
 
@@ -37,7 +37,7 @@ const GenericButton = forwardRef(
 
     if (to) {
       return (
-        <Link to={to} className={allClassName} id={id} ref={ref}>
+        <Link href={to} className={allClassName} id={id} ref={ref}>
           <span className="sr-only">{title}</span>
           {children}
         </Link>

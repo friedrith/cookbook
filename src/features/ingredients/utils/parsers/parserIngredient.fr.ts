@@ -1,4 +1,4 @@
-import Ingredient, { buildIngredient } from 'models/Ingredient'
+import Ingredient, { buildIngredient } from '@/models/Ingredient'
 
 // const isValue = (value: string) => value.match(/[0-9½]/)
 

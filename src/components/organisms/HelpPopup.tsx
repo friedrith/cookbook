@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+
 import {
   LifebuoyIcon,
   BugAntIcon,
@@ -6,8 +7,8 @@ import {
   SparklesIcon,
 } from '@heroicons/react/24/outline'
 
-import Modal from 'components/atoms/Modal'
-import Logo from 'components/atoms/Logo'
+import Modal from '@/components/atoms/Modal'
+import Logo from '@/components/atoms/Logo'
 import p from '../../../package.json'
 
 type Props = {

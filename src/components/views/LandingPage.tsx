@@ -1,26 +1,29 @@
+'use client'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
-import Page from 'components/templates/Page'
-import Hero from 'components/organisms/Landing/Hero'
-import Header from 'components/organisms/Landing/Header'
-import PrimaryFeatures from 'components/organisms/Landing/PrimaryFeatures'
-import SecondaryFeatures from 'components/organisms/Landing/SecondaryFeatures'
-import CallToAction from 'components/organisms/Landing/CallToAction'
-import Footer from 'components/organisms/Landing/Footer'
-import Faqs from 'components/organisms/Landing/Faqs'
-import rememberScroll from 'utils/services/rememberScroll'
+import Page from '@/components/templates/Page'
+import Hero from '@/features/marketing/components/Landing/Hero'
+import Header from '@/features/marketing/components/Landing/Header'
+import PrimaryFeatures from '@/features/marketing/components/Landing/PrimaryFeatures'
+import SecondaryFeatures from '@/features/marketing/components/Landing/SecondaryFeatures'
+import CallToAction from '@/features/marketing/components/Landing/CallToAction'
+import Footer from '@/features/marketing/components/Landing/Footer'
+import Faqs from '@/features/marketing/components/Landing/Faqs'
+import rememberScroll from '@/utils/services/rememberScroll'
+import { isWindowDefined } from '@/utils/platforms/window'
 
 const scroll = rememberScroll()
 
-export const LandingPage = () => {
-  const { hash } = useLocation()
-
-  const questionId = hash.slice(1)
-
+const useScrollToHash = () => {
   useEffect(() => {
-    document.getElementById(questionId)?.scrollIntoView()
-  }, [questionId])
+    if (isWindowDefined()) {
+      document.getElementById(window.location.hash)?.scrollIntoView()
+    }
+  }, [])
+}
+
+export const LandingPage = () => {
+  useScrollToHash()
 
   return (
     <Page scroll={scroll.scroll} onScroll={v => scroll.onScroll(v)}>

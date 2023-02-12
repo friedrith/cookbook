@@ -1,8 +1,8 @@
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { useContext } from 'react'
 
-import { TopBarContext } from 'components/atoms/FixedHeader'
+import { TopBarContext } from '@/components/atoms/FixedHeader'
 
 type Props = {
   url?: string
@@ -48,7 +48,12 @@ const IconButton = ({
   return (
     <>
       {url ? (
-        <Link className={classes} to={url} onClick={onClick} aria-label={title}>
+        <Link
+          className={classes}
+          href={url}
+          onClick={onClick}
+          aria-label={title}
+        >
           {label && rightIcon && (
             <span className="mr-0.5 hidden sm:inline text-normal">{label}</span>
           )}

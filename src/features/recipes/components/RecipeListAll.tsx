@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'models/Recipe'
-import RecipeListSection from 'features/recipes/components/RecipeListSection'
+import Recipe from '@/models/Recipe'
+import RecipeListSection from '@/features/recipes/components/RecipeListSection'
 
-import sortByUpdatedAt from 'features/recipes/utils/sortByUpdatedAt'
-import sortByName from 'features/recipes/utils/sortByName'
-import useEventListener from 'hooks/useEventListener'
+import sortByUpdatedAt from '@/features/recipes/utils/sortByUpdatedAt'
+import sortByName from '@/features/recipes/utils/sortByName'
+import useEventListener from '@/hooks/useEventListener'
 
 interface Props {
   recipes: Recipe[]

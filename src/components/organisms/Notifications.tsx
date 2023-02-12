@@ -1,14 +1,17 @@
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
-import Notification from 'components/molecules/Notification'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { getRecipesToDelete, cancelDeletion, confirmDeletion } from 'store'
+import Notification from '@/components/molecules/Notification'
+import { useAppDispatch, useAppSelector } from '@/hooks/redux'
+import { getRecipesToDelete, cancelDeletion, confirmDeletion } from '@/store'
+import { isDocumentDefined } from '@/utils/platforms/window'
 
 const Notifications = () => {
   const dispatch = useAppDispatch()
 
-  const container = document.getElementById('notifications')
+  const container = isDocumentDefined()
+    ? document.getElementById('notifications')
+    : null
 
   const recipes = useAppSelector(getRecipesToDelete)
 

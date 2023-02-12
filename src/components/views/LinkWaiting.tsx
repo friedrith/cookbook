@@ -1,11 +1,11 @@
 import { useTranslation, Trans } from 'react-i18next'
 
-import BackButton from 'components/molecules/BackButton'
-import LoginPage from 'components/templates/LoginPage'
-import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
-import { isIpad } from 'utils/platforms/mobile'
-import StandaloneLinkValidation from 'components/organisms/StandaloneLinkValidation'
-import { useOnLoggedInAnotherTab } from 'features/recipes/utils/broadcast'
+import BackButton from '@/components/molecules/BackButton'
+import LoginPage from '@/components/templates/LoginPage'
+import useIsStandalonePWA from '@/hooks/useIsStandalonePWA'
+import { isIpad } from '@/utils/platforms/mobile'
+import StandaloneLinkValidation from '@/components/organisms/StandaloneLinkValidation'
+import { useOnLoggedInAnotherTab } from '@/features/recipes/utils/broadcast'
 
 const LinkWaiting = () => {
   const { t } = useTranslation()

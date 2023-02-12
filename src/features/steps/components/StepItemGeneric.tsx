@@ -1,15 +1,15 @@
 import { useMemo } from 'react'
 import { unescape } from 'lodash'
 
-import Ingredient from 'models/Ingredient'
-import { replaceUrlsByLinks } from 'features/steps/utils/parseStep'
-import { useAppSelector } from 'hooks/redux'
-import { getTemperature } from 'store'
-import convertTemperature from 'features/units/utils/convertTemperature'
-import IngredientBadge from 'features/ingredients/components/IngredientBadge'
-import findDurations from 'features/timers/utils/findDurations'
-import DurationBadge from 'features/timers/components/DurationBadge'
-import { enabled } from 'utils/services/features'
+import Ingredient from '@/models/Ingredient'
+import { replaceUrlsByLinks } from '@/features/steps/utils/parseStep'
+import { useAppSelector } from '@/hooks/redux'
+import { getTemperature } from '@/store'
+import convertTemperature from '@/features/units/utils/convertTemperature'
+import IngredientBadge from '@/features/ingredients/components/IngredientBadge'
+import findDurations from '@/features/timers/utils/findDurations'
+import DurationBadge from '@/features/timers/components/DurationBadge'
+import { enabled } from '@/utils/services/features'
 
 type PropsGeneric = {
   className?: string
@@ -75,7 +75,7 @@ const StepItemGeneric = ({
           {descriptionParsed ? (
             <div
               className={`text-sm ltr:text-left rtl:text-right select-text ${descriptionClassName}`}
-              dangerouslySetInnerHTML={{ __html: descriptionParsed }}
+              // dangerouslySetInnerHTML={{ __html: descriptionParsed }}
             />
           ) : (
             <div
