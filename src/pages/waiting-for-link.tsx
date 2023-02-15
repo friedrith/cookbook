@@ -2,7 +2,7 @@ import { useTranslation, Trans } from 'react-i18next'
 import { GetServerSideProps } from 'next'
 import { serverSideTranslations } from 'react-i18next/serverSideTranslations'
 
-import LoginPage from '@/components/templates/LoginPage'
+import LoginPage from '@/components/templates/PortalPage'
 import useIsStandalonePWA from '@/hooks/useIsStandalonePWA'
 import { isIpad } from '@/utils/platforms/mobile'
 import StandaloneLinkValidation from '@/components/organisms/StandaloneLinkValidation'

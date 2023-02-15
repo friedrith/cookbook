@@ -1,16 +1,13 @@
+'use client'
 import { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-import { GetServerSideProps } from 'next'
 
 import { useAppDispatch } from '@/hooks/redux'
 import { loginWithMagicLink } from '@/store'
-import LoginPage from '@/components/templates/LoginPage'
-// import { track } from '@/utils/services/tracking'
 import Button from '@/components/atoms/Button'
-import { getClosestLocale } from '@/utils/services/locales'
 
-const Login = () => {
+const LoginPage = () => {
   const { t } = useTranslation()
 
   const dispatch = useAppDispatch()
@@ -20,14 +17,11 @@ const Login = () => {
   const login = (event: React.SyntheticEvent) => {
     event.preventDefault()
 
-    // dispatch(loginWithMagicLink(email))
-    // track('Login')
-
-    router.push({ pathname: '/waiting-for-link', query: { email } })
+    router.push(`login/waiting-for-link?${new URLSearchParams({ email })}`)
   }
 
   return (
-    <LoginPage title={t('login._Log in')}>
+    <>
       <div>
         <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
           {t('login._Link your email')}
@@ -70,30 +64,8 @@ const Login = () => {
           </form>
         </div>
       </div>
-    </LoginPage>
+    </>
   )
 }
 
-// https://stackoverflow.com/questions/69101425/can-you-forward-a-locale-to-a-language-in-nextjs-i18n
-// https://stackoverflow.com/questions/67502005/how-to-force-next-js-to-always-redirect-to-a-preferred-user-language
-// export const getServerSideProps: GetServerSideProps = async ({
-//   req,
-//   locale,
-//   defaultLocale,
-// }) => {
-//   const closestLocale = getClosestLocale(req, defaultLocale)
-
-//   return {
-//     props: {
-//       ...(await serverSideTranslations(closestLocale, [
-//         'common',
-//         'marketing',
-//         'faq',
-//         'help',
-//       ])),
-//       // Will be passed to the page component as props
-//     },
-//   }
-// }
-
-export default Login
+export default LoginPage

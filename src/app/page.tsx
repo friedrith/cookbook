@@ -1,14 +1,41 @@
-import LandingPage from '@/components/views/LandingPage'
+'use client'
+import { useEffect } from 'react'
 
-import { getServerSideLocale } from './i18n/serverSide'
-import ServicesWrapper from '@/app/ServicesWrapper'
+import Page from '@/components/templates/Page'
+import Hero from '@/features/marketing/components/Landing/Hero'
+import Header from '@/features/marketing/components/Landing/Header'
+import PrimaryFeatures from '@/features/marketing/components/Landing/PrimaryFeatures'
+import SecondaryFeatures from '@/features/marketing/components/Landing/SecondaryFeatures'
+import CallToAction from '@/features/marketing/components/Landing/CallToAction'
+import Footer from '@/features/marketing/components/Landing/Footer'
+import Faqs from '@/features/marketing/components/Landing/Faqs'
+import rememberScroll from '@/utils/services/rememberScroll'
+import { isWindowDefined } from '@/utils/platforms/window'
 
-const IndexPage = () => {
+const scroll = rememberScroll()
+
+const useScrollToHash = () => {
+  useEffect(() => {
+    if (isWindowDefined()) {
+      document.getElementById(window.location.hash)?.scrollIntoView()
+    }
+  }, [])
+}
+
+export const LandingPage = () => {
+  useScrollToHash()
+
   return (
-    <ServicesWrapper serverSideLocale={getServerSideLocale()}>
-      <LandingPage />
-    </ServicesWrapper>
+    <Page scroll={scroll.scroll} onScroll={v => scroll.onScroll(v)}>
+      <Header />
+      <Hero />
+      <PrimaryFeatures />
+      <SecondaryFeatures />
+      <CallToAction />
+      <Faqs />
+      <Footer />
+    </Page>
   )
 }
 
-export default IndexPage
+export default LandingPage

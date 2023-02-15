@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 
 import Button from '@/components/atoms/Button'

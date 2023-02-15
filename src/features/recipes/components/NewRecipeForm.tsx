@@ -6,7 +6,7 @@ import {
   ExclamationCircleIcon,
   QuestionMarkCircleIcon,
 } from '@heroicons/react/20/solid'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 import {
   findRecipeImportUrlStatus,

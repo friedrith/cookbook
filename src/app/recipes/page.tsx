@@ -1,6 +1,6 @@
+'use client'
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { serverSideTranslations } from 'react-i18next/serverSideTranslations'
 import classNames from 'classnames'
 
 import { useAppSelector } from '@/hooks/redux'
@@ -94,18 +94,6 @@ const RecipeList = () => {
       </Page>
     </ProtectedPage>
   )
-}
-
-export async function getStaticProps({ defaultLocale }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(getLocale() ?? defaultLocale, [
-        'common',
-        'footer',
-      ])),
-      // Will be passed to the page component as props
-    },
-  }
 }
 
 export default RecipeList

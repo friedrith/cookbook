@@ -1,11 +1,12 @@
 // https://locize.com/blog/next-13-app-dir-i18n/
 
-import i18next from 'i18next'
 import { cookies } from 'next/headers'
+import { getServerSideLocale } from './i18n/serverSide'
+import ServicesWrapper from '@/app/ServicesWrapper'
 
 import './globals.css'
 
-import { fallbackLng, initI18Next } from '@/app/i18n/i18n'
+import { fallbackLng } from '@/app/i18n/i18n'
 
 interface Props {
   children: React.ReactNode
@@ -24,7 +25,11 @@ const RootLayout = ({ children }: Props) => {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body dir={locale === 'pes' ? 'rtl' : 'ltr'}>{children}</body>
+      <body dir={locale === 'pes' ? 'rtl' : 'ltr'}>
+        <ServicesWrapper serverSideLocale={getServerSideLocale()}>
+          {children}
+        </ServicesWrapper>
+      </body>
     </html>
   )
 }

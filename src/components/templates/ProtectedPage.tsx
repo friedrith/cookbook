@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 
 import { useAppSelector, useAppDispatch } from '@/hooks/redux'
 import Roles from '@/models/Roles'
@@ -10,7 +10,6 @@ import Notifications from '@/components/organisms/Notifications'
 import useEventListener from '@/hooks/useEventListener'
 import { renderSharingLink, cleanSharingLinks } from '@/utils/urls/sharingLinks'
 import { getSharingLinks } from '@/utils/urls/sharingLinks'
-import { useRouter } from 'next/router'
 import Loading from './Loading'
 
 type Props = {

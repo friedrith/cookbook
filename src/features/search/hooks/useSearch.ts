@@ -1,12 +1,9 @@
 import { useMemo } from 'react'
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
-import { useRouter } from 'next/router'
+import { useSearchParams, useRouter } from 'next/navigation'
 import SearchStatus from '../types/SearchStatus'
 
 import estimateSearchStatus from '../utils/estimateSearchStatus'
 import SearchQuery from '../types/SearchQuery'
-
-const ENCODED_HASHTAG = '%23'
 
 const cleanQuery = (query: SearchQuery) =>
   typeof query === 'string' ? query.toLowerCase() : query
@@ -14,16 +11,18 @@ const cleanQuery = (query: SearchQuery) =>
 const useSearch = () => {
   const router = useRouter()
 
-  const query = typeof router.query.q === 'string' ? router.query.q : undefined
+  const searchParams = useSearchParams()
+
+  const query = searchParams.has('q') ? searchParams.get('q') : undefined
 
   return useMemo(() => {
     const searchStatus = estimateSearchStatus(query)
 
     const search = (newQuery: SearchQuery) => {
       if (typeof newQuery === 'string') {
-        router.push({ pathname: '/recipes', query: { q: newQuery } })
+        router.push(`/recipes?${new URLSearchParams({ q: newQuery })}`)
       } else {
-        router.push({ pathname: '/recipes' })
+        router.push('/recipes')
       }
     }
 

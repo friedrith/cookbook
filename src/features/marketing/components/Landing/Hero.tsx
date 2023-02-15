@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
 import Button from '@/components/atoms/Button'
 import { getCurrentUser } from '@/store'
@@ -13,7 +14,12 @@ import { openBrowserWindow } from '@/utils/platforms/window'
 import { useEffect, useState } from 'react'
 
 const AppDemo = () => (
-  <img className="absolute inset-0" src="/images/app.png" alt="App demo" />
+  <Image
+    className="absolute inset-0"
+    fill
+    src="/images/app.png"
+    alt="App demo"
+  />
 )
 
 const Hero = () => {
