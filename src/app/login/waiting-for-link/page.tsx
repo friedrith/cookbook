@@ -7,7 +7,7 @@ import { isIpad } from '@/utils/platforms/mobile'
 import StandaloneLinkValidation from '@/components/organisms/StandaloneLinkValidation'
 import { useOnLoggedInAnotherTab } from '@/features/recipes/utils/broadcast'
 
-const LinkWaiting = () => {
+const WaitingForCode = () => {
   const { t } = useTranslation()
 
   const searchParams = useSearchParams()
@@ -45,4 +45,4 @@ const LinkWaiting = () => {
   )
 }
 
-export default LinkWaiting
+export default WaitingForCode

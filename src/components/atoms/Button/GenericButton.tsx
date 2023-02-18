@@ -7,7 +7,7 @@ export type Props = {
   className?: string
   children?: React.ReactNode
   title?: string
-  to?: string
+  to?: string | undefined
   onClick?: () => void
   disabled?: boolean
   id?: string
@@ -59,5 +59,7 @@ const GenericButton = forwardRef(
     )
   },
 )
+
+GenericButton.displayName = 'GenericButton'
 
 export default GenericButton

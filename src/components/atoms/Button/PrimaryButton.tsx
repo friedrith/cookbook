@@ -45,4 +45,6 @@ const PrimaryButton = forwardRef(
   },
 )
 
+PrimaryButton.displayName = 'PrimaryButton'
+
 export default PrimaryButton

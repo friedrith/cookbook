@@ -8,9 +8,15 @@
   "_settings": "Settings",
   "login": {
     "_Log in": "Log in",
+    "_Open your Cookbook": "Open your Cookbook",
     "_Link your email": "Link your email",
     "_Get a magic link sent to your email": "Get a magic link to instantly link your email address to your cook book.",
     "_An email on its way": "Check your emails"
+  },
+  "waitingCode": {
+    "_Enter the verification code": "Enter the verification code",
+    "_We sent an email": "We sent an email to <strong>{{email}}</strong>. You will find a unique code to enter here.",
+    "_submit": "Submit"
   },
   "_Sign out": "Sign out",
   "_Send magic link": "Send a magic link",

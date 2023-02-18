@@ -4,6 +4,7 @@ import IconButton from './IconButton'
 import BlackButton from './BlackButton'
 import WhiteButton from './WhiteButton'
 import CircleButton from './CircleButton'
+import BlueButton from './BlueButton'
 
 const Button = {
   Primary: PrimaryButton,
@@ -12,6 +13,7 @@ const Button = {
   Black: BlackButton,
   White: WhiteButton,
   Circle: CircleButton,
+  Blue: BlueButton,
 }
 
 export default Button
