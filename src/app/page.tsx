@@ -1,5 +1,7 @@
 'use client'
 import { useEffect } from 'react'
+import Head from 'next/head'
+import { useTranslation } from 'react-i18next'
 
 import Page from '@/components/templates/Page'
 import Hero from '@/features/marketing/components/Landing/Hero'
@@ -24,6 +26,8 @@ const useScrollToHash = () => {
 
 export const LandingPage = () => {
   useScrollToHash()
+
+  const { t } = useTranslation()
 
   return (
     <Page scroll={scroll.scroll} onScroll={v => scroll.onScroll(v)}>

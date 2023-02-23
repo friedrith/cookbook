@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { useSession, signIn } from 'next-auth/react'
 
 import { useAppDispatch } from '@/hooks/redux'
 import { loginWithMagicLink } from '@/store'
@@ -17,15 +18,20 @@ const LoginPage = () => {
   const login = (event: React.SyntheticEvent) => {
     event.preventDefault()
 
+    signIn()
+
     // router.push(`login/waiting-for-link?${new URLSearchParams({ email })}`)
-    router.push(`login/waiting-for-code?${new URLSearchParams({ email })}`)
+    // router.push(`login/waiting-for-code?${new URLSearchParams({ email })}`)
   }
+
+  const { data: session, status } = useSession()
 
   return (
     <>
       <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
         {t('login._Log in')}
       </h2>
+      <p>Signed in as {session?.user?.email}</p>
       <div className="mt-8">
         <form action="#" method="POST" className="space-y-4" onSubmit={login}>
           <div>
@@ -43,7 +49,6 @@ const LoginPage = () => {
                 autoComplete="email"
                 onChange={e => setEmail(e.target.value)}
                 required
-                placeholder="john.smith@gmail.com"
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
               />
             </div>

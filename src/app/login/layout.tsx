@@ -10,10 +10,9 @@ import useWhenLoggedIn from '@/hooks/useWhenLoggedIn'
 
 type Props = {
   children: React.ReactNode
-  title: string
 }
 
-const PortalPage = ({ children, title }: Props) => {
+const PortalPage = ({ children }: Props) => {
   const router = useRouter()
 
   // const goToRecipesPage = useCallback(() => router.push('/recipes'), [router])
@@ -23,7 +22,7 @@ const PortalPage = ({ children, title }: Props) => {
   const { t } = useTranslation()
 
   return (
-    <Page title={title}>
+    <Page>
       <div className="min-h-screen fixed flex w-full">
         <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">

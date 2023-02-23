@@ -30,6 +30,7 @@
     "lord-icon-element": "^4.0.3",
     "lottie-web": "^5.10.2",
     "mixpanel-browser": "^2.45.0",
+    "next-auth": "^4.19.2",
     "next-i18next": "^13.1.5",
     "next-language-detector": "^1.0.2",
     "next-redux-wrapper": "^8.1.0",
