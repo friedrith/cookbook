@@ -20,6 +20,7 @@ import shouldShowCategories from '@/features/categories/utils/shouldShowCategori
 import useSearch from '@/features/search/hooks/useSearch'
 import RecipeListNoCategories from '@/features/recipes/components/RecipeListNoCategories'
 import SearchStatus from '@/features/search/types/SearchStatus'
+import PrimaryLoadingSpinner from '@/components/molecules/PrimaryLoadingSpinner'
 
 const scroll = rememberScroll()
 
@@ -74,7 +75,7 @@ const RecipeList = () => {
 
           {recipes.length === 0 && !areFetched && (
             <NoRecipeList>
-              <LoadingSpinner />
+              <PrimaryLoadingSpinner className="h-4 w-4" />
             </NoRecipeList>
           )}
           {recipes.length === 0 && areFetched && (

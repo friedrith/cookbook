@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSession } from 'next-auth/react'
 
 import { MagnifyingGlassIcon, PlusIcon } from '@heroicons/react/20/solid'
 
@@ -59,8 +58,6 @@ const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
     },
   )
 
-  const { data } = useSession()
-
   return (
     <>
       <FixedHeader
@@ -113,7 +110,6 @@ const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
                       </button>
                     </>
                   )}
-                  {data?.user?.name}
                   <SelectMenu>
                     <NewRecipeForm onHelpRequest={importHelpPopup.open} />
                   </SelectMenu>

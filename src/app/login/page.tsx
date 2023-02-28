@@ -2,11 +2,15 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-import { useSession, signIn } from 'next-auth/react'
+import { useSignIn } from '@clerk/nextjs'
+import { SignUp } from '@clerk/nextjs'
+import { EmailCodeFactor } from '@clerk/types'
 
 import { useAppDispatch } from '@/hooks/redux'
 import { loginWithMagicLink } from '@/store'
 import Button from '@/components/atoms/Button'
+import Form from '@/components/atoms/Form'
+import useAuth from '@/features/authentication/useAuthentication'
 
 const LoginPage = () => {
   const { t } = useTranslation()
@@ -15,25 +19,43 @@ const LoginPage = () => {
   const router = useRouter()
   const [email, setEmail] = useState('')
 
-  const login = (event: React.SyntheticEvent) => {
-    event.preventDefault()
+  const { isLoaded, signIn } = useSignIn()
 
-    signIn()
+  const { sendVerificationCode } = useAuth()
+
+  const onSubmit = async () => {
+    if (!isLoaded) return
+
+    try {
+      await sendVerificationCode(email)
+      router.push(`login/waiting-for-code?${new URLSearchParams({ email })}`)
+    } catch (error) {
+      console.error('error', error)
+    }
+
+    // await signIn
+    //   .create({ identifier: email })
+    //   .then(result => {
+    //     if (result.status === 'complete') {
+    //       console.log(result)
+    //       setActive({ session: result.createdSessionId })
+    //     } else {
+    //       console.log(result)
+    //     }
+    //   })
+    //   .catch(err => console.error('error', err.errors[0].longMessage))
 
     // router.push(`login/waiting-for-link?${new URLSearchParams({ email })}`)
     // router.push(`login/waiting-for-code?${new URLSearchParams({ email })}`)
   }
-
-  const { data: session, status } = useSession()
 
   return (
     <>
       <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
         {t('login._Log in')}
       </h2>
-      <p>Signed in as {session?.user?.email}</p>
       <div className="mt-8">
-        <form action="#" method="POST" className="space-y-4" onSubmit={login}>
+        <Form className="space-y-4" onSubmit={onSubmit}>
           <div>
             <label
               htmlFor="email"
@@ -59,7 +81,7 @@ const LoginPage = () => {
               {t('login._Log in')}
             </Button.Primary>
           </div>
-        </form>
+        </Form>
       </div>
       {/* <div className="relative my-6">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">

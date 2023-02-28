@@ -26,6 +26,7 @@ import useIsStandalonePWA from '@/hooks/useIsStandalonePWA'
 import HelpPopup from '@/components/organisms/HelpPopup'
 import usePopup from '@/hooks/usePopup'
 import SettingsPopup from './SettingsPopup'
+import useAuthentication from '@/features/authentication/useAuthentication'
 
 const UserMenu = () => {
   const dispatch = useAppDispatch()
@@ -68,6 +69,8 @@ const UserMenu = () => {
 
   const isMobile = useIsMobile()
 
+  const { logout } = useAuthentication()
+
   const menuOptions = [
     {
       icon: CogIcon,
@@ -88,8 +91,8 @@ const UserMenu = () => {
     {
       icon: ArrowRightOnRectangleIcon,
       label: '_Logout',
-      onClick: () => {
-        dispatch(logout())
+      onClick: async () => {
+        await logout()
         router.push('/')
       },
     },

@@ -3,6 +3,7 @@
   "version": "0.1.2",
   "private": true,
   "dependencies": {
+    "@clerk/nextjs": "^4.10.2",
     "@headlessui/react": "^1.6.2",
     "@heroicons/react": "latest",
     "@next/font": "13.1.6",

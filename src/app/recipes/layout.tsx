@@ -1,5 +1,3 @@
-import AuthContext from './AuthContext'
-
 export interface RecipesLayoutProps {
   children: React.ReactNode
 }
@@ -17,7 +15,7 @@ export interface RecipesLayoutProps {
 // }
 
 const RecipesLayout = ({ children }: RecipesLayoutProps) => {
-  return <AuthContext>{children}</AuthContext>
+  return <> {children}</>
 }
 
 export default RecipesLayout

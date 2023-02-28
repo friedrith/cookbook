@@ -1,12 +1,20 @@
 'use client'
+import { useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
+import {
+  ClerkProvider,
+  useUser,
+  SignIn,
+  SignedOut,
+  RedirectToSignIn,
+} from '@clerk/nextjs'
 
 import BackButton from '@/components/molecules/BackButton'
 import Page from '@/components/templates/Page'
 
-import useWhenLoggedIn from '@/hooks/useWhenLoggedIn'
+import useWhenAuthenticated from '@/features/authentication/useWhenAuthenticated'
 
 type Props = {
   children: React.ReactNode
@@ -15,11 +23,16 @@ type Props = {
 const PortalPage = ({ children }: Props) => {
   const router = useRouter()
 
-  // const goToRecipesPage = useCallback(() => router.push('/recipes'), [router])
+  const goToRecipesPage = useCallback(() => {
+    console.log('goToRecipesPage', goToRecipesPage)
+    router.push('/recipes')
+  }, [router])
 
-  // useWhenLoggedIn(goToRecipesPage)
+  useWhenAuthenticated(goToRecipesPage)
 
   const { t } = useTranslation()
+
+  // const { isSignedIn } = useAuth()
 
   return (
     <Page>

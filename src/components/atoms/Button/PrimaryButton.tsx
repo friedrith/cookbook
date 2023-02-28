@@ -15,7 +15,7 @@ const PrimaryButton = forwardRef(
     ref,
   ) => {
     const allClassName = classNames(
-      'transition-colors	bg-gradient-to-r from-primary-300 via-primary-400 to-primary-500 hover:from-primary-500 hover:via-primary-500 hover:to-primary-500 focus:ring-primary-500',
+      'transition-colors	bg-gradient-to-r from-primary-300 via-primary-400 to-primary-500 hover:from-primary-500 hover:via-primary-500 hover:to-primary-500 focus:ring-primary-500 text-white',
       className,
       disabled ? 'opacity-70' : '',
     )

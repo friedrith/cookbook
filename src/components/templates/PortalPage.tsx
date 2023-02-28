@@ -6,7 +6,7 @@ import Image from 'next/image'
 import BackButton from '@/components/molecules/BackButton'
 import Page from './Page'
 
-import useWhenLoggedIn from '@/hooks/useWhenLoggedIn'
+import useWhenLoggedIn from '@/features/authentication/useWhenAuthenticated'
 
 type Props = {
   children: React.ReactNode

@@ -4,7 +4,7 @@ import CenterPage from '@/components/templates/CenterPage'
 const Loading = () => {
   return (
     <CenterPage>
-      <LoadingSpinner />
+      <LoadingSpinner className="text-primary-400" />
     </CenterPage>
   )
 }

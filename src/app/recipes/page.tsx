@@ -9,7 +9,7 @@ import RecipeListHeader from '@/components/organisms/RecipeListHeader'
 import Container from '@/components/atoms/Container'
 import Page from '@/components/templates/Page'
 import EmptyMessage from '@/components/atoms/EmptyMessage'
-import LoadingSpinner from '@/components/atoms/LoadingSpinner'
+import PrimaryLoadingSpinner from '@/components/molecules/PrimaryLoadingSpinner'
 import rememberScroll from '@/utils/services/rememberScroll'
 import RecipeListAll from '@/features/recipes/components/RecipeListAll'
 import RecipeListSearchResults from '@/features/recipes/components/RecipeListSearchResults'
@@ -51,14 +51,6 @@ const RecipeList = () => {
           )}
           fullWidth
         >
-          {/* {keywordsNotUsed.length > 0 && (
-            <KeywordList
-              size={BadgeSize.large}
-              className="text-center"
-              keywords={keywordsNotUsed}
-              onChangeQuery={onQueryChange}
-            />
-          )} */}
           <div className="flex-1 relative z-10 pt-10 md:pt-24">
             <div className="relative z-10 " ref={ref} />
             {searchStatus === SearchStatus.NoCategory && (
@@ -77,7 +69,7 @@ const RecipeList = () => {
 
             {recipes.length === 0 && !areFetched && (
               <NoRecipeList>
-                <LoadingSpinner />
+                <PrimaryLoadingSpinner className="h-6 w-6i" />
               </NoRecipeList>
             )}
             {recipes.length === 0 && areFetched && (
