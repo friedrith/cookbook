@@ -72,7 +72,7 @@ const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
                 {isSearchActive && (
                   <SearchInput
                     className="flex-1 block md:hidden"
-                    disableAutClose
+                    disableAutoClose
                     ref={inputMobileRef}
                   />
                 )}

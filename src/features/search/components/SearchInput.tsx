@@ -8,11 +8,11 @@ import useSearch from '../useSearch'
 
 interface SearchInputProps {
   className?: string
-  disableAutClose?: boolean
+  disableAutoClose?: boolean
 }
 
 const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
-  ({ className, disableAutClose }, ref) => {
+  ({ className, disableAutoClose }, ref) => {
     const { t } = useTranslation()
 
     const { query, isSearchActive, setSearch } = useSearch()
@@ -53,7 +53,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             }
           }}
           onBlur={() => {
-            if (!disableAutClose) {
+            if (!disableAutoClose && !query) {
               setTimeoutSafe(() => {
                 setSearch(undefined)
               }, 100)
