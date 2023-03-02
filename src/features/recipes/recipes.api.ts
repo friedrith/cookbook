@@ -1,4 +1,4 @@
-import api from './api'
+import api from '../../utils/api/api'
 
 import Recipe from '@/models/Recipe'
 import Measure from '@/models/Measure'

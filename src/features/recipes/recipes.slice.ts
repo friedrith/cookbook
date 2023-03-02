@@ -3,7 +3,7 @@ import { uniq } from 'lodash'
 
 import type { RootState } from '@/store'
 import Recipe from '@/models/Recipe'
-import * as recipesApi from '@/utils/api/recipes.api'
+import * as recipesApi from '@/features/recipes/recipes.api'
 
 type Metadata = {
   recipeId: string
