@@ -1,3 +1,8 @@
+import * as path from 'path'
+import { tmpdir } from 'os'
+import { spawn } from 'child-process-promise'
+import { unlinkSync } from 'fs'
+
 import * as functions from 'firebase-functions'
 import * as admin from 'firebase-admin'
 import express from 'express'
@@ -19,11 +24,6 @@ officialWebsites.routesConfig(app)
 links.routesConfig(app)
 
 export const api = functions.https.onRequest(app)
-
-import * as path from 'path'
-import { tmpdir } from 'os'
-import { spawn } from 'child-process-promise'
-import { unlinkSync } from 'fs'
 
 // https://firebase.google.com/docs/storage/extend-with-functions
 export const generateThumbnail = functions.storage

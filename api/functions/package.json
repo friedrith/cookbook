@@ -17,7 +17,6 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "@next/font": "^13.1.6",
     "@types/long": "^5.0.0",
     "body-parser": "^1.20.0",
     "child-process-promise": "^2.2.1",
