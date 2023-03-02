@@ -10,7 +10,7 @@ import { useAppDispatch } from '@/hooks/redux'
 import { loginWithMagicLink } from '@/store'
 import Button from '@/components/atoms/Button'
 import Form from '@/components/atoms/Form'
-import useAuth from '@/features/authentication/useAuthentication'
+import useAuth from '@/features/authentication/hooks/useAuthentication'
 
 const LoginPage = () => {
   const { t } = useTranslation()

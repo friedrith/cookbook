@@ -1,7 +1,10 @@
 /* eslint-disable i18next/no-literal-string */
 import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import cx from 'classnames'
+import { usePathname } from 'next/navigation'
 
 import { ArrowDownOnSquareIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
@@ -34,8 +37,11 @@ const LineSkeleton = ({ className }: { className?: string }) => (
   <div className={cx('bg-gray-200 rounded-full', className)} />
 )
 
-const RecipeShare = () => {
-  const { linkId } = useParams()
+const RecipePublic = () => {
+  const router = useRouter()
+
+  // const { id } = router.query
+  // const { linkId } = useParams()
   const [loading, setLoading] = useState(true)
 
   const user = useAppSelector(getCurrentUser)
@@ -52,13 +58,11 @@ const RecipeShare = () => {
     getRecipe(state, recipe?.id),
   )
 
-  const navigate = useNavigate()
-
   useEffect(() => {
     if (alreadyExistingRecipe) {
-      navigate(`/recipes/${alreadyExistingRecipe.id}`)
+      router.push(`/recipes/${alreadyExistingRecipe.id}`)
     }
-  }, [alreadyExistingRecipe, navigate])
+  }, [alreadyExistingRecipe, router])
 
   const fetch = async () => {
     try {
@@ -99,7 +103,7 @@ const RecipeShare = () => {
       const url = renderSharingLink(linkId)
 
       const recipe = await dispatch(importRecipe(url)).unwrap()
-      navigate(`/recipes/${recipe.id}`)
+      router.push(`/recipes/${recipe.id}`)
     } catch (error) {
       console.error(error)
     }
@@ -108,7 +112,7 @@ const RecipeShare = () => {
   const login = () => {
     saveSharingLinks([...getSharingLinks(), linkId])
 
-    navigate('/login')
+    router.push('/login')
   }
 
   return (
@@ -127,7 +131,7 @@ const RecipeShare = () => {
                   <Link
                     key={keyword}
                     className="mr-1"
-                    to={`/recipes?q=${keyword}`}
+                    href={`/recipes?q=${keyword}`}
                   >
                     <Badge>{keyword}</Badge>
                   </Link>
@@ -185,7 +189,7 @@ const RecipeShare = () => {
                 }
                 onClick={() => {}}
                 ingredients={[]}
-              />{' '}
+              />
               <StepItemGeneric
                 linkClassName="bg-gray-300"
                 iconClassName="bg-white border-2 border-gray-300 group-hover:border-gray-400"
@@ -248,4 +252,4 @@ const RecipeShare = () => {
   )
 }
 
-export default RecipeShare
+export default RecipePublic

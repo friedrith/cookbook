@@ -26,7 +26,7 @@ import useIsStandalonePWA from '@/hooks/useIsStandalonePWA'
 import HelpPopup from '@/components/organisms/HelpPopup'
 import usePopup from '@/hooks/usePopup'
 import SettingsPopup from './SettingsPopup'
-import useAuthentication from '@/features/authentication/useAuthentication'
+import useAuthentication from '@/features/authentication/hooks/useAuthentication'
 
 const UserMenu = () => {
   const dispatch = useAppDispatch()

@@ -16,7 +16,7 @@ import ProtectedPage from '@/components/templates/ProtectedPage'
 import RecipeEdit from '@/components/views/RecipeEdit'
 import RecipeFocus from '@/components/views/RecipeFocus'
 import NotFound404 from '@/components/views/NotFound404'
-import RecipeShare from '@/components/views/RecipeShare'
+import RecipeShare from '@/components/views/RecipePublic'
 
 import HistoryContext from 'contexts/History'
 

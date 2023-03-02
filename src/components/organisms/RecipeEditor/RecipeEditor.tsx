@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 import { WithContext as ReactTags } from 'react-tag-input'
 
-import { storeFile } from '@/utils/api/firebase'
+import { storeFile } from '@/utils/services/firebase'
 import TextArea from '@/components/atoms/TextArea'
 import ImageBanner from '@/components/molecules/ImageBanner'
 import Container from '@/components/atoms/Container'

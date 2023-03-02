@@ -11,7 +11,7 @@ import {
 
 import Roles from '@/models/Roles'
 
-import { setToken } from '../api'
+import { setToken } from '../../api/api'
 
 export const convertUser = (user: any) => ({
   id: user.uid,

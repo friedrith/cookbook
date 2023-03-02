@@ -1,10 +1,21 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo, useCallback } from 'react'
 import { EmailCodeFactor } from '@clerk/types'
 import { useSignIn, useAuth } from '@clerk/nextjs'
+import { getAuth, signInWithCustomToken } from 'firebase/auth'
 
 const useAuthentication = () => {
   const { isLoaded, signIn, setSession } = useSignIn()
-  const { signOut, isSignedIn } = useAuth()
+  const { signOut, isSignedIn, getToken } = useAuth()
+
+  // https://clerk.dev/docs/integration/firebase
+  const linkToFirebase = useCallback(async () => {
+    const auth = getAuth()
+    const token = await getToken({ template: 'integration_firebase' })
+    if (token) {
+      const userCredentials = await signInWithCustomToken(auth, token)
+      console.log('userCredentials', userCredentials)
+    }
+  }, [getToken])
 
   return useMemo(
     () => ({
@@ -39,13 +50,17 @@ const useAuthentication = () => {
           throw new Error(signInAttempt.status ?? '')
         }
         setSession(signInAttempt.createdSessionId)
+        await linkToFirebase()
+      },
+      checkSession: async () => {
+        await linkToFirebase()
       },
       logout: async () => {
         signOut()
       },
       isSignedIn,
     }),
-    [isLoaded, signIn, signOut, isSignedIn, setSession],
+    [isLoaded, signIn, signOut, isSignedIn, setSession, linkToFirebase],
   )
 }
 

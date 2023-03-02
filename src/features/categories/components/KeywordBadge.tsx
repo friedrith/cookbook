@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 import Badge, { BadgeSize } from '@/components/atoms/Badge'
 
@@ -37,7 +37,7 @@ const KeywordBadge = ({
     <Link
       key={keyword}
       className={`inline-flex ${className}`}
-      to={`/recipes?q=${ENCODED_HASHTAG}${keyword}`}
+      href={`/recipes?q=${ENCODED_HASHTAG}${keyword}`}
       onClick={() => onChangeQuery(`#${keyword}`)}
     >
       <Badge

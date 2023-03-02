@@ -11,7 +11,7 @@ import VerificationCodeInput from '@/components/atoms/VerificationCodeInput'
 import Button from '@/components/atoms/Button'
 import Form from '@/components/atoms/Form'
 import LoadingSpinner from '@/components/atoms/LoadingSpinner'
-import useAuth from '@/features/authentication/useAuthentication'
+import useAuth from '@/features/authentication/hooks/useAuthentication'
 
 const CODE_LENGTH = 6
 

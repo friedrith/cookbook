@@ -14,7 +14,7 @@ import {
 import BackButton from '@/components/molecules/BackButton'
 import Page from '@/components/templates/Page'
 
-import useWhenAuthenticated from '@/features/authentication/useWhenAuthenticated'
+import useWhenAuthenticated from '@/features/authentication/hooks/useWhenAuthenticated'
 
 type Props = {
   children: React.ReactNode

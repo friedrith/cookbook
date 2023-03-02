@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next'
-
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/navigation'
 
 import thumbnailUrl from '@/utils/urls/thumbnailUrl'
 import Recipe from '@/models/Recipe'
@@ -18,7 +17,7 @@ const RecipePreview = ({ recipe, onClick = () => {} }: Props) => {
 
   const [previewUrl, setPreviewUrl] = useState(thumbnailUrl(recipe.imageUrl))
 
-  const navigate = useNavigate()
+  const router = useRouter()
 
   return (
     <div
@@ -28,7 +27,7 @@ const RecipePreview = ({ recipe, onClick = () => {} }: Props) => {
       // to={`/recipes/${recipe.id}`}
       onClick={event => {
         onClick(event)
-        navigate(`/recipes/${recipe.id}`)
+        router.push(`/recipes/${recipe.id}`)
         event.preventDefault()
       }}
       onKeyDown={() => {}}
