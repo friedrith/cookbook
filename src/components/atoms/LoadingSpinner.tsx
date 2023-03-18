@@ -6,7 +6,7 @@ const LoadingSpinner = ({ className = 'h-6 w-6' }: Props) => {
   return (
     <>
       <svg
-        className={`animate-spin text-primary-400 ${className}`}
+        className={`animate-spin ${className}`}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

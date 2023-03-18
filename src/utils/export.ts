@@ -1,6 +1,6 @@
 import JSZip from 'jszip'
 import FileSaver from 'file-saver'
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 
 import renderRecipe from '../features/recipes/utils/renderTextRecipe'
 

@@ -29,6 +29,7 @@ export async function isAuthenticated(
       role: decodedToken.role,
       email: decodedToken.email,
     }
+
     return next()
   } catch (err: any) {
     console.error(`${err.code} -  ${err.message}`)

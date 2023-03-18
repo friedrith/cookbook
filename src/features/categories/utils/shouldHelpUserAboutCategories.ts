@@ -1,4 +1,4 @@
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import Category from '../Category'
 
 const shouldHelpUserAboutCategories = (

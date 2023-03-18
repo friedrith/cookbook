@@ -3,7 +3,7 @@
 // import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
 
-import { FormattedRecipe } from 'models/Recipe'
+import { FormattedRecipe } from 'types/Recipe'
 // import usePopup from 'hooks/usePopup'
 import Ingredient from 'models/Ingredient'
 // import SectionTitle from 'components/atoms/SectionTitle'

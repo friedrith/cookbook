@@ -1,0 +1,11 @@
+{
+  "_Log in": "Log in",
+  "_Link your email": "Link your email",
+  "_Get a magic link sent to your email": "Get a magic link to instantly link your email address to your cook book.",
+  "_We need your email": "Your email will be linked to your cookbook.",
+  "_An email on its way": "Please enter the 6-digit verification code we sent to the email address <strong>{{email}}</strong>.",
+  "_Send magic link": "Send a magic link",
+  "_Send code": "Send a code",
+  "_Email address": "Email address",
+  "_Verify": "Verify"
+}

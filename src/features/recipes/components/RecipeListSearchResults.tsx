@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import RecipeListSection from 'features/recipes/components/RecipeListSection'
-import useFuse from 'hooks/useFuse'
+import useFuse from 'features/search/hooks/useFuse'
 import NoRecipeList from 'features/recipes/components/NoRecipeList'
 import EmptyMessage from 'components/atoms/EmptyMessage'
 import { useAppDispatch } from 'hooks/redux'

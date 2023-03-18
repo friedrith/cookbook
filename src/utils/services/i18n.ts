@@ -26,7 +26,7 @@ i18n
   .init({
     ns: ['default'],
     fallbackLng: 'pes',
-    debug: process.env.NODE_ENV !== 'production',
+    debug: false && process.env.NODE_ENV !== 'production',
 
     load: 'all',
     supportedLngs: languages.map(l => l.value),

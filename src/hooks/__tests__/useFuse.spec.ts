@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react'
-import useFuse from '../useFuse'
+import useFuse from '../../features/search/hooks/useFuse'
 
 const aRecipe = (
   name: string,

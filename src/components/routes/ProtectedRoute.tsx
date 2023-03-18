@@ -1,10 +1,10 @@
-import { useCallback } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { useCallback, useEffect } from 'react'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Roles from 'models/Roles'
-import useWhenLoggedIn from 'hooks/useWhenLoggedIn'
-import useWhenLoggedOut from 'hooks/useWhenLoggedOut'
+import useWhenLoggedIn from 'features/authentication/hooks/useWhenLoggedIn'
+import useWhenLoggedOut from 'features/authentication/hooks/useWhenLoggedOut'
 import { areRecipesFetched, fetchRecipes, importRecipe } from 'store'
 import Notifications from 'components/organisms/Notifications'
 import useEventListener from 'hooks/useEventListener'
@@ -16,8 +16,10 @@ type Props = {
   onlyRoles: Roles[]
 }
 
-const ProtectedPage = ({ onlyRoles, children }: Props) => {
+const ProtectedRoute = ({ onlyRoles, children }: Props) => {
   const navigate = useNavigate()
+
+  const location = useLocation()
 
   const redirectToHome = useCallback(() => {
     navigate('/login')
@@ -31,6 +33,10 @@ const ProtectedPage = ({ onlyRoles, children }: Props) => {
   const fetch = useCallback(() => {
     if (!recipesFetched) dispatch(fetchRecipes())
   }, [recipesFetched, dispatch])
+
+  useEffect(() => {
+    console.log('mount', location.pathname)
+  }, [])
 
   useWhenLoggedIn(fetch)
 
@@ -62,4 +68,4 @@ const ProtectedPage = ({ onlyRoles, children }: Props) => {
   )
 }
 
-export default ProtectedPage
+export default ProtectedRoute

@@ -8,9 +8,10 @@ const useWhenLoggedIn = (callback = () => {}, properties: any = []) => {
 
   useEffect(() => {
     if (isLoggedIn) {
+      console.log('isLoggedIn')
       callback()
     }
-  }, [isLoggedIn, callback, properties])
+  }, [isLoggedIn])
 }
 
 export default useWhenLoggedIn

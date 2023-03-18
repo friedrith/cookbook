@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import thumbnailUrl from 'utils/urls/thumbnailUrl'
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import KeywordList from 'features/categories/components/KeywordList'
 import { BadgeSize } from 'components/atoms/Badge'
 

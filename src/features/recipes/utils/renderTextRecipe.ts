@@ -1,6 +1,6 @@
 import * as linksApi from 'utils/api/links.api'
 
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 
 import parseLines from 'utils/parseLines'
 import { renderSharingLink } from 'utils/urls/sharingLinks'

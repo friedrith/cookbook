@@ -10,8 +10,6 @@ import {
   CogIcon,
 } from '@heroicons/react/24/outline'
 
-import { useAppDispatch } from 'hooks/redux'
-import { logout } from 'store'
 import { isMobile } from 'utils/platforms/mobile'
 import {
   getPWAInstallationPrompt,
@@ -25,10 +23,9 @@ import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
 import HelpPopup from 'components/organisms/HelpPopup'
 import usePopup from 'hooks/usePopup'
 import SettingsPopup from './SettingsPopup'
+import useAuthentication from 'features/authentication/hooks/useAuthentication'
 
 const UserMenu = () => {
-  const dispatch = useAppDispatch()
-
   const { t } = useTranslation()
 
   const navigate = useNavigate()
@@ -65,6 +62,8 @@ const UserMenu = () => {
 
   const settingsPopup = usePopup(false)
 
+  const { logout } = useAuthentication()
+
   const menuOptions = [
     {
       icon: CogIcon,
@@ -86,7 +85,7 @@ const UserMenu = () => {
       icon: ArrowRightOnRectangleIcon,
       label: '_Logout',
       onClick: () => {
-        dispatch(logout())
+        logout()
         navigate('/')
       },
     },

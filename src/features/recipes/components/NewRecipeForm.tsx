@@ -14,7 +14,7 @@ import {
 } from 'features/recipes/utils/findRecipeImportUrlStatus'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { getAutomaticImport, importRecipe } from 'store'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import PrimaryLoadingSpinner from 'components/molecules/PrimaryLoadingSpinner'
 import { getOfficialWebsites } from 'store/officialWebsites'
 import Button from 'components/atoms/Button'
 import { track } from 'utils/services/tracking'
@@ -113,7 +113,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
             >
               <span>
                 {isLoading ? (
-                  <LoadingSpinner className="h-4 w-4" />
+                  <PrimaryLoadingSpinner className="h-4 w-4" />
                 ) : (
                   t('import.Import')
                 )}

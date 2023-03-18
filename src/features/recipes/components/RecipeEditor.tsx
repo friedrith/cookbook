@@ -10,7 +10,7 @@ import Container from 'components/atoms/Container'
 import Box from 'components/atoms/Box'
 import SectionTitle from 'components/atoms/SectionTitle'
 import ImageUploader from 'components/molecules/ImageUploader'
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import Button from 'components/atoms/Button'
 import cleanKeywords from 'features/categories/utils/cleanKeywords'
 

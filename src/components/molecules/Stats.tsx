@@ -1,7 +1,7 @@
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 
 // import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { FormattedRecipe } from 'models/Recipe'
+import { FormattedRecipe } from 'types/Recipe'
 import Stat from 'components/atoms/Stat'
 // import {
 //   incrementServingCount,

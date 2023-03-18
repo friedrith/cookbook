@@ -7,15 +7,15 @@ import { getCurrentUser, isUserLoggedIn, isUserLoggedOut } from 'store'
 
 const useWhenLoggedOut = (callback = () => {}, onlyRoles: Roles[]) => {
   const currentUser = useAppSelector(getCurrentUser)
-  const loggedIn = useAppSelector(isUserLoggedIn)
   const loggedOut = useAppSelector(isUserLoggedOut)
+  const loggedIn = useAppSelector(isUserLoggedIn)
 
   useEffect(() => {
     if (loggedOut || (loggedIn && !hasOneOfRoles(currentUser, onlyRoles))) {
       console.log('when user logged out')
       callback()
     }
-  }, [loggedOut, currentUser, loggedIn, onlyRoles, callback])
+  }, [loggedOut, loggedIn, currentUser, onlyRoles, callback])
 }
 
 export default useWhenLoggedOut
