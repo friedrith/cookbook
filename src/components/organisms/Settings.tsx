@@ -11,11 +11,11 @@ import {
   setTemperature,
   getIngredienTemplate,
   setIngredientTemplate,
-  deleteAccount,
+  // deleteAccount,
   deleteAllRecipes,
   getAutomaticImport,
   setAutomaticimport,
-  logout,
+  // logout,
   getRecipeList,
 } from 'store'
 import Button from 'components/atoms/Button'
@@ -27,6 +27,7 @@ import Form from 'components/atoms/Form'
 import Input from 'components/atoms/Input'
 import useSetting from 'hooks/useSetting'
 import Select from 'components/atoms/Select'
+import useAuthentication from 'features/authentication/hooks/useAuthentication'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()
@@ -46,13 +47,15 @@ const Settings = () => {
     setIngredientTemplate,
   )
 
+  const { logout } = useAuthentication()
+
   const deleteAccountConfirmed = async () => {
     try {
       track('DeleteAccount')
       await dispatch(deleteAllRecipes()).unwrap()
-      await dispatch(deleteAccount()).unwrap()
+      // await dispatch(deleteAccount()).unwrap()
       track('DeleteAccountSuccess')
-      await dispatch(logout()).unwrap()
+      await logout()
     } catch (error) {
       const exception = error as HttpError
       if (exception.code === 'auth/requires-recent-login') {

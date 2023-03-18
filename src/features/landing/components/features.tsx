@@ -1,6 +1,6 @@
-import SmartphoneShoppingBagIcon from 'components/organisms/Landing/SmartphoneShoppingBagIcon'
-import SmartphoneStepListIcon from 'components/organisms/Landing/SmartphoneStepListIcon'
-import SmartphoneImportIcon from 'components/organisms/Landing/SmartphoneImportIcon'
+import SmartphoneShoppingBagIcon from 'features/landing/components/SmartphoneShoppingBagIcon'
+import SmartphoneStepListIcon from 'features/landing/components/SmartphoneStepListIcon'
+import SmartphoneImportIcon from 'features/landing/components/SmartphoneImportIcon'
 
 import importImage from 'assets/import.png'
 import shoppingList from 'assets/shoppingList.png'

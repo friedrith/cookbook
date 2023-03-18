@@ -5,7 +5,7 @@ import Button from 'components/atoms/Button'
 import { getCurrentUser } from 'store'
 import { useAppSelector } from 'hooks/redux'
 import Container from 'components/atoms/Container'
-import BackgroundIllustration from 'components/organisms/Landing/BackgroundIllustration'
+import BackgroundIllustration from 'features/landing/components/BackgroundIllustration'
 import PhoneFrame from 'components/atoms/PhoneFrame'
 
 import appDemo from 'assets/app.png'

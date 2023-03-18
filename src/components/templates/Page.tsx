@@ -1,7 +1,7 @@
-import { Helmet } from 'react-helmet'
 import React, { useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
 import { useTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet-async'
 
 import { isMobile } from 'utils/platforms/mobile'
 import useIsStandalonePWA from 'hooks/useIsStandalonePWA'

@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import Measure from './Measure'
-import Ingredient from './Ingredient'
-import Step from './Step'
+import Measure from '../models/Measure'
+import Ingredient from '../models/Ingredient'
+import Step from '../models/Step'
 
 export enum Stat {
   Duration,

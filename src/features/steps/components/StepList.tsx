@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { useState, useEffect } from 'react'
 import { BoltIcon } from '@heroicons/react/24/solid'
 
-import { FormattedRecipe } from 'models/Recipe'
+import { FormattedRecipe } from 'types/Recipe'
 import Step from 'models/Step'
 import StepItem from 'features/steps/components/StepItem'
 import SectionTitle from 'components/atoms/SectionTitle'

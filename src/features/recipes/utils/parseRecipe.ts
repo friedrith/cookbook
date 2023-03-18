@@ -1,4 +1,4 @@
-import Recipe, { FormattedRecipe } from 'models/Recipe'
+import Recipe, { FormattedRecipe } from 'types/Recipe'
 import Ingredient from 'models/Ingredient'
 import parseIngredient from 'features/ingredients/utils/parseIngredient'
 import parseLines from '../../../utils/parseLines'

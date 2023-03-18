@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { ParallaxProvider } from 'react-scroll-parallax'
+import { HelmetProvider } from 'react-helmet-async'
 
 import store from 'store'
 
@@ -11,18 +12,23 @@ import App from 'components/App'
 import reportWebVitals from './reportWebVitals'
 import 'utils/services/i18n'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
+import AuthProvider from 'features/authentication/components/AuthProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <ParallaxProvider>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </BrowserRouter>
-    </ParallaxProvider>
+    <HelmetProvider>
+      <ParallaxProvider>
+        <BrowserRouter>
+          <AuthProvider>
+            <Provider store={store}>
+              <App />
+            </Provider>
+          </AuthProvider>
+        </BrowserRouter>
+      </ParallaxProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )
 

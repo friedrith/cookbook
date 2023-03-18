@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
 import { uniq } from 'lodash'
 
 import type { RootState } from 'store'
-import Recipe from 'models/Recipe'
-import * as recipesApi from 'utils/api/recipes.api'
+import Recipe from 'types/Recipe'
+import * as recipesApi from 'features/recipes/recipes.api'
 
 type Metadata = {
   recipeId: string
@@ -14,6 +14,7 @@ type Metadata = {
 export interface RecipesState {
   byId: Record<string, Recipe>
   areFetched: boolean
+  areFetching: boolean
   metadataById: Record<string, Metadata>
   trashQueue: string[]
   recentSearches: string[]
@@ -22,6 +23,7 @@ export interface RecipesState {
 export const recipesInitialState: RecipesState = {
   byId: {},
   areFetched: false,
+  areFetching: false,
   metadataById: {},
   trashQueue: [],
   recentSearches: [],
@@ -145,6 +147,15 @@ export const recipesSlice = createSlice({
         {},
       )
       state.areFetched = true
+      state.areFetching = false
+    })
+
+    builder.addCase(fetchRecipes.pending, (state, action) => {
+      state.areFetching = true
+    })
+
+    builder.addCase(fetchRecipes.rejected, (state, action) => {
+      state.areFetching = false
     })
 
     builder.addCase(fetchRecipeByLink.fulfilled, (state, action) => {
@@ -208,6 +219,9 @@ export const {
 } = recipesSlice.actions
 
 export const areRecipesFetched = (state: RootState) => state.recipes.areFetched
+
+export const areRecipesFetching = (state: RootState) =>
+  state.recipes.areFetching
 
 export const getRecipeList = createSelector(
   (state: RootState) => state.recipes.byId,

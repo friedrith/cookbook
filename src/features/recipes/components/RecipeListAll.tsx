@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import RecipeListSection from 'features/recipes/components/RecipeListSection'
 
 import sortByUpdatedAt from 'features/recipes/utils/sortByUpdatedAt'

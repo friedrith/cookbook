@@ -1,7 +1,7 @@
 import findIngredientPosition from 'features/ingredients/utils/findIngredientPosition'
 import Ingredient, { areEqual } from 'models/Ingredient'
 import shortenIngredientName from 'features/ingredients/utils/shortenIngredientName'
-import { FormattedRecipe } from 'models/Recipe'
+import { FormattedRecipe } from 'types/Recipe'
 import Step from 'models/Step'
 
 const expression =

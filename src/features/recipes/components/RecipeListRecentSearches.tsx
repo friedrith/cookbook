@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import RecipeListSection from 'features/recipes/components/RecipeListSection'
 
 import { useAppSelector } from 'hooks/redux'

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import Modal, { PopupType } from 'components/atoms/Modal'
 import { isCopiedToClipboard, shareText, isShared } from 'utils/services/share'
 import waitFor from 'utils/waitFor'

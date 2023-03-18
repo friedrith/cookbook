@@ -17,7 +17,7 @@ yarn
 yarn start
 
 # in parallel (other terminal)
-cd api
+cd api/functions
 nvm use v16.17.0
 yarn serve
 ```

@@ -1,10 +1,10 @@
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import PrimaryLoadingSpinner from 'components/molecules/PrimaryLoadingSpinner'
 import CenterPage from 'components/templates/CenterPage'
 
 const Loading = () => {
   return (
     <CenterPage>
-      <LoadingSpinner />
+      <PrimaryLoadingSpinner />
     </CenterPage>
   )
 }

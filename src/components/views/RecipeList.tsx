@@ -4,11 +4,11 @@ import classNames from 'classnames'
 
 import { useAppSelector } from 'hooks/redux'
 import { getRecipeList, areRecipesFetched } from 'store'
-import RecipeListHeader from 'components/organisms/RecipeListHeader'
+import RecipeListHeader from 'features/recipes/components/RecipeListHeader'
 import Container from 'components/atoms/Container'
 import Page from 'components/templates/Page'
 import EmptyMessage from 'components/atoms/EmptyMessage'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import PrimaryLoadingSpinner from 'components/molecules/PrimaryLoadingSpinner'
 import rememberScroll from 'utils/services/rememberScroll'
 import RecipeListAll from 'features/recipes/components/RecipeListAll'
 import RecipeListSearchResults from 'features/recipes/components/RecipeListSearchResults'
@@ -73,7 +73,7 @@ const RecipeList = () => {
 
           {recipes.length === 0 && !areFetched && (
             <NoRecipeList>
-              <LoadingSpinner />
+              <PrimaryLoadingSpinner />
             </NoRecipeList>
           )}
           {recipes.length === 0 && areFetched && (

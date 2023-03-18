@@ -3,7 +3,7 @@ import { CloudArrowUpIcon, NoSymbolIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
 import useEventListener from 'hooks/useEventListener'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import PrimaryLoadingSpinner from 'components/molecules/PrimaryLoadingSpinner'
 import classNames from 'classnames'
 
 type Props = {
@@ -98,7 +98,7 @@ const ImageUploader = forwardRef(
           onDragEnter={onDragEnter}
           onDragLeave={() => setDragging(false)}
         >
-          {isUploading && <LoadingSpinner />}
+          {isUploading && <PrimaryLoadingSpinner />}
           {isDragging && areFilesAuthorized && (
             <div className="flex flex-col items-center">
               <CloudArrowUpIcon className="h-7 w-7" aria-hidden="true" />

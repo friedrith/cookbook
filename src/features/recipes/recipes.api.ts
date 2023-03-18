@@ -1,6 +1,6 @@
-import api from './api'
+import api from '../../utils/api/api'
 
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 import Measure from 'models/Measure'
 
 const baseURL = '/recipes'
@@ -14,6 +14,7 @@ const convertFromHttp = (httpRecipe: HttpRecipe): Recipe => ({
 })
 
 export const fetchAll = async () => {
+  console.log('fetchAll')
   const response = await api().get(baseURL)
   return response.data?.recipes.map(convertFromHttp)
 }

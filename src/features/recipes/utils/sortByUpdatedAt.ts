@@ -1,4 +1,4 @@
-import Recipe from 'models/Recipe'
+import Recipe from 'types/Recipe'
 
 export const sortByUpdatedAt = (a: Recipe, b: Recipe) => {
   if (a?.updatedAt === null || a?.updatedAt === undefined) {
