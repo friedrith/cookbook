@@ -3179,6 +3179,73 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-spring/animated@npm:~9.7.1":
+  version: 9.7.1
+  resolution: "@react-spring/animated@npm:9.7.1"
+  dependencies:
+    "@react-spring/shared": ~9.7.1
+    "@react-spring/types": ~9.7.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: e3f1c0853d2fe4b6a0afb2627ebf272640cd889dad0ce308041dfe129b145dac288c19caeb61c1dc9272f1beb4712044b7dc3ebeffc25749a9b2a4536e77d61e
+  languageName: node
+  linkType: hard
+
+"@react-spring/core@npm:~9.7.1":
+  version: 9.7.1
+  resolution: "@react-spring/core@npm:9.7.1"
+  dependencies:
+    "@react-spring/animated": ~9.7.1
+    "@react-spring/rafz": ~9.7.1
+    "@react-spring/shared": ~9.7.1
+    "@react-spring/types": ~9.7.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 1a4f5dc2e74fb7e80e5482a58d0d5a536fb7226d21841e2d0ca4fe772a66dc9003fd8ef6cb142b38cf9ab7043ed4787f62504786ceca5f223b6ae8e5f563c3ac
+  languageName: node
+  linkType: hard
+
+"@react-spring/rafz@npm:~9.7.1":
+  version: 9.7.1
+  resolution: "@react-spring/rafz@npm:9.7.1"
+  checksum: 93e1f46682b6bf5c685e09540dea085aba6dfd998f03724473793e233882d57d9cb4e84c533449c5596ffe85eba2622b48ff6e9b60424e315328e94abaf6754a
+  languageName: node
+  linkType: hard
+
+"@react-spring/shared@npm:~9.7.1":
+  version: 9.7.1
+  resolution: "@react-spring/shared@npm:9.7.1"
+  dependencies:
+    "@react-spring/rafz": ~9.7.1
+    "@react-spring/types": ~9.7.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 05495677795639802dd04974e83f79f10b7f7ad8fc8e1546f68c2fa940e5cee538d50feb6117c1aef2c77f3a568cb8930a4b3cfd2d25079036cf2e367677e29d
+  languageName: node
+  linkType: hard
+
+"@react-spring/types@npm:~9.7.1":
+  version: 9.7.1
+  resolution: "@react-spring/types@npm:9.7.1"
+  checksum: 18b210d00fac6920651729ecafa5890e8e90cacb03d7c70d16ab9b067e4f301795bdf490f80574567f3012e278d8fc78ba3e4b11504215d9a949300a5b273413
+  languageName: node
+  linkType: hard
+
+"@react-spring/web@npm:^9.7.1":
+  version: 9.7.1
+  resolution: "@react-spring/web@npm:9.7.1"
+  dependencies:
+    "@react-spring/animated": ~9.7.1
+    "@react-spring/core": ~9.7.1
+    "@react-spring/shared": ~9.7.1
+    "@react-spring/types": ~9.7.1
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 47887e44e640b15ae65ddea4aef042046b461f32f40529e4640437f8693a542d1fba64d7b7a6f64fb13b3a63fcf05aeaf0982861feb18c91bdf83c710e76bd26
+  languageName: node
+  linkType: hard
+
 "@reduxjs/toolkit@npm:^1.8.1":
   version: 1.8.1
   resolution: "@reduxjs/toolkit@npm:1.8.1"
@@ -5215,13 +5282,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bezier-easing@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "bezier-easing@npm:2.1.0"
-  checksum: ec22666b5385979b3e7a63eaf2631395b1be5beb3aed4f14cc70ae9eb09032082584f7e3eec045e4c122466987ed7e159f5b39f82b8a9870cd55e75b0d55a7d5
-  languageName: node
-  linkType: hard
-
 "bfj@npm:^7.0.2":
   version: 7.0.2
   resolution: "bfj@npm:7.0.2"
@@ -5885,6 +5945,7 @@ __metadata:
     "@headlessui/react": ^1.6.2
     "@heroicons/react": latest
     "@notionhq/client": ^1.0.4
+    "@react-spring/web": ^9.7.1
     "@reduxjs/toolkit": ^1.8.1
     "@tailwindcss/aspect-ratio": ^0.4.0
     "@tailwindcss/forms": ^0.5.2
@@ -5941,10 +6002,10 @@ __metadata:
     react-helmet-async: ^1.3.0
     react-i18next: ^11.16.9
     react-input-autosize: ^3.0.0
+    react-parallax: ^3.5.1
     react-redux: ^8.0.1
     react-router-dom: ^6.3.0
     react-scripts: 5.0.1
-    react-scroll-parallax: ^3.3.1
     react-speech-recognition: ^3.10.0
     react-tag-input: ^6.8.0
     react-textarea-autosize: ^8.3.4
@@ -11185,15 +11246,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parallax-controller@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "parallax-controller@npm:1.5.0"
-  dependencies:
-    bezier-easing: ^2.1.0
-  checksum: 21f51143844ff61691595bdc74a26fa5a06eed96e50038b908a918eb0dbceeeb4c5d25b920c3c7421c33029020921125763546e28a6eb7e8bad2a3cecea7772f
-  languageName: node
-  linkType: hard
-
 "param-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "param-case@npm:3.0.4"
@@ -12637,6 +12689,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-parallax@npm:^3.5.1":
+  version: 3.5.1
+  resolution: "react-parallax@npm:3.5.1"
+  peerDependencies:
+    react: 16.x.x || 17.x.x || 18.x.x
+    react-dom: 16.x.x || 17.x.x || 18.x.x
+  checksum: 0b709aa5507d3e294b297d19e79573ab4848db30d7e3d1dcc97c9df19a9df71308129e45caa3d2f9bb3e7181ec2b908112ad6a881ca11257b07e4d47693b30a6
+  languageName: node
+  linkType: hard
+
 "react-redux@npm:^8.0.1":
   version: 8.0.1
   resolution: "react-redux@npm:8.0.1"
@@ -12764,18 +12826,6 @@ __metadata:
   bin:
     react-scripts: bin/react-scripts.js
   checksum: 92afa2f245c7092ccc97d5609dc7a2130616262e34da7f15072d9442e2d2e1d4909a91022abd1faac1336eb17c5525a10d9bd43e1ae374c7ec941ca20addca68
-  languageName: node
-  linkType: hard
-
-"react-scroll-parallax@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "react-scroll-parallax@npm:3.3.1"
-  dependencies:
-    parallax-controller: ^1.5.0
-  peerDependencies:
-    react: ^16.8.0-0 || >=17.0.1 || ^18.0.0
-    react-dom: ^16.8.0-0 || >=17.0.1 || ^18.0.0
-  checksum: 93473851d7af2eb6c09c4b545e6215b46feb280ba557f5dba78106536aab1da9b42677bb15fcf02ea71f2936caa13d4a8e61fd6cf090f85928396c26ee972fde
   languageName: node
   linkType: hard
 

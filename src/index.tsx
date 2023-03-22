@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import { ParallaxProvider } from 'react-scroll-parallax'
 import { HelmetProvider } from 'react-helmet-async'
 
 import store from 'store'
@@ -19,15 +18,13 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <ParallaxProvider>
-        <BrowserRouter>
-          <AuthProvider>
-            <Provider store={store}>
-              <App />
-            </Provider>
-          </AuthProvider>
-        </BrowserRouter>
-      </ParallaxProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </AuthProvider>
+      </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>,
 )
