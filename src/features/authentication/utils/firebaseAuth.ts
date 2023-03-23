@@ -11,7 +11,9 @@ import Roles from 'models/Roles'
 
 import { setToken } from 'utils/api/api'
 
-import 'utils/services/firebase/init'
+import { init } from 'utils/services/firebase'
+
+init()
 
 export const convertUser = (user: any) => ({
   id: user.uid,

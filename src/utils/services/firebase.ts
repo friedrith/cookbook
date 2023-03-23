@@ -1,6 +1,15 @@
-import { getApp } from 'firebase/app'
+import { initializeApp, getApp } from 'firebase/app'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid'
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+}
+
+export const init = () => initializeApp(firebaseConfig)
 
 export const storeFile = async (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
