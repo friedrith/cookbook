@@ -1,4 +1,5 @@
-import { Parallax, Background } from 'react-parallax'
+import useEventListener from 'hooks/useEventListener'
+import { useState } from 'react'
 
 type Props = {
   imageUrl: string
@@ -7,19 +8,22 @@ type Props = {
 }
 
 const ImageBanner = ({ imageUrl, alt, loading }: Props) => {
-  console.log('imageUrl', imageUrl, `url("${imageUrl}")`)
+  const [shift, setShift] = useState(0)
+
+  useEventListener('scroll', () => {
+    setShift(-window.scrollY / 3)
+  })
 
   return (
-    <div className="h-96 relative">
-      <Parallax className="h-96 w-full" strength={400}>
-        <Background className="h-[35rem] w-screen">
-          <img
-            src={imageUrl}
-            className="h-[35rem] w-full object-cover"
-            alt="fill murray"
-          />
-        </Background>
-      </Parallax>
+    <div className="h-96 relative overflow-hidden">
+      <div className="h-96 w-full fixed z-0 overflow-hidden">
+        <img
+          src={imageUrl}
+          className="h-[35rem] w-full object-cover relative"
+          alt={alt}
+          style={{ top: shift }}
+        />
+      </div>
     </div>
   )
 }

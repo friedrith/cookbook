@@ -14,7 +14,6 @@ const useAuthentication = () => {
 
   // https://clerk.dev/docs/integration/firebase
   const linkToFirebase = useCallback(async () => {
-    console.log('linkToFirebase')
     const email = user?.primaryEmailAddress?.emailAddress ?? ''
     try {
       const token = await getToken({ template: 'integration_firebase' })
@@ -69,11 +68,8 @@ const useAuthentication = () => {
         }
         console.log('createdSessionId', createdSessionId)
         setActive({ session: createdSessionId })
-        // await linkToFirebase()
       },
-      checkSession: async () => {
-        // await linkToFirebase()
-      },
+      checkSession: async () => {},
       logout: async () => {
         await signOut()
         await firebaseApi.logout()

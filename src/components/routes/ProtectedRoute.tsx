@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useCallback } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from 'hooks/redux'
 import Roles from 'models/Roles'
@@ -19,8 +19,6 @@ type Props = {
 const ProtectedRoute = ({ onlyRoles, children }: Props) => {
   const navigate = useNavigate()
 
-  const location = useLocation()
-
   const redirectToHome = useCallback(() => {
     navigate('/login')
   }, [navigate])
@@ -33,10 +31,6 @@ const ProtectedRoute = ({ onlyRoles, children }: Props) => {
   const fetch = useCallback(() => {
     if (!recipesFetched) dispatch(fetchRecipes())
   }, [recipesFetched, dispatch])
-
-  useEffect(() => {
-    console.log('mount', location.pathname)
-  }, [])
 
   useWhenLoggedIn(fetch)
 
