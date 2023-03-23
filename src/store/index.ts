@@ -6,7 +6,7 @@ import auth from 'features/authentication/auth.slice'
 import settings, { settingsInitialState } from './settings.slice'
 import officialWebsites, {
   officialWebsitesInitialState,
-} from './officialWebsites'
+} from '../features/landing/officialWebsites'
 import timersSlice from 'features/timers/timers.slice'
 import { persistState, loadState } from 'utils/services/localStorage'
 

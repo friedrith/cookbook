@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import useAuthentication from 'features/authentication/hooks/useAuthentication'
 import { useAppDispatch } from 'hooks/redux'
-import { fetchOfficialWebsites } from 'store/officialWebsites'
+import { fetchOfficialWebsites } from 'features/landing/officialWebsites'
 
 interface Props {
   children: React.ReactNode
