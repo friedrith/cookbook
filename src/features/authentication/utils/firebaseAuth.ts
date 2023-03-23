@@ -2,18 +2,16 @@ import {
   getAuth,
   signInWithEmailLink,
   signOut,
-  setPersistence,
   deleteUser,
-  browserLocalPersistence,
   signInWithCustomToken,
   updateEmail,
 } from 'firebase/auth'
 
 import Roles from 'models/Roles'
 
-import { setToken } from '../../../utils/api/api'
+import { setToken } from 'utils/api/api'
 
-import '../../../utils/api/firebase/init'
+import 'utils/services/firebase/init'
 
 export const convertUser = (user: any) => ({
   id: user.uid,

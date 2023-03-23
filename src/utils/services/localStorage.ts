@@ -1,9 +1,7 @@
 import Recipe from 'types/Recipe'
 import { SettingsState } from 'store/settings.slice'
-import { AuthState } from 'features/authentication/auth.slice'
 
 export type PersistedState = {
-  // auth: AuthState
   settings: SettingsState
   recipes: { byId: { [id: string]: Recipe }; recentSearches: string[] }
 }

@@ -1,5 +1,3 @@
-import { useState, useRef, useContext } from 'react'
-
 import VerificationCodeContext from './context'
 
 export interface VerificationCodeInputWrapperProps {

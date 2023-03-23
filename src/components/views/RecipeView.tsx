@@ -63,36 +63,39 @@ const RecipeView = () => {
   return (
     <Page title={recipe.name}>
       <ImageBanner imageUrl={recipe.imageUrl} alt={recipe.name} />
-      <Container className="flex-1 relative z-10">
-        <div className="flex flex-col items-stretch lg:flex-row lg:items-start">
-          <div ref={ref} />
-          <div className="w-full lg:flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
-            <Box className="p-4 lg:w-[400px] relative">
-              <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center ltr:lg:text-left rtl:lg:text-right pb-2 select-text">
-                {formattedRecipe.name}
-              </h1>
+      <div className="relative z-20 bg-white">
+        <Container className="flex-1 relative z-20 bg-white">
+          <div className="flex flex-col items-stretch lg:flex-row lg:items-start">
+            <div ref={ref} />
+            <div className="w-full lg:flex-[0_0_400px] lg:max-w-screen-md relative top-[-7rem]">
+              <Box className="p-4 lg:w-[400px] relative">
+                <h1 className="text-2xl sm:text-3xl font-bold leading-7 text-gray-900 break-words overflow-hidden text-center ltr:lg:text-left rtl:lg:text-right pb-2 select-text">
+                  {formattedRecipe.name}
+                </h1>
 
-              <KeywordList
-                className="text-center lg:text-left"
-                size={BadgeSize.large}
-                keywords={formattedRecipe.keywords}
+                <KeywordList
+                  className="text-center lg:text-left"
+                  size={BadgeSize.large}
+                  keywords={formattedRecipe.keywords}
+                />
+                {/* <Stats recipe={formattedRecipe} /> */}
+                <div className="pt-6">
+                  <IngredientList formattedRecipe={formattedRecipe} />
+                </div>
+              </Box>
+            </div>
+
+            <div className="flex-1 relative ltr:lg:pl-10 rtl:lg:pr-10 lg:pt-10 top-[-5rem] lg:top-[0rem]">
+              <StepList
+                recipe={formattedRecipe}
+                progress={progress}
+                onSelectStep={changeRecipeProgress}
               />
-              {/* <Stats recipe={formattedRecipe} /> */}
-              <div className="pt-6">
-                <IngredientList formattedRecipe={formattedRecipe} />
-              </div>
-            </Box>
+            </div>
           </div>
+        </Container>
+      </div>
 
-          <div className="flex-1 relative ltr:lg:pl-10 rtl:lg:pr-10 lg:pt-10 top-[-5rem] lg:top-[0rem]">
-            <StepList
-              recipe={formattedRecipe}
-              progress={progress}
-              onSelectStep={changeRecipeProgress}
-            />
-          </div>
-        </div>
-      </Container>
       <FixedHeader restRef={ref} className="pointer-events-none">
         {isMaximized => (
           <Header white={isMaximized}>

@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { throttle } from 'lodash'
 
 import recipes, { recipesInitialState } from 'features/recipes/recipes.slice'
-import auth, { authInitialState } from 'features/authentication/auth.slice'
+import auth from 'features/authentication/auth.slice'
 import settings, { settingsInitialState } from './settings.slice'
 import officialWebsites, {
   officialWebsitesInitialState,
@@ -20,7 +20,6 @@ export const reducer = {
 
 const initialState = {
   recipes: recipesInitialState,
-  // auth: authInitialState,
   settings: settingsInitialState,
   officialWebsites: officialWebsitesInitialState,
 }
@@ -29,7 +28,6 @@ const persistedState = loadState()
 const preloadedState = persistedState
   ? {
       ...initialState,
-      // auth: persistedState.auth,
       settings: persistedState.settings,
       recipes: {
         ...initialState.recipes,
@@ -47,7 +45,6 @@ const store = configureStore({
 store.subscribe(
   throttle(() => {
     persistState({
-      // auth: store.getState().auth,
       settings: store.getState().settings,
       recipes: {
         byId: store.getState().recipes.byId,
