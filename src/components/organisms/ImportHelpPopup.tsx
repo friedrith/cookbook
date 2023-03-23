@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import Modal from 'components/atoms/Modal'
 import { useAppSelector } from 'hooks/redux'
-import { getOfficialWebsites } from 'store/officialWebsites'
+import { getOfficialWebsites } from 'features/landing/officialWebsites'
 import Button from 'components/atoms/Button'
 
 type Props = {

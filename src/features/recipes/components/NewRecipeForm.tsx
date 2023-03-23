@@ -15,7 +15,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { getAutomaticImport, importRecipe } from 'store'
 import PrimaryLoadingSpinner from 'components/molecules/PrimaryLoadingSpinner'
-import { getOfficialWebsites } from 'store/officialWebsites'
+import { getOfficialWebsites } from 'features/landing/officialWebsites'
 import Button from 'components/atoms/Button'
 import { track } from 'utils/services/tracking'
 
