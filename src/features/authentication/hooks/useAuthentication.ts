@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useEffect } from 'react'
+import { useMemo, useCallback, useEffect, useRef } from 'react'
 import { EmailCodeFactor } from '@clerk/types'
 import { useSignIn, useAuth, useUser } from '@clerk/clerk-react'
 import { logout, login } from 'store'
@@ -12,12 +12,17 @@ const useAuthentication = () => {
 
   const dispatch = useAppDispatch()
 
+  const email = user?.primaryEmailAddress?.emailAddress ?? ''
+
+  const linking = useRef(true)
+
   // https://clerk.dev/docs/integration/firebase
   const linkToFirebase = useCallback(async () => {
-    const email = user?.primaryEmailAddress?.emailAddress ?? ''
+    if (linking.current) return
+    linking.current = true
+
     try {
       const token = await getToken({ template: 'integration_firebase' })
-      console.log('token', token)
       if (token) {
         const authenticatedUser = await firebaseApi.signIn(token, email)
         dispatch(login(authenticatedUser))
@@ -27,10 +32,12 @@ const useAuthentication = () => {
     } catch (error) {
       dispatch(logout())
     }
-  }, [getToken, dispatch, user])
+  }, [getToken, dispatch, email])
 
   useEffect(() => {
-    linkToFirebase()
+    if (isSignedIn && !linking.current) {
+      linkToFirebase()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSignedIn])
 
@@ -58,6 +65,7 @@ const useAuthentication = () => {
         if (!isLoaded) {
           throw new Error('not loaded')
         }
+        linking.current = false
 
         const { status, createdSessionId } = await signIn.attemptFirstFactor({
           strategy: 'email_code',
@@ -66,10 +74,15 @@ const useAuthentication = () => {
         if (status !== 'complete') {
           throw new Error(status ?? '')
         }
-        console.log('createdSessionId', createdSessionId)
         setActive({ session: createdSessionId })
       },
-      checkSession: async () => {},
+      checkSession: async () => {
+        if (isSignedIn) {
+          linkToFirebase()
+        } else {
+          linking.current = false
+        }
+      },
       logout: async () => {
         await signOut()
         await firebaseApi.logout()
@@ -77,6 +90,7 @@ const useAuthentication = () => {
       },
       isSignedIn,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isLoaded, signIn, signOut, isSignedIn, setActive, dispatch],
   )
 }

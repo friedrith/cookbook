@@ -18,6 +18,7 @@ import CodeVerify from 'components/views/CodeVerify'
 import ProtectedRoute from 'components/routes/ProtectedRoute'
 import PortalRoute from 'components/routes/PortalRoute'
 import GlobalRoute from 'components/routes/GlobalRoute'
+import useAuthentication from 'features/authentication/hooks/useAuthentication'
 
 import HistoryContext from 'contexts/History'
 
@@ -30,6 +31,10 @@ const App = () => {
   const { i18n } = useTranslation()
 
   document.body.dir = i18n.dir()
+
+  const { checkSession } = useAuthentication()
+
+  checkSession()
 
   return (
     <div
