@@ -18,5 +18,5 @@
     "jsx": "react-jsx",
     "types": ["dom-screen-wake-lock"]
   },
-  "include": ["src"]
+  "include": ["src", "config"]
 }

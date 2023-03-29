@@ -9,6 +9,5 @@ const getInstance = () => instance
 export default getInstance
 
 export const setToken = (token: string) => {
-  console.log('setToken', token)
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
