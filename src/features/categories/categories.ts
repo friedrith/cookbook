@@ -58,7 +58,7 @@ const categories: Category[] = [
   { name: 'waffle', image: '2375-waffle-outline-edited' },
   { name: 'sausage', image: '563-sausage-outline-edited' },
   // { name: 'cookie', image: 'jwdvjivv' }, // not common
-  // { name: 'nuts', image: 'hyzwknzx' }, // not found
+  { name: 'nuts', image: '2371-nuts-outline-edited' },
 ]
 
 export default categories
