@@ -42,7 +42,7 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({
       onClick={onClick}
     >
       <LordIcon
-        src={category.image}
+        src={`/icons/${category.image}.json`}
         colors={{
           primary: color,
           secondary: color,

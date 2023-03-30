@@ -13,13 +13,13 @@ import isRightToLeft from 'utils/platforms/isRightToLeft'
 import CategoryPreview from './CategoryPreview'
 import matchCategory from '../utils/matchCategory'
 import shouldHelpUserAboutCategories from '../utils/shouldHelpUserAboutCategories'
-import shouldShowCategories from '../utils/shouldShowCategories'
 
 import { getRecipeList } from 'store'
 import { useAppSelector } from 'hooks/redux'
 import {
   getAvailableCategories,
   getUnusedCategories,
+  shouldShowCategories,
 } from '../categories.slice'
 import SearchStatus from 'features/search/types/SearchStatus'
 import useEventListener from 'hooks/useEventListener'
@@ -29,6 +29,7 @@ const CategoriesList = () => {
   const { query, searchStatus, setCategory, setSearch } = useSearch()
 
   const availableCategories = useAppSelector(getAvailableCategories)
+  const areCategoriesVisible = useAppSelector(shouldShowCategories)
 
   const { t } = useTranslation()
 
@@ -86,7 +87,9 @@ const CategoriesList = () => {
     updateArrows()
   })
 
-  if (!shouldShowCategories(availableCategories)) return <></>
+  console.log('availableCategories', availableCategories)
+
+  if (!areCategoriesVisible) return <></>
 
   return (
     <>

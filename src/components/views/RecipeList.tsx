@@ -14,8 +14,7 @@ import RecipeListAll from 'features/recipes/components/RecipeListAll'
 import RecipeListSearchResults from 'features/recipes/components/RecipeListSearchResults'
 import NoRecipeList from 'features/recipes/components/NoRecipeList'
 import RecipeListRecentSearches from 'features/recipes/components/RecipeListRecentSearches'
-import { getAvailableCategories } from 'features/categories/categories.slice'
-import shouldShowCategories from 'features/categories/utils/shouldShowCategories'
+import { shouldShowCategories } from 'features/categories/categories.slice'
 import useSearch from 'features/search/useSearch'
 import RecipeListNoCategories from 'features/recipes/components/RecipeListNoCategories'
 import SearchStatus from 'features/search/types/SearchStatus'
@@ -32,7 +31,7 @@ const RecipeList = () => {
 
   const { t } = useTranslation()
 
-  const availableCategories = useAppSelector(getAvailableCategories)
+  const areCategoriesVisible = useAppSelector(shouldShowCategories)
 
   return (
     <Page
@@ -43,7 +42,7 @@ const RecipeList = () => {
       <Container
         className={classNames(
           'bg-white',
-          shouldShowCategories(availableCategories) ? 'pt-32' : 'p-10',
+          areCategoriesVisible ? 'pt-32' : 'p-10',
         )}
         fullWidth
       >
