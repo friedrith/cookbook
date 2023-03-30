@@ -30,7 +30,7 @@ const LordIcon = ({ colors, src, size, trigger, delay }: LordIconProps) => {
   return (
     <lord-icon
       colors={`primary:${colors?.primary},secondary:${colors?.secondary}`}
-      src={`https://cdn.lordicon.com/${src}.json`}
+      src={src}
       trigger={trigger}
       delay={delay}
       style={{

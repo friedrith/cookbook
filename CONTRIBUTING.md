@@ -91,6 +91,13 @@ npx simple-git-hooks
 
 > Remember to use this command everytime you change the hooks in the package.json
 
+## Icons
+
+2 sets of icons are used in CookBook.
+
+- [heroicons](https://heroicons.com/) for most of the icons
+- [lordicon](https://lordicon.com/icons/wired/outline) for the food icons
+
 ## Test
 
 If you add a feature or fix a bug, you need to provide a test verifying your
