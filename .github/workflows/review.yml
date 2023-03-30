@@ -1,8 +1,5 @@
 name: Build and Deploy
-on:
-  push:
-    branches:
-      - prod
+on: pull_request
 permissions:
   contents: write
 jobs:
@@ -33,27 +30,3 @@ jobs:
           REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_URL: https://getcookbook.io
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.0.0
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
-          clean: true # Automatically remove deleted files from the deploy branch
-          repository-name: friedrith/cookbook
-          clean-exclude: |
-            CNAME
-          # ssh-key: ${{ secrets.GH_PAGES_SECRET_KEY }}
-
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only functions
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
-
-      # - name: Deploy to Firebase
-      #   uses: chrissank/deploy-firebase-functions@1.0.0
-      #   env:
-      #     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      #     TARGET: default
