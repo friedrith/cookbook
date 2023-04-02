@@ -6,14 +6,6 @@
   "_No Recipes created": "Aucune recette créée.",
   "_Get started by creating a new recipe": "Il faut commencer par créer une nouvelle recette.",
   "_settings": "Réglages",
-  "_Send magic link": "Envoyer un lien magique",
-  "_Email address": "Adresse email",
-  "login": {
-    "_Log in": "S'authentifier",
-    "_Link your email": "Lier votre email",
-    "_Get a magic link sent to your email": "Recevez un lien magique pour instantanément lier votre adresse email à votre livre de recette.",
-    "_An email on its way": "Vérifiez vos emails"
-  },
   "_Invalid link": "Lien Invalide",
   "_Sorry that link is no longer valid": "Désolé, ce lien n'est plus valide.",
   "_Send a new magic link": "Envoyer un nouveau lien magique",

@@ -6,15 +6,7 @@
   "_No Recipes created": "No Recipes created",
   "_Get started by creating a new recipe": "Get started by creating a new recipe.",
   "_settings": "Settings",
-  "login": {
-    "_Log in": "Log in",
-    "_Link your email": "Lier votre email",
-    "_Get a magic link sent to your email": "Get a magic link to instantly link your email address to your cook book.",
-    "_An email on its way": "Check your emails"
-  },
   "_Sign out": "Sign out",
-  "_Send magic link": "Send a magic link",
-  "_Email address": "Email address",
   "_Invalid link": "Invalid link",
   "_Sorry that link is no longer valid": "Sorry that link is no longer valid",
   "_Send a new magic link": "Send a new magic link",

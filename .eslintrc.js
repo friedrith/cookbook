@@ -27,6 +27,7 @@ module.exports = {
             './public/locales/en/marketing.json',
           ),
           'help.json': path.join(__dirname, './public/locales/en/help.json'),
+          'login.json': path.join(__dirname, './public/locales/en/login.json'),
         },
       },
     ],
