@@ -1,9 +1,10 @@
-name: Build and Review
+name: Review PR
 on: pull_request
 permissions:
   contents: write
 jobs:
-  build-and-deploy:
+  build-and-review:
+    name: Build and Review code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -31,7 +32,8 @@ jobs:
           REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_URL: https://getcookbook.io
-  pr-check:
+  pr-title-check:
+    name: PR title check
     runs-on: ubuntu-latest
     permissions:
       statuses: write
