@@ -32,8 +32,8 @@ jobs:
           REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           REACT_APP_URL: https://getcookbook.io
-  pr-title-check:
-    name: PR title check
+  pr-check:
+    name: PR check
     runs-on: ubuntu-latest
     permissions:
       statuses: write
