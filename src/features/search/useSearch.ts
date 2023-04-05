@@ -28,32 +28,32 @@ const useSearch = () => {
   return useMemo(() => {
     const searchStatus = estimateSearchStatus(query)
 
+    const setSearch = (newQuery: SearchQuery) => {
+      if (location.pathname !== '/recipes') {
+        navigate(`/recipes?q=${newQuery}`)
+      } else if (typeof newQuery === 'string') {
+        setSearchParams({ q: newQuery })
+      } else {
+        setSearchParams({})
+      }
+    }
+
+    const setCategory = (newQuery: string | undefined) => {
+      if (location.pathname !== '/recipes') {
+        navigate(`/recipes?q=${ENCODED_HASHTAG}${newQuery}`)
+      } else if (newQuery !== undefined) {
+        setSearchParams({ q: `#${newQuery}` })
+      } else {
+        setSearchParams({})
+      }
+    }
+
     return {
       query: cleanQuery(query),
       searchStatus,
       isSearchActive: searchStatus !== SearchStatus.Unactive,
-      setSearch: (newQuery: SearchQuery) => {
-        if (location.pathname !== '/recipes') {
-          navigate(`/recipes?q=${newQuery}`)
-        } else {
-          if (typeof newQuery === 'string') {
-            setSearchParams({ q: newQuery })
-          } else {
-            setSearchParams({})
-          }
-        }
-      },
-      setCategory: (newQuery: string | undefined) => {
-        if (location.pathname !== '/recipes') {
-          navigate(`/recipes?q=${ENCODED_HASHTAG}${newQuery}`)
-        } else {
-          if (newQuery !== undefined) {
-            setSearchParams({ q: `#${newQuery}` })
-          } else {
-            setSearchParams({})
-          }
-        }
-      },
+      setSearch,
+      setCategory,
     }
   }, [query, location, navigate, setSearchParams])
 }

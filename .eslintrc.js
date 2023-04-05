@@ -8,8 +8,9 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:i18next/recommended',
     'plugin:i18n-json/recommended',
+    'plugin:sonarjs/recommended',
   ],
-  plugins: ['prettier', 'jsx-a11y', 'i18next'],
+  plugins: ['prettier', 'jsx-a11y', 'i18next', 'sonarjs'],
   rules: {
     'i18n-json/sorted-keys': 'off',
     'i18n-json/valid-message-syntax': 'off',

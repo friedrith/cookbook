@@ -16,6 +16,13 @@ type Props = {
   style?: React.CSSProperties
 }
 
+const browserTabTitle = (title: string | undefined, appName: string) => {
+  const cleanTitle = title ?? ''
+  const separator = title ? ` - ` : ``
+
+  return `${cleanTitle}${separator}${appName}`
+}
+
 const Page = ({
   className = '',
   children,
@@ -37,8 +44,8 @@ const Page = ({
   const isStandalonePWA = useIsStandalonePWA()
 
   const fullTitle = isStandalonePWA
-    ? title
-    : `${title ? `${title} - ` : ''}${t('_AppName')}`
+    ? t('_AppName')
+    : browserTabTitle(title, t('_AppName'))
 
   return (
     <>

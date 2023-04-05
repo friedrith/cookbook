@@ -37,7 +37,7 @@ const UserMenu = () => {
   )
 
   useBeforeInstallPrompt(() => {
-    setAppInstallationEnabled(true && !isStandalone)
+    setAppInstallationEnabled(!isStandalone)
   })
 
   const installApp = async (event: React.SyntheticEvent) => {

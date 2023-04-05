@@ -51,7 +51,6 @@ const RecipeNew = () => {
       ;(event || window.event).returnValue = t('_If you leave')
       return t('_If you leave')
     }
-    return
   })
 
   return (

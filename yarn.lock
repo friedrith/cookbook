@@ -6359,6 +6359,7 @@ __metadata:
     eslint-plugin-i18n-json: ^4.0.0
     eslint-plugin-i18next: next
     eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-sonarjs: ^0.19.0
     file-saver: ^2.0.5
     fingerpose: ^0.1.0
     firebase: ^9.8.1
@@ -7830,6 +7831,15 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
   checksum: 729b7682a0fe6eab068171c159503ac57120ecc7b20067e76300b08879745c16a687e2033378ab45d9a3182da8844d06197a89081be83e1eb21fcceb76e79214
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-sonarjs@npm:^0.19.0":
+  version: 0.19.0
+  resolution: "eslint-plugin-sonarjs@npm:0.19.0"
+  peerDependencies:
+    eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+  checksum: 893640583f62ce55584c6ddd481aa0fd6fa15fe0fffc32ac92b17f3fadde8eaf32414183bb80b612455212e9bb14400236398af6279ca04e8992f008e011926c
   languageName: node
   linkType: hard
 

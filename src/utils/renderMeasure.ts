@@ -6,15 +6,19 @@ type Options = {
 
 // TODO improve predictability of render
 const renderMeasure = (measure: Measure, { explicit }: Options = {}) => {
-  if (measure.unit === 'some') {
+  const { unit } = measure
+
+  if (unit === 'some') {
     return measure.value > 0 || explicit ? `some` : ''
   }
 
-  if (measure.unit === 'none') {
+  if (unit === 'none') {
     return ''
   }
 
-  return `${measure.value}${measure.unit !== 'count' ? ` ${measure.unit}` : ''}`
+  const unitLabel = unit !== 'count' ? ` ${measure.unit}` : ''
+
+  return `${measure.value}${unitLabel}`
 }
 
 export default renderMeasure

@@ -30,7 +30,7 @@ const useFuse = (list: Recipe[], query: string) => {
           .map(i => i.item)
       : [...list].sort(sortByName)
 
-  const searchedRecipes = useMemo(() => {
+  return useMemo(() => {
     const keywords = (query.match(/#([a-zA-Z]*)/) || []).slice(1)
 
     const queryWithoutKeywords = query.replace(/#[a-zA-Z]*/i, '').trim()
@@ -41,8 +41,6 @@ const useFuse = (list: Recipe[], query: string) => {
       ),
     )
   }, [query, list])
-
-  return searchedRecipes
 }
 
 export default useFuse
