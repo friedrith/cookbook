@@ -41,8 +41,6 @@ export const resetPWAInstallationPrompt = () => {
 
 export const isRunningInStandalonePWA = () => {
   const mqStandAlone = '(display-mode: standalone)'
-  if (navigator.standalone || window.matchMedia(mqStandAlone).matches) {
-    return true
-  }
-  return false
+
+  return navigator.standalone || window.matchMedia(mqStandAlone).matches
 }

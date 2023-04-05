@@ -1,9 +1,12 @@
 import Temperature from 'features/units/types/Temperature'
 import convertTemperature from '../convertTemperature'
 
+const preheatInCelsius = 'Preheat the oven at 190°C'
+const preheatInFarenheit = 'Preheat the oven at 190°F'
+
 describe('convertTemperature', () => {
   it('should replace celsius by fahrenheit', () => {
-    const description = 'Preheat the oven at 190°C'
+    const description = preheatInCelsius
     const expectedDescription = 'Preheat the oven at 375°F'
     expect(convertTemperature(description, Temperature.Farenheit)).toEqual(
       expectedDescription,
@@ -11,7 +14,7 @@ describe('convertTemperature', () => {
   })
 
   it('should replace fahrenheit by celsius', () => {
-    const description = 'Preheat the oven at 190°F'
+    const description = preheatInFarenheit
     const expectedDescription = 'Preheat the oven at 90°C'
     expect(convertTemperature(description, Temperature.Celsius)).toEqual(
       expectedDescription,
@@ -19,29 +22,28 @@ describe('convertTemperature', () => {
   })
 
   it('should not replace fahrenheit when no temperature forced', () => {
-    const description = 'Preheat the oven at 190°F'
+    const description = preheatInFarenheit
     expect(convertTemperature(description, Temperature.Unknown)).toEqual(
       description,
     )
   })
 
   it('should not replace celsius when no temperature forced', () => {
-    const description = 'Preheat the oven at 190°C'
+    const description = preheatInCelsius
     expect(convertTemperature(description, Temperature.Unknown)).toEqual(
       description,
     )
   })
 
   it('should not replace fahrenheit by fahrenheit', () => {
-    const description = 'Preheat the oven at 190°F'
-    const expectedDescription = 'Preheat the oven at 190°F'
+    const description = preheatInFarenheit
     expect(convertTemperature(description, Temperature.Farenheit)).toEqual(
-      expectedDescription,
+      description,
     )
   })
 
   it('should not replace celsius by celsius', () => {
-    const description = 'Preheat the oven at 190°C'
+    const description = preheatInCelsius
     const expectedDescription = 'Preheat the oven at 190°C'
     expect(convertTemperature(description, Temperature.Celsius)).toEqual(
       expectedDescription,
