@@ -40,7 +40,7 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: build # The folder the action should deploy.
           clean: true # Automatically remove deleted files from the deploy branch
-          repository-name: getcookbook/beta
+          repository-name: getcookbook/getcookbook.github.io
           clean-exclude: |
             CNAME
           ssh-key: ${{ secrets.GH_PAGES_BETA_SECRET_KEY }}
