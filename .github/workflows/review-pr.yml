@@ -60,6 +60,4 @@ jobs:
           args: >
             -Dsonar.organization=friedrith
             -Dsonar.projectKey=friedrith_cookbook
-            -Dsonar.python.coverage.reportPaths=coverage.xml
-            -Dsonar.sources=src/
             -Dsonar.verbose=true
