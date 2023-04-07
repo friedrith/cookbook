@@ -1,6 +1,5 @@
 name: Build and Deploy on Beta
 on: pull_request
-
 permissions:
   contents: read
   pages: write
