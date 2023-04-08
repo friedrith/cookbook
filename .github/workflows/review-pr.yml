@@ -37,6 +37,7 @@ jobs:
     name: E2e Tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
