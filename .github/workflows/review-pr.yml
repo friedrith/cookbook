@@ -21,6 +21,17 @@ jobs:
           yarn lint:translation
       - name: Tests
         run: yarn test
+      - name: e2e tests
+        run: |
+          npx playwright install --with-deps
+          yarn playwright test
+      - name: Upload e2e upload
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
       - name: Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
           yarn build
