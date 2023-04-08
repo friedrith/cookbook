@@ -6,6 +6,7 @@ jobs:
   build-and-review-frontend:
     name: Build and Review Frontend code
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
@@ -26,11 +27,12 @@ jobs:
           yarn build
         env:
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
-          REACT_APP_FIREBASE_AUTH_DOMAIN: getcookbook.io
+          REACT_APP_FIREBASE_AUTH_DOMAIN: beta.getcookbook.io
           REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
           REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-          REACT_APP_URL: https://getcookbook.io
+          REACT_APP_URL: https://beta.getcookbook.io
+          REACT_APP_CLERK_PUBLISHABLE_KEY: ${{ secrets.REACT_APP_CLERK_PUBLISHABLE_KEY }}
   e2e-tests:
     name: E2e Tests
     timeout-minutes: 60
@@ -46,6 +48,14 @@ jobs:
         run: yarn playwright install --with-deps
       - name: Run Playwright tests
         run: yarn playwright test
+        env:
+          REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
+          REACT_APP_FIREBASE_AUTH_DOMAIN: beta.getcookbook.io
+          REACT_APP_FIREBASE_PROJECT_ID: ${{ secrets.REACT_APP_FIREBASE_PROJECT_ID }}
+          REACT_APP_FIREBASE_STORAGE_BUCKET: ${{ secrets.REACT_APP_FIREBASE_STORAGE_BUCKET }}
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_URL: https://beta.getcookbook.io
+          REACT_APP_CLERK_PUBLISHABLE_KEY: ${{ secrets.REACT_APP_CLERK_PUBLISHABLE_KEY }}
       - name: Upload Playwright report
         uses: actions/upload-artifact@v3
         if: always()
