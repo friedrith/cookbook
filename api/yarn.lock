@@ -1492,6 +1492,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "@types/uuid@npm:9.0.1"
+  checksum: c472b8a77cbeded4bc529220b8611afa39bd64677f507838f8083d8aac8033b1f88cb9ddaa2f8589e0dcd2317291d0f6e1379f82d5ceebd6f74f3b4825288e00
+  languageName: node
+  linkType: hard
+
 "@types/validator@npm:^13.7.10":
   version: 13.7.14
   resolution: "@types/validator@npm:13.7.14"
@@ -3498,6 +3505,7 @@ __metadata:
     "@types/jest": ^29.2.1
     "@types/long": ^5.0.0
     "@types/node": ^18.11.9
+    "@types/uuid": ^9.0.1
     "@types/validator": ^13.7.10
     "@typescript-eslint/eslint-plugin": ^5.12.0
     "@typescript-eslint/parser": ^5.12.0
