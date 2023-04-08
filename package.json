@@ -65,6 +65,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:e2e": "yarn playwright test",
     "serve": "npx serve -s build",
     "lint": "eslint --max-warnings=0 .",
     "lint:translation": "eslint --max-warnings=0 ./public/locales/**/*.json",
