@@ -1,4 +1,3 @@
-import React from 'react'
 import lottie from 'lottie-web'
 import { defineElement } from 'lord-icon-element'
 
@@ -26,7 +25,13 @@ export type LordIconProps = {
   size?: number
 }
 
-const LordIcon = ({ colors, src, size, trigger, delay }: LordIconProps) => {
+const LordIcon = ({
+  colors,
+  src,
+  size,
+  trigger = 'morph',
+  delay,
+}: LordIconProps) => {
   return (
     <lord-icon
       colors={`primary:${colors?.primary},secondary:${colors?.secondary}`}
