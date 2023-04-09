@@ -71,7 +71,7 @@ const StepItemGeneric = ({
             {icon}
           </span>
         </span>
-        <div className="ltr:ml-4 rtl:mr-4 min-w-0 flex flex-col">
+        <div className="ms-4 min-w-0 flex flex-col">
           {descriptionParsed ? (
             <div
               className={`text-sm ltr:text-left rtl:text-right select-text ${descriptionClassName}`}
