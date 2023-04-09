@@ -28,6 +28,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@axe-core/playwright@npm:^4.6.1":
+  version: 4.6.1
+  resolution: "@axe-core/playwright@npm:4.6.1"
+  dependencies:
+    axe-core: ^4.6.3
+  peerDependencies:
+    playwright: ">= 1.0.0"
+  checksum: 5609c49cbfea423a5b7fcd7af995a550cffb7f5807a5f9b4e9ab6be54224b850c05dc7d65808719ce19e9d5cdef295b8d4cebb7880c1973ab7423fe020d55370
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.16.0, @babel/code-frame@npm:^7.16.7, @babel/code-frame@npm:^7.8.3":
   version: 7.16.7
   resolution: "@babel/code-frame@npm:7.16.7"
@@ -3262,6 +3273,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@playwright/test@npm:^1.32.2":
+  version: 1.32.2
+  resolution: "@playwright/test@npm:1.32.2"
+  dependencies:
+    "@types/node": "*"
+    fsevents: 2.3.2
+    playwright-core: 1.32.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 3e4a9286c2a63c12b55368c3b94e8817fee15146e09e5be549be21d6938b6bcd26a32b0dc295100a3b24f1f0839fdb65be680e7a11a39014f485f36551c6844a
+  languageName: node
+  linkType: hard
+
 "@pmmmwh/react-refresh-webpack-plugin@npm:^0.5.3":
   version: 0.5.6
   resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.6"
@@ -5373,6 +5400,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axe-core@npm:^4.6.3":
+  version: 4.6.3
+  resolution: "axe-core@npm:4.6.3"
+  checksum: d0c46be92b9707c48b88a53cd5f471b155a2bfc8bf6beffb514ecd14e30b4863e340b5fc4f496d82a3c562048088c1f3ff5b93b9b3b026cb9c3bfacfd535da10
+  languageName: node
+  linkType: hard
+
 "axios@npm:^0.27.2":
   version: 0.27.2
   resolution: "axios@npm:0.27.2"
@@ -6319,6 +6353,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "cookbook@workspace:."
   dependencies:
+    "@axe-core/playwright": ^4.6.1
     "@clerk/clerk-react": ^4.12.4
     "@clerk/types": ^3.31.0
     "@commitlint/cli": ^17.5.1
@@ -6326,6 +6361,7 @@ __metadata:
     "@headlessui/react": ^1.6.2
     "@heroicons/react": latest
     "@notionhq/client": ^1.0.4
+    "@playwright/test": ^1.32.2
     "@react-spring/web": ^9.7.1
     "@reduxjs/toolkit": ^1.8.1
     "@tailwindcss/aspect-ratio": ^0.4.0
@@ -8621,7 +8657,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:^2.3.2, fsevents@npm:~2.3.2":
+"fsevents@npm:2.3.2, fsevents@npm:^2.3.2, fsevents@npm:~2.3.2":
   version: 2.3.2
   resolution: "fsevents@npm:2.3.2"
   dependencies:
@@ -8631,7 +8667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
+"fsevents@patch:fsevents@2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
   resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
   dependencies:
@@ -12067,6 +12103,15 @@ __metadata:
   dependencies:
     find-up: ^3.0.0
   checksum: 5bac346b7c7c903613c057ae3ab722f320716199d753f4a7d053d38f2b5955460f3e6ab73b4762c62fd3e947f58e04f1343e92089e7bb6091c90877406fcd8c8
+  languageName: node
+  linkType: hard
+
+"playwright-core@npm:1.32.2":
+  version: 1.32.2
+  resolution: "playwright-core@npm:1.32.2"
+  bin:
+    playwright: cli.js
+  checksum: ff000cbf280e5d558fe70fd3edf14910a2e86ec68b04e28327176268345be7b3f88a5d22d78e8dae677dd633dce6cd493237df199773b55312f2ae1ab85d711f
   languageName: node
   linkType: hard
 

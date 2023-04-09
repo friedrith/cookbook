@@ -40,6 +40,12 @@ module.exports = {
         'i18next/no-literal-string': 0,
       },
     },
+    {
+      files: ['tests/**/*'],
+      rules: {
+        'testing-library/prefer-screen-queries': 'off',
+      },
+    },
   ],
   globals: {
     plausible: 'readonly',

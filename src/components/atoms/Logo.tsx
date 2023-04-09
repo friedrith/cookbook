@@ -17,6 +17,8 @@ const Logo = ({ className }: Props) => {
       onClick={() => {
         setSearchParams({})
       }}
+      aria-label="Logo"
+      data-testid="logo"
     />
   )
 }

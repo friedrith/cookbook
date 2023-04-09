@@ -65,6 +65,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:e2e": "yarn playwright test",
     "serve": "npx serve -s build",
     "lint": "eslint --max-warnings=0 .",
     "lint:translation": "eslint --max-warnings=0 ./public/locales/**/*.json",
@@ -92,8 +93,10 @@
     ]
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.6.1",
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
+    "@playwright/test": "^1.32.2",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.2",
     "@types/dom-screen-wake-lock": "^1.0.0",

@@ -37,3 +37,6 @@ firebase-debug.log
 !.yarn/sdks
 !.yarn/versions
 .yarnrc.yml
+/test-results/
+/playwright-report/
+/playwright/.cache/
