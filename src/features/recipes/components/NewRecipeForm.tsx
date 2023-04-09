@@ -89,7 +89,7 @@ const NewRecipeForm = ({ onHelpRequest = () => {} }: Props) => {
             {t('import.Import from a recipe catalog')}
             <button onClick={onHelpRequest}>
               <span className="sr-only">{t('_See the official websites')}</span>
-              <QuestionMarkCircleIcon className="inline h-4 w-4 ltr:ml-1 rtl:mr-1" />
+              <QuestionMarkCircleIcon className="inline h-4 w-4 ms-1" />
             </button>
           </label>
           <div className="mt-1 flex rounded-md shadow-sm w-full">
