@@ -22,13 +22,6 @@ nvm use v16.17.0
 yarn serve
 ```
 
-For service worker debugging, you need to run in production with https
-
-```
-ngrok ...
-
-```
-
 ## Contributing
 
 Before contributing, please read the [./CONTRIBUTING.md](Guidelines).
@@ -38,10 +31,3 @@ Before contributing, please read the [./CONTRIBUTING.md](Guidelines).
 - https://web.dev/add-manifest/
 - [Accessibility](https://reactjs.org/docs/accessibility.html)
 - [Single page applications for github pages](https://github.com/rafgraph/spa-github-pages)
-
-## Colors
-
-- #fd5c63
-- #E71E4D
-- #E21A5F
-- #D70466

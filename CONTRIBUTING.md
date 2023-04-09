@@ -105,4 +105,16 @@ improvement. You can launch tests using `yarn test`.
 We use [standard-version](https://github.com/conventional-changelog/standard-version) to handle versioning
 automatically.
 
+## Styles
+
+### Colors
+
+Few colors are useful in this projects. You shouldn't need these colors because they are configured in tailwind. But you might need these colors for logos, images, etc.
+
+Colors:
+
+- ![#E71E4D](https://placehold.co/15x15/E71E4D/E71E4D.png) `#E71E4D`
+- ![#E21A5F](https://placehold.co/15x15/E21A5F/E21A5F.png) `#E21A5F`
+- ![#D70466](https://placehold.co/15x15/D70466/D70466.png) `#D70466`
+
 **May the force be with you !!**
