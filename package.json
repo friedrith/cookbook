@@ -67,11 +67,10 @@
     "test": "react-scripts test",
     "test:e2e": "yarn playwright test",
     "serve": "npx serve -s build",
-    "lint": "eslint --max-warnings=0 .",
-    "lint:translation": "eslint --max-warnings=0 ./public/locales/**/*.json",
+    "lint": "eslint --max-warnings=0 . ./public/locales/**/*.json",
     "format": "prettier --check .",
     "commitlint": "commitlint --from=c70a78dd8d08a2d528f0a1d2876070b879e17805",
-    "precommit": "yarn lint && yarn format && yarn lint:translation && yarn test --watchAll=false && yarn build"
+    "precommit": "yarn lint && yarn format && yarn test --watchAll=false && yarn build"
   },
   "eslintIgnore": [
     "build",
@@ -108,6 +107,7 @@
     "@types/uuid": "^8.3.4",
     "autoprefixer": "^10.4.7",
     "brfs": "^2.0.2",
+    "clipboardy": "^3.0.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-i18n-json": "^4.0.0",

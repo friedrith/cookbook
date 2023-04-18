@@ -117,4 +117,12 @@ Colors:
 - ![#E21A5F](https://placehold.co/15x15/E21A5F/E21A5F.png) `#E21A5F`
 - ![#D70466](https://placehold.co/15x15/D70466/D70466.png) `#D70466`
 
+## Locales
+
+```bash
+node ./config/i18next-locale.ts
+
+
+```
+
 **May the force be with you !!**

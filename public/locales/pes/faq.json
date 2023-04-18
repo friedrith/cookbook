@@ -1,29 +1,29 @@
 {
-  "Frequently asked questions": "Frequently asked questions",
-  "If you have anything else you want to ask,": "If you have anything else you want to ask, ",
-  "reach out to us": "reach out to us",
+  "Frequently asked questions": "سوالات متداول",
+  "If you have anything else you want to ask,": "اگر چیز دیگری دارید که میخواهید بپرسید،",
+  "reach out to us": "با ما تماس بگیرید",
   "why-magic-link": {
-    "_question": "Why only a magic link for authentication?",
-    "_answer": "By using only a magic link we are sure no one can hack your password."
+    "_question": "چرا فقط یک لینک جادویی برای احراز هویت؟",
+    "_answer": "تنها با استفاده از یک لینک جادویی، مطمئن هستیم که هیچ کس نمی تواند رمز عبور شما را هک کند."
   },
   "email-not-visible": {
-    "_question": "Why you never receveid the magic link?",
-    "_answer": "The email may be in the junk folder of your mailbox. Check there."
+    "_question": "چرا هرگز لینک جادویی را دریافت نکردید؟",
+    "_answer": "ایمیل ممکن است در پوشه junk صندوق پست شما باشد. آنجا را بررسی کنید."
   },
   "why-not-proposing": {
-    "_question": "Why not proposing recipes?",
-    "_answer": "CookBook is the digital replacement of your grandmother recipe book. In order to really improve the user experience, we want to focus on this scope, from once you have the recipe until you smell the nice meal ready."
+    "_question": "چرا دستور پخت پیشنهاد نمی کنید؟",
+    "_answer": "کوک بوک جایگزین دیجیتال کتاب دستور غذای مادربزرگ شما است. برای اینکه واقعاً تجربه کاربر را بهبود ببخشیم، می‌خواهیم روی این محدوده تمرکز کنیم، از زمانی که دستور غذا را تهیه کردید تا زمانی که طعم غذای دلپذیر را بچشید."
   },
   "website-list": {
-    "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
-    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",
-    "proposal": "proposal",
-    " or contact us at ": " or contact us at ",
-    "_answer": "Uniquement une trentaine de sites sont officiellement supportés <Link>(Liste there)</Link>. Mais pleins d'autres sites fonctionnent. Contactez-nous pour en ajouter.",
-    "_question": "Quels sont les sites internets dont on peut importer les recettes ?"
+    "CookBook officially support recipe import from the following websites": "کوک بوک رسما از برداشت دستور غذا از وب سایت های زیر پشتیبانی می کند:",
+    "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "با این حال، ممکن است وارد کردن دستور العمل ها از وب سایت های دیگر نیز کارساز باشد. اگر دستور پخت شما با موفقیت وارد نشد، با نوشتن ... به ما اطلاع دهید",
+    "proposal": "پیشنهاد",
+    " or contact us at ": "یا با ما تماس بگیرید در ...",
+    "_answer": "فقط حدود سی سایت به طور رسمی پشتیبانی می شوند <Link>(لیست در آنجا)</Link>. اما بسیاری از سایت های دیگر کار می کنند. برای افزودن بیشتر با ما تماس بگیرید.",
+    "_question": "از کدام وب سایت ها می توانم دستور پخت ها را وارد کنم؟"
   },
   "website-not-working": {
-    "_question": "What should I do if the import is not working for url?",
-    "_answer": "Add it manually this time and remember to notify us so we will take care of your website for next time."
+    "_question": "اگر وارد کردن  برای url کار نکند، چه کاری باید انجام دهم؟",
+    "_answer": "این بار آن را به صورت دستی اضافه کنید و به یاد داشته باشید که به ما اطلاع دهید تا برای دفعه بعد از وب سایت شما پشتیبانی کنیم."
   }
 }

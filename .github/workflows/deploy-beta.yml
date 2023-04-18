@@ -24,7 +24,6 @@ jobs:
         run: |
           yarn format 
           yarn lint
-          yarn lint:translation
           yarn commitlint
       - name: Tests
         run: yarn test
