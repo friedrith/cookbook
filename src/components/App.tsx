@@ -8,7 +8,6 @@ import RecipeList from 'components/views/RecipeList'
 import RecipeView from 'components/views/RecipeView'
 import Preferences from 'components/views/Preferences'
 import Login from 'components/views/Login'
-import LinkWaiting from 'components/views/LinkWaiting'
 import RecipeNew from 'components/views/RecipeNew'
 import RecipeEdit from 'components/views/RecipeEdit'
 import RecipeFocus from 'components/views/RecipeFocus'
@@ -66,7 +65,6 @@ const App = () => {
               }
             />
             <Route path="/login" element={<PortalRoute />}>
-              <Route path="waiting-for-link" element={<LinkWaiting />} />
               <Route path="code-verify" element={<CodeVerify />} />
               <Route path="" element={<Login />} />
             </Route>
