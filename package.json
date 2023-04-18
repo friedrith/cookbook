@@ -107,7 +107,6 @@
     "@types/uuid": "^8.3.4",
     "autoprefixer": "^10.4.7",
     "brfs": "^2.0.2",
-    "clipboardy": "^3.0.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-i18n-json": "^4.0.0",
