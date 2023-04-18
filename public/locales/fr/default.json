@@ -1,7 +1,7 @@
 {
   "_View Recipe": "Voir la Recette",
   "_Ingredients": "Ingrédients",
-  "_No Recipes found": "Aucune rectte trouvée",
+  "_No Recipes found": "Aucune recette trouvée",
   "_Try a different search.": "Tenter une différente recherche.",
   "_No Recipes created": "Aucune recette créée.",
   "_Get started by creating a new recipe": "Il faut commencer par créer une nouvelle recette.",
@@ -67,10 +67,6 @@
   "_made simple": "rendu simple",
   "_for everybody": "pour tout le monde",
   "_Cooking your best recipes will be never easier": "Cuisiner votre meilleures recettes ne sera jamais aussi simple.",
-  "_Why a magic link": "Pourquoi un lien magique ?",
-  "_We sent an email": "Un email a été envoyé à <strong>{{email}}</strong>. Vous allez y trouver un lien magique pour s'authentifier instantanément.",
-  "_We sent an email.pwa": "Un email a été envoyé à <strong>{{email}}</strong>. Copiez le lien magique dans le formulaire ci-dessous.",
-  "_This link will expire 24 hours.": "Ce lien magique expirera dans 24 heures.",
   "shoppingList": {
     "Create shopping list": "Créer une liste de courses",
     "Close shopping list": "Fermer la liste de courses",
@@ -104,8 +100,6 @@
   "notifications": {
     "Close": "Fermer"
   },
-  "_Link sent by email": "Lien envoyé par email",
-  "_Login with magic link": "Se connecter avec le lien magique",
   "_Ok Got it": "Oui j'ai compris !",
   "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.",
   "_Please do not sent it to anyone else without the authorization of the author of CookBook": "S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.",
