@@ -8,7 +8,7 @@ import { enabled } from 'utils/services/features'
 export const languages = [
   { value: 'fr', label: 'Français' },
   { value: 'en', label: 'English' },
-  enabled('farsi') ? { value: 'pes', label: 'Farsi' } : null,
+  enabled('farsi') ? { value: 'fa', label: 'Farsi' } : null,
 ].filter(Boolean) as Array<{ value: string; label: string }>
 
 i18n
