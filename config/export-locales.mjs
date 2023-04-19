@@ -7,7 +7,25 @@ const __dirname = dirname(__filename)
 
 const localesDirname = join(__dirname, '../public/locales/')
 
-const convertToWorksheet = async () => {
+const addTranslation = (namespace, translationsById, locale, path, value) => {
+  if (typeof value === 'string') {
+    translationsById[`${namespace}${path}`] = {
+      namespace: namespace,
+      path,
+      ...translationsById[`${namespace}${path}`],
+      locales: {
+        ...translationsById[`${namespace}${path}`]?.locales,
+        [locale]: value,
+      },
+    }
+  } else if (typeof value === 'object') {
+    Object.entries(value).forEach(([key, v]) => {
+      addTranslation(namespace, translationsById, locale, `${path}/${key}`, v)
+    })
+  }
+}
+
+const convertToCSV = async () => {
   const allLocales = await readdir(localesDirname)
 
   const translationsById = {}
@@ -23,20 +41,13 @@ const convertToWorksheet = async () => {
       for (let path of Object.keys(content)) {
         const value = content[path]
 
-        if (typeof value === 'string') {
-          translationsById[`${namespace}${path}`] = {
-            namespace: namespace.replace(/\.json/, ''),
-            path,
-            ...translationsById[`${namespace}${path}`],
-            locales: {
-              ...translationsById[`${namespace}${path}`]?.locales,
-              [locale]: value,
-            },
-          }
-
-          // worksheet.push({ namespace, path, locale, value })
-        } else {
-        }
+        addTranslation(
+          namespace.replace(/\.json/, ''),
+          translationsById,
+          locale,
+          path,
+          value,
+        )
       }
     }
   }
@@ -57,9 +68,9 @@ const convertToWorksheet = async () => {
 
   const csv = worksheet.map(r => r.map(l => `"${l}"`).join(',')).join('\n')
 
-  console.log(csv)
+  process.stdout.write(csv)
 }
 
-convertToWorksheet()
+convertToCSV()
   .then(() => {})
   .catch(console.error)

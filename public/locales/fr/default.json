@@ -6,6 +6,7 @@
   "_No Recipes created": "Aucune recette créée.",
   "_Get started by creating a new recipe": "Il faut commencer par créer une nouvelle recette.",
   "_settings": "Réglages",
+  "_Sign out": "Se déconnecter",
   "_Invalid link": "Lien Invalide",
   "_Sorry that link is no longer valid": "Désolé, ce lien n'est plus valide.",
   "_Send a new magic link": "Envoyer un nouveau lien magique",
@@ -47,9 +48,9 @@
   "_Share Recipe": "Partager",
   "_Copy Recipe to clipboard": "Copier la recette dans le presse-papier",
   "_Recipe copied to clipboard": "Recette copiée dans le presse-papier.",
+  "_Ingredients copied to clipboard": "Ingredients copiées dans le presse-papier.",
   "_Share pdf": "Partage pdf",
   "_Download pdf": "Télécharger le pdf",
-  "_Ingredients copied to clipboard": "Ingredients copiées dans le presse-papier.",
   "_Logout": "Se déconnecter",
   "_Help": "Aide",
   "_Install Desktop App": "Installer App",
@@ -75,21 +76,6 @@
     "Share shopping list": "Partager la liste de courses",
     "Shopping list": "Liste de courses"
   },
-  "faq": {
-    "shortTitle": "FAQ",
-    "title": "Foire Aux Questions"
-  },
-  "_Beta": "Beta",
-  "_Alpha": "Alpha",
-  "_Back to landing page": "Retourner à la page d'accueil",
-  "_Back to recipes": "Retourner aux recettes",
-  "_Back to recipe": "Retourner à la recette",
-  "_Edit Recipe": "Modifier la recette",
-  "_Open Menu": "Ouvrir menu",
-  "_Search in recipes": "Rechercher dans les recettes",
-  "_Search": "Rechercher",
-  "_Sign out": "Se déconnecter",
-  "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "editor": {
     "Add ingredients there": "Ajouter les ingrédients ici, une ligne par ingrédient",
     "Add steps there": "Ajouter les étapes ici, une ligne par étapes",
@@ -97,6 +83,16 @@
     "_Saving in progress...": "Sauvegarde en cours...",
     "_No need to save manually. Everything is saved in really time.": "Pas besoin de sauvarder manuellement. Tout est déjà sauvegardé en temps réel."
   },
+  "_Beta": "Beta",
+  "_Alpha": "Alpha",
+  "_Edit Recipe": "Modifier la recette",
+  "_Back to landing page": "Retourner à la page d'accueil",
+  "_Back to recipes": "Retourner aux recettes",
+  "_Back to recipe": "Retourner à la recette",
+  "_Search in recipes": "Rechercher dans les recettes",
+  "_Search": "Rechercher",
+  "_Open Menu": "Ouvrir menu",
+  "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "notifications": {
     "Close": "Fermer"
   },
@@ -177,7 +173,7 @@
   "_Some categories are not used": "CookBook a {{categoriesCount}} autres catégories que vous n'utilisez pas:",
   "_They could help you to find your recipes even easier": "Elles pourraient vous aider à trouver vos recettes plus facilement.",
   "_Show the recipes without categories": "Voir les {{recipesCount}} recettes sans catégories",
-  "_Recipes without categories": "Recettes sans catégories",
   "_Add some suggested keywords to your recipes": "Ajoutez certains mot-clés suggérés à vos recettes.",
+  "_Recipes without categories": "Recettes sans catégories",
   "_Show all recipes": "Voir toutes les recettes"
 }

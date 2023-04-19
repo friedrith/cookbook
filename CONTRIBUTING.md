@@ -120,9 +120,11 @@ Colors:
 ## Locales
 
 ```bash
-node ./config/i18next-locale.ts
+# export translations from json files to a csv
+node ./config/export-locales.mjs > locales.csv
 
-
+# import translation from csv to json files
+cat locales.csv | node ./config/import-locales.mjs
 ```
 
 **May the force be with you !!**
