@@ -109,7 +109,7 @@ const RecipeFocus = () => {
   const maxStepIndex = (formattedRecipe?.steps?.length || 0) + 1
 
   const nextStep = useCallback(async () => {
-    console.log('nextStep', currentStep, maxStepIndex)
+    console.warn('nextStep', currentStep, maxStepIndex)
     if (currentStep < maxStepIndex) await update(currentStep + 1)
   }, [currentStep, update, maxStepIndex])
 
@@ -151,7 +151,7 @@ const RecipeFocus = () => {
       {
         command: 'next*',
         callback: () => {
-          console.log('next')
+          console.warn('next')
           nextStep()
         },
       },

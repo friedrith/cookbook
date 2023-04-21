@@ -63,7 +63,6 @@ module.exports = {
     'group-hover:bg-gray-300',
   ],
   plugins: [
-    // ...
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
   ],

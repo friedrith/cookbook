@@ -52,7 +52,7 @@ const categories: Category[] = [
   { name: 'honey', image: '557-honey-outline-edited' },
   { name: 'appetizer', image: '627-brezel-outline-edited' },
   { name: 'snack', image: '565-toast-sandwich-outline-edited' },
-  { name: 'baking', image: '675-male-cook-outline-edited' },
+  // { name: 'baking', image: '675-male-cook-outline-edited' },
   { name: 'avocado', image: '594-avocado-outline-edited' },
   { name: 'alcohol', image: '519-glass-pint-beer-outline-edited' },
   { name: 'waffle', image: '2375-waffle-outline-edited' },

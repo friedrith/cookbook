@@ -75,19 +75,9 @@ const CategoriesList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipes])
 
-  useEventListener(
-    'scroll',
-    () => {
-      updateArrows()
-    },
-    listRef.current,
-  )
+  useEventListener('scroll', updateArrows, listRef.current)
 
-  useEventListener('resize', () => {
-    updateArrows()
-  })
-
-  console.log('availableCategories', availableCategories)
+  useEventListener('resize', updateArrows)
 
   if (!areCategoriesVisible) return <></>
 

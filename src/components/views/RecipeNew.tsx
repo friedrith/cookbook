@@ -30,7 +30,7 @@ const RecipeNew = () => {
       const newRecipe = await dispatch(addRecipe(recipe)).unwrap()
       navigate(`/recipes/${newRecipe.id}`, { replace: true })
     } catch (error) {
-      console.log('error', error)
+      console.error('error', error)
     }
   }
 

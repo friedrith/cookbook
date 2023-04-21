@@ -116,10 +116,10 @@
       "International system": "International system (ml, kg, etc.)"
     },
     "ingredient template": "Template for ingredients in shopping list",
-    "Show advanced": "Show advanced settings",
-    "Hide advanced": "Hide advanced settings",
-    "Export": "Export",
-    "Download all your recipes": "Download all recipes"
+    "Show advanced": "Afficher paramètres avancés",
+    "Hide advanced": "Cacher paramètres avancés",
+    "Export": "Exporter",
+    "Download all your recipes": "Télécharger toutes les recettes"
   },
   "import": {
     "Import from a recipe catalog": "Importer depuis un site internet",

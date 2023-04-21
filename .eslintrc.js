@@ -12,6 +12,7 @@ module.exports = {
   ],
   plugins: ['prettier', 'jsx-a11y', 'i18next', 'sonarjs'],
   rules: {
+    'no-console': ['error', { allow: ['warn', 'error'] }],
     'i18n-json/sorted-keys': 'off',
     'i18n-json/valid-message-syntax': 'off',
     'i18n-json/identical-keys': [

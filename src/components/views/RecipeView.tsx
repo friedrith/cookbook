@@ -22,7 +22,7 @@ import useCurrentRecipe from 'hooks/useCurrentRecipe'
 import ShareIcon from 'assets/ShareIcon'
 import { canShare, shareText } from 'utils/services/share'
 import renderRecipe from 'features/recipes/utils/renderTextRecipe'
-import KeywordList from 'features/categories/components/KeywordList'
+import CategoryBadgeList from 'features/categories/components/CategoryBadgeList'
 import { BadgeSize } from 'components/atoms/Badge'
 import TimerCenter from 'features/timers/components/TimersCenter'
 import Header from 'components/atoms/Header'
@@ -73,10 +73,10 @@ const RecipeView = () => {
                   {formattedRecipe.name}
                 </h1>
 
-                <KeywordList
+                <CategoryBadgeList
                   className="text-center lg:text-left"
                   size={BadgeSize.large}
-                  keywords={formattedRecipe.keywords}
+                  categories={formattedRecipe.keywords}
                 />
                 {/* <Stats recipe={formattedRecipe} /> */}
                 <div className="pt-6">
