@@ -8,7 +8,7 @@ import { enabled } from 'utils/services/features'
 export const languages = [
   { value: 'fr', label: 'Français' },
   { value: 'en', label: 'English' },
-  enabled('farsi') ? { value: 'fa', label: 'Farsi' } : null,
+  enabled('farsi') ? { value: 'fa', label: 'فارسی' } : null,
 ].filter(Boolean) as Array<{ value: string; label: string }>
 
 i18n
@@ -25,7 +25,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     ns: ['default'],
-    fallbackLng: 'pes',
+    fallbackLng: 'en',
     debug: process.env.NODE_ENV !== 'production',
 
     load: 'all',

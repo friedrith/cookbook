@@ -79,7 +79,7 @@ const RecipeEdit = () => {
           setSaved(true)
           setSavedAtLeastOnce(true)
         } catch (error) {
-          console.log('error', error)
+          console.error('error', error)
         }
       }
     }, 2000)
@@ -97,7 +97,7 @@ const RecipeEdit = () => {
       ).unwrap()
       navigate(`/recipes/${newRecipe.id}/edit`, { replace: true })
     } catch (error) {
-      console.log('error', error)
+      console.error('error', error)
     }
   }
 

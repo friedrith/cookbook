@@ -6,7 +6,7 @@ const PortalLayout = ({ children }: Props) => {
   return (
     <div className="min-h-screen fixed flex w-full">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm lg:w-96 text-center md:text-left">
+        <div className="mx-auto w-full max-w-sm lg:w-96 text-center md:text-left text-left rtl:text-right">
           {children}
         </div>
       </div>

@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import Badge, { BadgeSize } from 'components/atoms/Badge'
 
 type Props = {
   className?: string
-  keyword: string
+  category: string
   size: BadgeSize
-  onChangeQuery?: (query: string) => void
+  onChangeQuery: (query: string) => void
 }
 
 const colors = ['gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'pink']
@@ -14,9 +15,9 @@ const colors = ['gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'pink']
 const sum = (...args: number[]): number =>
   args.length > 0 ? args[0] + sum(...args.slice(1)) : 0
 
-const findColor = (children: string) => {
+const findRandomColor = (words: string) => {
   const colorIndex =
-    sum(...children.split(' ').map(l => l.toUpperCase().charCodeAt(0))) %
+    sum(...words.split(' ').map(w => w.toUpperCase().charCodeAt(0))) %
     colors.length
 
   return colors[colorIndex]
@@ -24,31 +25,30 @@ const findColor = (children: string) => {
 
 const ENCODED_HASHTAG = '%23'
 
-const KeywordBadge = ({
+const CategoryBadge: React.FC<Props> = ({
   className = '',
-  keyword,
+  category,
   size = BadgeSize.small,
-  onChangeQuery = () => {},
-  ...props
-}: Props) => {
-  const foundColor = findColor(keyword)
+  onChangeQuery,
+}) => {
+  const foundColor = findRandomColor(category)
+
+  const { t } = useTranslation('categories')
 
   return (
     <Link
-      key={keyword}
       className={`inline-flex ${className}`}
-      to={`/recipes?q=${ENCODED_HASHTAG}${keyword}`}
-      onClick={() => onChangeQuery(`#${keyword}`)}
+      to={`/recipes?q=${ENCODED_HASHTAG}${category}`}
+      onClick={() => onChangeQuery(`#${category}`)}
     >
       <Badge
         className={`bg-${foundColor}-100 text-${foundColor}-800`}
         size={size}
-        {...props}
       >
-        {keyword}
+        {t(category)}
       </Badge>
     </Link>
   )
 }
 
-export default KeywordBadge
+export default CategoryBadge

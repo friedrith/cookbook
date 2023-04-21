@@ -48,7 +48,7 @@ const UserMenu = () => {
 
       const { outcome } = await deferredPrompt.userChoice
 
-      console.log(`User response to the install prompt: ${outcome}`)
+      console.warn(`User response to the install prompt: ${outcome}`)
 
       resetPWAInstallationPrompt()
     } else {

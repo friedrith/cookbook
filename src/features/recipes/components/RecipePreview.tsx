@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import thumbnailUrl from 'utils/urls/thumbnailUrl'
 import Recipe from 'types/Recipe'
-import KeywordList from 'features/categories/components/KeywordList'
+import CategoryBadgeList from 'features/categories/components/CategoryBadgeList'
 import { BadgeSize } from 'components/atoms/Badge'
 
 type Props = {
@@ -54,10 +54,10 @@ const RecipePreview = ({ recipe, onClick = () => {} }: Props) => {
           {recipe.name}
         </h3>
       </div>
-      <KeywordList
+      <CategoryBadgeList
         className="mt-1 text-sm text-gray-500 break-words line-clamp-1 text-ellipsis"
         size={BadgeSize.large}
-        keywords={recipe.keywords}
+        categories={recipe.keywords}
       />
     </div>
   )

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
 
 import LordIcon from 'components/atoms/LordIcon'
 import { firstLetterUppercase } from 'utils/string'
@@ -22,7 +23,9 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({
 
   const color = onClick && (isHover || active) ? '#111827' : '#6B7280'
 
-  const title = firstLetterUppercase(category.name)
+  const { t } = useTranslation('categories')
+
+  const title = firstLetterUppercase(t(category.name))
 
   return (
     <button

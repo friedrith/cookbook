@@ -1,27 +1,27 @@
 import { BadgeSize } from 'components/atoms/Badge'
-import KeywordBadge from 'features/categories/components/KeywordBadge'
+import CategoryBadge from './CategoryBadge'
 
 type Props = {
-  keywords: string[]
+  categories: string[]
   className?: string
   onChangeQuery?: (query: string) => void
   size?: BadgeSize
 }
 
 const KeywordList = ({
-  keywords,
+  categories,
   className = '',
   onChangeQuery = () => {},
   size = BadgeSize.small,
 }: Props) => {
   return (
     <div className={`text-left rtl:text-right ${className}`}>
-      {keywords.map(keyword => (
-        <KeywordBadge
-          key={keyword}
+      {categories.map(category => (
+        <CategoryBadge
+          key={category}
           className={`${size === BadgeSize.small ? 'mr-1' : 'mr-2'}`}
           size={size}
-          keyword={keyword}
+          category={category}
           onChangeQuery={onChangeQuery}
         />
       ))}

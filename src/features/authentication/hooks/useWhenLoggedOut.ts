@@ -12,7 +12,6 @@ const useWhenLoggedOut = (callback = () => {}, onlyRoles: Roles[]) => {
 
   useEffect(() => {
     if (loggedOut || (loggedIn && !hasOneOfRoles(currentUser, onlyRoles))) {
-      console.log('when user logged out')
       callback()
     }
   }, [loggedOut, loggedIn, currentUser, onlyRoles, callback])

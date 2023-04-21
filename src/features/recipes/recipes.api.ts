@@ -14,7 +14,6 @@ const convertFromHttp = (httpRecipe: HttpRecipe): Recipe => ({
 })
 
 export const fetchAll = async () => {
-  console.log('fetchAll')
   const response = await api().get(baseURL)
   return response.data?.recipes.map(convertFromHttp)
 }

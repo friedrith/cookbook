@@ -1,7 +1,6 @@
 import { useState, useRef, forwardRef, ForwardedRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PhotoIcon } from '@heroicons/react/24/outline'
-import { WithContext as ReactTags } from 'react-tag-input'
 
 import { storeFile } from 'utils/services/firebase'
 import TextArea from 'components/atoms/TextArea'
@@ -12,28 +11,14 @@ import SectionTitle from 'components/atoms/SectionTitle'
 import ImageUploader from 'components/molecules/ImageUploader'
 import Recipe from 'types/Recipe'
 import Button from 'components/atoms/Button'
-import cleanKeywords from 'features/categories/utils/cleanKeywords'
 
-import categories from 'features/categories/categories'
+import KeywordsEditor from 'features/categories/components/KeywordsEditor'
 
 type Props = {
   recipe: Recipe
   onChange: (recipe: Recipe) => void
   saved?: boolean
   children?: React.ReactNode
-}
-
-const KeyCodes = {
-  comma: 188,
-  enter: 13,
-  space: 32,
-}
-
-const delimiters = [KeyCodes.comma, KeyCodes.enter, KeyCodes.space]
-
-type Tag = {
-  id: string
-  text: string
 }
 
 const RecipeEditor = forwardRef(
@@ -63,29 +48,6 @@ const RecipeEditor = forwardRef(
 
     // const DurationIcon = findUnitIcon('min')
     // const ServingsIcon = findUnitIcon('servings')
-
-    const handleDelete = (i: number) => {
-      change({
-        keywords: cleanKeywords(keywords.filter((k, index) => index !== i)),
-      })
-    }
-
-    const handleAddition = (tag: Tag) => {
-      change({ keywords: cleanKeywords([...keywords, tag.text]) })
-    }
-
-    const handleDrag = (
-      tag: Tag,
-      currentPosition: number,
-      newPosition: number,
-    ) => {
-      const newKeywords = [...keywords]
-      newKeywords.splice(currentPosition, 1)
-      newKeywords.splice(newPosition, 0, tag.text)
-      change({ keywords: newKeywords })
-    }
-
-    const tags = keywords.map(k => ({ id: k, text: k }))
 
     return (
       <>
@@ -146,33 +108,9 @@ const RecipeEditor = forwardRef(
                 <SectionTitle className="pb-3">
                   <label htmlFor="keywords">{t('_Categories')}</label>
                 </SectionTitle>
-                <ReactTags
-                  tags={tags}
-                  delimiters={delimiters}
-                  inputFieldPosition="inline"
-                  handleDelete={handleDelete}
-                  handleAddition={handleAddition}
-                  handleDrag={handleDrag}
-                  inline
-                  id="keywords"
-                  classNames={{
-                    selected: 'flex flex-row items-start flex-wrap',
-                    tag: 'p-0.25 px-1 my-1.5 mx-1 rounded font-medium bg-indigo-100 text-indigo-800',
-                    tagInput: 'border-0 overflow-none flex-1 min-w-[100px]',
-                    tagInputField:
-                      'border border-gray-300  overflow-none focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-black focus:border-black shadow-sm rounded-md w-full p-1.5',
-                    remove: 'ml-0.5',
-                    suggestions:
-                      'absolute rounded mt-2 p-1 font-medium bg-red-100 text-red-800',
-                    activeSuggestion: 'bg-red-200 cursor-pointer',
-                  }}
-                  allowDragDrop={true}
-                  placeholder={t('_Press enter to add a keyword')}
-                  autofocus={false}
-                  suggestions={categories.map(c => ({
-                    id: c.name,
-                    text: c.name,
-                  }))}
+                <KeywordsEditor
+                  keywords={keywords}
+                  onChange={keywords => change({ keywords })}
                 />
               </div>
               {/* <div>
