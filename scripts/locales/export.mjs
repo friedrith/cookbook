@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const localesDirname = join(__dirname, '../public/locales/')
+const localesDirname = join(__dirname, '../../public/locales/')
 
 const addTranslation = (namespace, translationsById, locale, path, value) => {
   if (typeof value === 'string') {
@@ -15,7 +15,7 @@ const addTranslation = (namespace, translationsById, locale, path, value) => {
       ...translationsById[`${namespace}${path}`],
       locales: {
         ...translationsById[`${namespace}${path}`]?.locales,
-        [locale]: value,
+        [locale]: value ?? '[TODO]',
       },
     }
   } else if (typeof value === 'object') {
