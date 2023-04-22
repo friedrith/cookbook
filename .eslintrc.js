@@ -47,15 +47,15 @@ module.exports = {
         'testing-library/prefer-screen-queries': 'off',
       },
     },
-    {
-      files: ['public/locales/**/*'],
-      rules: {
-        'no-warning-comments': [
-          'warn',
-          { terms: ['TODO', 'fixme', 'any other term'], location: 'anywhere' },
-        ],
-      },
-    },
+    // {
+    //   files: ['public/locales/**/*'],
+    //   rules: {
+    //     'no-warning-comments': [
+    //       'warn',
+    //       { terms: ['TODO', 'fixme', 'any other term'], location: 'anywhere' },
+    //     ],
+    //   },
+    // },
   ],
   globals: {
     plausible: 'readonly',
