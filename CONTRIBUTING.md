@@ -121,10 +121,10 @@ Colors:
 
 ```bash
 # export translations from json files to a csv
-node ./config/export-locales.mjs > locales.csv
+node ./scripts/locales/export.mjs > locales.csv
 
 # import translation from csv to json files
-cat locales.csv | node ./config/import-locales.mjs
+cat locales.csv | node ./scripts/locales/import.mjs
 ```
 
 **May the force be with you !!**

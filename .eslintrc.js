@@ -18,19 +18,7 @@ module.exports = {
     'i18n-json/identical-keys': [
       2,
       {
-        filePath: {
-          'default.json': path.join(
-            __dirname,
-            './public/locales/en/default.json',
-          ),
-          'faq.json': path.join(__dirname, './public/locales/en/faq.json'),
-          'marketing.json': path.join(
-            __dirname,
-            './public/locales/en/marketing.json',
-          ),
-          'help.json': path.join(__dirname, './public/locales/en/help.json'),
-          'login.json': path.join(__dirname, './public/locales/en/login.json'),
-        },
+        filePath: path.resolve('scripts/locales/findLocaleFiles.js'),
       },
     ],
   },

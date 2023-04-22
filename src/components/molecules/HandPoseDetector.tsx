@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable jsx-a11y/media-has-caption */
 import { useRef, useEffect } from 'react'
