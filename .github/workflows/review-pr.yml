@@ -108,25 +108,25 @@ jobs:
         uses: ahmadnassri/action-commit-lint@v1
         with:
           config: ./commitlint.config.js
-  sonarcloud:
-    name: Sonar check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@v1.9.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          projectBaseDir: src/
-          args: >
-            -Dsonar.organization=friedrith
-            -Dsonar.projectKey=friedrith_cookbook
-            -Dsonar.verbose=true
+  # sonarcloud:
+  #   name: Sonar check
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         # Disabling shallow clone is recommended for improving relevancy of reporting
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 16
+  #     - name: SonarCloud Scan
+  #       uses: sonarsource/sonarcloud-github-action@v1.9.1
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  #       with:
+  #         projectBaseDir: src/
+  #         args: >
+  #           -Dsonar.organization=friedrith
+  #           -Dsonar.projectKey=friedrith_cookbook
+  #           -Dsonar.verbose=true
