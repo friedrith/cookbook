@@ -67,7 +67,7 @@ const UserMenu = () => {
   const menuOptions = [
     {
       icon: CogIcon,
-      label: '_Settings',
+      label: '_settings',
       onClick: settingsPopup.open,
     },
     {

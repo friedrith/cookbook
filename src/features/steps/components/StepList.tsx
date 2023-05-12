@@ -118,11 +118,7 @@ const StepList = ({ recipe, progress, onSelectStep }: Props) => {
         type={PopupType.Info}
         description={
           <>
-            <p>
-              {t(
-                'focusMode.While the focus mode is activated, your device still stay awake',
-              )}
-            </p>
+            <p>{t('focusMode.Your device will not go to sleep')}</p>
           </>
         }
       >

@@ -3,6 +3,8 @@ import { useLocation, Location } from 'react-router-dom'
 
 import { isMobile } from 'utils/platforms/mobile'
 
+const PREFERENCES = '/preferences'
+
 const areLocationIncludes = (
   location1: Location,
   location2: Location,
@@ -27,9 +29,17 @@ const useTransition = (): [string, string, Location, () => void] => {
     if (areLocationDifferent(location, displayLocation)) {
       if (
         isMobile() &&
-        areLocationIncludes(location, displayLocation, ['/recipes', '/login'])
+        (areLocationIncludes(location, displayLocation, [
+          '/recipes',
+          '/login',
+        ]) ||
+          location.pathname === PREFERENCES ||
+          displayLocation.pathname === PREFERENCES)
       ) {
-        if (displayLocation.pathname.includes(location.pathname)) {
+        if (
+          displayLocation.pathname.includes(location.pathname) ||
+          displayLocation.pathname === PREFERENCES
+        ) {
           setTransistionStage('slideRight')
         } else {
           setTransistionStage('slideLeft')

@@ -15,7 +15,6 @@
   "_Open CookBook": "کوک بوک را باز کن",
   "_Try CookBook": "کوک بوک را امتحان کن",
   "_Try banana bread": "کیک موز را امتحان کن",
-  "_Account": "تنظیمات",
   "_Create Recipe": "دستور پخت ایجاد کن",
   "_New Recipe": "دستور پخت جدید",
   "_Waiting for link": "در حال انتظار برای لینک",
@@ -105,7 +104,7 @@
   },
   "settings": {
     "temperatures": {
-      "Temperatures": "واحد دما در دستور پخت ها",
+      "Temperatures unit in recipes": "واحد دما در دستور پخت ها",
       "keepUnchanged": "تغییر ندهید",
       "Farenheit": "فارنهایت",
       "Celsius": "سلسیوس"

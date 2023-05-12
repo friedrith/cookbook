@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/outline'
-import classNames from 'classnames'
+import { ShoppingCartIcon, XCircleIcon } from '@heroicons/react/24/outline'
 
 import { FormattedRecipe } from 'types/Recipe'
 import usePopup from 'hooks/usePopup'
-import Ingredient from 'models/Ingredient'
 import SectionTitle from 'components/atoms/SectionTitle'
-import renderMeasure from 'utils/renderMeasure'
 import Button from 'components/atoms/Button'
 import renderIngredients from 'features/ingredients/utils/renderIngredients'
 import {
@@ -20,13 +17,11 @@ import { useAppSelector } from 'hooks/redux'
 import { getIngredienTemplate } from 'store'
 import waitFor from 'utils/waitFor'
 import SectionAction from 'components/atoms/SectionAction'
+import IngredientTable from './IngredientTable'
 
 type Props = {
   formattedRecipe: FormattedRecipe
 }
-
-const key = (ingredient: Ingredient, index: number) =>
-  `${ingredient.name}${index}`
 
 const IngredientList = ({ formattedRecipe }: Props) => {
   const { t } = useTranslation()
@@ -102,7 +97,7 @@ const IngredientList = ({ formattedRecipe }: Props) => {
                 aria-hidden="true"
               />
             ) : (
-              <ShoppingBagIcon
+              <ShoppingCartIcon
                 className="h-7 w-7 cursor-pointer focus:outline-none"
                 aria-hidden="true"
                 onClick={shoppingBag.toggle}
@@ -113,7 +108,27 @@ const IngredientList = ({ formattedRecipe }: Props) => {
       >
         {t('_Ingredients')}
       </SectionTitle>
-      <table className="min-w-full divide-y divide-gray-300">
+      <IngredientTable
+        ingredients={formattedRecipe.ingredients}
+        itemOnClick={index => () => toggleCheckedIngredient(index)}
+        itemClassName={shoppingBag.isOpen ? 'cursor-pointer' : 'select-text'}
+        itemComponent={({ index }) => (
+          <td className="w-10 align-middle text-center">
+            {shoppingBag.isOpen && (
+              <input
+                id="candidates"
+                aria-describedby="candidates-description"
+                name="candidates"
+                type="checkbox"
+                className="relative h-4 w-4 top-[-2px] rounded border-gray-300 text-primary-400 focus:ring-primary-400 cursor-pointer"
+                checked={checkedIngredients.includes(index)}
+                onChange={toggleCheckedIngredient(index)}
+              />
+            )}
+          </td>
+        )}
+      />
+      {/* <table className="min-w-full divide-y divide-gray-300">
         <tbody className="divide-y divide-gray-200 bg-white">
           {formattedRecipe.ingredients.map((ingredient, index) => (
             <tr
@@ -153,7 +168,7 @@ const IngredientList = ({ formattedRecipe }: Props) => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
       {shoppingBag.isOpen && (
         <div className="mt-4 shadow-[0_-1px_3px_0_rgba(0,0,0,0.1)] fixed z-50 bottom-0 left-0 right-0 md:relative p-4 bg-white md:p-0">
           <Button.Primary

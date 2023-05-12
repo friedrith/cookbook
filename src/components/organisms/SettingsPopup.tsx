@@ -17,7 +17,7 @@ const SettingsPopup = ({ open, onClose }: Props) => {
       open={open}
       onClose={onClose}
       icon={CogIcon}
-      title={t('_Settings')}
+      title={t('_settings')}
       type={PopupType.Black}
     >
       <Settings />

@@ -21,9 +21,10 @@ import useEventListener from 'hooks/useEventListener'
 type Props = {
   restRef: React.RefObject<HTMLDivElement>
   hideSearch: boolean
+  className?: string
 }
 
-const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
+const RecipeListHeader = ({ restRef, hideSearch, className }: Props) => {
   const { t } = useTranslation()
 
   const { isSearchActive, setSearch } = useSearch()
@@ -62,8 +63,7 @@ const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
       <FixedHeader
         restRef={restRef}
         offset={0}
-        className="bg-white "
-        maximizedClassName="shadow"
+        className={`bg-white ${className}`}
       >
         {isMaximized => (
           <div className={classNames({ shadow: isMaximized })}>
@@ -77,7 +77,7 @@ const RecipeListHeader = ({ restRef, hideSearch }: Props) => {
                   />
                 )}
                 <div
-                  className={classNames('flex-1  items-center', {
+                  className={classNames('flex-1 items-center', {
                     'hidden md:flex': isSearchActive,
                     flex: !isSearchActive,
                   })}

@@ -30,7 +30,7 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({
   return (
     <button
       className={classNames(
-        'relative flex flex-col items-center pt-2 pb-4 md:pb-5 text-gray-500 transition-all outline-none outline-0',
+        'relative flex-[0_0_60px] w-[100px] flex flex-col items-center pt-0 pb-4 md:pb-4 text-gray-500 transition-all outline-none outline-0 ',
         {
           'text-gray-900': active,
           'hover:text-gray-900': onClick,

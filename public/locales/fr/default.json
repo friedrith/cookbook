@@ -15,7 +15,6 @@
   "_Open CookBook": "Ouvrir CookBook",
   "_Try CookBook": "Essayer CookBook",
   "_Try banana bread": "Chercher pain à la banane",
-  "_Account": "Compte",
   "_Create Recipe": "Créer Recette",
   "_New Recipe": "Nouvelle Recette",
   "_Waiting for link": "Attendre pour le lien",
@@ -105,7 +104,7 @@
   },
   "settings": {
     "temperatures": {
-      "Temperatures": "Unités de température dans les recettes",
+      "Temperatures unit in recipes": "Unités de température dans les recettes",
       "keepUnchanged": "Ne pas changer",
       "Farenheit": "Farenheit",
       "Celsius": "Celsius"
