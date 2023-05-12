@@ -11,7 +11,6 @@ type Props = {
   onMaximizedChanged?: (isMaximized: boolean) => void
   offset?: number
   className?: string
-  maximizedClassName?: string
   disableMaximize?: boolean
 }
 

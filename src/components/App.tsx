@@ -18,6 +18,7 @@ import ProtectedRoute from 'components/routes/ProtectedRoute'
 import PortalRoute from 'components/routes/PortalRoute'
 import GlobalRoute from 'components/routes/GlobalRoute'
 import useAuthentication from 'features/authentication/hooks/useAuthentication'
+import ShoppingList from 'components/views/ShoppingList'
 
 import HistoryContext from 'contexts/History'
 
@@ -36,43 +37,56 @@ const App = () => {
   checkSession()
 
   return (
-    <div
-      id="app"
-      className={`${transitionStage}`}
-      onAnimationEnd={onAnimationEnd}
-    >
-      <HistoryContext.Provider value={{ previousLocation }}>
-        <GlobalRoute>
-          <Routes location={displayLocation}>
-            <Route path="/" element={<LandingPage />} />
-            <Route
-              path="/recipes"
-              element={<ProtectedRoute onlyRoles={[Roles.User]} />}
-            >
-              <Route path="" element={<RecipeList />} />
-              <Route path="new" element={<RecipeNew />} />
-              <Route path=":recipeId" element={<RecipeView />} />
-              <Route path=":recipeId/focus" element={<RecipeFocus />} />
-              <Route path=":recipeId/edit" element={<RecipeEdit />} />
-            </Route>
-            <Route path="/share/:linkId" element={<RecipeShare />} />
-            <Route
-              path="/preferences"
-              element={
-                <ProtectedRoute onlyRoles={[Roles.User]}>
-                  <Preferences />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/login" element={<PortalRoute />}>
-              <Route path="code-verify" element={<CodeVerify />} />
-              <Route path="" element={<Login />} />
-            </Route>
-            <Route path="/*" element={<NotFound404 />} />
-          </Routes>
-        </GlobalRoute>
-      </HistoryContext.Provider>
-    </div>
+    <HistoryContext.Provider value={{ previousLocation }}>
+      <GlobalRoute>
+        <Routes location={displayLocation}>
+          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/recipes"
+            element={
+              <ProtectedRoute
+                className={transitionStage}
+                onAnimationEnd={onAnimationEnd}
+                onlyRoles={[Roles.User]}
+              />
+            }
+          >
+            <Route path="" element={<RecipeList />} />
+            <Route path="new" element={<RecipeNew />} />
+            <Route path="shopping-list" element={<ShoppingList />} />
+            <Route path=":recipeId" element={<RecipeView />} />
+            <Route path=":recipeId/focus" element={<RecipeFocus />} />
+            <Route path=":recipeId/edit" element={<RecipeEdit />} />
+          </Route>
+          <Route path="/share/:linkId" element={<RecipeShare />} />
+          <Route
+            path="/preferences"
+            element={
+              <ProtectedRoute
+                className={transitionStage}
+                onAnimationEnd={onAnimationEnd}
+                onlyRoles={[Roles.User]}
+              >
+                <Preferences />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PortalRoute
+                className={transitionStage}
+                onAnimationEnd={onAnimationEnd}
+              />
+            }
+          >
+            <Route path="code-verify" element={<CodeVerify />} />
+            <Route path="" element={<Login />} />
+          </Route>
+          <Route path="/*" element={<NotFound404 />} />
+        </Routes>
+      </GlobalRoute>
+    </HistoryContext.Provider>
   )
 }
 

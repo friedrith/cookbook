@@ -61,7 +61,7 @@ const Page = ({
         delayShow={250}
       />
       <div
-        className={`relative bg-white overflow-auto scroll-auto select-none z-20	${className}`}
+        className={`relative bg-white scroll-auto select-none z-20	${className}`}
         style={style}
         id="page"
       >

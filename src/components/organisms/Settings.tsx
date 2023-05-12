@@ -79,7 +79,7 @@ const Settings = () => {
       </Form.Item>
       <Form.Item
         id="temperature"
-        label={t('settings.temperatures.Temperatures')}
+        label={t('settings.temperatures.Temperatures unit in recipes')}
       >
         <Select
           id="temperature"

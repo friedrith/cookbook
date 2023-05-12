@@ -14,7 +14,7 @@ const Header = ({ children, className, fullWidth, white }: Props) => {
       <Container
         fullWidth={fullWidth}
         className={classNames(
-          'flex items-center h-16 lg:h-16 justify-between',
+          'flex items-center h-16 justify-between',
           className,
         )}
       >

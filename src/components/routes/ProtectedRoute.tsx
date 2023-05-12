@@ -10,13 +10,19 @@ import Notifications from 'components/organisms/Notifications'
 import useEventListener from 'hooks/useEventListener'
 import { renderSharingLink, cleanSharingLinks } from 'utils/urls/sharingLinks'
 import { getSharingLinks } from 'utils/urls/sharingLinks'
+import Transition, { TransitionProps } from 'components/atoms/Transition'
 
-type Props = {
+interface Props extends TransitionProps {
   children?: React.ReactNode
   onlyRoles: Roles[]
 }
 
-const ProtectedRoute = ({ onlyRoles, children }: Props) => {
+const ProtectedRoute = ({
+  onlyRoles,
+  children,
+  className,
+  onAnimationEnd,
+}: Props) => {
   const navigate = useNavigate()
 
   const redirectToHome = useCallback(() => {
@@ -56,7 +62,10 @@ const ProtectedRoute = ({ onlyRoles, children }: Props) => {
 
   return (
     <>
-      {children ? children : <Outlet />}
+      {children}
+      <Transition className={className} onAnimationEnd={onAnimationEnd}>
+        <Outlet />
+      </Transition>
       <Notifications />
     </>
   )

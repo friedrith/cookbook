@@ -1,75 +1,253 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 // import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import {
+  ArchiveBoxArrowDownIcon,
+  ArrowRightOnRectangleIcon,
+  ExclamationTriangleIcon,
+} from '@heroicons/react/24/outline'
 
+import HttpError from 'models/HttpError'
 import Page from 'components/templates/Page'
 import MainPage from 'components/templates/MainPage'
-import Header from 'components/atoms/FixedHeader'
+import FixedHeader from 'components/atoms/FixedHeader'
+import Header from 'components/atoms/Header'
 // import RecipePreview from 'components/molecules/RecipePreview'
 // import LargeMainPage from 'components/templates/LargeMainPage'
 import BackButton from 'components/molecules/BackButton'
 
-import PreferencesEntry from 'components/organisms/PreferencesEntry'
-import PreferencesSection from 'components/organisms/PreferencesSection'
+import PreferencesEntry from 'features/settings/components/PreferencesEntry'
+import PreferencesSection from 'features/settings/components/PreferencesSection'
+import Select from 'components/atoms/Select'
+import { languages } from 'utils/services/i18n'
+import * as temperatures from 'features/units/temperatures'
+import Button from 'components/atoms/Button'
+import downloadAllRecipes from 'utils/export'
 
+import {
+  getTemperature,
+  setTemperature,
+  getIngredienTemplate,
+  setIngredientTemplate,
+  // deleteAccount,
+  deleteAllRecipes,
+  getAutomaticImport,
+  setAutomaticimport,
+  // logout,
+  getRecipeList,
+} from 'store'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { logout, getCurrentUser } from 'store'
+import { getCurrentUser } from 'store'
+import Switch from 'components/atoms/Switch'
+import useAuthentication from 'features/authentication/hooks/useAuthentication'
+import Modal, { PopupType } from 'components/atoms/Modal'
+import usePopup from 'hooks/usePopup'
+import { track } from 'utils/services/tracking'
+import useSetting from 'hooks/useSetting'
+import Input from 'components/atoms/Input'
+import { ShoppingBagIcon } from '@heroicons/react/20/solid'
 
 const Preferences = () => {
   const dispatch = useAppDispatch()
 
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const user = useAppSelector(getCurrentUser)
+  const temperature = useAppSelector(getTemperature)
 
-  const ref = useRef<HTMLInputElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const recipes = useAppSelector(getRecipeList)
+
+  const automaticImport = useAppSelector(getAutomaticImport)
+
+  const { logout } = useAuthentication()
+
+  const confirmDeleteAccountPopup = usePopup()
+
+  const [error, setError] = useState('')
+
+  const deleteAccountConfirmed = async () => {
+    try {
+      track('DeleteAccount')
+      await dispatch(deleteAllRecipes()).unwrap()
+      // await dispatch(deleteAccount()).unwrap()
+      track('DeleteAccountSuccess')
+      await logout()
+    } catch (error) {
+      const exception = error as HttpError
+      if (exception.code === 'auth/requires-recent-login') {
+        setError('_For security reasons')
+      }
+      track('DeleteAccountError')
+    }
+  }
+
+  const ingredientTemplatePopup = usePopup()
+
+  const [ingredientTemplate, changeIngredientTemplate] = useSetting(
+    getIngredienTemplate,
+    setIngredientTemplate,
+  )
 
   return (
     <Page title={t('_settings')}>
       <MainPage className="flex-1 relative z-10">
         <div className="pt-20">
+          <div ref={ref} />
           <PreferencesSection title="User Interface">
-            <PreferencesEntry />
-            <PreferencesEntry />
-            <PreferencesEntry />
+            <PreferencesEntry title={t('languages.Language')}>
+              <Select
+                id="languages"
+                name="languages"
+                className="mt-1"
+                defaultValue={i18n.language}
+                onChange={language => i18n.changeLanguage(language)}
+                options={languages}
+              />
+            </PreferencesEntry>
+            <PreferencesEntry
+              title={t('settings.temperatures.Temperatures')}
+              description={t('settings.temperatures.Unit in recipes')}
+            >
+              <Select
+                id="temperature"
+                name="temperature"
+                className="mt-1"
+                defaultValue={temperature}
+                onChange={value => dispatch(setTemperature(value))}
+                options={temperatures.choices.map(
+                  ({ label, symbol, value }) => ({
+                    value,
+                    label: `${t(label)} ${symbol}`,
+                  }),
+                )}
+              />
+            </PreferencesEntry>
           </PreferencesSection>
-          <PreferencesSection title="User Interface">
-            <PreferencesEntry />
-            <PreferencesEntry />
-            <PreferencesEntry />
-          </PreferencesSection>
+          <PreferencesSection title={t('import.Import')}>
+            <PreferencesEntry
+              title={t('_Automatic import')}
+              description={t(
+                '_when you click on new recipe with a valid url in your clipboard',
+              )}
+              onClick={async () => {
+                const v = !automaticImport
+                if (v) {
+                  await navigator.clipboard.readText()
+                }
 
-          <dl className="divide-y divide-gray-200">
-            <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4">
-              <dt className="text-sm font-medium text-gray-500">
-                {t('_Account')}
-              </dt>
-              <dd className="mt-1 flex text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                <span className="flex-grow">{user?.email}</span>
-                <span className="ml-4 flex-shrink-0">
-                  <button
-                    onClick={() => dispatch(logout())}
-                    className="bg-white rounded-md font-medium text-purple-600 hover:text-purple-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
-                  >
-                    {t('_Sign out')}
-                  </button>
-                </span>
-              </dd>
-            </div>
-          </dl>
+                dispatch(setAutomaticimport(v))
+              }}
+            >
+              <Switch
+                checked={automaticImport}
+                onChange={async (v: boolean) => {
+                  if (v) {
+                    await navigator.clipboard.readText()
+                  }
+
+                  dispatch(setAutomaticimport(v))
+                }}
+              />
+            </PreferencesEntry>
+          </PreferencesSection>
+          <PreferencesSection title="Advanced">
+            <PreferencesEntry
+              title={t('settings.ingredient template')}
+              description={t('settings.ingredient template description')}
+              onClick={ingredientTemplatePopup.open}
+            >
+              {/* {ingredientTemplate ? ingredientTemplate : '$1'} */}
+            </PreferencesEntry>
+            <Modal
+              open={ingredientTemplatePopup.isOpen}
+              onClose={ingredientTemplatePopup.close}
+              icon={ShoppingBagIcon}
+              type={PopupType.Success}
+              description={t('settings.ingredient template')}
+            >
+              <Input.Black
+                type="text"
+                name="template"
+                id="template"
+                placeholder="$1"
+                value={ingredientTemplate}
+                onChange={changeIngredientTemplate}
+              />
+              <Button.White
+                className="mt-3 w-full"
+                onClick={ingredientTemplatePopup.close}
+              >
+                {t('notifications.Close')}
+              </Button.White>
+            </Modal>
+          </PreferencesSection>
+          <PreferencesSection title="Account">
+            <PreferencesEntry
+              title={t('settings.Export')}
+              description={t('settings.Download all your recipes')}
+              onClick={async () => await downloadAllRecipes(recipes, t)}
+            >
+              <ArchiveBoxArrowDownIcon className="h-6 w-6 ml-2" />
+            </PreferencesEntry>
+            <PreferencesEntry
+              title={t('_Logout')}
+              description={t('settings._You are logged in as', {
+                emailAddress: user?.email,
+              })}
+              onClick={logout}
+            >
+              <ArrowRightOnRectangleIcon className="h-6 w-6 ml-2" />
+            </PreferencesEntry>
+            <PreferencesEntry
+              title={t('_Delete account')}
+              description={t('_This action is definitive.')}
+              onClick={confirmDeleteAccountPopup.open}
+            >
+              <ExclamationTriangleIcon className="h-6 w-6 ml-2 text-orange-400" />
+            </PreferencesEntry>
+          </PreferencesSection>
         </div>
       </MainPage>
-      <Header restRef={ref}>
+      <FixedHeader restRef={ref}>
         {isMaximized => (
-          <>
+          <Header white={isMaximized}>
             <BackButton url="/recipes" basic title={t('_Back to recipes')} />
 
-            <h1 className="text-3xl font-extrabold text-gray-900 pl-4">
+            <h1 className="text-2xl font-extrabold text-gray-900 pl-4">
               {t('_settings')}
             </h1>
+            <div className="flex-1" />
+          </Header>
+        )}
+      </FixedHeader>
+      <Modal
+        open={confirmDeleteAccountPopup.isOpen}
+        onClose={confirmDeleteAccountPopup.close}
+        icon={ExclamationTriangleIcon}
+        type={PopupType.Warning}
+        description={t('_Do you really want to delete your account?')}
+      >
+        {error ? (
+          <span className="text-sm font-bold	">{t(error)}</span>
+        ) : (
+          <>
+            <Button.White
+              className="mb-3 w-full"
+              onClick={confirmDeleteAccountPopup.close}
+            >
+              {t('_Cancel')}
+            </Button.White>
+            <Button.Black
+              className="mb-3 w-full"
+              onClick={deleteAccountConfirmed}
+            >
+              {t('_Delete account')}
+            </Button.Black>
           </>
         )}
-      </Header>
+      </Modal>
     </Page>
   )
 }
