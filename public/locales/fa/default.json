@@ -67,6 +67,7 @@
   "_made simple": "ساده ساخته شده است",
   "_for everybody": "برای همگی",
   "_Cooking your best recipes will be never easier": "[TODO] Cooking your best recipes will never be easier.",
+  "_Home": "[TODO] undefined",
   "shoppingList": {
     "Create shopping list": "لیست خرید بسازید",
     "Close shopping list": "ایست خرید را ببندید",
@@ -82,6 +83,7 @@
     "_Saving in progress...": "[TODO] Saving in progress",
     "_No need to save manually. Everything is saved in really time.": "[TODO] _No need to save manually. Everything is saved in really time."
   },
+  "_Recipes": "[TODO] undefined",
   "_Beta": "بتا",
   "_Alpha": "آلفا",
   "_Edit Recipe": "ویرایش دستور پخت",
@@ -99,11 +101,14 @@
   "_CookBook is in alpha": "کتاب آشپزی در حال حاضر در نسخه آلفا است. این بدان معنی است که ممکن است دارای اشکالات کمی باشد و برای استفاده برای همه آماده نیست. برای کمک به نهایی کردن کتاب آشپزی، دسترسی به این نسخه برای شما ارسال شد.",
   "_Please do not sent it to anyone else without the authorization of the author of CookBook": "لطفاً آن را بدون اجازه نویسنده کتاب آشپزی برای شخص دیگری ارسال نکنید",
   "_Settings": "تنظیمات",
+  "_Email": "[TODO] undefined",
   "languages": {
     "Language": "زبان"
   },
   "settings": {
     "temperatures": {
+      "Temperatures": "[TODO] undefined",
+      "Unit in recipes": "[TODO] undefined",
       "Temperatures unit in recipes": "واحد دما در دستور پخت ها",
       "keepUnchanged": "تغییر ندهید",
       "Farenheit": "فارنهایت",
@@ -115,10 +120,12 @@
       "International system": "سیستم بین المللی"
     },
     "ingredient template": "الگوی مواد اولیه در لیست خرید",
+    "ingredient template description": "[TODO] undefined",
     "Show advanced": "تنظیمات پیشرفته را نشان دهید",
     "Hide advanced": "تنظیمات پیشرفته را مخفی کنید",
     "Export": "صادر کردن",
-    "Download all your recipes": "دانلود همه دستور پخت ها"
+    "Download all your recipes": "دانلود همه دستور پخت ها",
+    "_You are logged in as": "[TODO] undefined"
   },
   "import": {
     "Import from a recipe catalog": "وارد کردن از یک وب سایت",
@@ -140,6 +147,7 @@
   "_See the official websites": "وب سایت هایی که به طور رسمی پشتیبانی می شوند را ببینید",
   "_Automatic import": "وارد کردن خودکار",
   "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "اگر روی دستور جدید با یک آدرس اینترنتی معتبر در کلیپ بورد خود کلیک کنید، به طور خودکار وارد می شود",
+  "_when you click on new recipe with a valid url in your clipboard": "[TODO] undefined",
   "_Focus Mode": "حالت پخت و پز",
   "Toggle focus mode": "تغییر حالت پخت و پز",
   "focusMode": {
@@ -154,8 +162,9 @@
     "Say next to Move to the next step": "برای رفتن به مرحله بعدی، قوی بگویید «Next».",
     "Make a thumbs up": "برای حرکت به مرحله بعدی، یک حرکت قوی با شست انجام دهید.",
     "Voice recognition not supported by your browser": "تشخیص صدا توسط مرورگر شما پشتیبانی نمی شود",
-    "While the focus mode is activated, your device still stay awake": "در حالت پخت و پز، دستگاه شما هرگز به خواب نمی رود، بنابراین می توانید مراحل را به راحتی دنبال کنید.",
-    "Activate": "فعال کردن حالت آشپزی"
+    "Your device will not go to sleep": "Votre écran ne s'éteindra pas",
+    "Activate": "فعال کردن حالت آشپزی",
+    "While the focus mode is activated, your device still stay awake": "در حالت پخت و پز، دستگاه شما هرگز به خواب نمی رود، بنابراین می توانید مراحل را به راحتی دنبال کنید."
   },
   "CookBook officially support recipe import from the following websites": ":رسما از وارد کردن دستور غذا از وب سایت های زیر پشتیبانی می کند CookBook",
   "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "با این حال، ممکن است وارد کردن از وب سایت های دیگر که حاوی دستور پخت هایی هستند نیز کارساز باشد. اگر دستور پخت شما با موفقیت وارد نشد، با نوشتن a به ما اطلاع دهید",
@@ -167,7 +176,7 @@
   "_Import this recipe in CookBook": "[TODO] Import this recipe in CookBook",
   "Categories": "[TODO] Categories:",
   "_Save new recipe": "ذخیره سازی",
-  "_Category's Recipes": "[TODO] Les recettes \"{{category}}",
+  "_Category's Recipes": "[TODO] Les recettes \\\"{{category}}\\",
   "_How to add categories?": "[TODO] Comment ajouter des catégories ?",
   "_Some categories are not used": "[TODO] CookBook includes {{categoriesCount}} more categories you are not using:",
   "_They could help you to find your recipes even easier": "[TODO] They could help you to find your recipes even easier.",

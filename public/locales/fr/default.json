@@ -41,7 +41,7 @@
   "_Go back home": "Retourner à la page d'accueil",
   "_delete recipe": "Supprimer Recette",
   "_duplicate recipe": "Dupliquer Recette",
-  "_Recipe deleted": "Recette \"{{recipeName}}\" supprimée",
+  "_Recipe deleted": "Recette \\\"{{recipeName}}\\\" supprimée",
   "_Undo": "Annuler",
   "_Saving": "Sauvegarde...",
   "_Share Recipe": "Partager",
@@ -67,6 +67,7 @@
   "_made simple": "rendu simple",
   "_for everybody": "pour tout le monde",
   "_Cooking your best recipes will be never easier": "Cuisiner votre meilleures recettes ne sera jamais aussi simple.",
+  "_Home": "Accueil",
   "shoppingList": {
     "Create shopping list": "Créer une liste de courses",
     "Close shopping list": "Fermer la liste de courses",
@@ -82,6 +83,7 @@
     "_Saving in progress...": "Sauvegarde en cours...",
     "_No need to save manually. Everything is saved in really time.": "Pas besoin de sauvarder manuellement. Tout est déjà sauvegardé en temps réel."
   },
+  "_Recipes": "Recettes",
   "_Beta": "Beta",
   "_Alpha": "Alpha",
   "_Edit Recipe": "Modifier la recette",
@@ -99,11 +101,14 @@
   "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.",
   "_Please do not sent it to anyone else without the authorization of the author of CookBook": "S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.",
   "_Settings": "Compte",
+  "_Email": "Email",
   "languages": {
     "Language": "Langue"
   },
   "settings": {
     "temperatures": {
+      "Temperatures": "Températures",
+      "Unit in recipes": "Unités dans les recettes",
       "Temperatures unit in recipes": "Unités de température dans les recettes",
       "keepUnchanged": "Ne pas changer",
       "Farenheit": "Farenheit",
@@ -115,10 +120,12 @@
       "International system": "International system (ml, kg, etc.)"
     },
     "ingredient template": "Template for ingredients in shopping list",
+    "ingredient template description": "Les ingrédients sont réécrits pour fonctionner dans votre todo app favorites lorsque partagés.",
     "Show advanced": "Afficher paramètres avancés",
     "Hide advanced": "Cacher paramètres avancés",
     "Export": "Exporter",
-    "Download all your recipes": "Télécharger toutes les recettes"
+    "Download all your recipes": "Télécharger toutes les recettes",
+    "_You are logged in as": "Vous êtes connectés en tant que {{emailAddress}}"
   },
   "import": {
     "Import from a recipe catalog": "Importer depuis un site internet",
@@ -140,6 +147,7 @@
   "_See the official websites": "Voir les sites internet officiellement supportés.",
   "_Automatic import": "Import automatique",
   "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "Si vous cliquer sur nouvelle recette avec une url valide dans le presse-papier, elle sera automatiquement importée.",
+  "_when you click on new recipe with a valid url in your clipboard": "[TODO] undefined",
   "_Focus Mode": "Mode cuisine",
   "Toggle focus mode": "Activer/désactiver mode cuisine",
   "focusMode": {
@@ -151,11 +159,12 @@
     "Voice control": "Contrôle par la voix",
     "Gesture control": "Contrôle par les gestes",
     "Controls settings": "Préférence des contrôles",
-    "Say next to Move to the next step": "Dites <strong>\"Suivant\"</strong> pour passer à la prochaines étape.",
+    "Say next to Move to the next step": "Dites <strong>\\\"Suivant\\\"</strong> pour passer à la prochaines étape.",
     "Make a thumbs up": "Faire <strong>pouce levé</strong> pour paser à la prochaine étape.",
     "Voice recognition not supported by your browser": "La reconnaissance vocale n'est pas reconnue par votre navigateur.",
-    "While the focus mode is activated, your device still stay awake": "Dans le mode cuisine, votre appareil ne se mettra pas en veille pour que vous puissiez suivre facilement les étapes.",
-    "Activate": "Active Cooking mode"
+    "Your device will not go to sleep": "TODO",
+    "Activate": "Activer Mode Cuisine",
+    "While the focus mode is activated, your device still stay awake": "Dans le mode cuisine, votre appareil ne se mettra pas en veille pour que vous puissiez suivre facilement les étapes."
   },
   "CookBook officially support recipe import from the following websites": "CookBook supporte officiellement l'import de recettes provenant des sites internet suivants:",
   "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "Cependant l'import depuis d'autres sites internet contenant des recettes peut fonctionner. Si votre recette n'a pas été importée avec succès, faites le nous savoir en écrivant une ",
@@ -167,7 +176,7 @@
   "_Import this recipe in CookBook": "Importer cette recette avec le lien suivant : {{link}}",
   "Categories": "Categories:",
   "_Save new recipe": "Sauvegarder",
-  "_Category's Recipes": "Les recettes \"{{category}}\"",
+  "_Category's Recipes": "Les recettes \\\"{{category}}\\\"",
   "_How to add categories?": "Comment ajouter des catégories ?",
   "_Some categories are not used": "CookBook a {{categoriesCount}} autres catégories que vous n'utilisez pas:",
   "_They could help you to find your recipes even easier": "Elles pourraient vous aider à trouver vos recettes plus facilement.",

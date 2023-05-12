@@ -60,13 +60,15 @@ const convertToCSV = async () => {
     const line = [
       namespace,
       path,
-      ...allLocales.map(l => locales[l] ?? 'undefined'),
+      ...allLocales.map(l => locales[l] ?? '[TODO] undefined'),
     ]
 
     worksheet.push(line)
   }
 
-  const csv = worksheet.map(r => r.map(l => `"${l}"`).join(',')).join('\n')
+  const csv = worksheet
+    .map(r => r.map(l => `"${l.replace(/"/g, '\\"')}"`).join(','))
+    .join('\n')
 
   process.stdout.write(csv)
 }
