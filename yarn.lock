@@ -1719,37 +1719,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@clerk/clerk-react@npm:^4.12.4":
-  version: 4.12.4
-  resolution: "@clerk/clerk-react@npm:4.12.4"
+"@clerk/clerk-react@npm:^4.15.4":
+  version: 4.15.4
+  resolution: "@clerk/clerk-react@npm:4.15.4"
   dependencies:
-    "@clerk/shared": ^0.13.1
-    "@clerk/types": ^3.30.1
+    "@clerk/shared": ^0.15.7
+    "@clerk/types": ^3.36.0
     swr: 1.3.0
     tslib: 2.4.1
   peerDependencies:
     react: ">=16"
-    react-dom: ">=16"
-  checksum: fa39c6ab68fcb2ffe2b00259a73aeda784d87334aa8cdeadd427ae24908cf32270b2a6dd51469f704762426533adce8731ce741cac4995ee6a17b9ec5518c904
+  checksum: e843aa1f613fd65cd3d5e5cb2311dc5c5355e158bf67255761b16a61fdc4507568a8cbeb98190a604442a6f903063d3415eee6967b8950737a30c10ad926e0f4
   languageName: node
   linkType: hard
 
-"@clerk/shared@npm:^0.13.1":
-  version: 0.13.1
-  resolution: "@clerk/shared@npm:0.13.1"
+"@clerk/shared@npm:^0.15.7":
+  version: 0.15.7
+  resolution: "@clerk/shared@npm:0.15.7"
   peerDependencies:
     react: ">=16"
-    react-dom: ">=16"
-  checksum: 685e8c97763e11eafb2dbab794adcf31a89b5f220cc9f0da9abb34838788f4b1addce3fccb12981edb89d5f6907547bf06abb6fc1b75078d51cf48fcab9fda39
-  languageName: node
-  linkType: hard
-
-"@clerk/types@npm:^3.30.1":
-  version: 3.30.1
-  resolution: "@clerk/types@npm:3.30.1"
-  dependencies:
-    csstype: 3.1.1
-  checksum: b86aa9f07217363e969378854a3887c4128fa768e31be13404263acbf3928b92c4445e75ed8bc093a7fec55597e7c761949017bf0dc6646547edc7c7da73a79a
+  checksum: 9159e3c1696d1df29e63cbb4c7a91c54cbbe73b5121f2037c77b72e94892599a93bd9dbe5851fed2bca5fc4b6f1c3cc7da1f6d17852a7a088aa70e9204e42555
   languageName: node
   linkType: hard
 
@@ -1759,6 +1748,15 @@ __metadata:
   dependencies:
     csstype: 3.1.1
   checksum: 18d16174617fb00124b9683a24cf441e4dbef63e6c4fe7bac802aa987a27b4e19b6b398f2a8d8d650e7698e3f4aaed773317ba4dffc788ad3f469e44d5711e58
+  languageName: node
+  linkType: hard
+
+"@clerk/types@npm:^3.36.0":
+  version: 3.36.0
+  resolution: "@clerk/types@npm:3.36.0"
+  dependencies:
+    csstype: 3.1.1
+  checksum: 1732f1d13ecdd0995f97c52b8fabd883c5ac5c814aebe423b1948d33789198642fec448a34d75732aea186e9c30c20c7f90af7174481b41d02ca91dbdb72bd83
   languageName: node
   linkType: hard
 
@@ -6366,7 +6364,7 @@ __metadata:
   resolution: "cookbook@workspace:."
   dependencies:
     "@axe-core/playwright": ^4.6.1
-    "@clerk/clerk-react": ^4.12.4
+    "@clerk/clerk-react": ^4.15.4
     "@clerk/types": ^3.31.0
     "@commitlint/cli": ^17.5.1
     "@commitlint/config-conventional": ^17.4.4
