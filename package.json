@@ -12,19 +12,19 @@
     "start": "parcel",
     "build": "parcel build",
     "test": "jest",
-    "test:e2e": "yarn playwright test",
+    "test:e2e": "pnpm playwright test",
     "serve": "npx serve -s build",
     "lint": "eslint --max-warnings=0 ./src/**/*.tsx ./public/locales/**/*.json",
     "format": "prettier --check .",
     "commitlint": "commitlint --from=c70a78dd8d08a2d528f0a1d2876070b879e17805",
-    "precommit": "yarn lint && yarn format && yarn test --watchAll=false && yarn build"
+    "precommit": "pnpm lint && pnpm format && pnpm test && pnpm build"
   },
   "eslintIgnore": [
     "build",
     "node_modules"
   ],
   "simple-git-hooks": {
-    "pre-commit": "yarn precommit"
+    "pre-commit": "pnpm precommit"
   },
   "alias": {
     "process": "process/browser.js",
