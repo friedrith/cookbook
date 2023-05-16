@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router'
+import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 
