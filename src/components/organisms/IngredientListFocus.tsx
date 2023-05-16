@@ -3,17 +3,17 @@
 // import { ShoppingBagIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
 
-import { FormattedRecipe } from 'types/Recipe'
-// import usePopup from 'hooks/usePopup'
-import Ingredient from 'models/Ingredient'
-// import SectionTitle from 'components/atoms/SectionTitle'
-import renderMeasure from 'utils/renderMeasure'
-// import Button from 'components/atoms/Button'
-// import renderIngredients from 'utils/render/renderIngredients'
-// import { canShare, share, isShared, isCopiedToClipboard } from 'utils/share'
-import { useAppSelector } from 'hooks/redux'
-import { getRecipe } from 'store'
-// import waitFor from 'utils/waitFor'
+import { FormattedRecipe } from '~/src/types/Recipe'
+// import usePopup from '~/src/hooks/usePopup'
+import Ingredient from '~/src/models/Ingredient'
+// import SectionTitle from '~/src/components/atoms/SectionTitle'
+import renderMeasure from '~/src/utils/renderMeasure'
+// import Button from '~/src/components/atoms/Button'
+// import renderIngredients from '~/src/utils/render/renderIngredients'
+// import { canShare, share, isShared, isCopiedToClipboard } from '~/src/utils/share'
+import { useAppSelector } from '~/src/hooks/redux'
+import { getRecipe } from '~/src/store/index'
+// import waitFor from '~/src/utils/waitFor'
 
 type Props = {
   recipe: FormattedRecipe

@@ -2,19 +2,22 @@ import { useTranslation } from 'react-i18next'
 import { useState, useEffect } from 'react'
 import { BoltIcon } from '@heroicons/react/24/solid'
 
-import { FormattedRecipe } from 'types/Recipe'
-import Step from 'models/Step'
-import StepItem from 'features/steps/components/StepItem'
-import SectionTitle from 'components/atoms/SectionTitle'
-import { getStepsWithIngredients } from 'features/steps/utils/parseStep'
-import Toggle from 'components/atoms/Toggle'
-import SectionAction from 'components/atoms/SectionAction'
-import usePopup from 'hooks/usePopup'
-import Modal, { PopupType } from 'components/atoms/Modal'
-import Button from 'components/atoms/Button'
-import { releaseWakeLock, requestWakeLock } from 'utils/services/wakeLock'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { cookingModeActivated, getCookingModeActivatedOnce } from 'store'
+import { FormattedRecipe } from '~/src/types/Recipe'
+import Step from '~/src/models/Step'
+import StepItem from '~/src/features/steps/components/StepItem'
+import SectionTitle from '~/src/components/atoms/SectionTitle'
+import { getStepsWithIngredients } from '~/src/features/steps/utils/parseStep'
+import Toggle from '~/src/components/atoms/Toggle'
+import SectionAction from '~/src/components/atoms/SectionAction'
+import usePopup from '~/src/hooks/usePopup'
+import Modal, { PopupType } from '~/src/components/atoms/Modal'
+import Button from '~/src/components/atoms/Button'
+import { releaseWakeLock, requestWakeLock } from '~/src/utils/services/wakeLock'
+import { useAppDispatch, useAppSelector } from '~/src/hooks/redux'
+import {
+  cookingModeActivated,
+  getCookingModeActivatedOnce,
+} from '~/src/store/index'
 
 type Props = {
   recipe: FormattedRecipe

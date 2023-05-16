@@ -11,13 +11,13 @@ import {
 import {
   findRecipeImportUrlStatus,
   ImportUrlStatus,
-} from 'features/recipes/utils/findRecipeImportUrlStatus'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { getAutomaticImport, importRecipe } from 'store'
-import PrimaryLoadingSpinner from 'components/molecules/PrimaryLoadingSpinner'
-import { getOfficialWebsites } from 'features/landing/officialWebsites'
-import Button from 'components/atoms/Button'
-import { track } from 'utils/services/tracking'
+} from '~/src/features/recipes/utils/findRecipeImportUrlStatus'
+import { useAppDispatch, useAppSelector } from '~/src/hooks/redux'
+import { getAutomaticImport, importRecipe } from '~/src/store/index'
+import PrimaryLoadingSpinner from '~/src/components/molecules/PrimaryLoadingSpinner'
+import { getOfficialWebsites } from '~/src/features/landing/officialWebsites'
+import Button from '~/src/components/atoms/Button'
+import { track } from '~/src/utils/services/tracking'
 
 type Props = {
   onHelpRequest?: () => void

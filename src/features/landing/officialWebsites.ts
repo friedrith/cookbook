@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import type { RootState } from 'store'
+import type { RootState } from '~/src/store/index'
 
-import * as officialWebsitesApi from 'features/landing/officialWebsites.api'
+import * as officialWebsitesApi from '~/src/features/landing/officialWebsites.api'
 
 export interface OfficialWebsitesState {
   list: string[]

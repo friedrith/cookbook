@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
 
-import Modal from 'components/atoms/Modal'
-import { useAppSelector } from 'hooks/redux'
-import { getOfficialWebsites } from 'features/landing/officialWebsites'
-import Button from 'components/atoms/Button'
+import Modal from '~/src/components/atoms/Modal'
+import { useAppSelector } from '~/src/hooks/redux'
+import { getOfficialWebsites } from '~/src/features/landing/officialWebsites'
+import Button from '~/src/components/atoms/Button'
 
 type Props = {
   open: boolean

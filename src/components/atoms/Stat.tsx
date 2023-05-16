@@ -1,7 +1,7 @@
 import { ClockIcon, UsersIcon } from '@heroicons/react/24/outline'
 
-import Measure from 'models/Measure'
-import renderMeasure from 'utils/renderMeasure'
+import Measure from '~/src/models/Measure'
+import renderMeasure from '~/src/utils/renderMeasure'
 
 type Props = {
   measure: Measure

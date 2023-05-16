@@ -1,17 +1,41 @@
 const path = require('path')
 
 module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    browser: true,
+    node: true,
+  },
+  env: {
+    es6: true,
+    amd: true,
+    node: true,
+  },
   extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
     'prettier',
-    'react-app',
-    'react-app/jest',
     'plugin:jsx-a11y/recommended',
     'plugin:i18next/recommended',
     'plugin:i18n-json/recommended',
     'plugin:sonarjs/recommended',
+    'plugin:json/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
-  plugins: ['prettier', 'jsx-a11y', 'i18next', 'sonarjs'],
+  plugins: [
+    'react',
+    'prettier',
+    'jsx-a11y',
+    'i18next',
+    'sonarjs',
+    '@typescript-eslint',
+  ],
   rules: {
+    'react/react-in-jsx-scope': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'i18n-json/sorted-keys': 'off',
     'i18n-json/valid-message-syntax': 'off',
@@ -27,6 +51,12 @@ module.exports = {
       files: ['**/__tests__/**/*'],
       rules: {
         'i18next/no-literal-string': 0,
+      },
+    },
+    {
+      files: ['*.js', '*.jsx'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
       },
     },
     {
@@ -47,5 +77,11 @@ module.exports = {
   ],
   globals: {
     plausible: 'readonly',
+  },
+  settings: {
+    'import/resolver': 'parcel',
+    react: {
+      version: 'detect', // React version. "detect" automatically picks the version you have installed.
+    },
   },
 }

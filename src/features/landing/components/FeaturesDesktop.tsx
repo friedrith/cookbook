@@ -4,9 +4,9 @@ import { useDebouncedCallback } from 'use-debounce'
 import { Tab } from '@headlessui/react'
 import { useTranslation } from 'react-i18next'
 
-import usePrevious from 'hooks/usePrevious'
-import PhoneFrame from 'components/atoms/PhoneFrame'
-import CircleBackground from 'components/atoms/CircleBackground'
+import usePrevious from '~/src/hooks/usePrevious'
+import PhoneFrame from '~/src/components/atoms/PhoneFrame'
+import CircleBackground from '~/src/components/atoms/CircleBackground'
 
 import features from './features'
 

@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next'
 
-import Container from 'components/atoms/Container'
-import CircleBackground from 'components/atoms/CircleBackground'
-import Button from 'components/atoms/Button'
-import { getCurrentUser } from 'store'
-import { useAppSelector } from 'hooks/redux'
+import Container from '~/src/components/atoms/Container'
+import CircleBackground from '~/src/components/atoms/CircleBackground'
+import Button from '~/src/components/atoms/Button'
+import { getCurrentUser } from '~/src/store/index'
+import { useAppSelector } from '~/src/hooks/redux'
 
 const CallToAction = () => {
   const { t } = useTranslation('marketing')

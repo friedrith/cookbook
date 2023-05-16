@@ -1,9 +1,13 @@
 import { useEffect } from 'react'
 
-import { useAppSelector } from 'hooks/redux'
-import Roles, { hasOneOfRoles } from 'models/Roles'
+import { useAppSelector } from '~/src/hooks/redux'
+import Roles, { hasOneOfRoles } from '~/src/models/Roles'
 
-import { getCurrentUser, isUserLoggedIn, isUserLoggedOut } from 'store'
+import {
+  getCurrentUser,
+  isUserLoggedIn,
+  isUserLoggedOut,
+} from '~/src/store/index'
 
 const useWhenLoggedOut = (callback = () => {}, onlyRoles: Roles[]) => {
   const currentUser = useAppSelector(getCurrentUser)

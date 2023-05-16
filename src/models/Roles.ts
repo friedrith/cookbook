@@ -1,4 +1,4 @@
-import User from 'features/authentication/types/User'
+import User from '~/src/features/authentication/types/User'
 
 enum Roles {
   Admin,

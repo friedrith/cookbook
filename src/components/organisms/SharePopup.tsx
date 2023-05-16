@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'types/Recipe'
-import Modal, { PopupType } from 'components/atoms/Modal'
-import { isCopiedToClipboard, shareText, isShared } from 'utils/services/share'
-import waitFor from 'utils/waitFor'
-import renderTextRecipe from 'features/recipes/utils/renderTextRecipe'
-import Button from 'components/atoms/Button'
-import TextArea from 'components/atoms/TextArea'
-import ShareIcon from 'assets/ShareIcon'
+import Recipe from '~/src/types/Recipe'
+import Modal, { PopupType } from '~/src/components/atoms/Modal'
+import {
+  isCopiedToClipboard,
+  shareText,
+  isShared,
+} from '~/src/utils/services/share'
+import waitFor from '~/src/utils/waitFor'
+import renderTextRecipe from '~/src/features/recipes/utils/renderTextRecipe'
+import Button from '~/src/components/atoms/Button'
+import TextArea from '~/src/components/atoms/TextArea'
+import ShareIcon from '~/src/assets/ShareIcon'
 
 type Props = {
   open: boolean

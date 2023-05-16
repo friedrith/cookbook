@@ -1,15 +1,15 @@
 import { useMemo } from 'react'
 import { unescape } from 'lodash'
 
-import Ingredient from 'models/Ingredient'
-import { replaceUrlsByLinks } from 'features/steps/utils/parseStep'
-import { useAppSelector } from 'hooks/redux'
-import { getTemperature } from 'store'
-import convertTemperature from 'features/units/utils/convertTemperature'
-import IngredientBadge from 'features/ingredients/components/IngredientBadge'
-import findDurations from 'features/timers/utils/findDurations'
-import DurationBadge from 'features/timers/components/DurationBadge'
-import { enabled } from 'utils/services/features'
+import Ingredient from '~/src/models/Ingredient'
+import { replaceUrlsByLinks } from '~/src/features/steps/utils/parseStep'
+import { useAppSelector } from '~/src/hooks/redux'
+import { getTemperature } from '~/src/store/index'
+import convertTemperature from '~/src/features/units/utils/convertTemperature'
+import IngredientBadge from '~/src/features/ingredients/components/IngredientBadge'
+import findDurations from '~/src/features/timers/utils/findDurations'
+import DurationBadge from '~/src/features/timers/components/DurationBadge'
+import { enabled } from '~/src/utils/services/features'
 
 type PropsGeneric = {
   className?: string

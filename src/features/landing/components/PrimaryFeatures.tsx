@@ -1,4 +1,4 @@
-import Container from 'components/atoms/Container'
+import Container from '~/src/components/atoms/Container'
 import { useTranslation } from 'react-i18next'
 import FeaturesDesktop from './FeaturesDesktop'
 import FeaturesMobile from './FeaturesMobile'

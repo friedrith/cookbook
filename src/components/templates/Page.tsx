@@ -3,9 +3,9 @@ import ReactTooltip from 'react-tooltip'
 import { useTranslation } from 'react-i18next'
 import { Helmet } from 'react-helmet-async'
 
-import { isMobile } from 'utils/platforms/mobile'
-import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
-import useEventListener from 'hooks/useEventListener'
+import { isMobile } from '~/src/utils/platforms/mobile'
+import useIsStandalonePWA from '~/src/hooks/useIsStandalonePWA'
+import useEventListener from '~/src/hooks/useEventListener'
 
 type Props = {
   className?: string

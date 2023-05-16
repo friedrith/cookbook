@@ -2,17 +2,17 @@ import { useState, useRef, forwardRef, ForwardedRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { PhotoIcon } from '@heroicons/react/24/outline'
 
-import { storeFile } from 'utils/services/firebase'
-import TextArea from 'components/atoms/TextArea'
-import ImageBanner from 'components/molecules/ImageBanner'
-import Container from 'components/atoms/Container'
-import Box from 'components/atoms/Box'
-import SectionTitle from 'components/atoms/SectionTitle'
-import ImageUploader from 'components/molecules/ImageUploader'
-import Recipe from 'types/Recipe'
-import Button from 'components/atoms/Button'
+import { storeFile } from '~/src/utils/services/firebase'
+import TextArea from '~/src/components/atoms/TextArea'
+import ImageBanner from '~/src/components/molecules/ImageBanner'
+import Container from '~/src/components/atoms/Container'
+import Box from '~/src/components/atoms/Box'
+import SectionTitle from '~/src/components/atoms/SectionTitle'
+import ImageUploader from '~/src/components/molecules/ImageUploader'
+import Recipe from '~/src/types/Recipe'
+import Button from '~/src/components/atoms/Button'
 
-import KeywordsEditor from 'features/categories/components/KeywordsEditor'
+import KeywordsEditor from '~/src/features/categories/components/KeywordsEditor'
 
 type Props = {
   recipe: Recipe

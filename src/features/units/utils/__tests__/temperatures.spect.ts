@@ -1,4 +1,4 @@
-import Temperature from 'features/units/types/Temperature'
+import Temperature from '~/src/features/units/types/Temperature'
 import convertTemperature from '../convertTemperature'
 
 const preheatInCelsius = 'Preheat the oven at 190°C'

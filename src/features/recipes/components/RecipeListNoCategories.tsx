@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'types/Recipe'
-import RecipeListSection from 'features/recipes/components/RecipeListSection'
+import Recipe from '~/src/types/Recipe'
+import RecipeListSection from '~/src/features/recipes/components/RecipeListSection'
 
 interface Props {
   recipes: Recipe[]

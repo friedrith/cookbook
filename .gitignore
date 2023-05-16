@@ -43,3 +43,7 @@ firebase-debug.log
 
 
 *.csv
+
+.cache
+dist
+.parcel-cache

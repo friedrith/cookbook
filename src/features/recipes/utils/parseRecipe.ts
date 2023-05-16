@@ -1,8 +1,8 @@
-import Recipe, { FormattedRecipe } from 'types/Recipe'
-import Ingredient from 'models/Ingredient'
-import parseIngredient from 'features/ingredients/utils/parseIngredient'
+import Recipe, { FormattedRecipe } from '~/src/types/Recipe'
+import Ingredient from '~/src/models/Ingredient'
+import parseIngredient from '~/src/features/ingredients/utils/parseIngredient'
 import parseLines from '../../../utils/parseLines'
-import cleanKeywords from 'features/categories/utils/cleanKeywords'
+import cleanKeywords from '~/src/features/categories/utils/cleanKeywords'
 
 export const parseStep = (step: string, ingredients: Ingredient[]) => ({
   description: step,

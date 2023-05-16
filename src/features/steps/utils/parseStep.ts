@@ -1,8 +1,8 @@
-import findIngredientPosition from 'features/ingredients/utils/findIngredientPosition'
-import Ingredient, { areEqual } from 'models/Ingredient'
-import shortenIngredientName from 'features/ingredients/utils/shortenIngredientName'
-import { FormattedRecipe } from 'types/Recipe'
-import Step from 'models/Step'
+import findIngredientPosition from '~/src/features/ingredients/utils/findIngredientPosition'
+import Ingredient, { areEqual } from '~/src/models/Ingredient'
+import shortenIngredientName from '~/src/features/ingredients/utils/shortenIngredientName'
+import { FormattedRecipe } from '~/src/types/Recipe'
+import Step from '~/src/models/Step'
 
 const expression =
   /((http:\/\/|https:\/\/|)[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?)/gi

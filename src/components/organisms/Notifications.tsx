@@ -1,9 +1,13 @@
 import { createPortal } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 
-import Notification from 'components/molecules/Notification'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { getRecipesToDelete, cancelDeletion, confirmDeletion } from 'store'
+import Notification from '~/src/components/molecules/Notification'
+import { useAppDispatch, useAppSelector } from '~/src/hooks/redux'
+import {
+  getRecipesToDelete,
+  cancelDeletion,
+  confirmDeletion,
+} from '~/src/store/index'
 
 const Notifications = () => {
   const dispatch = useAppDispatch()

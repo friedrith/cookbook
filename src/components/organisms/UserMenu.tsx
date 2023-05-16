@@ -10,20 +10,20 @@ import {
   CogIcon,
 } from '@heroicons/react/24/outline'
 
-import { isMobile } from 'utils/platforms/mobile'
+import { isMobile } from '~/src/utils/platforms/mobile'
 import {
   getPWAInstallationPrompt,
   resetPWAInstallationPrompt,
-} from 'utils/platforms/pwa'
-import MenuItem from 'components/atoms/MenuItem'
-import Menu from 'components/atoms/Menu'
+} from '~/src/utils/platforms/pwa'
+import MenuItem from '~/src/components/atoms/MenuItem'
+import Menu from '~/src/components/atoms/Menu'
 
-import useBeforeInstallPrompt from 'hooks/useBeforeInstallPrompt'
-import useIsStandalonePWA from 'hooks/useIsStandalonePWA'
-import HelpPopup from 'components/organisms/HelpPopup'
-import usePopup from 'hooks/usePopup'
+import useBeforeInstallPrompt from '~/src/hooks/useBeforeInstallPrompt'
+import useIsStandalonePWA from '~/src/hooks/useIsStandalonePWA'
+import HelpPopup from '~/src/components/organisms/HelpPopup'
+import usePopup from '~/src/hooks/usePopup'
 import SettingsPopup from './SettingsPopup'
-import useAuthentication from 'features/authentication/hooks/useAuthentication'
+import useAuthentication from '~/src/features/authentication/hooks/useAuthentication'
 
 const UserMenu = () => {
   const { t } = useTranslation()

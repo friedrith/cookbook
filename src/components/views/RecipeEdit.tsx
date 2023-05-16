@@ -4,18 +4,18 @@ import { TrashIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
 
-import { useAppSelector, useAppDispatch } from 'hooks/redux'
-import Page from 'components/templates/Page'
-import RecipeEditor from 'features/recipes/components/RecipeEditor'
-import SavingIndicator from 'components/molecules/SavingIndicator'
-import FixedHeader from 'components/atoms/FixedHeader'
-import Header from 'components/atoms/Header'
-import RecipeHeader from 'components/molecules/RecipeHeader'
-import Recipe from 'types/Recipe'
-import NotFound404 from 'components/views/NotFound404'
-import Loading from 'components/views/Loading'
-import Button from 'components/atoms/Button'
-import BackButton from 'components/molecules/BackButton'
+import { useAppSelector, useAppDispatch } from '~/src/hooks/redux'
+import Page from '~/src/components/templates/Page'
+import RecipeEditor from '~/src/features/recipes/components/RecipeEditor'
+import SavingIndicator from '~/src/components/molecules/SavingIndicator'
+import FixedHeader from '~/src/components/atoms/FixedHeader'
+import Header from '~/src/components/atoms/Header'
+import RecipeHeader from '~/src/components/molecules/RecipeHeader'
+import Recipe from '~/src/types/Recipe'
+import NotFound404 from '~/src/components/views/NotFound404'
+import Loading from '~/src/components/views/Loading'
+import Button from '~/src/components/atoms/Button'
+import BackButton from '~/src/components/molecules/BackButton'
 
 import {
   getRecipe,
@@ -23,8 +23,8 @@ import {
   addRecipeToDeleteQueue,
   areRecipesFetched,
   addRecipe,
-} from 'store'
-import duplicateName from 'features/recipes/utils/duplicateName'
+} from '~/src/store/index'
+import duplicateName from '~/src/features/recipes/utils/duplicateName'
 
 const RecipeEdit = () => {
   const { recipeId } = useParams()

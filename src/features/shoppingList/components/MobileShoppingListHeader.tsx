@@ -1,7 +1,7 @@
 /* eslint-disable i18next/no-literal-string */
 import React from 'react'
 
-import Header from 'components/atoms/Header'
+import Header from '~/src/components/atoms/Header'
 import { useTranslation } from 'react-i18next'
 
 const MobileShoppingListHeader: React.FC = props => {

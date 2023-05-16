@@ -1,16 +1,16 @@
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
-import Button from 'components/atoms/Button'
-import { getCurrentUser } from 'store'
-import { useAppSelector } from 'hooks/redux'
-import Container from 'components/atoms/Container'
-import BackgroundIllustration from 'features/landing/components/BackgroundIllustration'
-import PhoneFrame from 'components/atoms/PhoneFrame'
+import Button from '~/src/components/atoms/Button'
+import { getCurrentUser } from '~/src/store/index'
+import { useAppSelector } from '~/src/hooks/redux'
+import Container from '~/src/components/atoms/Container'
+import BackgroundIllustration from '~/src/features/landing/components/BackgroundIllustration'
+import PhoneFrame from '~/src/components/atoms/PhoneFrame'
 
-import appDemo from 'assets/app.png'
-import { isWebview } from 'utils/platforms/mobile'
-import { openBrowserWindow } from 'utils/platforms/window'
+import appDemo from '~/src/assets/app.png'
+import { isWebview } from '~/src/utils/platforms/mobile'
+import { openBrowserWindow } from '~/src/utils/platforms/window'
 
 const AppDemo = () => (
   <img className="absolute inset-0" src={appDemo} alt="App demo" />

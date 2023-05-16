@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'types/Recipe'
-import RecipeListSection from 'features/recipes/components/RecipeListSection'
+import Recipe from '~/src/types/Recipe'
+import RecipeListSection from '~/src/features/recipes/components/RecipeListSection'
 
-import { useAppSelector } from 'hooks/redux'
+import { useAppSelector } from '~/src/hooks/redux'
 import { getRecentSearches } from '../recipes.slice'
 import RecipeListAll from './RecipeListAll'
 

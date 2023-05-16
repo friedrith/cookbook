@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
 
-import Button from 'components/atoms/Button'
-import HistoryContext from 'contexts/History'
+import Button from '~/src/components/atoms/Button'
+import HistoryContext from '~/src/contexts/History'
 
-import isRightToLeft from 'utils/platforms/isRightToLeft'
+import isRightToLeft from '~/src/utils/platforms/isRightToLeft'
 
 type Props = {
   url: string

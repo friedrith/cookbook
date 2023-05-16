@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
-import useWhenLoggedIn from 'features/authentication/hooks/useWhenLoggedIn'
-import Transition, { TransitionProps } from 'components/atoms/Transition'
+import useWhenLoggedIn from '~/src/features/authentication/hooks/useWhenLoggedIn'
+import Transition, { TransitionProps } from '~/src/components/atoms/Transition'
 
 interface Props extends Omit<TransitionProps, 'children'> {
   children?: React.ReactNode

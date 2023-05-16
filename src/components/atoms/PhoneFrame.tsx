@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-import frame from 'assets/phone-frame.svg'
+import frame from '~/src/assets/phone-frame.svg'
 
 const PlaceholderFrame = (props: any) => {
   return (

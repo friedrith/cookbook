@@ -1,4 +1,4 @@
-import Recipe from 'types/Recipe'
+import Recipe from '~/src/types/Recipe'
 
 export const sortByUpdatedAt = (a: Recipe, b: Recipe) => {
   if (a?.updatedAt === null || a?.updatedAt === undefined) {

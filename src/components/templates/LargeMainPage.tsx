@@ -1,4 +1,4 @@
-import Container from 'components/atoms/Container'
+import Container from '~/src/components/atoms/Container'
 
 type Props = {
   children: React.ReactNode

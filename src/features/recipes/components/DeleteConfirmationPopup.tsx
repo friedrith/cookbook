@@ -1,8 +1,8 @@
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
-import Modal, { PopupType } from 'components/atoms/Modal'
-import Button from 'components/atoms/Button'
+import Modal, { PopupType } from '~/src/components/atoms/Modal'
+import Button from '~/src/components/atoms/Button'
 
 type Props = {
   open: boolean

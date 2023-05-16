@@ -1,5 +1,5 @@
-import PrimaryLoadingSpinner from 'components/molecules/PrimaryLoadingSpinner'
-import CenterPage from 'components/templates/CenterPage'
+import PrimaryLoadingSpinner from '~/src/components/molecules/PrimaryLoadingSpinner'
+import CenterPage from '~/src/components/templates/CenterPage'
 
 const Loading = () => {
   return (

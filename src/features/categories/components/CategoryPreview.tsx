@@ -2,8 +2,8 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 
-import LordIcon from 'components/atoms/LordIcon'
-import { firstLetterUppercase } from 'utils/string'
+import LordIcon from '~/src/components/atoms/LordIcon'
+import { firstLetterUppercase } from '~/src/utils/string'
 import Category from '../Category'
 
 interface CategoryPreviewProps {

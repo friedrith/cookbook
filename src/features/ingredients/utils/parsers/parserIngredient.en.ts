@@ -1,4 +1,4 @@
-import Ingredient, { buildIngredient } from 'models/Ingredient'
+import Ingredient, { buildIngredient } from '~/src/models/Ingredient'
 
 const parseAsExplicitSome = (line: string): Ingredient | null => {
   const matchExplicitSome = line.match(/^some (.+)/i)

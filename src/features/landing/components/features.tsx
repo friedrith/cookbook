@@ -1,10 +1,10 @@
-import SmartphoneShoppingBagIcon from 'features/landing/components/SmartphoneShoppingBagIcon'
-import SmartphoneStepListIcon from 'features/landing/components/SmartphoneStepListIcon'
-import SmartphoneImportIcon from 'features/landing/components/SmartphoneImportIcon'
+import SmartphoneShoppingBagIcon from '~/src/features/landing/components/SmartphoneShoppingBagIcon'
+import SmartphoneStepListIcon from '~/src/features/landing/components/SmartphoneStepListIcon'
+import SmartphoneImportIcon from '~/src/features/landing/components/SmartphoneImportIcon'
 
-import importImage from 'assets/import.png'
-import shoppingList from 'assets/shoppingList.png'
-import step from 'assets/steps.png'
+import importImage from '~/src/assets/import.png'
+import shoppingList from '~/src/assets/shoppingList.png'
+import step from '~/src/assets/steps.png'
 
 // resolution 390x844
 const Screen = (image: string, alt: string) => () =>

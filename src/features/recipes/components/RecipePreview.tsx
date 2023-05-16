@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import thumbnailUrl from 'utils/urls/thumbnailUrl'
-import Recipe from 'types/Recipe'
-import CategoryBadgeList from 'features/categories/components/CategoryBadgeList'
-import { BadgeSize } from 'components/atoms/Badge'
+import thumbnailUrl from '~/src/utils/urls/thumbnailUrl'
+import Recipe from '~/src/types/Recipe'
+import CategoryBadgeList from '~/src/features/categories/components/CategoryBadgeList'
+import { BadgeSize } from '~/src/components/atoms/Badge'
 
 type Props = {
   recipe: Recipe

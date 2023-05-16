@@ -1,8 +1,8 @@
 import { CogIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from 'react-i18next'
 
-import Modal, { PopupType } from 'components/atoms/Modal'
-import Settings from 'components/organisms/Settings'
+import Modal, { PopupType } from '~/src/components/atoms/Modal'
+import Settings from '~/src/components/organisms/Settings'
 
 type Props = {
   open: boolean

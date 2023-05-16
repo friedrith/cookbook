@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { RootState } from 'store'
+import { RootState } from '~/src/store/index'
 
-import User from 'features/authentication/types/User'
+import User from '~/src/features/authentication/types/User'
 
 export interface AuthState {
   error: string | null
