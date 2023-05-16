@@ -14,10 +14,10 @@ import {
   PlusCircleIcon,
 } from '@heroicons/react/24/solid'
 import ImportHelpPopup from './ImportHelpPopup'
-import usePopup from 'hooks/usePopup'
-import Modal from 'components/atoms/Modal'
-import NewRecipeForm from 'features/recipes/components/NewRecipeForm'
-import useSearch from 'features/search/useSearch'
+import usePopup from '~/src/hooks/usePopup'
+import Modal from '~/src/components/atoms/Modal'
+import NewRecipeForm from '~/src/features/recipes/components/NewRecipeForm'
+import useSearch from '~/src/features/search/useSearch'
 
 const MobileDock = () => {
   const { t } = useTranslation()

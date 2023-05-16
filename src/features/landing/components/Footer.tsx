@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next'
 // import { useState } from 'react'
-import Logo from 'components/atoms/Logo'
-import Container from 'components/atoms/Container'
-// import Select from 'components/atoms/Select'
-// import Button from 'components/atoms/Button'
-// import Input from 'components/atoms/Input'
-// import { languages } from 'utils/services/i18n'
+import Logo from '~/src/components/atoms/Logo'
+import Container from '~/src/components/atoms/Container'
+// import Select from '~/src/components/atoms/Select'
+// import Button from '~/src/components/atoms/Button'
+// import Input from '~/src/components/atoms/Input'
+// import { languages } from '~/src/utils/services/i18n'
 
 const Footer = () => {
   // const [email, setEmail] = useState('')

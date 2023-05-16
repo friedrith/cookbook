@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import { useSearchParams } from 'react-router-dom'
 
-import { ReactComponent as LogoIcon } from 'assets/logo.svg'
-import { ReactComponent as LogoRtLIcon } from 'assets/logo-rtl.svg'
+import logo from '~/src/assets/logo.svg'
+import logoRtl from '~/src/assets/logo-rtl.svg'
 
 type Props = {
   className?: string
@@ -13,27 +13,19 @@ const Logo = ({ className }: Props) => {
   const [_, setSearchParams] = useSearchParams()
 
   return (
-    <>
-      {document.getElementsByTagName('body')?.[0].dir === 'rtl' ? (
-        <LogoRtLIcon
-          className={classNames('h-9 cursor-pointer', className)}
-          onClick={() => {
-            setSearchParams({})
-          }}
-          aria-label="Logo"
-          data-testid="logo"
-        />
-      ) : (
-        <LogoIcon
-          className={classNames('h-9 cursor-pointer', className)}
-          onClick={() => {
-            setSearchParams({})
-          }}
-          aria-label="Logo"
-          data-testid="logo"
-        />
-      )}
-    </>
+    <img
+      src={
+        document.getElementsByTagName('body')?.[0].dir === 'rtl'
+          ? logoRtl
+          : logo
+      }
+      className={classNames('h-9 cursor-pointer', className)}
+      onClick={() => {
+        setSearchParams({})
+      }}
+      alt="logo"
+      data-testid="logo"
+    />
   )
 }
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import Badge, { BadgeSize } from 'components/atoms/Badge'
+import Badge, { BadgeSize } from '~/src/components/atoms/Badge'
 
 type Props = {
   className?: string

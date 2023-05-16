@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
-import { useAppSelector } from 'hooks/redux'
-import { isUserLoggedIn } from 'store'
+import { useAppSelector } from '~/src/hooks/redux'
+import { isUserLoggedIn } from '~/src/store/index'
 
 const useWhenLoggedIn = (callback = () => {}) => {
   const isLoggedIn = useAppSelector(isUserLoggedIn)

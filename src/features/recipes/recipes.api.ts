@@ -1,7 +1,7 @@
 import api from '../../utils/api/api'
 
-import Recipe from 'types/Recipe'
-import Measure from 'models/Measure'
+import Recipe from '~/src/types/Recipe'
+import Measure from '~/src/models/Measure'
 
 const baseURL = '/recipes'
 

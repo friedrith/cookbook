@@ -6,8 +6,8 @@ import {
   SparklesIcon,
 } from '@heroicons/react/24/outline'
 
-import Modal from 'components/atoms/Modal'
-import Logo from 'components/atoms/Logo'
+import Modal from '~/src/components/atoms/Modal'
+import Logo from '~/src/components/atoms/Logo'
 import p from '../../../package.json'
 
 type Props = {

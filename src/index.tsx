@@ -4,14 +4,13 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 
-import store from 'store'
+import store from './store'
 
-import './index.css'
-import App from 'components/App'
+import App from '~/src/components/App'
 import reportWebVitals from './reportWebVitals'
-import 'utils/services/i18n'
+import '~/src/utils/services/i18n'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
-import AuthProvider from 'features/authentication/components/AuthProvider'
+import AuthProvider from '~/src/features/authentication/components/AuthProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 

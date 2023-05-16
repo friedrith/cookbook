@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 
-import { TopBarContext } from 'components/atoms/FixedHeader'
+import { TopBarContext } from '~/src/components/atoms/FixedHeader'
 
 type Props = {
   url?: string

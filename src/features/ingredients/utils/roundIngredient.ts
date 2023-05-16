@@ -1,4 +1,4 @@
-import Ingredient from 'models/Ingredient'
+import Ingredient from '~/src/models/Ingredient'
 
 const roundIngredient = (ingredient: Ingredient) => ingredient
 

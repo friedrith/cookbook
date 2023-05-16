@@ -1,5 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { getAllKeywordSortedByFrequency, getRecipeList } from 'store'
+import {
+  getAllKeywordSortedByFrequency,
+  getRecipeList,
+} from '~/src/store/index'
 import categories from './categories'
 import Category from './Category'
 

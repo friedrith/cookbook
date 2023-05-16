@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useTranslation, Trans } from 'react-i18next'
 
-import LoginPage from 'components/templates/LoginPage'
-import Button from 'components/atoms/Button'
-import Form from 'components/atoms/Form'
-import VerificationCodeInput from 'components/atoms/VerificationCodeInput'
-import useAuthentication from 'features/authentication/hooks/useAuthentication'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import LoginPage from '~/src/components/templates/LoginPage'
+import Button from '~/src/components/atoms/Button'
+import Form from '~/src/components/atoms/Form'
+import VerificationCodeInput from '~/src/components/atoms/VerificationCodeInput'
+import useAuthentication from '~/src/features/authentication/hooks/useAuthentication'
+import LoadingSpinner from '~/src/components/atoms/LoadingSpinner'
 
 const CODE_LENGTH = 6
 

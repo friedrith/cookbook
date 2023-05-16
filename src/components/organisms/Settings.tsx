@@ -3,9 +3,9 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ArchiveBoxArrowDownIcon } from '@heroicons/react/24/outline'
 
-import { languages } from 'utils/services/i18n'
-import * as temperatures from 'features/units/temperatures'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { languages } from '~/src/utils/services/i18n'
+import * as temperatures from '~/src/features/units/temperatures'
+import { useAppDispatch, useAppSelector } from '~/src/hooks/redux'
 import {
   getTemperature,
   setTemperature,
@@ -17,17 +17,17 @@ import {
   setAutomaticimport,
   // logout,
   getRecipeList,
-} from 'store'
-import Button from 'components/atoms/Button'
-import usePopup from 'hooks/usePopup'
-import HttpError from 'models/HttpError'
-import downloadAllRecipes from 'utils/export'
-import { track } from 'utils/services/tracking'
-import Form from 'components/atoms/Form'
-import Input from 'components/atoms/Input'
-import useSetting from 'hooks/useSetting'
-import Select from 'components/atoms/Select'
-import useAuthentication from 'features/authentication/hooks/useAuthentication'
+} from '~/src/store/index'
+import Button from '~/src/components/atoms/Button'
+import usePopup from '~/src/hooks/usePopup'
+import HttpError from '~/src/models/HttpError'
+import downloadAllRecipes from '~/src/utils/export'
+import { track } from '~/src/utils/services/tracking'
+import Form from '~/src/components/atoms/Form'
+import Input from '~/src/components/atoms/Input'
+import useSetting from '~/src/hooks/useSetting'
+import Select from '~/src/components/atoms/Select'
+import useAuthentication from '~/src/features/authentication/hooks/useAuthentication'
 
 const Settings = () => {
   const { t, i18n } = useTranslation()

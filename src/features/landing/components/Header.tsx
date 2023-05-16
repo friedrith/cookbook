@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
 
-import Header from 'components/atoms/Header'
-import Logo from 'components/atoms/Logo'
-import Select from 'components/atoms/Select'
-import { languages } from 'utils/services/i18n'
+import Header from '~/src/components/atoms/Header'
+import Logo from '~/src/components/atoms/Logo'
+import Select from '~/src/components/atoms/Select'
+import { languages } from '~/src/utils/services/i18n'
 
 const LandingHeader = () => {
   const { i18n } = useTranslation('marketing')

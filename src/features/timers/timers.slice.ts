@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice, createSelector } from '@reduxjs/toolkit'
 import { v4 as uuidv4 } from 'uuid'
 
-import type { RootState } from 'store'
+import type { RootState } from '~/src/store/index'
 import Timer, {
   timerToDuration,
   durationLeft,
-} from 'features/timers/models/Timer'
+} from '~/src/features/timers/models/Timer'
 import Duration, {
   durationLessThan,
   secondsToDuration,
-} from 'features/timers/models/Duration'
+} from '~/src/features/timers/models/Duration'
 
 export const recipesTimersState = {
   list: [] as Timer[],

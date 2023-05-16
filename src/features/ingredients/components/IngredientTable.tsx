@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import Ingredient from 'models/Ingredient'
-import renderMeasure from 'utils/renderMeasure'
+import Ingredient from '~/src/models/Ingredient'
+import renderMeasure from '~/src/utils/renderMeasure'
 
 interface Props {
   ingredients: Ingredient[]

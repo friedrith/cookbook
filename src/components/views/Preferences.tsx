@@ -7,22 +7,22 @@ import {
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline'
 
-import HttpError from 'models/HttpError'
-import Page from 'components/templates/Page'
-import MainPage from 'components/templates/MainPage'
-import FixedHeader from 'components/atoms/FixedHeader'
-import Header from 'components/atoms/Header'
-// import RecipePreview from 'components/molecules/RecipePreview'
-// import LargeMainPage from 'components/templates/LargeMainPage'
-import BackButton from 'components/molecules/BackButton'
+import HttpError from '~/src/models/HttpError'
+import Page from '~/src/components/templates/Page'
+import MainPage from '~/src/components/templates/MainPage'
+import FixedHeader from '~/src/components/atoms/FixedHeader'
+import Header from '~/src/components/atoms/Header'
+// import RecipePreview from '~/src/components/molecules/RecipePreview'
+// import LargeMainPage from '~/src/components/templates/LargeMainPage'
+import BackButton from '~/src/components/molecules/BackButton'
 
-import PreferencesEntry from 'features/settings/components/PreferencesEntry'
-import PreferencesSection from 'features/settings/components/PreferencesSection'
-import Select from 'components/atoms/Select'
-import { languages } from 'utils/services/i18n'
-import * as temperatures from 'features/units/temperatures'
-import Button from 'components/atoms/Button'
-import downloadAllRecipes from 'utils/export'
+import PreferencesEntry from '~/src/features/settings/components/PreferencesEntry'
+import PreferencesSection from '~/src/features/settings/components/PreferencesSection'
+import Select from '~/src/components/atoms/Select'
+import { languages } from '~/src/utils/services/i18n'
+import * as temperatures from '~/src/features/units/temperatures'
+import Button from '~/src/components/atoms/Button'
+import downloadAllRecipes from '~/src/utils/export'
 
 import {
   getTemperature,
@@ -35,16 +35,16 @@ import {
   setAutomaticimport,
   // logout,
   getRecipeList,
-} from 'store'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
-import { getCurrentUser } from 'store'
-import Switch from 'components/atoms/Switch'
-import useAuthentication from 'features/authentication/hooks/useAuthentication'
-import Modal, { PopupType } from 'components/atoms/Modal'
-import usePopup from 'hooks/usePopup'
-import { track } from 'utils/services/tracking'
-import useSetting from 'hooks/useSetting'
-import Input from 'components/atoms/Input'
+} from '~/src/store/index'
+import { useAppDispatch, useAppSelector } from '~/src/hooks/redux'
+import { getCurrentUser } from '~/src/store/index'
+import Switch from '~/src/components/atoms/Switch'
+import useAuthentication from '~/src/features/authentication/hooks/useAuthentication'
+import Modal, { PopupType } from '~/src/components/atoms/Modal'
+import usePopup from '~/src/hooks/usePopup'
+import { track } from '~/src/utils/services/tracking'
+import useSetting from '~/src/hooks/useSetting'
+import Input from '~/src/components/atoms/Input'
 import { ShoppingBagIcon } from '@heroicons/react/20/solid'
 
 const Preferences = () => {

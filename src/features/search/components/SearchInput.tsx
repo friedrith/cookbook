@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 
-import useTimeout from 'hooks/useTimeout'
+import useTimeout from '~/src/hooks/useTimeout'
 import useSearch from '../useSearch'
 
 interface SearchInputProps {

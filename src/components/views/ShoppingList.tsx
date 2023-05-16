@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 
-import Container from 'components/atoms/Container'
-import Page from 'components/templates/Page'
+import Container from '~/src/components/atoms/Container'
+import Page from '~/src/components/templates/Page'
 
-import MobileShoppingListHeader from 'features/shoppingList/components/MobileShoppingListHeader'
-import IngredientTable from 'features/ingredients/components/IngredientTable'
+import MobileShoppingListHeader from '~/src/features/shoppingList/components/MobileShoppingListHeader'
+import IngredientTable from '~/src/features/ingredients/components/IngredientTable'
 
 const ShoppingList = () => {
   const { t } = useTranslation()

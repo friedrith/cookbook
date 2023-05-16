@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
 
-import SlidePage from 'components/templates/SlidePage'
-import Step from 'models/Step'
-import Ingredient from 'models/Ingredient'
-import IngredientBadge from 'features/ingredients/components/IngredientBadge'
+import SlidePage from '~/src/components/templates/SlidePage'
+import Step from '~/src/models/Step'
+import Ingredient from '~/src/models/Ingredient'
+import IngredientBadge from '~/src/features/ingredients/components/IngredientBadge'
 
 type Props = {
   step: Step

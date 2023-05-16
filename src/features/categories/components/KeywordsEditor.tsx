@@ -1,8 +1,8 @@
 import { WithContext as ReactTags } from 'react-tag-input'
 import { useTranslation } from 'react-i18next'
 
-import cleanKeywords from 'features/categories/utils/cleanKeywords'
-import categories from 'features/categories/categories'
+import cleanKeywords from '~/src/features/categories/utils/cleanKeywords'
+import categories from '~/src/features/categories/categories'
 
 const KeyCodes = {
   comma: 188,

@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { useTranslation } from 'react-i18next'
-import Button from 'components/atoms/Button'
+import Button from '~/src/components/atoms/Button'
 
 type Props = {
   children: React.ReactNode

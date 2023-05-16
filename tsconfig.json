@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -16,7 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["dom-screen-wake-lock"]
+    "types": ["dom-screen-wake-lock"],
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["./*"]
+    }
   },
   "include": ["src", "config"]
 }

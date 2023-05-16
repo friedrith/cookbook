@@ -4,26 +4,26 @@ import { useTranslation } from 'react-i18next'
 import { SquaresPlusIcon } from '@heroicons/react/24/outline'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
-import Container from 'components/atoms/Container'
-import useSearch from 'features/search/useSearch'
-import Button from 'components/atoms/Button'
-import Modal from 'components/atoms/Modal'
-import usePopup from 'hooks/usePopup'
-import isRightToLeft from 'utils/platforms/isRightToLeft'
+import Container from '~/src/components/atoms/Container'
+import useSearch from '~/src/features/search/useSearch'
+import Button from '~/src/components/atoms/Button'
+import Modal from '~/src/components/atoms/Modal'
+import usePopup from '~/src/hooks/usePopup'
+import isRightToLeft from '~/src/utils/platforms/isRightToLeft'
 
 import CategoryPreview from './CategoryPreview'
 import matchCategory from '../utils/matchCategory'
 import shouldHelpUserAboutCategories from '../utils/shouldHelpUserAboutCategories'
 
-import { getRecipeList } from 'store'
-import { useAppSelector } from 'hooks/redux'
+import { getRecipeList } from '~/src/store/index'
+import { useAppSelector } from '~/src/hooks/redux'
 import {
   getAvailableCategories,
   getUnusedCategories,
   shouldShowCategories,
 } from '../categories.slice'
-import SearchStatus from 'features/search/types/SearchStatus'
-import useEventListener from 'hooks/useEventListener'
+import SearchStatus from '~/src/features/search/types/SearchStatus'
+import useEventListener from '~/src/hooks/useEventListener'
 import classNames from 'classnames'
 
 export interface Props {

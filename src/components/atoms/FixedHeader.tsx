@@ -1,7 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react'
 
 import classNames from 'classnames'
-import useEventListener from 'hooks/useEventListener'
+import useEventListener from '~/src/hooks/useEventListener'
 
 export const TopBarContext = React.createContext({ isMaximized: false })
 

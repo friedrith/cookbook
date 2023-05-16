@@ -1,16 +1,23 @@
 import { useCallback } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
-import { useAppSelector, useAppDispatch } from 'hooks/redux'
-import Roles from 'models/Roles'
-import useWhenLoggedIn from 'features/authentication/hooks/useWhenLoggedIn'
-import useWhenLoggedOut from 'features/authentication/hooks/useWhenLoggedOut'
-import { areRecipesFetched, fetchRecipes, importRecipe } from 'store'
-import Notifications from 'components/organisms/Notifications'
-import useEventListener from 'hooks/useEventListener'
-import { renderSharingLink, cleanSharingLinks } from 'utils/urls/sharingLinks'
-import { getSharingLinks } from 'utils/urls/sharingLinks'
-import Transition, { TransitionProps } from 'components/atoms/Transition'
+import { useAppSelector, useAppDispatch } from '~/src/hooks/redux'
+import Roles from '~/src/models/Roles'
+import useWhenLoggedIn from '~/src/features/authentication/hooks/useWhenLoggedIn'
+import useWhenLoggedOut from '~/src/features/authentication/hooks/useWhenLoggedOut'
+import {
+  areRecipesFetched,
+  fetchRecipes,
+  importRecipe,
+} from '~/src/store/index'
+import Notifications from '~/src/components/organisms/Notifications'
+import useEventListener from '~/src/hooks/useEventListener'
+import {
+  renderSharingLink,
+  cleanSharingLinks,
+} from '~/src/utils/urls/sharingLinks'
+import { getSharingLinks } from '~/src/utils/urls/sharingLinks'
+import Transition, { TransitionProps } from '~/src/components/atoms/Transition'
 
 interface Props extends TransitionProps {
   children?: React.ReactNode

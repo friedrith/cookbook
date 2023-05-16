@@ -1,5 +1,5 @@
-import Recipe from 'types/Recipe'
-import { SettingsState } from 'store/settings.slice'
+import Recipe from '~/src/types/Recipe'
+import { SettingsState } from '~/src/store/settings.slice'
 
 export type PersistedState = {
   settings: SettingsState

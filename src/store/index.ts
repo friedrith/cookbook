@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { throttle } from 'lodash'
 
-import recipes, { recipesInitialState } from 'features/recipes/recipes.slice'
-import auth from 'features/authentication/auth.slice'
+import recipes, {
+  recipesInitialState,
+} from '~/src/features/recipes/recipes.slice'
+import auth from '~/src/features/authentication/auth.slice'
 import settings, { settingsInitialState } from './settings.slice'
 import officialWebsites, {
   officialWebsitesInitialState,
 } from '../features/landing/officialWebsites'
-import timersSlice from 'features/timers/timers.slice'
-import { persistState, loadState } from 'utils/services/localStorage'
+import timersSlice from '~/src/features/timers/timers.slice'
+import { persistState, loadState } from '~/src/utils/services/localStorage'
 
 export const reducer = {
   recipes,
@@ -60,7 +62,7 @@ export type AppDispatch = typeof store.dispatch
 
 export default store
 
-export * from 'features/recipes/recipes.slice'
+export * from '~/src/features/recipes/recipes.slice'
 export * from '../features/authentication/auth.slice'
 export * from './settings.slice'
-export * from 'features/timers/timers.slice'
+export * from '~/src/features/timers/timers.slice'

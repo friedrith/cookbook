@@ -1,9 +1,9 @@
-import * as linksApi from 'utils/api/links.api'
+import * as linksApi from '~/src/utils/api/links.api'
 
-import Recipe from 'types/Recipe'
+import Recipe from '~/src/types/Recipe'
 
-import parseLines from 'utils/parseLines'
-import { renderSharingLink } from 'utils/urls/sharingLinks'
+import parseLines from '~/src/utils/parseLines'
+import { renderSharingLink } from '~/src/utils/urls/sharingLinks'
 
 const renderTextRecipe = async (
   recipe: Recipe,

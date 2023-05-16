@@ -1,4 +1,4 @@
-import SearchQuery from 'features/search/types/SearchQuery'
+import SearchQuery from '~/src/features/search/types/SearchQuery'
 import Category from '../Category'
 
 const matchCategory = (query: SearchQuery, category: Category) => {

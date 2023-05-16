@@ -1,4 +1,4 @@
-import { BadgeSize } from 'components/atoms/Badge'
+import { BadgeSize } from '~/src/components/atoms/Badge'
 import CategoryBadge from './CategoryBadge'
 
 type Props = {

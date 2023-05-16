@@ -1,4 +1,4 @@
-import Unit from 'models/Unit'
+import Unit from '~/src/models/Unit'
 
 export const choices = [
   {

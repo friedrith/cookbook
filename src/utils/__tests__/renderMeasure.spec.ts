@@ -1,4 +1,4 @@
-import renderMeasure from 'utils/renderMeasure'
+import renderMeasure from '~/src/utils/renderMeasure'
 
 describe('renderMeasure', () => {
   it('should return string "some"', () => {

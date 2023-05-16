@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import LoginPage from 'components/templates/LoginPage'
-import Button from 'components/atoms/Button'
-import Form from 'components/atoms/Form'
-import useAuthentication from 'features/authentication/hooks/useAuthentication'
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import LoginPage from '~/src/components/templates/LoginPage'
+import Button from '~/src/components/atoms/Button'
+import Form from '~/src/components/atoms/Form'
+import useAuthentication from '~/src/features/authentication/hooks/useAuthentication'
+import LoadingSpinner from '~/src/components/atoms/LoadingSpinner'
 
 const Login = () => {
   const { t } = useTranslation('login')

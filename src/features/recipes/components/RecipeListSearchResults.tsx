@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next'
 
-import Recipe from 'types/Recipe'
-import RecipeListSection from 'features/recipes/components/RecipeListSection'
-import useFuse from 'features/search/hooks/useFuse'
-import NoRecipeList from 'features/recipes/components/NoRecipeList'
-import EmptyMessage from 'components/atoms/EmptyMessage'
-import { useAppDispatch } from 'hooks/redux'
-import { addRecentSearch } from 'features/recipes/recipes.slice'
-import { firstLetterUppercase } from 'utils/string'
-import useSearch from 'features/search/useSearch'
-import SearchStatus from 'features/search/types/SearchStatus'
+import Recipe from '~/src/types/Recipe'
+import RecipeListSection from '~/src/features/recipes/components/RecipeListSection'
+import useFuse from '~/src/features/search/hooks/useFuse'
+import NoRecipeList from '~/src/features/recipes/components/NoRecipeList'
+import EmptyMessage from '~/src/components/atoms/EmptyMessage'
+import { useAppDispatch } from '~/src/hooks/redux'
+import { addRecentSearch } from '~/src/features/recipes/recipes.slice'
+import { firstLetterUppercase } from '~/src/utils/string'
+import useSearch from '~/src/features/search/useSearch'
+import SearchStatus from '~/src/features/search/types/SearchStatus'
 
 interface Props {
   recipes: Recipe[]

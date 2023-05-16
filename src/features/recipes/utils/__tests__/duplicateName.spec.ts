@@ -1,4 +1,4 @@
-import duplicateName from 'features/recipes/utils/duplicateName'
+import duplicateName from '~/src/features/recipes/utils/duplicateName'
 
 describe('duplicateName', () => {
   it('should return name with 2 at the end', () => {

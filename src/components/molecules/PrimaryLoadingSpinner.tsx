@@ -1,4 +1,4 @@
-import LoadingSpinner from 'components/atoms/LoadingSpinner'
+import LoadingSpinner from '~/src/components/atoms/LoadingSpinner'
 
 interface Props {
   className?: string

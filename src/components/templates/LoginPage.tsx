@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next'
 
 import Page from './Page'
 
-import BackButton from 'components/molecules/BackButton'
-import PortalLayout from 'components/templates/PortalLayout'
+import BackButton from '~/src/components/molecules/BackButton'
+import PortalLayout from '~/src/components/templates/PortalLayout'
 
 type Props = {
   children: React.ReactNode

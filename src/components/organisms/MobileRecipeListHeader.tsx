@@ -3,12 +3,12 @@ import { Cog6ToothIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
-import Logo from 'components/atoms/Logo'
-import CategoriesList from 'features/categories/components/CategoryList'
-import useEventListener from 'hooks/useEventListener'
-import useSearch from 'features/search/useSearch'
-import SearchInput from 'features/search/components/SearchInput'
-import Header from 'components/atoms/Header'
+import Logo from '~/src/components/atoms/Logo'
+import CategoriesList from '~/src/features/categories/components/CategoryList'
+import useEventListener from '~/src/hooks/useEventListener'
+import useSearch from '~/src/features/search/useSearch'
+import SearchInput from '~/src/features/search/components/SearchInput'
+import Header from '~/src/components/atoms/Header'
 
 const MobileRecipeListHeader: React.FC = props => {
   const categoryListRef = useRef<HTMLDivElement>(null)

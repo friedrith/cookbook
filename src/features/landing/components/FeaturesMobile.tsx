@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import classNames from 'classnames'
 
-import PhoneFrame from 'components/atoms/PhoneFrame'
-import CircleBackground from 'components/atoms/CircleBackground'
+import PhoneFrame from '~/src/components/atoms/PhoneFrame'
+import CircleBackground from '~/src/components/atoms/CircleBackground'
 
 import features from './features'
 

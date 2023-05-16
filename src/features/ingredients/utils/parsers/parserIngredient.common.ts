@@ -1,4 +1,4 @@
-import Ingredient, { buildIngredient } from 'models/Ingredient'
+import Ingredient, { buildIngredient } from '~/src/models/Ingredient'
 
 const parseWithoutUnit = (line: string): Ingredient | null => {
   const matchWithoutUnit = line.match(/^(([0-9]|\.|\s|\/|-)*[0-9]) (.+)/)

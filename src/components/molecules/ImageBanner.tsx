@@ -1,4 +1,4 @@
-import useEventListener from 'hooks/useEventListener'
+import useEventListener from '~/src/hooks/useEventListener'
 import { useState } from 'react'
 
 type Props = {

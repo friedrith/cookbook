@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CategoryBadgeList from 'features/categories/components/CategoryBadgeList'
+import CategoryBadgeList from '~/src/features/categories/components/CategoryBadgeList'
 
 type Props = {
   recipeName: string

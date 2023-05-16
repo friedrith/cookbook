@@ -7,11 +7,11 @@ import {
   updateEmail,
 } from 'firebase/auth'
 
-import Roles from 'models/Roles'
+import Roles from '~/src/models/Roles'
 
-import { setToken } from 'utils/api/api'
+import { setToken } from '~/src/utils/api/api'
 
-import { init } from 'utils/services/firebase'
+import { init } from '~/src/utils/services/firebase'
 
 init()
 
