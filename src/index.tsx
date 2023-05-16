@@ -21,15 +21,15 @@ const App = () => <div>foo</div>
 
 root.render(
   <React.StrictMode>
-    {/* <HelmetProvider>
+    <HelmetProvider>
       <BrowserRouter>
-        <AuthProvider>
+        {/* <AuthProvider>
           <Provider store={store}> */}
-    <App />
-    {/* </Provider>
-        </AuthProvider>
+        <App />
+        {/* </Provider>
+        </AuthProvider> */}
       </BrowserRouter>
-    </HelmetProvider> */}
+    </HelmetProvider>
   </React.StrictMode>,
 )
 
