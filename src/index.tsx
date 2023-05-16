@@ -23,11 +23,11 @@ root.render(
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <AuthProvider>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </AuthProvider>
+        {/* <AuthProvider> */}
+        <Provider store={store}>
+          <App />
+        </Provider>
+        {/* </AuthProvider> */}
       </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>,
