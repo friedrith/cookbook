@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable i18next/no-literal-string */
 import { Routes, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -36,6 +38,9 @@ const App = () => {
 
   checkSession()
 
+  return <div>foo</div>
+
+  /*
   return (
     <HistoryContext.Provider value={{ previousLocation }}>
       <GlobalRoute>
@@ -87,7 +92,7 @@ const App = () => {
         </Routes>
       </GlobalRoute>
     </HistoryContext.Provider>
-  )
+  )*/
 }
 
 export default App
