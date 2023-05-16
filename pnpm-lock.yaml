@@ -70,6 +70,7 @@ specifiers:
   nosleep.js: ^0.12.0
   parcel: ^2.0.0
   parcel-plugin-static-files-copy: ^2.6.0
+  parcel-reporter-static-files-copy: ^1.5.0
   postcss: ^8.4.23
   prettier: ^2.6.2
   process: ^0.11.10
@@ -196,6 +197,7 @@ devDependencies:
   jest-environment-jsdom: 29.5.0
   parcel: 2.8.3_postcss@8.4.23
   parcel-plugin-static-files-copy: 2.6.0
+  parcel-reporter-static-files-copy: 1.5.0
   prettier: 2.8.8
   serve-static: 1.15.0
   simple-git-hooks: 2.8.1
@@ -7752,6 +7754,15 @@ packages:
     dependencies:
       minimatch: 3.0.4
       path: 0.12.7
+    dev: true
+
+  /parcel-reporter-static-files-copy/1.5.0:
+    resolution: {integrity: sha512-dsY3MQkbYSgEqS0/22vtD2mZtel8UC0ItH0ok8LmgFeCMTsdhyOtJgvt945ODIzu9lYc/sCIzksM8C77uSE3Fg==}
+    engines: {parcel: ^2.0.0-beta.1}
+    dependencies:
+      '@parcel/plugin': 2.8.3
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /parcel/2.8.3_postcss@8.4.23:

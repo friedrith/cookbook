@@ -11,5 +11,9 @@
     "tsx*": [
       "..."
     ]
-  }
+  },
+  "reporters": [
+    "...",
+    "parcel-reporter-static-files-copy"
+  ]
 }
