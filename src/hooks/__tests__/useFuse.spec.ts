@@ -1,12 +1,13 @@
 import { renderHook } from '@testing-library/react'
 import useFuse from '../../features/search/hooks/useFuse'
+import Recipe from '~src/types/Recipe'
 
 const aRecipe = (
   name: string,
   keywords = [],
   ingredients = '',
   steps = '',
-) => ({
+): Recipe => ({
   id: 'foo',
   name,
   ingredients,
@@ -14,6 +15,7 @@ const aRecipe = (
   imageUrl: '',
   stats: {},
   createdAt: null,
+  keywords,
 })
 
 describe('useFuse', () => {

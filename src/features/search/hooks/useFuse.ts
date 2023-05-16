@@ -1,5 +1,6 @@
 import { useEffect, useRef, useMemo } from 'react'
 import Fuse from 'fuse.js'
+import Recipe from '~src/types/Recipe'
 
 const initializeFuse = (recipes: Recipe[]) =>
   new Fuse(recipes, {
@@ -8,9 +9,10 @@ const initializeFuse = (recipes: Recipe[]) =>
     includeScore: true,
   })
 
-const sortByScore = (a, b) => a.score - b.score
+const sortByScore = (a: Fuse.FuseResult<Recipe>, b: Fuse.FuseResult<Recipe>) =>
+  a.score !== undefined && b.score !== undefined ? a.score - b.score : 0
 
-const sortByName = (a, b) => {
+const sortByName = (a: Recipe, b: Recipe) => {
   return a.name.localeCompare(b.name)
 }
 
@@ -21,12 +23,12 @@ const useFuse = (list: Recipe[], query: string) => {
     fuse.current.setCollection(list)
   }, [list])
 
-  const search = (query, list) =>
+  const search = (query: string, list: Recipe[]) =>
     query
       ? fuse.current
           .search(query)
           .sort(sortByScore)
-          .filter(item => item.score < 0.5)
+          .filter(item => item?.score && item.score < 0.5)
           .map(i => i.item)
       : [...list].sort(sortByName)
 

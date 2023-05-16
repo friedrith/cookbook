@@ -10,6 +10,8 @@ module.exports = {
   },
   env: {
     es6: true,
+    amd: true,
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -49,6 +51,12 @@ module.exports = {
       files: ['**/__tests__/**/*'],
       rules: {
         'i18next/no-literal-string': 0,
+      },
+    },
+    {
+      files: ['*.js', '*.jsx'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
       },
     },
     {
