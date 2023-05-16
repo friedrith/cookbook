@@ -12,9 +12,9 @@ The goal is too simplify user life and do most the job. It includes importing th
 # You need to initialize some environment variables
 cp .env.template .env
 
-yarn
+pnpm install
 
-yarn start
+pnpm start
 
 # in parallel (other terminal)
 cd api/functions

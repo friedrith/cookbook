@@ -14,18 +14,21 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
       - name: Install
-        run: yarn
+        run: pnpm install
       - name: Format and Lint
         run: |
-          yarn format 
-          yarn lint
-          yarn commitlint
+          pnpm format 
+          pnpm lint
+          pnpm commitlint
       - name: Tests
-        run: yarn test
+        run: pnpm test
       - name: Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
-          yarn build
+          pnpm build
         env:
           REACT_APP_VERSION: 0.1.2
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}

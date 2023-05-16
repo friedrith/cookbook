@@ -12,17 +12,20 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.0.2
       - name: Install
-        run: yarn
+        run: pnpm install
       - name: Format and Lint
         run: |
-          yarn format 
-          yarn lint
+          pnpm format 
+          pnpm lint
       - name: Tests
-        run: yarn test
+        run: pnpm test
       - name: Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         run: |
-          yarn build
+          pnpm build
         env:
           REACT_APP_VERSION: 0.0.0
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
@@ -42,11 +45,11 @@ jobs:
         with:
           node-version: 16
       - name: Install dependencies
-        run: yarn
+        run: pnpm
       - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps
+        run: pnpm playwright install --with-deps
       - name: Run Playwright tests
-        run: yarn playwright test
+        run: pnpm playwright test
         env:
           REACT_APP_VERSION: 0.0.0
           REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY }}
