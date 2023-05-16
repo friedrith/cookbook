@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2
         with:
-          version: 6.0.2
+          version: 6.11.0
       - name: Install
         run: pnpm install
       - name: Format and Lint
@@ -46,7 +46,7 @@ jobs:
           node-version: 16
       - uses: pnpm/action-setup@v2
         with:
-          version: 6.0.2
+          version: 6.11.0
       - name: Install dependencies
         run: pnpm
       - name: Install Playwright Browsers

@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v2
         with:
-          version: 6.0.2
+          version: 6.11.0
       - name: Install
         run: pnpm install
       - name: Format and Lint
