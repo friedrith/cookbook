@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@axe-core/playwright': ^4.6.1
-  '@clerk/clerk-react': ^4.15.4
+  '@clerk/clerk-react': ^4.16.1
   '@clerk/types': ^3.31.0
   '@commitlint/cli': ^17.5.1
   '@commitlint/config-conventional': ^17.4.4
@@ -101,7 +101,7 @@ specifiers:
   web-vitals: ^2.1.0
 
 dependencies:
-  '@clerk/clerk-react': 4.15.5_react@18.2.0
+  '@clerk/clerk-react': 4.16.1_react@18.2.0
   '@clerk/types': 3.36.1
   '@headlessui/react': 1.7.14_react-dom@18.2.0+react@18.2.0
   '@heroicons/react': 2.0.18_react@18.2.0
@@ -581,29 +581,37 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@clerk/clerk-react/4.15.5_react@18.2.0:
-    resolution: {integrity: sha512-hrG9jOFLkmJrl2BmnT9OiWK6lGlwDKHHR0kuCa01y682PsfGnYDwvSdxn7czW+ukE18k/G0tKYFIwFQQc7qlyw==}
+  /@clerk/clerk-react/4.16.1_react@18.2.0:
+    resolution: {integrity: sha512-6zZFSvriIS0nBEM+GXFwpn1bfV+B7U/NKjVWQO/rzKldAq0Vd1hgz9aFHAamaZNjoegdpZbGyT5gPIWogz2Mqw==}
     engines: {node: '>=14'}
     peerDependencies:
       react: '>=16'
     dependencies:
-      '@clerk/shared': 0.15.8_react@18.2.0
-      '@clerk/types': 3.36.1
+      '@clerk/shared': 0.16.1_react@18.2.0
+      '@clerk/types': 3.37.1
       react: 18.2.0
       swr: 1.3.0_react@18.2.0
       tslib: 2.4.1
     dev: false
 
-  /@clerk/shared/0.15.8_react@18.2.0:
-    resolution: {integrity: sha512-wbZ52k+udAeLpGMV0f9gm9S7xiiv3vtHgt6zJFuS2if9UGokpMlZDcqhBu+BxSxKn1TQSpXzmN5XP9bZ+lg5jg==}
+  /@clerk/shared/0.16.1_react@18.2.0:
+    resolution: {integrity: sha512-x8DtpWb+GQkuByTMLzoWTc3gpz1+NUNCu7TDnWeFt+0PuZG5XaOb5pkC3wOfrxiMefUYr1Vi7lEYFxVmTdNMeg==}
     peerDependencies:
       react: '>=16'
     dependencies:
+      glob-to-regexp: 0.4.1
       react: 18.2.0
     dev: false
 
   /@clerk/types/3.36.1:
     resolution: {integrity: sha512-4uCGMS8GrRA+Ag1NvAxEeGgFkxrxJQvr7Hrw4j/iANX89uUfj6fxt/J5SCpITNqm73XUaAyFvTQ72vDEk01fwA==}
+    engines: {node: '>=14'}
+    dependencies:
+      csstype: 3.1.1
+    dev: false
+
+  /@clerk/types/3.37.1:
+    resolution: {integrity: sha512-YMURjYPUctMGPW417987HYs3MpGgV3t3G5QGRxyuD5uljPA6in10Ad74OhtarkB3g1BGaITL7RNNGrmKz/Dvzw==}
     engines: {node: '>=14'}
     dependencies:
       csstype: 3.1.1
@@ -5636,6 +5644,10 @@ packages:
     dependencies:
       is-glob: 4.0.3
     dev: true
+
+  /glob-to-regexp/0.4.1:
+    resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
+    dev: false
 
   /glob/7.1.6:
     resolution: {integrity: sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==}
