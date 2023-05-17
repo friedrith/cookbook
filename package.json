@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "parcel",
-    "build": "parcel build --no-optimize",
+    "build": "parcel build",
     "test": "jest",
     "test:e2e": "pnpm playwright test",
     "serve": "npx serve -s build",
