@@ -8,16 +8,13 @@ import 'regenerator-runtime/runtime'
 
 import store from './store'
 
-// import App from '~/src/components/App'
+import App from '~/src/components/App'
 import reportWebVitals from './reportWebVitals'
 import '~/src/utils/services/i18n'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import AuthProvider from '~/src/features/authentication/components/AuthProvider'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-
-// eslint-disable-next-line i18next/no-literal-string
-const App = () => <div>foo</div>
 
 root.render(
   <React.StrictMode>
