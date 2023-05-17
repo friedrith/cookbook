@@ -2,7 +2,7 @@ name: Build and Deploy on Beta
 on:
   push:
     branches:
-      - master
+      - fix/page
 permissions:
   contents: read
   pages: write
