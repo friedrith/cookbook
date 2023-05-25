@@ -65,6 +65,12 @@ module.exports = {
         'testing-library/prefer-screen-queries': 'off',
       },
     },
+    {
+      files: ['public/service-worker.js'],
+      globals: {
+        self: 'readonly',
+      },
+    },
     // {
     //   files: ['public/locales/**/*'],
     //   rules: {
