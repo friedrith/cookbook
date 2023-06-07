@@ -36,6 +36,7 @@ module.exports = {
   ],
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
     'no-console': ['error', { allow: ['warn', 'error'] }],
     'i18n-json/sorted-keys': 'off',
     'i18n-json/valid-message-syntax': 'off',
