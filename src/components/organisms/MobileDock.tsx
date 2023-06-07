@@ -34,7 +34,7 @@ const MobileDock = () => {
       Icon: HomeIcon,
       IconOutline: HomeOutlineIcon,
       id: 'home',
-      label: 'Home',
+      label: '_Home',
       onClick: () => {
         setSearch(null)
       },
