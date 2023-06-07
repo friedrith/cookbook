@@ -41,7 +41,6 @@ const CategoryPreview: React.FC<CategoryPreviewProps> = ({
       )}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      onFocus={() => {}}
       onClick={onClick}
     >
       <LordIcon

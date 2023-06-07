@@ -248,4 +248,6 @@ const CategoriesList = React.forwardRef<HTMLDivElement, Props>(
   },
 )
 
+CategoriesList.displayName = 'CategoriesList'
+
 export default CategoriesList
