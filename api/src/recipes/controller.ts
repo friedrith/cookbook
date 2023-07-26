@@ -8,6 +8,7 @@ import { parseRecipe } from '../utils/parser'
 import nodeFetch from '../utils/nodeFetch'
 import * as linksDb from '../links/database'
 import convert from './convert'
+import cleanId from '../utils/cleanId'
 
 const COLLECTION_PATH = 'server/saving-data/cookbook/recipes/byUsers'
 
@@ -32,7 +33,7 @@ export async function create(req: Request, res: Response) {
   try {
     const { name, keywords, imageUrl, stats, ingredients, steps } = req.body
 
-    const { uid } = res.locals
+    const { email } = res.locals
 
     const recipe = await createRecipe({
       name,
@@ -41,7 +42,7 @@ export async function create(req: Request, res: Response) {
       stats,
       ingredients,
       steps,
-      userId: uid,
+      userId: cleanId(email),
     })
 
     return res.status(201).send({ recipe: convert(recipe) })
@@ -67,7 +68,7 @@ const addImportLog = async (obj: any) => {
 
 export async function importRecipe(req: Request, res: Response) {
   const { url } = req.body
-  const { uid } = res.locals
+  const { email } = res.locals
 
   try {
     let recipeData = {}
@@ -76,7 +77,7 @@ export async function importRecipe(req: Request, res: Response) {
 
       recipeData = {
         ...(await db.findOne(COLLECTION_PATH, link.ownerId, link.recipeId)),
-        userId: uid,
+        userId: cleanId(email),
       }
     } else {
       const dom = await nodeFetch(url.toString())
@@ -93,19 +94,19 @@ export async function importRecipe(req: Request, res: Response) {
         steps,
         originUrl: url,
         author,
-        userId: uid,
+        userId: cleanId(email),
       }
     }
 
     const recipe = await createRecipe(recipeData)
 
-    await addImportLog({ url, status: 'ok', userId: uid })
+    await addImportLog({ url, status: 'ok', userId: cleanId(email) })
 
     return res.status(200).send({
       recipe: convert(recipe),
     })
   } catch (err) {
-    addImportLog({ url, status: 'error', error: err, userId: uid })
+    addImportLog({ url, status: 'error', error: err, userId: cleanId(email) })
 
     return handleError(res, err)
   }
@@ -120,10 +121,10 @@ export async function patch(req: Request, res: Response) {
       return
     }
 
-    const { uid } = res.locals
+    const { email } = res.locals
 
     const ref = admin.database().ref(COLLECTION_PATH)
-    const userRef = ref.child(uid)
+    const userRef = ref.child(cleanId(email))
     const recipeRef = userRef.child(id)
 
     const recipe = omit({ ...req.body, updatedAt: new Date().toISOString() }, [
@@ -153,10 +154,10 @@ export async function patch(req: Request, res: Response) {
 // https://firebase.google.com/docs/database/admin/start#node.js
 export async function all(req: Request, res: Response) {
   try {
-    const { uid } = res.locals
+    const { email } = res.locals
 
     const ref = admin.database().ref(COLLECTION_PATH)
-    const userRef = ref.child(uid)
+    const userRef = ref.child(cleanId(email))
 
     userRef.once(
       'value',
@@ -202,11 +203,11 @@ export async function getOneByLink(req: Request, res: Response) {
 export async function remove(req: Request, res: Response) {
   try {
     const { id } = req.params
-    const { uid } = res.locals
+    const { email } = res.locals
 
     const ref = admin.database().ref(COLLECTION_PATH)
 
-    const userRef = ref.child(uid)
+    const userRef = ref.child(cleanId(email))
     const recipeRef = userRef.child(id)
 
     recipeRef.set(null)
@@ -218,11 +219,11 @@ export async function remove(req: Request, res: Response) {
 
 export async function removeAll(req: Request, res: Response) {
   try {
-    const { uid } = res.locals
+    const { email } = res.locals
 
     const ref = admin.database().ref(COLLECTION_PATH)
 
-    const userRef = ref.child(uid)
+    const userRef = ref.child(cleanId(email))
 
     userRef.set(null)
     res.status(200).send({})
