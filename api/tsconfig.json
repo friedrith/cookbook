@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types"],
-    "types": ["long", "jest", "node"]
+    "types": ["jest", "node"]
   },
   "compileOnSave": true,
   "include": ["src/**/*"]

@@ -15,11 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["dom-screen-wake-lock"],
+    "types": ["dom-screen-wake-lock", "jest", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
       "~*": ["./*"]
     }
   },
-  "include": ["src", "config"]
+  "include": ["src", "config", "scripts/jest"]
 }
