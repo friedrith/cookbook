@@ -6,15 +6,7 @@
   "_No Recipes created": "No Recipes created",
   "_Get started by creating a new recipe": "Get started by creating a new recipe.",
   "_settings": "Settings",
-  "login": {
-    "_Log in": "Log in",
-    "_Link your email": "Link your email",
-    "_Get a magic link sent to your email": "Get a magic link to instantly link your email address to your cook book.",
-    "_An email on its way": "Check your emails"
-  },
   "_Sign out": "Sign out",
-  "_Send magic link": "Send a magic link",
-  "_Email address": "Email address",
   "_Invalid link": "Invalid link",
   "_Sorry that link is no longer valid": "Sorry that link is no longer valid",
   "_Send a new magic link": "Send a new magic link",
@@ -23,7 +15,6 @@
   "_Open CookBook": "Open CookBook",
   "_Try CookBook": "Try CookBook",
   "_Try banana bread": "Try banana bread",
-  "_Account": "Settings",
   "_Create Recipe": "Create Recipe",
   "_New Recipe": "New Recipe",
   "_Waiting for link": "Waiting for link",
@@ -50,7 +41,7 @@
   "_Go back home": "Go back home",
   "_delete recipe": "Delete Recipe",
   "_duplicate recipe": "Duplicate Recipe",
-  "_Recipe deleted": "Recipe \"{{recipeName}}\" deleted",
+  "_Recipe deleted": "Recipe \\\"{{recipeName}}\\\" deleted",
   "_Undo": "Undo",
   "_Saving": "Saving...",
   "_Share Recipe": "Share Recipe",
@@ -59,7 +50,7 @@
   "_Ingredients copied to clipboard": "Ingredients copied to clipboard",
   "_Share pdf": "Share pdf",
   "_Download pdf": "Download as pdf",
-  "_Logout": "Logout",
+  "_Logout": "Log out",
   "_Help": "Help",
   "_Install Desktop App": "Install Desktop App",
   "_Install Mobile App": "Install Mobile App",
@@ -76,10 +67,7 @@
   "_made simple": "made simple",
   "_for everybody": "for everybody",
   "_Cooking your best recipes will be never easier": "Cooking your best recipes will never be easier.",
-  "_Why a magic link": "Why a magic link?",
-  "_We sent an email": "We sent an email to <strong>{{email}}</strong>. You will find a magic link that will log you in instantly.",
-  "_We sent an email.pwa": "We sent an email to <strong>{{email}}</strong>. Copy the link in your clipboard and enter it in the form below.",
-  "_This link will expire 24 hours.": "This link will expire 24 hours.",
+  "_Home": "Home",
   "shoppingList": {
     "Create shopping list": "Create shopping list",
     "Close shopping list": "Close shopping list",
@@ -95,6 +83,7 @@
     "_Saving in progress...": "Saving in progress...",
     "_No need to save manually. Everything is saved in really time.": "No need to save manually. Everything is saved in really time."
   },
+  "_Recipes": "Recipes",
   "_Beta": "Beta",
   "_Alpha": "Alpha",
   "_Edit Recipe": "Edit Recipe",
@@ -103,27 +92,24 @@
   "_Back to recipe": "Go back to recipe",
   "_Search in recipes": "Search in recipes",
   "_Search": "Search",
-  "faq": {
-    "shortTitle": "FAQ",
-    "title": "Frequently Asked Questions"
-  },
   "_Open Menu": "Open menu",
   "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "notifications": {
     "Close": "Close"
   },
-  "_Link sent by email": "Link sent by email",
-  "_Login with magic link": "Login with magic link",
   "_Ok Got it": "Ok Got it!",
   "_CookBook is in alpha": "CookBook is currently in Alpha version. It means it may contain few bugs and it is not ready to be used by everybody. You were sent an access to this version to help finalizing CookBook.",
   "_Please do not sent it to anyone else without the authorization of the author of CookBook": "Please do not sent it to anyone else without the authorization of the author of CookBook",
   "_Settings": "Settings",
+  "_Email": "Email",
   "languages": {
     "Language": "Language"
   },
   "settings": {
     "temperatures": {
-      "Temperatures": "Temperatures unit in recipes",
+      "Temperatures": "Temperatures",
+      "Unit in recipes": "Unit in recipes",
+      "Temperatures unit in recipes": "Temperatures unit in recipes",
       "keepUnchanged": "Do not change",
       "Farenheit": "Farenheit",
       "Celsius": "Celsius"
@@ -133,11 +119,13 @@
       "Other units": "Other units in recipes",
       "International system": "International system (ml, kg, etc.)"
     },
-    "ingredient template": "Template for ingredients in shopping list",
+    "ingredient template": "Shopping list template",
+    "ingredient template description": "When sharing your shopping list, the ingredients are rewritten to work with your favorite todo app.",
     "Show advanced": "Show advanced settings",
     "Hide advanced": "Hide advanced settings",
     "Export": "Export",
-    "Download all your recipes": "Download all recipes"
+    "Download all your recipes": "Download all recipes",
+    "_You are logged in as": "You are logged in as {{emailAddress}}"
   },
   "import": {
     "Import from a recipe catalog": "Import from a website",
@@ -159,6 +147,7 @@
   "_See the official websites": "See the websites officially supported.",
   "_Automatic import": "Automatic import",
   "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "If you click on new recipe with a valid url in your clipboard, it will be automatically imported.",
+  "_when you click on new recipe with a valid url in your clipboard": "When you click on \\\"new recipe\\\" with a valid url in your clipboard",
   "_Focus Mode": "Cooking mode",
   "Toggle focus mode": "Toggle cooking mode",
   "focusMode": {
@@ -170,11 +159,12 @@
     "Voice control": "Voice Control",
     "Gesture control": "Gesture Control",
     "Controls settings": "Controls settings",
-    "Say next to Move to the next step": "Say <strong>\"Next\"</strong> to move to the next step.",
+    "Say next to Move to the next step": "Say <strong>\\\"Next\\\"</strong> to move to the next step.",
     "Make a thumbs up": "Make a <strong>thumbs up</strong> gesture to move to the next step.",
     "Voice recognition not supported by your browser": "Voice recognition not supported by your browser",
-    "While the focus mode is activated, your device still stay awake": "In the cooking mode, your device will never go to sleep so you can follow the steps easily.",
-    "Activate": "Active Cooking mode"
+    "Your device will not go to sleep": "Your screen will not go to sleep,\"[TODO] undefined",
+    "Activate": "Activate Cooking mode",
+    "While the focus mode is activated, your device still stay awake": "[TODO] undefined"
   },
   "CookBook officially support recipe import from the following websites": "CookBook officially supports recipe import from the following websites:",
   "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ",

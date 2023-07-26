@@ -1,19 +1,12 @@
 {
   "_View Recipe": "Voir la Recette",
   "_Ingredients": "Ingrédients",
-  "_No Recipes found": "Aucune rectte trouvée",
+  "_No Recipes found": "Aucune recette trouvée",
   "_Try a different search.": "Tenter une différente recherche.",
   "_No Recipes created": "Aucune recette créée.",
   "_Get started by creating a new recipe": "Il faut commencer par créer une nouvelle recette.",
   "_settings": "Réglages",
-  "_Send magic link": "Envoyer un lien magique",
-  "_Email address": "Adresse email",
-  "login": {
-    "_Log in": "S'authentifier",
-    "_Link your email": "Lier votre email",
-    "_Get a magic link sent to your email": "Recevez un lien magique pour instantanément lier votre adresse email à votre livre de recette.",
-    "_An email on its way": "Vérifiez vos emails"
-  },
+  "_Sign out": "Se déconnecter",
   "_Invalid link": "Lien Invalide",
   "_Sorry that link is no longer valid": "Désolé, ce lien n'est plus valide.",
   "_Send a new magic link": "Envoyer un nouveau lien magique",
@@ -22,7 +15,6 @@
   "_Open CookBook": "Ouvrir CookBook",
   "_Try CookBook": "Essayer CookBook",
   "_Try banana bread": "Chercher pain à la banane",
-  "_Account": "Compte",
   "_Create Recipe": "Créer Recette",
   "_New Recipe": "Nouvelle Recette",
   "_Waiting for link": "Attendre pour le lien",
@@ -55,9 +47,9 @@
   "_Share Recipe": "Partager",
   "_Copy Recipe to clipboard": "Copier la recette dans le presse-papier",
   "_Recipe copied to clipboard": "Recette copiée dans le presse-papier.",
+  "_Ingredients copied to clipboard": "Ingredients copiées dans le presse-papier.",
   "_Share pdf": "Partage pdf",
   "_Download pdf": "Télécharger le pdf",
-  "_Ingredients copied to clipboard": "Ingredients copiées dans le presse-papier.",
   "_Logout": "Se déconnecter",
   "_Help": "Aide",
   "_Install Desktop App": "Installer App",
@@ -75,10 +67,7 @@
   "_made simple": "rendu simple",
   "_for everybody": "pour tout le monde",
   "_Cooking your best recipes will be never easier": "Cuisiner votre meilleures recettes ne sera jamais aussi simple.",
-  "_Why a magic link": "Pourquoi un lien magique ?",
-  "_We sent an email": "Un email a été envoyé à <strong>{{email}}</strong>. Vous allez y trouver un lien magique pour s'authentifier instantanément.",
-  "_We sent an email.pwa": "Un email a été envoyé à <strong>{{email}}</strong>. Copiez le lien magique dans le formulaire ci-dessous.",
-  "_This link will expire 24 hours.": "Ce lien magique expirera dans 24 heures.",
+  "_Home": "Accueil",
   "shoppingList": {
     "Create shopping list": "Créer une liste de courses",
     "Close shopping list": "Fermer la liste de courses",
@@ -87,21 +76,6 @@
     "Share shopping list": "Partager la liste de courses",
     "Shopping list": "Liste de courses"
   },
-  "faq": {
-    "shortTitle": "FAQ",
-    "title": "Foire Aux Questions"
-  },
-  "_Beta": "Beta",
-  "_Alpha": "Alpha",
-  "_Back to landing page": "Retourner à la page d'accueil",
-  "_Back to recipes": "Retourner aux recettes",
-  "_Back to recipe": "Retourner à la recette",
-  "_Edit Recipe": "Modifier la recette",
-  "_Open Menu": "Ouvrir menu",
-  "_Search in recipes": "Rechercher dans les recettes",
-  "_Search": "Rechercher",
-  "_Sign out": "Se déconnecter",
-  "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "editor": {
     "Add ingredients there": "Ajouter les ingrédients ici, une ligne par ingrédient",
     "Add steps there": "Ajouter les étapes ici, une ligne par étapes",
@@ -109,21 +83,33 @@
     "_Saving in progress...": "Sauvegarde en cours...",
     "_No need to save manually. Everything is saved in really time.": "Pas besoin de sauvarder manuellement. Tout est déjà sauvegardé en temps réel."
   },
+  "_Recipes": "Recettes",
+  "_Beta": "Beta",
+  "_Alpha": "Alpha",
+  "_Edit Recipe": "Modifier la recette",
+  "_Back to landing page": "Retourner à la page d'accueil",
+  "_Back to recipes": "Retourner aux recettes",
+  "_Back to recipe": "Retourner à la recette",
+  "_Search in recipes": "Rechercher dans les recettes",
+  "_Search": "Rechercher",
+  "_Open Menu": "Ouvrir menu",
+  "copyright": "&copy; 2022 CookBook, Inc. All rights reserved.",
   "notifications": {
     "Close": "Fermer"
   },
-  "_Link sent by email": "Lien envoyé par email",
-  "_Login with magic link": "Se connecter avec le lien magique",
   "_Ok Got it": "Oui j'ai compris !",
   "_CookBook is in alpha": "CookBook est actuellement en version Alpha. Cela signifie qu'il contient quelques bugs and n'est pas prêt à être utilisé par tout le monde. Un accès à cette version vous a été donné afin d'aider à finaliser CookBook.",
   "_Please do not sent it to anyone else without the authorization of the author of CookBook": "S'il vous plait, n'envoyez pas le lien à quelqu'un d'autre sans autorisation de l'auteur de CookBook.",
   "_Settings": "Compte",
+  "_Email": "Email",
   "languages": {
     "Language": "Langue"
   },
   "settings": {
     "temperatures": {
-      "Temperatures": "Unités de température dans les recettes",
+      "Temperatures": "Températures",
+      "Unit in recipes": "Unités dans les recettes",
+      "Temperatures unit in recipes": "Unités de température dans les recettes",
       "keepUnchanged": "Ne pas changer",
       "Farenheit": "Farenheit",
       "Celsius": "Celsius"
@@ -134,10 +120,12 @@
       "International system": "International system (ml, kg, etc.)"
     },
     "ingredient template": "Template for ingredients in shopping list",
-    "Show advanced": "Show advanced settings",
-    "Hide advanced": "Hide advanced settings",
-    "Export": "Export",
-    "Download all your recipes": "Download all recipes"
+    "ingredient template description": "Les ingrédients sont réécrits pour fonctionner dans votre todo app favorites lorsque partagés.",
+    "Show advanced": "Afficher paramètres avancés",
+    "Hide advanced": "Cacher paramètres avancés",
+    "Export": "Exporter",
+    "Download all your recipes": "Télécharger toutes les recettes",
+    "_You are logged in as": "Vous êtes connectés en tant que {{emailAddress}}"
   },
   "import": {
     "Import from a recipe catalog": "Importer depuis un site internet",
@@ -159,6 +147,7 @@
   "_See the official websites": "Voir les sites internet officiellement supportés.",
   "_Automatic import": "Import automatique",
   "_If you click on new recipe with a valid url in your clipboard, it will be automatically imported.": "Si vous cliquer sur nouvelle recette avec une url valide dans le presse-papier, elle sera automatiquement importée.",
+  "_when you click on new recipe with a valid url in your clipboard": "[TODO] undefined",
   "_Focus Mode": "Mode cuisine",
   "Toggle focus mode": "Activer/désactiver mode cuisine",
   "focusMode": {
@@ -173,8 +162,9 @@
     "Say next to Move to the next step": "Dites <strong>\"Suivant\"</strong> pour passer à la prochaines étape.",
     "Make a thumbs up": "Faire <strong>pouce levé</strong> pour paser à la prochaine étape.",
     "Voice recognition not supported by your browser": "La reconnaissance vocale n'est pas reconnue par votre navigateur.",
-    "While the focus mode is activated, your device still stay awake": "Dans le mode cuisine, votre appareil ne se mettra pas en veille pour que vous puissiez suivre facilement les étapes.",
-    "Activate": "Active Cooking mode"
+    "Your device will not go to sleep": "TODO",
+    "Activate": "Activer Mode Cuisine",
+    "While the focus mode is activated, your device still stay awake": "Dans le mode cuisine, votre appareil ne se mettra pas en veille pour que vous puissiez suivre facilement les étapes."
   },
   "CookBook officially support recipe import from the following websites": "CookBook supporte officiellement l'import de recettes provenant des sites internet suivants:",
   "However import from other websites containing recipes might work too. If your recipe was not imported successfully, let us know by write a ": "Cependant l'import depuis d'autres sites internet contenant des recettes peut fonctionner. Si votre recette n'a pas été importée avec succès, faites le nous savoir en écrivant une ",
@@ -191,7 +181,7 @@
   "_Some categories are not used": "CookBook a {{categoriesCount}} autres catégories que vous n'utilisez pas:",
   "_They could help you to find your recipes even easier": "Elles pourraient vous aider à trouver vos recettes plus facilement.",
   "_Show the recipes without categories": "Voir les {{recipesCount}} recettes sans catégories",
-  "_Recipes without categories": "Recettes sans catégories",
   "_Add some suggested keywords to your recipes": "Ajoutez certains mot-clés suggérés à vos recettes.",
+  "_Recipes without categories": "Recettes sans catégories",
   "_Show all recipes": "Voir toutes les recettes"
 }
