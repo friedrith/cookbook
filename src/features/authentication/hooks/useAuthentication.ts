@@ -48,13 +48,18 @@ const useAuthentication = () => {
           throw new Error('not loaded')
         }
 
+        console.log('email', email)
+
         const signInAttempt = await signIn.create({
           identifier: email,
         })
+        console.log('signIn.create')
 
         const emailCodeFactor = signInAttempt.supportedFirstFactors.find(
           factor => factor.strategy === 'email_code',
         ) as EmailCodeFactor
+
+        console.log('signInAttempt.supportedFirstFactors')
 
         await signInAttempt.prepareFirstFactor({
           strategy: 'email_code',
