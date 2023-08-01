@@ -9,7 +9,7 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
   const navigate = useNavigate()
 
   console.log(
-    'REACT_APP_CLERK_PUBLISHABLE_KEY',
+    'env REACT_APP_CLERK_PUBLISHABLE_KEY',
     process.env.REACT_APP_CLERK_PUBLISHABLE_KEY,
   )
 
