@@ -1,12 +1,14 @@
 import { useMemo, useCallback, useEffect, useRef } from 'react'
 import { EmailCodeFactor } from '@clerk/types'
-import { useSignIn, useAuth, useUser } from '@clerk/clerk-react'
+import { useSignIn, useSignUp, useAuth, useUser } from '@clerk/clerk-react'
 import { logout, login } from '~/src/store/index'
 import { useAppDispatch } from '~/src/hooks/redux'
 import * as firebaseApi from '../utils/firebaseAuth'
 
 const useAuthentication = () => {
   const { isLoaded, signIn, setActive } = useSignIn()
+  const { signUp } = useSignUp()
+
   const { signOut, isSignedIn, getToken } = useAuth()
   const { user } = useUser()
 
@@ -50,7 +52,7 @@ const useAuthentication = () => {
 
         console.log('email', email)
 
-        const signInAttempt = await signIn.create({
+        const signInAttempt = await signUp.create({
           identifier: email,
         })
         console.log('signIn.create')
