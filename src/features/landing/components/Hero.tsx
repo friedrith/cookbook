@@ -32,9 +32,9 @@ const Hero = () => {
       }
     } else {
       if (isWebview()) {
-        openBrowserWindow(`/login`)
+        openBrowserWindow(`/signup`)
       } else {
-        navigate('/login')
+        navigate('/signup')
       }
     }
   }

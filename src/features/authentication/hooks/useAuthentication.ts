@@ -45,39 +45,70 @@ const useAuthentication = () => {
 
   return useMemo(
     () => ({
-      sendVerificationCode: async (email: string) => {
+      sendVerificationCodeForSignUp: async (email: string) => {
+        if (!isLoaded) {
+          throw new Error('not loaded')
+        }
+
+        if (!signUp) throw new Error('signUp is null')
+
+        console.log('email', email)
+
+        const signUpAttempt = await signUp.create({
+          emailAddress: email,
+        })
+
+        return await signUpAttempt.prepareEmailAddressVerification()
+      },
+      checkVerificationCodeForSignUp: async (code: string) => {
+        if (!isLoaded) {
+          throw new Error('not loaded')
+        }
+        if (!signUp) throw new Error('signUp is null')
+
+        linking.current = false
+
+        const { status, createdSessionId } =
+          await signUp.attemptEmailAddressVerification({
+            code,
+          })
+        if (status !== 'complete') {
+          throw new Error(status ?? '')
+        }
+        setActive({ session: createdSessionId })
+      },
+      sendVerificationCodeForLogin: async (email: string) => {
         if (!isLoaded) {
           throw new Error('not loaded')
         }
 
         console.log('email', email)
 
-        const signInAttempt = await signUp.create({
+        const signInAttempt = await signIn.create({
           identifier: email,
         })
-        console.log('signIn.create')
 
         const emailCodeFactor = signInAttempt.supportedFirstFactors.find(
           factor => factor.strategy === 'email_code',
         ) as EmailCodeFactor
-
-        console.log('signInAttempt.supportedFirstFactors')
 
         await signInAttempt.prepareFirstFactor({
           strategy: 'email_code',
           emailAddressId: emailCodeFactor.emailAddressId,
         })
       },
-      checkVerificationCode: async (code: string) => {
+      checkVerificationCodeForLogin: async (code: string) => {
         if (!isLoaded) {
           throw new Error('not loaded')
         }
+
         linking.current = false
 
         const { status, createdSessionId } = await signIn.attemptFirstFactor({
           strategy: 'email_code',
           code,
         })
+
         if (status !== 'complete') {
           throw new Error(status ?? '')
         }

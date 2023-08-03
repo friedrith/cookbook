@@ -11,7 +11,7 @@ import LoadingSpinner from '~/src/components/atoms/LoadingSpinner'
 
 const CODE_LENGTH = 6
 
-const CodeVerify = () => {
+export default function SignUpCodeVerify() {
   const { t } = useTranslation('login')
 
   const [code, setCode] = useState('')
@@ -20,12 +20,12 @@ const CodeVerify = () => {
   const [email] = useState(searchParams.get('email'))
   const [isLoading, setLoading] = useState(false)
 
-  const { checkVerificationCode } = useAuthentication()
+  const { checkVerificationCodeForSignUp } = useAuthentication()
 
   const validateCode = async (newCode: string) => {
     setLoading(true)
     try {
-      await checkVerificationCode(newCode)
+      await checkVerificationCodeForSignUp(newCode)
     } catch (error) {
       setLoading(false)
       console.error(error)
@@ -35,7 +35,7 @@ const CodeVerify = () => {
 
   return (
     <LoginPage
-      title={t('_Log in')}
+      title={t('_Sign Up')}
       description={
         <Trans t={t} i18nKey="_An email on its way" values={{ email }} />
       }
@@ -67,5 +67,3 @@ const CodeVerify = () => {
     </LoginPage>
   )
 }
-
-export default CodeVerify

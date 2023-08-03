@@ -8,28 +8,30 @@ import Form from '~/src/components/atoms/Form'
 import useAuthentication from '~/src/features/authentication/hooks/useAuthentication'
 import LoadingSpinner from '~/src/components/atoms/LoadingSpinner'
 
-const Login = () => {
+export default function SignUp() {
   const { t } = useTranslation('login')
 
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [isLoading, setLoading] = useState(false)
 
-  const { sendVerificationCodeForLogin } = useAuthentication()
+  const { sendVerificationCodeForSignUp } = useAuthentication()
 
-  const login = async (event: React.SyntheticEvent) => {
+  const login = async () => {
     setLoading(true)
     try {
-      await sendVerificationCodeForLogin(email)
-      navigate(`/login/code-verify?email=${email}`)
-    } catch (e) {
+      const { status } = await sendVerificationCodeForSignUp(email)
+      console.log('status', status)
+      navigate(`/signup/code-verify?email=${email}`)
+    } catch (error) {
+      console.log('error')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <LoginPage title={t('_Log in')} description={t('_We need your email')}>
+    <LoginPage title={t('_Sign up')} description={'‎'}>
       <Form className="space-y-4" onSubmit={login}>
         <div>
           <label
@@ -63,16 +65,14 @@ const Login = () => {
         </div>
       </Form>
       <p className="mt-5 text-left text-sm text-gray-500">
-        {t('_No account')}{' '}
+        {t('_Already an account')}{' '}
         <Link
-          to="/signup"
+          to="/login"
           className="font-semibold leading-6 text-primary-500 hover:text-primary-600"
         >
-          {t('_Sign up')}
+          {t('_Log in')}
         </Link>
       </p>
     </LoginPage>
   )
 }
-
-export default Login

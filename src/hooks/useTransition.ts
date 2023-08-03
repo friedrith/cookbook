@@ -32,6 +32,7 @@ const useTransition = (): [string, string, Location, () => void] => {
         (areLocationIncludes(location, displayLocation, [
           '/recipes',
           '/login',
+          '/signup',
         ]) ||
           location.pathname === PREFERENCES ||
           displayLocation.pathname === PREFERENCES)

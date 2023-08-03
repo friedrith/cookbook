@@ -13,7 +13,7 @@ import RecipeEdit from '~/src/components/views/RecipeEdit'
 import RecipeFocus from '~/src/components/views/RecipeFocus'
 import NotFound404 from '~/src/components/views/NotFound404'
 import RecipeShare from '~/src/components/views/RecipeShare'
-import CodeVerify from '~/src/components/views/CodeVerify'
+import LoginCodeVerify from '~src/components/views/LoginCodeVerify'
 import ProtectedRoute from '~/src/components/routes/ProtectedRoute'
 import PortalRoute from '~/src/components/routes/PortalRoute'
 import GlobalRoute from '~/src/components/routes/GlobalRoute'
@@ -23,6 +23,8 @@ import ShoppingList from '~/src/components/views/ShoppingList'
 import HistoryContext from '~/src/contexts/History'
 
 import useTransition from '~/src/hooks/useTransition'
+import SignUp from './views/SignUp'
+import SignUpCodeVerify from './views/SignUpCodeVerify'
 
 const App = () => {
   const [transitionStage, previousLocation, displayLocation, onAnimationEnd] =
@@ -72,6 +74,18 @@ const App = () => {
             }
           />
           <Route
+            path="/signup"
+            element={
+              <PortalRoute
+                className={transitionStage}
+                onAnimationEnd={onAnimationEnd}
+              />
+            }
+          >
+            <Route path="code-verify" element={<SignUpCodeVerify />} />
+            <Route path="" element={<SignUp />} />
+          </Route>
+          <Route
             path="/login"
             element={
               <PortalRoute
@@ -80,7 +94,7 @@ const App = () => {
               />
             }
           >
-            <Route path="code-verify" element={<CodeVerify />} />
+            <Route path="code-verify" element={<LoginCodeVerify />} />
             <Route path="" element={<Login />} />
           </Route>
           <Route path="/*" element={<NotFound404 />} />

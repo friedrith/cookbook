@@ -1,9 +1,12 @@
 {
   "_Log in": "S'authentifier",
+  "_Sign up": "S'inscrire",
   "_Link your email": "Lier votre email",
   "_We need your email": "Votre email sera lié à votre livre de cuisine.",
   "_An email on its way": "Entrez le code de vérification à 6 chiffres que nous avons envoyé à l'adresse email <strong>{{email}}</strong>.",
   "_Send code": "Envoyez un code",
   "_Email address": "Adresse email",
-  "_Verify": "Vérifier"
+  "_Verify": "Vérifier",
+  "_No account": "Pas de compte ?",
+  "_Already an account": "Déjà un compte ?"
 }
