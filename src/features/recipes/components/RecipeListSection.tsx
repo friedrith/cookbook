@@ -16,6 +16,8 @@ const RecipeListSection = ({
   onClick = () => {},
   className,
 }: Props) => {
+  // eslint-disable-next-line no-console
+  console.log('recipes', recipes)
   return (
     <div className="pb-10 md:pb-20">
       {title && <SectionTitle>{title}</SectionTitle>}
