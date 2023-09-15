@@ -16,8 +16,6 @@ const RecipeListSection = ({
   onClick = () => {},
   className,
 }: Props) => {
-  // eslint-disable-next-line no-console
-  console.log('recipes', recipes)
   return (
     <div className="pb-10 md:pb-20">
       {title && <SectionTitle>{title}</SectionTitle>}
@@ -27,7 +25,7 @@ const RecipeListSection = ({
           className,
         )}
       >
-        {recipes.map(recipe => (
+        {recipes.filter(Boolean).map(recipe => (
           <RecipePreview
             key={recipe.id}
             recipe={recipe}

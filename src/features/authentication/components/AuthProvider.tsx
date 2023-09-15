@@ -8,11 +8,6 @@ interface Props {
 const AuthProvider: React.FC<Props> = ({ children }) => {
   const navigate = useNavigate()
 
-  console.log(
-    'env REACT_APP_CLERK_PUBLISHABLE_KEY',
-    process.env.REACT_APP_CLERK_PUBLISHABLE_KEY,
-  )
-
   return (
     <ClerkProvider
       publishableKey={process.env.REACT_APP_CLERK_PUBLISHABLE_KEY ?? ''}
