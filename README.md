@@ -24,7 +24,7 @@ yarn serve
 
 ## Contributing
 
-Before contributing, please read the [./CONTRIBUTING.md](Guidelines).
+Before contributing, please read the [CONTRIBUTING.md](Guidelines).
 
 ## Useful links
 

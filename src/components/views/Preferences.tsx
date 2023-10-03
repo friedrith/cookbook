@@ -95,7 +95,7 @@ const Preferences = () => {
       <MainPage className="flex-1 relative z-10">
         <div className="pt-20">
           <div ref={ref} />
-          <PreferencesSection title="User Interface">
+          <PreferencesSection title={t('settings.userInterface')}>
             <PreferencesEntry title={t('languages.Language')}>
               <Select
                 id="languages"
@@ -152,7 +152,7 @@ const Preferences = () => {
               />
             </PreferencesEntry>
           </PreferencesSection>
-          <PreferencesSection title="Advanced">
+          <PreferencesSection title={t('settings.advanced')}>
             <PreferencesEntry
               title={t('settings.ingredient template')}
               description={t('settings.ingredient template description')}
@@ -183,7 +183,7 @@ const Preferences = () => {
               </Button.White>
             </Modal>
           </PreferencesSection>
-          <PreferencesSection title="Account">
+          <PreferencesSection title={t('settings.account')}>
             <PreferencesEntry
               title={t('settings.Export')}
               description={t('settings.Download all your recipes')}
