@@ -19,8 +19,8 @@
   "_New Recipe": "Nouvelle Recette",
   "_Waiting for link": "Attendre pour le lien",
   "_Save": "Enregistrer",
-  "_Recipe Name": "Recipe Name",
-  "_Markdown format accepted": "Markdown format accepted",
+  "_Recipe Name": "Nom de la Recette",
+  "_Markdown format accepted": "Format markdown accepté",
   "_Categories": "Catégories",
   "_Steps": "Étapes",
   "_Duration": "Durée",
@@ -106,6 +106,9 @@
     "Language": "Langue"
   },
   "settings": {
+    "userInterface": "Interface utilisateur",
+    "account": "Compte",
+    "advanced": "Avancé",
     "temperatures": {
       "Temperatures": "Températures",
       "Unit in recipes": "Unités dans les recettes",

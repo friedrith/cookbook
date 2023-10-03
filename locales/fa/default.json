@@ -106,6 +106,9 @@
     "Language": "زبان"
   },
   "settings": {
+    "userInterface": "[TODO] undefined",
+    "account": "[TODO] undefined",
+    "advanced": "[TODO] undefined",
     "temperatures": {
       "Temperatures": "[TODO] undefined",
       "Unit in recipes": "[TODO] undefined",

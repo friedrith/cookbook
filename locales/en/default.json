@@ -106,6 +106,9 @@
     "Language": "Language"
   },
   "settings": {
+    "userInterface": "User interface",
+    "account": "Account",
+    "advanced": "Advanced",
     "temperatures": {
       "Temperatures": "Temperatures",
       "Unit in recipes": "Unit in recipes",
