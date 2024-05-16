@@ -17,9 +17,9 @@ pnpm install
 pnpm start
 
 # in parallel (other terminal)
-cd api/functions
+cd api
 nvm use v16.17.0
-yarn serve
+yarn api
 ```
 
 ## Contributing
